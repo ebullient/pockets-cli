@@ -12,11 +12,11 @@ import picocli.CommandLine.IFactory;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.ParseResult;
 import picocli.CommandLine.ScopeType;
-import picocli.CommandLine.Spec;
-import picocli.CommandLine.Model.CommandSpec;
 
 @QuarkusMain
-@Command(name = "pockets", mixinStandardHelpOptions = true)
+@Command(name = "pockets", mixinStandardHelpOptions = true, subcommands = {
+    PocketsCreate.class
+})
 public class PocketsCli implements Callable<Integer>, QuarkusApplication {
 
     @Inject
