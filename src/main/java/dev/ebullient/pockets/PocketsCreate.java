@@ -3,6 +3,8 @@ package dev.ebullient.pockets;
 import java.util.Optional;
 import java.util.concurrent.Callable;
 
+import javax.transaction.Transactional;
+
 import dev.ebullient.pockets.db.Pocket;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
@@ -23,10 +25,11 @@ public class PocketsCreate implements Callable<Integer> {
     Optional<String> name;
 
     @Override
+    @Transactional
     public Integer call() throws Exception {
         Log.debugf("Parameters: %s, %s", type, name);
         final Pocket pocket = createPocket(type, name);
-        // pocket.persist();  // <-- Save it!
+        pocket.persist();  // <-- Save it!
 
 
         Log.outPrintf("✨ Created new pocket '%s' with id '%s'\n", pocket.name, pocket.id);

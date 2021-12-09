@@ -2,6 +2,7 @@ package dev.ebullient.pockets;
 
 import java.util.concurrent.Callable;
 
+import javax.enterprise.context.control.ActivateRequestContext;
 import javax.inject.Inject;
 
 import io.quarkus.runtime.QuarkusApplication;
@@ -39,6 +40,7 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
     }
 
     @Override
+    @ActivateRequestContext
     public int run(String... args) throws Exception {
         return new CommandLine(this, factory)
             .setExecutionStrategy(this::executionStrategy)
