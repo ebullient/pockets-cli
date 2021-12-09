@@ -1,6 +1,8 @@
 package dev.ebullient.pockets;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
@@ -32,9 +34,17 @@ public class PocketsList implements Callable<Integer> {
 
         if ( id.isEmpty() ) {
             List<Pocket> allPockets = Pocket.listAll();
-            Log.debug(allPockets.toString());
-            TextTable textTable = help.createTextTable(
-                    allPockets.stream().collect(Collectors.toMap(k -> k.id, v -> v.name)));
+
+            Map<String, String> map = new LinkedHashMap<>();
+            map.put("[ID]", "NAME");
+
+            map.putAll(allPockets.stream().collect(Collectors.toMap(
+                k -> Long.toString(k.id),
+                v -> v.name
+            )));
+
+            TextTable textTable = help.createTextTable(map);
+
             Log.outPrintln("\nPockets:\n");
             Log.outPrintln(textTable.toString());
         } else  {
@@ -42,7 +52,18 @@ public class PocketsList implements Callable<Integer> {
             if ( pocket == null ) {
                 Log.outPrintln(id  + " doesn't match any of your pockets");
             } else {
-                Log.outPrintln(String.format("%s (%s) contains:", pocket.name, pocket.id));
+                Map<String, String> map = new LinkedHashMap<>();
+                map.put("[ID]", "@|faint (Q)|@ DESCRIPTION");
+
+                map.putAll(pocket.items.stream().collect(Collectors.toMap(
+                    k -> Long.toString(k.id),
+                    v -> String.format("@|faint (%d)|@ %s", v.quantity, v.description)
+                )));
+
+                TextTable textTable = help.createTextTable(map);
+
+                Log.outPrintln(String.format("[%s] %s contains:\n", pocket.id, pocket.name));
+                Log.outPrintln(textTable.toString());
             }
         }
         return CommandLine.ExitCode.OK;
