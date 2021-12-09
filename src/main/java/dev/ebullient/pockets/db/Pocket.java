@@ -1,6 +1,10 @@
 package dev.ebullient.pockets.db;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
@@ -15,6 +19,24 @@ public class Pocket extends PanacheEntity {
     public double weight;       // weight of the pocket itself
     public boolean magic;       // magic pockets always weigh the same
     public PocketType type;
+
+    /** Many items in this pocket */
+    @OneToMany(mappedBy = "pocket",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true)
+    public Set<PocketItem> items;
+
+    /** Add an item to the pocket: establish bi-directional relationship */
+    public void addPocketItem(PocketItem item) {
+        items.add(item);
+        item.setPocket(this);
+    }
+
+    /** Remove an item from the pocket: clear bi-directional relationship */
+    public void removeItem(PocketItem item) {
+        items.remove(item);
+        item.setPocket(null);
+    }
 
     public enum PocketType {
         Pouch,
