@@ -16,7 +16,7 @@ import picocli.CommandLine.ScopeType;
 
 @QuarkusMain
 @Command(name = "pockets", mixinStandardHelpOptions = true, subcommands = {
-    PocketsCreate.class
+    PocketsCreate.class, PocketsList.class
 })
 public class PocketsCli implements Callable<Integer>, QuarkusApplication {
 
