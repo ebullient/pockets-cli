@@ -30,7 +30,7 @@ pockets --help
 
 ## Use it
 
-```shell
+```
 Usage: pockets [-hvV] [COMMAND]
   -h, --help      Show this help message and exit.
   -v, --verbose   verbose output
