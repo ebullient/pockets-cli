@@ -10,12 +10,14 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 
-@Command(name = "create",
-    mixinStandardHelpOptions = true, requiredOptionMarker = '*', showDefaultValues = true,
-    header = "Create a new pocket")
+@Command(name = "create", mixinStandardHelpOptions = true, requiredOptionMarker = '*', showDefaultValues = true, header = "Create a new pocket")
 public class PocketsCreate implements Callable<Integer> {
     enum Type {
-        backpack, pouch, haversack, bagOfHolding, portableHole
+        backpack,
+        pouch,
+        haversack,
+        bagOfHolding,
+        portableHole
     }
 
     @Parameters(index = "0", description = "Type of pocket.\n  Choices: ${COMPLETION-CANDIDATES}")
@@ -29,8 +31,7 @@ public class PocketsCreate implements Callable<Integer> {
     public Integer call() throws Exception {
         Log.debugf("Parameters: %s, %s", type, name);
         final Pocket pocket = createPocket(type, name);
-        pocket.persist();  // <-- Save it!
-
+        pocket.persist(); // <-- Save it!
 
         Log.outPrintf("✨ Created new pocket '%s' with id '%s'\n", pocket.name, pocket.id);
         return CommandLine.ExitCode.OK;

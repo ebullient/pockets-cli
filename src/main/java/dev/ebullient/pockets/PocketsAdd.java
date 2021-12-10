@@ -11,9 +11,7 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 
-@Command(name = "add",
-    mixinStandardHelpOptions = true, requiredOptionMarker = '*', showDefaultValues = true,
-    header = "Add an item to a pocket")
+@Command(name = "add", mixinStandardHelpOptions = true, requiredOptionMarker = '*', showDefaultValues = true, header = "Add an item to a pocket")
 public class PocketsAdd implements Callable<Integer> {
 
     String description;
@@ -32,8 +30,8 @@ public class PocketsAdd implements Callable<Integer> {
         Log.debugf("Parameters: %s, %s", id, description);
 
         Pocket pocket = Pocket.findById(id);
-        if ( pocket == null ) {
-            Log.outPrintln(id  + " doesn't match any of your pockets.");
+        if (pocket == null) {
+            Log.outPrintln(id + " doesn't match any of your pockets.");
             // TODO: Helpfully list our pockets!
         } else {
             PocketItem item = new PocketItem();

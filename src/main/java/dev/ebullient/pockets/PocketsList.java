@@ -11,14 +11,12 @@ import dev.ebullient.pockets.db.Pocket;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Help;
-import picocli.CommandLine.Parameters;
-import picocli.CommandLine.Spec;
 import picocli.CommandLine.Help.TextTable;
 import picocli.CommandLine.Model.CommandSpec;
+import picocli.CommandLine.Parameters;
+import picocli.CommandLine.Spec;
 
-@Command(name = "list",
-    mixinStandardHelpOptions = true, requiredOptionMarker = '*', showDefaultValues = true,
-    header = "What do we have in our pockets?")
+@Command(name = "list", mixinStandardHelpOptions = true, requiredOptionMarker = '*', showDefaultValues = true, header = "What do we have in our pockets?")
 public class PocketsList implements Callable<Integer> {
 
     @Spec
@@ -32,33 +30,31 @@ public class PocketsList implements Callable<Integer> {
         Log.debugf("Parameters: %s", id);
         Help help = spec.commandLine().getHelp();
 
-        if ( id.isEmpty() ) {
+        if (id.isEmpty()) {
             List<Pocket> allPockets = Pocket.listAll();
 
             Map<String, String> map = new LinkedHashMap<>();
             map.put("[ID]", "NAME");
 
             map.putAll(allPockets.stream().collect(Collectors.toMap(
-                k -> Long.toString(k.id),
-                v -> v.name
-            )));
+                    k -> Long.toString(k.id),
+                    v -> v.name)));
 
             TextTable textTable = help.createTextTable(map);
 
             Log.outPrintln("\nPockets:\n");
             Log.outPrintln(textTable.toString());
-        } else  {
+        } else {
             Pocket pocket = Pocket.findById(id.get());
-            if ( pocket == null ) {
-                Log.outPrintln(id  + " doesn't match any of your pockets");
+            if (pocket == null) {
+                Log.outPrintln(id + " doesn't match any of your pockets");
             } else {
                 Map<String, String> map = new LinkedHashMap<>();
                 map.put("[ID]", "@|faint (Q)|@ DESCRIPTION");
 
                 map.putAll(pocket.items.stream().collect(Collectors.toMap(
-                    k -> Long.toString(k.id),
-                    v -> String.format("@|faint (%d)|@ %s", v.quantity, v.description)
-                )));
+                        k -> Long.toString(k.id),
+                        v -> String.format("@|faint (%d)|@ %s", v.quantity, v.description))));
 
                 TextTable textTable = help.createTextTable(map);
 

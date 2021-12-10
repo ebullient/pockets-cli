@@ -14,16 +14,14 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 @Entity
 public class Pocket extends PanacheEntity {
     public String name;
-    public double max_volume;   // in cubic ft
+    public double max_volume; // in cubic ft
     public double max_capacity; // in lbs
-    public double weight;       // weight of the pocket itself
-    public boolean magic;       // magic pockets always weigh the same
+    public double weight; // weight of the pocket itself
+    public boolean magic; // magic pockets always weigh the same
     public PocketType type;
 
     /** Many items in this pocket */
-    @OneToMany(mappedBy = "pocket",
-        cascade = CascadeType.ALL,
-        orphanRemoval = true)
+    @OneToMany(mappedBy = "pocket", cascade = CascadeType.ALL, orphanRemoval = true)
     public Set<PocketItem> items;
 
     /** Add an item to the pocket: establish bi-directional relationship */
@@ -44,7 +42,7 @@ public class Pocket extends PanacheEntity {
         Haversack,
         BagOfHolding,
         PortableHole
-     }
+    }
 
     /** Pouch */
     public static Pocket createBackpack(String name) {
@@ -63,7 +61,7 @@ public class Pocket extends PanacheEntity {
         Pocket pocket = new Pocket();
         pocket.type = PocketType.Pouch;
         pocket.name = name;
-        pocket.max_volume = 1/5; // 1/5 cubic foot is weirdly precise
+        pocket.max_volume = 1 / 5; // 1/5 cubic foot is weirdly precise
         pocket.max_capacity = 6;
         pocket.weight = 1;
         pocket.magic = false;

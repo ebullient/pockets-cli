@@ -16,7 +16,7 @@ import picocli.CommandLine.ScopeType;
 
 @QuarkusMain
 @Command(name = "pockets", mixinStandardHelpOptions = true, subcommands = {
-    PocketsCreate.class, PocketsList.class, PocketsAdd.class
+        PocketsCreate.class, PocketsList.class, PocketsAdd.class
 })
 public class PocketsCli implements Callable<Integer>, QuarkusApplication {
 
@@ -43,7 +43,7 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
     @ActivateRequestContext
     public int run(String... args) throws Exception {
         return new CommandLine(this, factory)
-            .setExecutionStrategy(this::executionStrategy)
-            .execute(args);
+                .setExecutionStrategy(this::executionStrategy)
+                .execute(args);
     }
 }

@@ -13,8 +13,8 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 public class PocketItem extends PanacheEntity {
     public String description;
     public int quantity;
-    public double weight;       // weight in lbs
-    public double value;        // value in gp
+    public double weight; // weight in lbs
+    public double value; // value in gp
 
     @ManyToOne(fetch = FetchType.LAZY)
     Pocket pocket;

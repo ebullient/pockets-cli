@@ -40,6 +40,6 @@ class PocketsCliTest {
 
     String outputWithoutLogs(LaunchResult result) {
         return result.getOutputStream().stream()
-            .filter(x -> ! LOG_PATTERN.matcher(x).matches()).collect(Collectors.joining("\n"));
+                .filter(x -> !LOG_PATTERN.matcher(x).matches()).collect(Collectors.joining("\n"));
     }
 }
