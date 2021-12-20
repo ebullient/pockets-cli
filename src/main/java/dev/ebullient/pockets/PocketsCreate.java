@@ -1,5 +1,6 @@
 package dev.ebullient.pockets;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.Callable;
 
@@ -20,11 +21,15 @@ public class PocketsCreate implements Callable<Integer> {
         portableHole
     }
 
+    Optional<String> name = Optional.empty();
+
     @Parameters(index = "0", description = "Type of pocket.\n  Choices: ${COMPLETION-CANDIDATES}")
     Type type;
 
-    @Parameters(index = "1", description = "Name for your new pocket. Use quotes for strings with spaces.", arity = "0..1")
-    Optional<String> name;
+    @Parameters(index = "1", description = "Name for your new pocket.", arity = "0..*")
+    void setDescription(List<String> words) {
+        name = Optional.of(String.join(" ", words));
+    }
 
     @Override
     @Transactional
