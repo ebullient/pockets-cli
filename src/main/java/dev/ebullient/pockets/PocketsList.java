@@ -30,6 +30,7 @@ public class PocketsList implements Callable<Integer> {
         Log.debugf("Parameters: %s", id);
         Help help = spec.commandLine().getHelp();
 
+        Log.outPrintln("\n 🛍  Pockets:\n");
         if (id.isEmpty()) {
             List<Pocket> allPockets = Pocket.listAll();
 
@@ -38,16 +39,16 @@ public class PocketsList implements Callable<Integer> {
 
             map.putAll(allPockets.stream().collect(Collectors.toMap(
                     k -> Long.toString(k.id),
-                    v -> v.name)));
+                    v -> emojiFor(v) + v.name)));
 
             TextTable textTable = help.createTextTable(map);
 
-            Log.outPrintln("\nPockets:\n");
             Log.outPrintln(textTable.toString());
         } else {
             Pocket pocket = Pocket.findById(id.get());
+
             if (pocket == null) {
-                Log.outPrintln(id + " doesn't match any of your pockets");
+                Log.outPrintln(id + " doesn't match any of your pockets\n");
             } else {
                 Map<String, String> map = new LinkedHashMap<>();
                 map.put("[ID]", "@|faint (Q)|@ DESCRIPTION");
@@ -58,10 +59,27 @@ public class PocketsList implements Callable<Integer> {
 
                 TextTable textTable = help.createTextTable(map);
 
-                Log.outPrintln(String.format("[%s] %s contains:\n", pocket.id, pocket.name));
+                Log.outPrintln(String.format("[%s] %s %s contains:\n", pocket.id, emojiFor(pocket), pocket.name));
                 Log.outPrintln(textTable.toString());
             }
         }
         return CommandLine.ExitCode.OK;
+    }
+
+    String emojiFor(Pocket p) {
+        switch (p.type) {
+            case Backpack:
+                return "🎒 ";
+            case BagOfHolding:
+                return "👜 ";
+            case Haversack:
+                return "👝 ";
+            case PortableHole:
+                return "🕳 ";
+            case Pouch:
+                return "👛 ";
+            default:
+                return "  ";
+        }
     }
 }
