@@ -1,8 +1,5 @@
 package dev.ebullient.pockets;
 
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +10,6 @@ import io.quarkus.test.junit.main.QuarkusMainTest;
 
 @QuarkusMainTest
 class PocketsCliTest {
-    static final Pattern LOG_PATTERN = Pattern.compile("^\\d{4}-\\d{2}-\\d{2}.*");
 
     @Test
     @Launch({})
@@ -26,7 +22,7 @@ class PocketsCliTest {
         LaunchResult result = launcher.launch("--help");
         LaunchResult result2 = launcher.launch("-h");
         Assertions.assertEquals(0, result.exitCode());
-        Assertions.assertEquals(outputWithoutLogs(result), outputWithoutLogs(result2));
+        Assertions.assertEquals(Util.outputWithoutLogs(result), Util.outputWithoutLogs(result2));
     }
 
     @Test
@@ -35,11 +31,6 @@ class PocketsCliTest {
         LaunchResult result = launcher.launch("--version");
         LaunchResult result2 = launcher.launch("-V");
         Assertions.assertEquals(0, result.exitCode());
-        Assertions.assertEquals(outputWithoutLogs(result), outputWithoutLogs(result2));
-    }
-
-    String outputWithoutLogs(LaunchResult result) {
-        return result.getOutputStream().stream()
-                .filter(x -> !LOG_PATTERN.matcher(x).matches()).collect(Collectors.joining("\n"));
+        Assertions.assertEquals(Util.outputWithoutLogs(result), Util.outputWithoutLogs(result2));
     }
 }
