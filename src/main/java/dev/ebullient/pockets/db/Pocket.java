@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
@@ -13,6 +14,27 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
  */
 @Entity
 public class Pocket extends PanacheEntity {
+
+    public enum PocketType {
+        Pouch("👛"),
+        Backpack("🎒"),
+        Haversack("👝"),
+        BagOfHolding("👜"),
+        PortableHole("🕳"),
+        Sack("🧺");
+
+        @Transient
+        private final String icon;
+
+        private PocketType(String icon) {
+            this.icon = icon;
+        }
+
+        public String icon() {
+            return icon;
+        }
+    }
+
     public String name;
     public double max_volume; // in cubic ft
     public double max_capacity; // in lbs
@@ -34,14 +56,6 @@ public class Pocket extends PanacheEntity {
     public void removeItem(PocketItem item) {
         items.remove(item);
         item.setPocket(null);
-    }
-
-    public enum PocketType {
-        Pouch,
-        Backpack,
-        Haversack,
-        BagOfHolding,
-        PortableHole
     }
 
     /** Pouch */
@@ -100,6 +114,18 @@ public class Pocket extends PanacheEntity {
         pocket.max_volume = 282.7;
         pocket.max_capacity = 0; // the limit is volume, not weight
         pocket.weight = 0;
+        pocket.magic = true;
+        return pocket;
+    }
+
+    /** Sack */
+    public static Pocket createSack(String name) {
+        Pocket pocket = new Pocket();
+        pocket.type = PocketType.Sack;
+        pocket.name = name;
+        pocket.max_volume = 1;
+        pocket.max_capacity = 30;
+        pocket.weight = 0.5;
         pocket.magic = true;
         return pocket;
     }

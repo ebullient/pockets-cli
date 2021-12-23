@@ -39,7 +39,7 @@ public class PocketsList implements Callable<Integer> {
 
             map.putAll(allPockets.stream().collect(Collectors.toMap(
                     k -> Long.toString(k.id),
-                    v -> emojiFor(v) + v.name)));
+                    v -> String.format("%2s %s", v.type.icon(), v.name))));
 
             TextTable textTable = help.createTextTable(map);
 
@@ -59,27 +59,10 @@ public class PocketsList implements Callable<Integer> {
 
                 TextTable textTable = help.createTextTable(map);
 
-                Log.outPrintln(String.format("[%s] %s %s contains:\n", pocket.id, emojiFor(pocket), pocket.name));
+                Log.outPrintln(String.format("[%s] %2s %s contains:\n", pocket.id, pocket.type.icon(), pocket.name));
                 Log.outPrintln(textTable.toString());
             }
         }
         return CommandLine.ExitCode.OK;
-    }
-
-    String emojiFor(Pocket p) {
-        switch (p.type) {
-            case Backpack:
-                return "🎒 ";
-            case BagOfHolding:
-                return "👜 ";
-            case Haversack:
-                return "👝 ";
-            case PortableHole:
-                return "🕳 ";
-            case Pouch:
-                return "👛 ";
-            default:
-                return "  ";
-        }
     }
 }
