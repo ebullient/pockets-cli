@@ -2,7 +2,9 @@ package dev.ebullient.pockets.db;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
@@ -11,18 +13,21 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
  * an item from the compendium, or it might be a custom item with other
  * attributes.
  */
-@Entity
+@Entity(name = "PocketItem")
+@Table(name = "pocket_item")
 public class PocketItem extends PanacheEntity {
     public String description;
     public int quantity;
-    public double weight; // weight in lbs
-    public double value;  // value in gp
+    public Double weight; // weight in lbs
+    public Double value; // value in gp
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "pocket_id", nullable = false)
     Pocket pocket;
 
     /** Help maintain the bi-directional relationship between objects */
-    public void setPocket(Pocket pocket) {
+    public void addToPocket(Pocket pocket) {
         this.pocket = pocket;
+        pocket.addItem(this);
     }
 }

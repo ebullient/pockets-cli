@@ -1,5 +1,7 @@
 package dev.ebullient.pockets;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -26,11 +28,40 @@ class PocketsCliTest {
     }
 
     @Test
-    public void testBasicCommandVersion(QuarkusMainLauncher launcher) {
+    public void testVersionCommandHelp(QuarkusMainLauncher launcher) {
         // Aliases should emit the same output
         LaunchResult result = launcher.launch("--version");
         LaunchResult result2 = launcher.launch("-V");
         Assertions.assertEquals(0, result.exitCode());
         Assertions.assertEquals(Util.outputWithoutLogs(result), Util.outputWithoutLogs(result2));
     }
+
+    @Test
+    public void testCreateCommandHelp(QuarkusMainLauncher launcher) {
+        // Aliases should emit the same output
+        LaunchResult result = launcher.launch("create", "--help");
+        LaunchResult result2 = launcher.launch("create", "-h");
+        Assertions.assertEquals(0, result.exitCode());
+        Assertions.assertEquals(Util.outputWithoutLogs(result), Util.outputWithoutLogs(result2));
+    }
+
+    @Test
+    public void testAddCommandHelp(QuarkusMainLauncher launcher) {
+        // Aliases should emit the same output
+        LaunchResult result = launcher.launch("add", "--help");
+        LaunchResult result2 = launcher.launch("add", "-h");
+        Assertions.assertEquals(0, result.exitCode());
+        Assertions.assertEquals(Util.outputWithoutLogs(result), Util.outputWithoutLogs(result2));
+    }
+
+    @Test
+    public void testListCommandHelp(QuarkusMainLauncher launcher) {
+        // Aliases should emit the same output
+        LaunchResult result = launcher.launch("list", "--help");
+        LaunchResult result2 = launcher.launch("list", "-h");
+        Assertions.assertEquals(0, result.exitCode());
+        Assertions.assertEquals(Util.outputWithoutLogs(result), Util.outputWithoutLogs(result2));
+        assertThat(result.getOutput()).contains("List all pockets, or the contents of one pocket");
+    }
+
 }

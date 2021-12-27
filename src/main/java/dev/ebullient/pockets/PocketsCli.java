@@ -15,15 +15,17 @@ import picocli.CommandLine.ParseResult;
 import picocli.CommandLine.ScopeType;
 
 @QuarkusMain
-@Command(name = "pockets", mixinStandardHelpOptions = true, subcommands = {
-        PocketsCreate.class, PocketsList.class, PocketsAdd.class
-})
+@Command(name = "pockets", subcommands = {
+        PocketsCreate.class, PocketsEdit.class, PocketsOpen.class, PocketsDelete.class,
+        PocketsList.class,
+        PocketsItemAdd.class, PocketsItemUpdate.class, PocketsItemRemove.class
+}, scope = ScopeType.INHERIT, mixinStandardHelpOptions = true, sortOptions = false, showDefaultValues = true, headerHeading = "%n", synopsisHeading = "%n", parameterListHeading = "%nParameters:%n", optionListHeading = "%nOptions:%n", commandListHeading = "%nCommands:%n")
 public class PocketsCli implements Callable<Integer>, QuarkusApplication {
 
     @Inject
     IFactory factory;
 
-    @Option(names = { "--verbose", "-v" }, description = "verbose output", scope = ScopeType.INHERIT)
+    @Option(names = { "--debug" }, description = "verbose/debug output", scope = ScopeType.INHERIT)
     void setVerbose(boolean verbose) {
         Log.setVerbose(verbose);
     }
@@ -42,8 +44,10 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
     @Override
     @ActivateRequestContext
     public int run(String... args) throws Exception {
-        return new CommandLine(this, factory)
+        int result = new CommandLine(this, factory)
+                .setCaseInsensitiveEnumValuesAllowed(true)
                 .setExecutionStrategy(this::executionStrategy)
                 .execute(args);
+        return result;
     }
 }

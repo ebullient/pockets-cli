@@ -64,7 +64,7 @@ public final class Log {
         if (colors == null) {
             Log.err.println(errorMsg);
         } else {
-            Log.err.println(colors.ansi().text("⛔️ @|fg(red) " + errorMsg + "|@"));
+            Log.err.println(colors.ansi().text("🛑 @|fg(red) " + errorMsg + "|@"));
         }
         Log.err.flush();
         if (ex != null && isVerbose()) {
@@ -83,6 +83,7 @@ public final class Log {
     }
 
     public static void outPrintln(String output) {
+
         if (colors == null) {
             Log.out.println(output);
         } else {

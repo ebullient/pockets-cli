@@ -1,68 +1,93 @@
 package dev.ebullient.pockets;
 
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.Callable;
-import java.util.stream.Collectors;
 
 import dev.ebullient.pockets.db.Pocket;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
-import picocli.CommandLine.Help;
-import picocli.CommandLine.Help.TextTable;
 import picocli.CommandLine.Model.CommandSpec;
 import picocli.CommandLine.Parameters;
 import picocli.CommandLine.Spec;
 
-@Command(name = "list", mixinStandardHelpOptions = true, requiredOptionMarker = '*', showDefaultValues = true, header = "What do we have in our pockets?")
+@Command(name = "l", aliases = { "list" }, header = "List all pockets, or the contents of one pocket", footer = {
+        Constants.LIST_DESCRIPTION })
 public class PocketsList implements Callable<Integer> {
 
     @Spec
     private CommandSpec spec;
 
-    @Parameters(index = "0", description = "Id of Pocket to inspect.", arity = "0..1")
-    Optional<Long> id;
+    Optional<String> nameOrId = Optional.empty();
+
+    @Parameters(index = "0", description = "Name or id of pocket to inspect.", arity = "0..*")
+    void setNameOrId(List<String> words) {
+        nameOrId = Optional.of(String.join(" ", words));
+    }
 
     @Override
     public Integer call() throws Exception {
-        Log.debugf("Parameters: %s", id);
-        Help help = spec.commandLine().getHelp();
+        Log.debugf("Parameters: %s", nameOrId);
 
-        Log.outPrintln("\n 🛍  Pockets:\n");
-        if (id.isEmpty()) {
-            List<Pocket> allPockets = Pocket.listAll();
-
-            Map<String, String> map = new LinkedHashMap<>();
-            map.put("[ID]", "NAME");
-
-            map.putAll(allPockets.stream().collect(Collectors.toMap(
-                    k -> Long.toString(k.id),
-                    v -> String.format("%2s %s", v.type.icon(), v.name))));
-
-            TextTable textTable = help.createTextTable(map);
-
-            Log.outPrintln(textTable.toString());
+        if (nameOrId.isEmpty()) {
+            listAllPockets();
         } else {
-            Pocket pocket = Pocket.findById(id.get());
+            Optional<Long> id = Input.getId(nameOrId.get());
+            Pocket pocket = id.isPresent()
+                    ? selectPocketById(id.get())
+                    : selectPocketByName(nameOrId.get());
 
             if (pocket == null) {
-                Log.outPrintln(id + " doesn't match any of your pockets\n");
+                listAllPockets();
             } else {
-                Map<String, String> map = new LinkedHashMap<>();
-                map.put("[ID]", "@|faint (Q)|@ DESCRIPTION");
-
-                map.putAll(pocket.items.stream().collect(Collectors.toMap(
-                        k -> Long.toString(k.id),
-                        v -> String.format("@|faint (%d)|@ %s", v.quantity, v.description))));
-
-                TextTable textTable = help.createTextTable(map);
-
-                Log.outPrintln(String.format("[%s] %2s %s contains:\n", pocket.id, pocket.type.icon(), pocket.name));
-                Log.outPrintln(textTable.toString());
+                listPocketContents(pocket);
             }
         }
         return CommandLine.ExitCode.OK;
+    }
+
+    public static Pocket selectPocketById(Long id) {
+        Pocket pocket = Pocket.findById(id);
+        if (pocket == null) {
+            Log.outPrintf("%n[%s] doesn't match any of your pockets.%n", id);
+        }
+        return pocket;
+    }
+
+    public static Pocket selectPocketByName(String id) {
+        List<Pocket> pockets = Pocket.findByName(id);
+        if (pockets.size() > 1) {
+            Log.outPrintf("%nSeveral pockets match '%s', which did you mean?%n%n", id);
+            Log.outPrintln("@|faint [ ID ]    Name |@");
+            Log.outPrintln("@|faint ------+--+-----------------------------------|@");
+            pockets.forEach(p -> Log.outPrintf("[%4d] %2s %s\n", p.id, p.type.icon(), p.name));
+            Log.outPrintln("");
+        } else if (pockets.size() == 1) {
+            return pockets.iterator().next();
+        } else {
+            Log.outPrintf("%n'%s' doesn't match any of your pockets.%n", id);
+        }
+        return null;
+    }
+
+    public static void listAllPockets() {
+        List<Pocket> allPockets = Pocket.listAll();
+        Log.outPrintln("\n 🛍  Your pockets:\n");
+        Log.outPrintln("@|faint [ ID ]    Name |@");
+        Log.outPrintln("@|faint ------+--+-----------------------------------|@");
+        allPockets.forEach(p -> Log.outPrintf("[%4d] %2s %s\n", p.id, p.type.icon(), p.name));
+        Log.outPrintln("");
+    }
+
+    public static void listPocketContents(Pocket pocket) {
+        if (pocket.items.isEmpty()) {
+            Log.outPrintf("%n%2s %s [%d] is empty.%n%n", pocket.type.icon(), pocket.name, pocket.id);
+        } else {
+            Log.outPrintf("%n%2s %s [%d] contains:%n%n", pocket.type.icon(), pocket.name, pocket.id);
+            Log.outPrintln("@|faint [ ID ] ( Q )  Description |@");
+            Log.outPrintln("@|faint ------+-----+------------------------------------|@");
+            pocket.items.forEach(i -> Log.outPrintf("[%4d] @|faint (%3d)|@  %s\n", i.id, i.quantity, i.description));
+            Log.outPrintln("");
+        }
     }
 }
