@@ -38,11 +38,11 @@ public class PocketsItemAdd implements Callable<Integer> {
     @Override
     @Transactional
     public Integer call() throws Exception {
-        Log.debugf("Parameters: %s, %s", pocketId, description);
+        Term.debugf("Parameters: %s, %s", pocketId, description);
 
         Pocket pocket = Pocket.findById(pocketId); // this is a full query.. maybe someday just ref
         if (pocket == null) {
-            Log.outPrintf("Id %s doesn't match any of your pockets.%n", pocketId);
+            Term.outPrintf("Id %s doesn't match any of your pockets.%n", pocketId);
             CommonIO.listAllPockets();
         } else {
             PocketItem item = new PocketItem();
@@ -54,7 +54,7 @@ public class PocketsItemAdd implements Callable<Integer> {
             item.addToPocket(pocket);
             item.persistAndFlush();
 
-            Log.outPrintf("%n@|faint (%d)|@ %s [%s] added to %s [%s]%n",
+            Term.outPrintf("%n@|faint (%d)|@ %s [%s] added to %s [%s]%n",
                     item.quantity, item.description, item.id, pocket.name, pocket.id);
 
             CommonIO.listPocketContents(pocket);

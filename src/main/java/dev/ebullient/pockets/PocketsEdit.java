@@ -7,9 +7,6 @@ import java.util.concurrent.Callable;
 
 import javax.transaction.Transactional;
 
-import org.jline.reader.LineReader;
-import org.jline.reader.LineReaderBuilder;
-
 import dev.ebullient.pockets.db.Pocket;
 import picocli.CommandLine.ArgGroup;
 import picocli.CommandLine.Command;
@@ -41,29 +38,27 @@ public class PocketsEdit implements Callable<Integer> {
     @Override
     @Transactional
     public Integer call() throws Exception {
-        LineReader reader = LineReaderBuilder.builder().build();
-        Optional<Long> id = CommonIO.getId(nameOrId);
-        Log.debugf("Parameters: %s, %s, %s", nameOrId, id, attrs);
+        Optional<Long> id = CommonIO.toLong(nameOrId);
+        Term.debugf("Parameters: %s, %s, %s", nameOrId, id, attrs);
 
         Pocket pocket = id.isPresent()
                 ? CommonIO.selectPocketById(id.get())
-                : CommonIO.selectPocketByName(nameOrId, reader);
+                : CommonIO.selectPocketByName(nameOrId);
 
-        Log.debugf("Pocket to edit: %s", pocket);
+        Term.debugf("Pocket to edit: %s", pocket);
 
         if (pocket == null) {
             return ExitCode.USAGE;
         } else {
             ParseResult pr = spec.commandLine().getParseResult();
-            boolean dumb = reader.getTerminal().getType().startsWith("dumb");
             boolean saveIt = force;
 
-            if (Log.isVerbose()) {
-                Log.outPrintf("%n%-2s %s [%d] has the following attributes:%n", pocket.type.icon(), pocket.name, pocket.id);
+            if (Term.isVerbose()) {
+                Term.outPrintf("%n%-2s %s [%d] has the following attributes:%n", pocket.type.icon(), pocket.name, pocket.id);
                 CommonIO.describe(pocket);
             }
 
-            if (!dumb) {
+            if (Term.canPrompt()) {
                 promptForUpdates(pocket, pr);
             }
 
@@ -80,19 +75,19 @@ public class PocketsEdit implements Callable<Integer> {
                 pocket.magic = attrs.magic;
             }
 
-            if (Log.isVerbose()) {
-                Log.outPrintf("%n✨ %s [%d] now has the following attributes:%n", pocket.name, pocket.id);
+            if (Term.isVerbose()) {
+                Term.outPrintf("%n✨ %s [%d] now has the following attributes:%n", pocket.name, pocket.id);
                 CommonIO.describe(pocket);
             }
 
-            if (!dumb && !force) {
-                String line = reader.readLine("Save your changes (y|N)? ");
+            if (Term.canPrompt() && !force) {
+                String line = Term.prompt("Save your changes (y|N)? ");
                 saveIt = CommonIO.yesOrTrue(line, false);
             }
 
             if (saveIt) {
                 pocket.persistAndFlush();
-                Log.outPrintf("%n✅ %s [%d] has been updated.%n", pocket.name, pocket.id);
+                Term.outPrintf("%n✅ %s [%d] has been updated.%n", pocket.name, pocket.id);
             }
         }
 
@@ -100,25 +95,23 @@ public class PocketsEdit implements Callable<Integer> {
     }
 
     void promptForUpdates(Pocket pocket, ParseResult pr) throws IOException {
-        LineReader reader = LineReaderBuilder.builder().build();
         String line = null;
         if (attrs.max_capacity.isEmpty()) {
-            line = reader.readLine("Enter the maximum capacity of this pocket in pounds (" + pocket.max_capacity + "): ");
-            pocket.max_capacity = CommonIO.readOrDefault(line, pocket.max_capacity);
+            line = Term.prompt("Enter the maximum capacity of this pocket in pounds (" + pocket.max_capacity + "): ");
+            pocket.max_capacity = CommonIO.toDoubleOrDefault(line, pocket.max_capacity);
         }
         if (attrs.max_volume.isEmpty()) {
-            line = reader.readLine("Enter the maximum volume of this pocket in cubic feet (" + pocket.max_volume + "): ");
-            pocket.max_volume = CommonIO.readOrDefault(line, pocket.max_volume);
+            line = Term.prompt("Enter the maximum volume of this pocket in cubic feet (" + pocket.max_volume + "): ");
+            pocket.max_volume = CommonIO.toDoubleOrDefault(line, pocket.max_volume);
         }
         if (attrs.weight.isEmpty()) {
-            line = reader.readLine("Weight of the pocket itself in pounds (" + pocket.weight + "): ");
-            pocket.weight = CommonIO.readOrDefault(line, pocket.weight);
+            line = Term.prompt("Weight of the pocket itself in pounds (" + pocket.weight + "): ");
+            pocket.weight = CommonIO.toDoubleOrDefault(line, pocket.weight);
         }
         if (!pr.hasMatchedOption("--magic")) {
             String previous = pocket.magic ? "Y" : "N";
-            line = reader.readLine(
-                    "Magic pockets always weigh the same, regardless of their contents. Is this a magic pocket (" + previous
-                            + ")? ");
+            Term.outPrintln("Magic pockets always weigh the same, regardless of their contents.");
+            line = Term.prompt("Is this a magic pocket (" + previous + ")? ");
             pocket.magic = CommonIO.yesOrTrue(line, pocket.magic);
         }
     }

@@ -23,6 +23,15 @@ public class PocketsDeleteTest {
     @Launch({ "delete", "2", "--verbose", "--force" })
     public void testDeleteSpecificBackpack(LaunchResult result) {
         assertThat(result.getOutput()).contains(
-                "✅ Backpack [2] has been deleted.");
+                "✅ Backpack [2] has been deleted.",
+                "You have 3 pockets containing no pocket items.");
+    }
+
+    @Test
+    @Launch({ "delete", "3", "--verbose", "--force" })
+    public void testDeleteHaversack(LaunchResult result) {
+        assertThat(result.getOutput()).contains(
+                "✅ Haversack [3] has been deleted.",
+                "You have 3 pockets containing 1 pocket item.");
     }
 }

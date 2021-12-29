@@ -32,29 +32,31 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
 
     @Option(names = { "--debug" }, description = "Enable debug output", scope = ScopeType.INHERIT)
     void setDebug(boolean debug) {
-        Log.setDebug(debug);
+        Term.setDebug(debug);
     }
 
     @Option(names = { "--verbose" }, description = "Enable verbose output", scope = ScopeType.INHERIT)
     void setVerbose(boolean verbose) {
-        Log.setVerbose(verbose);
+        Term.setVerbose(verbose);
     }
 
     @Option(names = { "--quiet" }, description = "Force quiet output", scope = ScopeType.INHERIT)
     void setQuiet(boolean quiet) {
-        Log.setQuiet(quiet);
+        Term.setQuiet(quiet);
     }
 
     @Override
     public Integer call() {
-        Log.showUsage(spec);
+        Term.showUsage(spec);
         return ExitCode.OK;
     }
 
     private int executionStrategy(ParseResult parseResult) {
         // Initialize log streams (after parameters have been read), carry on with the rest of the show
-        Log.prepareStreams(parseResult.commandSpec());
-        return new CommandLine.RunLast().execute(parseResult);
+        Term.prepareStreams(parseResult.commandSpec());
+        int result = new CommandLine.RunLast().execute(parseResult);
+        Term.close();
+        return result;
     }
 
     @Override

@@ -3,20 +3,23 @@ package dev.ebullient.pockets;
 import java.util.List;
 import java.util.Optional;
 
-import org.jline.reader.LineReader;
-
 import com.github.slugify.Slugify;
 
 import dev.ebullient.pockets.db.Pocket;
+import dev.ebullient.pockets.db.PocketItem;
 import picocli.CommandLine.Option;
 
+/**
+ * Common output formatting and data manipulation for either parameters
+ * or return types. Common across many commands.
+ */
 public class CommonIO {
     private CommonIO() {
     }
 
     private static Slugify slugify;
 
-    public static Slugify slugifier() {
+    private static Slugify slugifier() {
         Slugify s = slugify;
         if (s == null) {
             s = slugify = new Slugify()
@@ -30,7 +33,7 @@ public class CommonIO {
         return slugifier().slugify(text);
     }
 
-    public static Optional<Long> getId(String nameOrId) {
+    public static Optional<Long> toLong(String nameOrId) {
         try {
             long id = Long.parseLong(nameOrId);
             return Optional.of(id);
@@ -39,7 +42,7 @@ public class CommonIO {
         return Optional.empty();
     }
 
-    public static double readOrDefault(String line, double previous) {
+    public static double toDoubleOrDefault(String line, double previous) {
         if (!line.isBlank()) {
             try {
                 return Double.parseDouble(line);
@@ -57,29 +60,46 @@ public class CommonIO {
         return defaultValue;
     }
 
+    static String howMany(long number, String one, String more) {
+        if (number == 0) {
+            return "no " + more;
+        } else if (number == 1) {
+            return number + " " + one;
+        }
+        return number + " " + more;
+    }
+
+    public static void dumpStatistics() {
+        long pockets = Pocket.count();
+        long pocketitem = PocketItem.count();
+        Term.outPrintf("%nYou have %s containing %s.%n",
+                howMany(pockets, "pocket", "pockets"),
+                howMany(pocketitem, "pocket item", "pocket items"));
+    }
+
     public static void listAllPockets() {
         List<Pocket> allPockets = Pocket.listAll();
-        Log.outPrintln("\n 🛍  Your pockets:\n");
-        Log.outPrintln("@|faint [ ID ]    Name |@");
-        Log.outPrintln("@|faint ------+--+----------------------------------------------------+|@");
+        Term.outPrintln("\n 🛍  Your pockets:\n");
+        Term.outPrintln("@|faint [ ID ]    Name |@");
+        Term.outPrintln("@|faint ------+--+----------------------------------------------------+|@");
         //     Log.outPrintln("@|faint ------+--+ 12345678901234567890123456789012345678901234567890 +|@");
-        allPockets.forEach(p -> Log.outPrintf("@|faint [|@%4d@|faint ]|@ %-2s %-50s\n", p.id, p.type.icon(), p.name));
-        Log.outPrintln("");
+        allPockets.forEach(p -> Term.outPrintf("@|faint [|@%4d@|faint ]|@ %-2s %-50s\n", p.id, p.type.icon(), p.name));
+        Term.outPrintln("");
     }
 
     public static void listPocketContents(Pocket pocket) {
-        Log.debug(pocket.toString());
+        Term.debug(pocket.toString());
         if (pocket.items.isEmpty()) {
-            Log.outPrintf("%n%-2s %s [%d] is empty.%n%n", pocket.type.icon(), pocket.name, pocket.id);
+            Term.outPrintf("%n%-2s %s [%d] is empty.%n%n", pocket.type.icon(), pocket.name, pocket.id);
             describe(pocket);
         } else {
-            Log.outPrintf("%n%-2s %s [%d] contains:%n%n", pocket.type.icon(), pocket.name, pocket.id);
-            Log.outPrintln("@|faint [ ID ] (   Q) Description |@");
-            Log.outPrintln("@|faint ------+------+----------------------------------------------------+|@");
+            Term.outPrintf("%n%-2s %s [%d] contains:%n%n", pocket.type.icon(), pocket.name, pocket.id);
+            Term.outPrintln("@|faint [ ID ] (   Q) Description |@");
+            Term.outPrintln("@|faint ------+------+----------------------------------------------------+|@");
             //     Log.outPrintln("@|faint ------+------+12345678901234567890123456789012345678901234567890 +|@");
             pocket.items.forEach(
-                    i -> Log.outPrintf("@|faint [|@%4d@|faint ] (|@%4d@|faint )|@ %-50s \n", i.id, i.quantity, i.description));
-            Log.outPrintln("");
+                    i -> Term.outPrintf("@|faint [|@%4d@|faint ] (|@%4d@|faint )|@ %-50s \n", i.id, i.quantity, i.description));
+            Term.outPrintln("");
             describe(pocket);
         }
     }
@@ -87,35 +107,33 @@ public class CommonIO {
     public static Pocket selectPocketById(Long id) {
         Pocket pocket = Pocket.findById(id);
         if (pocket == null) {
-            Log.outPrintf("%n[%s] doesn't match any of your pockets.%n", id);
+            Term.outPrintf("%n[%s] doesn't match any of your pockets.%n", id);
         }
         return pocket;
     }
 
-    public static Pocket selectPocketByName(String name, LineReader reader) {
-        boolean dumb = reader.getTerminal().getType().startsWith("dumb");
-        Log.debug(reader.getTerminal().getType());
+    public static Pocket selectPocketByName(String name) {
         List<Pocket> pockets = Pocket.findByName(name);
 
         if (pockets.size() > 1) {
-            Log.outPrintf("%nSeveral pockets match '%s':%n", name);
-            Log.outPrintln("@|faint [ ID ]    Name |@");
-            Log.outPrintln("@|faint ------+--+-----------------------------------|@");
-            pockets.forEach(p -> Log.outPrintf("[%4d] %-2s %s\n", p.id, p.type.icon(), p.name));
-            Log.outPrintln("");
+            Term.outPrintf("%nSeveral pockets match '%s':%n", name);
+            Term.outPrintln("@|faint [ ID ]    Name |@");
+            Term.outPrintln("@|faint ------+--+-----------------------------------|@");
+            pockets.forEach(p -> Term.outPrintf("[%4d] %-2s %s\n", p.id, p.type.icon(), p.name));
+            Term.outPrintln("");
 
-            if (!dumb) {
-                String line = reader.readLine("Which pocket did you mean [ID, or empty to cancel]? ");
-                Optional<Long> newId = getId(line);
+            if (Term.canPrompt()) {
+                String line = Term.prompt("Which pocket did you mean [ID, or empty to cancel]? ");
+                Optional<Long> newId = toLong(line);
                 if (newId.isPresent()) {
                     return selectPocketById(newId.get());
                 }
             }
-            Log.outPrintln("Unable to choose a pocket. Please be more specific.");
+            Term.outPrintln("Unable to choose a pocket. Please be more specific.");
         } else if (pockets.size() == 1) {
             return pockets.iterator().next();
         } else {
-            Log.outPrintf("%n'%s' doesn't match any of your pockets.%n", name);
+            Term.outPrintf("%n'%s' doesn't match any of your pockets.%n", name);
             listAllPockets();
         }
         return null;
@@ -123,33 +141,39 @@ public class CommonIO {
 
     public static void describe(Pocket pocket) {
         if (pocket.magic) {
-            Log.outPrintf(
+            Term.outPrintf(
                     "@|bold,underline This %s is magical.|@ It always weighs %s pounds, regardless of its contents.%n",
                     pocket.type.prettyName, pocket.weight);
         } else {
-            Log.outPrintf("This %s weighs %s pounds when empty.%n", pocket.type.prettyName, pocket.weight);
+            Term.outPrintf("This %s weighs %s pounds when empty.%n", pocket.type.prettyName, pocket.weight);
         }
+
         if (pocket.magic && pocket.max_capacity == 0) {
-            Log.outPrintf("It can hold %s cubic feet of gear.%n", pocket.max_volume);
+            Term.outPrintf("It can hold %s cubic feet of gear.%n", pocket.max_volume);
         } else {
-            Log.outPrintf("It can hold %s pounds or %s cubic feet of gear.%n", pocket.max_capacity, pocket.max_volume);
+            Term.outPrintf("It can hold %s pounds or %s cubic feet of gear.%n", pocket.max_capacity, pocket.max_volume);
         }
-        Log.outPrintln("");
+
+        Term.outPrintln("");
     }
 
     public static class PocketAttributes {
-        @Option(names = { "-c", "--capacity" }, description = "Capacity: Maximum this pocket can contain in pounds")
+        @Option(names = { "-w", "--max-weight" }, description = "Maximum weight of this pocket in pounds")
         Optional<Double> max_capacity = Optional.empty();
 
-        @Option(names = { "-v", "--volume" }, description = "Volume: Maximum this pocket can contain in cubic feet")
+        @Option(names = { "-v", "--max-volume" }, description = "Maximum volume of this pocket in cubic feet")
         Optional<Double> max_volume = Optional.empty();
 
-        @Option(names = { "-w", "--weight" }, description = "Weight of the pocket itself")
+        @Option(names = { "-p", "--weight" }, description = "Weight of the pocket itself in pounds")
         Optional<Double> weight = Optional.empty();
 
         @Option(names = { "-m",
-                "--magic" }, negatable = true, defaultValue = "false", description = "Is this a magic pocket? Magic pockets always weigh the same, regardless of their contents")
+                "--magic" }, negatable = true, defaultValue = "false", description = "Is this a magic pocket?%n  Magic pockets always weigh the same, regardless of their contents")
         boolean magic = false;
+
+        boolean isComplete() {
+            return max_capacity.isPresent() && max_volume.isPresent() && weight.isPresent();
+        }
 
         @Override
         public String toString() {

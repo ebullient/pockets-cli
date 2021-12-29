@@ -75,20 +75,20 @@ public class PocketsCreateTest {
     }
 
     @Test
-    @Launch({ "create", "custom", "-c", "1", "-v", "1", "-w", "1", "--no-magic", "--verbose" })
+    @Launch({ "create", "custom", "-w", "3", "-v", "2", "-p", "1", "--no-magic", "--verbose" })
     public void testCreateCustomPocket(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Pocket has been created with id",
                 "This pocket weighs 1.0 pounds when empty.",
-                "It can hold 1.0 pounds or 1.0 cubic feet of gear");
+                "It can hold 3.0 pounds or 2.0 cubic feet of gear");
     }
 
     @Test
-    @Launch({ "create", "custom", "-c", "1", "-v", "1", "-w", "1", "--magic", "--verbose" })
+    @Launch({ "create", "custom", "-w", "3", "-v", "2", "-p", "1", "--magic", "--verbose" })
     public void testCreateMagicalCustomPocket(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Pocket has been created with id",
                 "This pocket is magical. It always weighs 1.0 pounds, regardless of its contents.",
-                "It can hold 1.0 pounds or 1.0 cubic feet of gear.");
+                "It can hold 3.0 pounds or 2.0 cubic feet of gear.");
     }
 }

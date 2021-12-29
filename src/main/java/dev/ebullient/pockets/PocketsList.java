@@ -4,9 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.Callable;
 
-import org.jline.reader.LineReader;
-import org.jline.reader.LineReaderBuilder;
-
 import dev.ebullient.pockets.db.Pocket;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;
@@ -30,16 +27,15 @@ public class PocketsList implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        LineReader reader = LineReaderBuilder.builder().build();
-        Log.debugf("Parameters: %s", nameOrId);
+        Term.debugf("Parameters: %s", nameOrId);
 
         if (nameOrId.isEmpty()) {
             CommonIO.listAllPockets();
         } else {
-            Optional<Long> id = CommonIO.getId(nameOrId.get());
+            Optional<Long> id = CommonIO.toLong(nameOrId.get());
             Pocket pocket = id.isPresent()
                     ? CommonIO.selectPocketById(id.get())
-                    : CommonIO.selectPocketByName(nameOrId.get(), reader);
+                    : CommonIO.selectPocketByName(nameOrId.get());
 
             if (pocket == null) {
                 return ExitCode.USAGE;
