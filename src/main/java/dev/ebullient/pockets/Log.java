@@ -13,10 +13,20 @@ public final class Log {
 
     private static PrintWriter out = new PrintWriter(System.out);
     private static PrintWriter err = new PrintWriter(System.err);
+    private static boolean debug;
     private static boolean verbose;
+    private static boolean quiet;
+
     private static ColorScheme colors;
 
     public static void prepareStreams(CommandSpec spec) {
+        if (quiet) {
+            Log.debug = false;
+            Log.verbose = false;
+        } else if (verbose) {
+            Log.quiet = false;
+        }
+
         if (spec != null) {
             Log.out = spec.commandLine().getOut();
             Log.err = spec.commandLine().getErr();
@@ -24,22 +34,38 @@ public final class Log {
         }
     }
 
+    public static void setDebug(boolean debug) {
+        Log.debug = debug;
+    }
+
+    public static boolean isDebug() {
+        return Log.debug || picocliDebugEnabled;
+    }
+
     public static void setVerbose(boolean verbose) {
         Log.verbose = verbose;
     }
 
     public static boolean isVerbose() {
-        return Log.verbose || picocliDebugEnabled;
+        return Log.verbose;
+    }
+
+    public static void setQuiet(boolean quiet) {
+        Log.quiet = quiet;
+    }
+
+    public static boolean isQuiet() {
+        return Log.quiet;
     }
 
     public static void debugf(String format, Object... params) {
-        if (isVerbose()) {
+        if (isDebug()) {
             debug(String.format(format, params));
         }
     }
 
     public static void debug(String output) {
-        if (isVerbose()) {
+        if (isDebug()) {
             if (colors == null) {
                 Log.out.println(output);
             } else {
@@ -67,7 +93,7 @@ public final class Log {
             Log.err.println(colors.ansi().text("🛑 @|fg(red) " + errorMsg + "|@"));
         }
         Log.err.flush();
-        if (ex != null && isVerbose()) {
+        if (ex != null && isDebug()) {
             ex.printStackTrace(err);
         }
     }
@@ -83,7 +109,6 @@ public final class Log {
     }
 
     public static void outPrintln(String output) {
-
         if (colors == null) {
             Log.out.println(output);
         } else {
@@ -94,5 +119,9 @@ public final class Log {
 
     public static PrintWriter err() {
         return err;
+    }
+
+    public static void showUsage(CommandSpec spec) {
+        spec.commandLine().usage(Log.out, colors.ansi());
     }
 }

@@ -7,4 +7,11 @@ public class Constants {
 
     final static String ADD_DESCRIPTION = "%n"
             + "Add items to a pocket specified by id. Use options to customize quantity, weight, and value.";
+
+    public static final String POCKET_ENTITY = "Pocket";
+    public static final String POCKET_TABLE = "pocket";
+    public static final String POCKET_ID = "pocket_id";
+
+    public static final String ITEM_ENTITY = "PocketItem";
+    public static final String ITEM_TABLE = "pocket_item";
 }

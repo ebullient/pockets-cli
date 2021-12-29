@@ -10,14 +10,13 @@ import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
 
 import dev.ebullient.pockets.db.Pocket;
-import picocli.CommandLine;
 import picocli.CommandLine.Command;
+import picocli.CommandLine.ExitCode;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
 @Command(name = "d", aliases = { "delete" }, header = "Delete a pocket (and all contained items and history)")
 public class PocketsDelete implements Callable<Integer> {
-
     String nameOrId;
 
     @Option(names = { "-f", "--force" }, description = "Delete the specified pocket without confirmation", required = false)
@@ -31,36 +30,34 @@ public class PocketsDelete implements Callable<Integer> {
     @Override
     @Transactional
     public Integer call() throws Exception {
-        Optional<Long> id = Input.getId(nameOrId);
+        LineReader reader = LineReaderBuilder.builder().build();
+        Optional<Long> id = CommonIO.getId(nameOrId);
         Log.debugf("Parameters: %s, %s", nameOrId, id);
 
         Pocket pocket = id.isPresent()
-                ? PocketsList.selectPocketById(id.get())
-                : PocketsList.selectPocketByName(nameOrId);
+                ? CommonIO.selectPocketById(id.get())
+                : CommonIO.selectPocketByName(nameOrId, reader);
 
         Log.debugf("Pocket to delete: %s", pocket);
 
         if (pocket == null) {
-            Log.outPrintf("%s doesn't match any of your pockets.%n", nameOrId);
-            PocketsList.listAllPockets();
-            return CommandLine.ExitCode.USAGE;
+            return ExitCode.USAGE;
         } else {
             boolean deleteIt = force;
             if (!force) {
-                Log.outPrintf("%n%2s %s [%d]:%n", pocket.type.icon(), pocket.name, pocket.id);
-                pocket.describe();
+                Log.outPrintf("%n%-2s %s [%d]:%n", pocket.type.icon(), pocket.name, pocket.id);
+                CommonIO.describe(pocket);
 
-                LineReader reader = LineReaderBuilder.builder().build();
                 String line = reader.readLine("Are you sure you want to delete this pocket (y|N)? ");
-                deleteIt = Input.yesOrTrue(line, false);
+                deleteIt = CommonIO.yesOrTrue(line, false);
             }
 
             if (deleteIt) {
                 pocket.delete();
-                Log.outPrintf("%n✅ The pocket named %s has been deleted.%n", pocket.name);
+                Log.outPrintf("%n✅ %s [%d] has been deleted.%n", pocket.name, pocket.id);
             }
         }
 
-        return CommandLine.ExitCode.OK;
+        return ExitCode.OK;
     }
 }

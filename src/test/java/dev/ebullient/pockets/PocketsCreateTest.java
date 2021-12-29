@@ -12,7 +12,7 @@ import io.quarkus.test.junit.main.QuarkusMainTest;
 public class PocketsCreateTest {
 
     @Test
-    @Launch({ "create", "backpack", "Jellybeans" })
+    @Launch({ "create", "backpack", "Jellybeans", "--verbose" })
     public void testCreateBackpack(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Jellybeans has been created with id",
@@ -21,7 +21,7 @@ public class PocketsCreateTest {
     }
 
     @Test
-    @Launch({ "create", "backpack", "Magic beans", "--magic" })
+    @Launch({ "create", "backpack", "Magic beans", "--magic", "--verbose" })
     public void testCreateMagicBackpack(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Magic beans has been created with id",
@@ -30,7 +30,7 @@ public class PocketsCreateTest {
     }
 
     @Test
-    @Launch({ "create", "pouch" })
+    @Launch({ "create", "pouch", "--verbose" })
     public void testCreatePouch(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Pouch has been created with id",
@@ -39,7 +39,7 @@ public class PocketsCreateTest {
     }
 
     @Test
-    @Launch({ "create", "haversack", "Toast tastes great in the morning!" })
+    @Launch({ "create", "haversack", "Toast tastes great in the morning!", "--verbose" })
     public void testCreateHaversack(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Toast tastes great in the morning! has been created with id",
@@ -48,7 +48,7 @@ public class PocketsCreateTest {
     }
 
     @Test
-    @Launch({ "create", "BagOfHolding", "Lovely Day" })
+    @Launch({ "create", "BagOfHolding", "Lovely Day", "--verbose" })
     public void testCreateBagOfHolding(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Lovely Day has been created with id",
@@ -57,7 +57,7 @@ public class PocketsCreateTest {
     }
 
     @Test
-    @Launch({ "create", "portableHole", "Summoner's", "Gift" })
+    @Launch({ "create", "portableHole", "Summoner's", "Gift", "--verbose" })
     public void testCreatePortableHole(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Summoner's Gift has been created with id",
@@ -66,7 +66,7 @@ public class PocketsCreateTest {
     }
 
     @Test
-    @Launch({ "create", "sack", "Bag", "of", "the", "day" })
+    @Launch({ "create", "sack", "Bag", "of", "the", "day", "--verbose" })
     public void testCreateSack(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Bag of the day has been created with id",
@@ -75,7 +75,7 @@ public class PocketsCreateTest {
     }
 
     @Test
-    @Launch({ "create", "custom", "-c", "1", "-v", "1", "-w", "1", "--no-magic" })
+    @Launch({ "create", "custom", "-c", "1", "-v", "1", "-w", "1", "--no-magic", "--verbose" })
     public void testCreateCustomPocket(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Pocket has been created with id",
@@ -84,7 +84,7 @@ public class PocketsCreateTest {
     }
 
     @Test
-    @Launch({ "create", "custom", "-c", "1", "-v", "1", "-w", "1", "--magic" })
+    @Launch({ "create", "custom", "-c", "1", "-v", "1", "-w", "1", "--magic", "--verbose" })
     public void testCreateMagicalCustomPocket(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Pocket has been created with id",

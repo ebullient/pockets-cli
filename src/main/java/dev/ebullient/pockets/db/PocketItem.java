@@ -6,6 +6,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import dev.ebullient.pockets.Constants;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 /**
@@ -13,8 +14,8 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
  * an item from the compendium, or it might be a custom item with other
  * attributes.
  */
-@Entity(name = "PocketItem")
-@Table(name = "pocket_item")
+@Entity(name = Constants.ITEM_ENTITY)
+@Table(name = Constants.ITEM_TABLE)
 public class PocketItem extends PanacheEntity {
     public String description;
     public int quantity;
@@ -22,7 +23,7 @@ public class PocketItem extends PanacheEntity {
     public Double value; // value in gp
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "pocket_id", nullable = false)
+    @JoinColumn(name = Constants.POCKET_ID, nullable = false)
     Pocket pocket;
 
     /** Help maintain the bi-directional relationship between objects */

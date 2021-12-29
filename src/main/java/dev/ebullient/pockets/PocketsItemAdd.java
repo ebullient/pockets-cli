@@ -1,18 +1,17 @@
 package dev.ebullient.pockets;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.Callable;
 
 import javax.transaction.Transactional;
 
+import dev.ebullient.pockets.CommonIO.ItemAttributes;
 import dev.ebullient.pockets.db.Pocket;
 import dev.ebullient.pockets.db.PocketItem;
-import picocli.CommandLine;
 import picocli.CommandLine.ArgGroup;
 import picocli.CommandLine.Command;
+import picocli.CommandLine.ExitCode;
 import picocli.CommandLine.Model.CommandSpec;
-import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 import picocli.CommandLine.Spec;
 
@@ -36,18 +35,6 @@ public class PocketsItemAdd implements Callable<Integer> {
         description = String.join(" ", words);
     }
 
-    static class ItemAttributes {
-        @Option(names = { "-q", "--quantity" }, description = "Quantity of items to add", defaultValue = "1", required = false)
-        int quantity = 1;
-
-        @Option(names = { "-w", "--weight" }, description = "Weight of a single item in pounds", required = false)
-        Optional<Double> weight = Optional.empty();
-
-        @Option(names = { "-v",
-                "--value" }, description = "Value of a single item. Specify units (gp, ep, sp, cp)", required = false)
-        Optional<String> gpValue = Optional.empty();
-    }
-
     @Override
     @Transactional
     public Integer call() throws Exception {
@@ -56,7 +43,7 @@ public class PocketsItemAdd implements Callable<Integer> {
         Pocket pocket = Pocket.findById(pocketId); // this is a full query.. maybe someday just ref
         if (pocket == null) {
             Log.outPrintf("Id %s doesn't match any of your pockets.%n", pocketId);
-            PocketsList.listAllPockets();
+            CommonIO.listAllPockets();
         } else {
             PocketItem item = new PocketItem();
             item.description = description;
@@ -70,9 +57,9 @@ public class PocketsItemAdd implements Callable<Integer> {
             Log.outPrintf("%n@|faint (%d)|@ %s [%s] added to %s [%s]%n",
                     item.quantity, item.description, item.id, pocket.name, pocket.id);
 
-            PocketsList.listPocketContents(pocket);
+            CommonIO.listPocketContents(pocket);
         }
 
-        return CommandLine.ExitCode.OK;
+        return ExitCode.OK;
     }
 }

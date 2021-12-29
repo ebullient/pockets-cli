@@ -16,6 +16,11 @@ class PocketsCliTest {
     @Test
     @Launch({})
     public void testBasicCommand(LaunchResult result) {
+        assertThat(result.getOutput()).contains(
+                "What have you got in your pockets?",
+                "Create a new pocket",
+                "Add an item to a pocket",
+                "--verbose");
     }
 
     @Test
@@ -37,31 +42,54 @@ class PocketsCliTest {
     }
 
     @Test
-    public void testCreateCommandHelp(QuarkusMainLauncher launcher) {
-        // Aliases should emit the same output
-        LaunchResult result = launcher.launch("create", "--help");
-        LaunchResult result2 = launcher.launch("create", "-h");
-        Assertions.assertEquals(0, result.exitCode());
-        Assertions.assertEquals(Util.outputWithoutLogs(result), Util.outputWithoutLogs(result2));
+    @Launch({ "c", "--help" })
+    public void testCreateCommandHelp(LaunchResult result) {
+        assertThat(result.getOutput()).contains(
+                "Create a new pocket",
+                "Type of pocket",
+                "Pocket Attributes",
+                "Parameters");
     }
 
     @Test
-    public void testAddCommandHelp(QuarkusMainLauncher launcher) {
-        // Aliases should emit the same output
-        LaunchResult result = launcher.launch("add", "--help");
-        LaunchResult result2 = launcher.launch("add", "-h");
-        Assertions.assertEquals(0, result.exitCode());
-        Assertions.assertEquals(Util.outputWithoutLogs(result), Util.outputWithoutLogs(result2));
+    @Launch({ "e", "--help" })
+    public void testEditCommandHelp(LaunchResult result) {
+        assertThat(result.getOutput()).contains(
+                "Edit the attributes of a pocket",
+                "Edit attributes without confirmation",
+                "Pocket Attributes");
     }
 
     @Test
-    public void testListCommandHelp(QuarkusMainLauncher launcher) {
-        // Aliases should emit the same output
-        LaunchResult result = launcher.launch("list", "--help");
-        LaunchResult result2 = launcher.launch("list", "-h");
-        Assertions.assertEquals(0, result.exitCode());
-        Assertions.assertEquals(Util.outputWithoutLogs(result), Util.outputWithoutLogs(result2));
+    @Launch({ "d", "--help" })
+    public void testDeleteCommandHelp(LaunchResult result) {
+        assertThat(result.getOutput()).contains(
+                "Delete a pocket",
+                "pocket to delete",
+                "Parameters");
+    }
+
+    @Test
+    @Launch({ "l", "--help" })
+    public void testListCommandHelp(LaunchResult result) {
         assertThat(result.getOutput()).contains("List all pockets, or the contents of one pocket");
     }
 
+    @Test
+    @Launch({ "a", "--help" })
+    public void testAddCommandHelp(LaunchResult result) {
+        assertThat(result.getOutput()).contains("Add items to a pocket");
+    }
+
+    @Test
+    @Launch({ "u", "--help" })
+    public void testUpdateCommandHelp(LaunchResult result) {
+        assertThat(result.getOutput()).contains("Update an item in a pocket");
+    }
+
+    @Test
+    @Launch({ "r", "--help" })
+    public void testRemoveCommandHelp(LaunchResult result) {
+        assertThat(result.getOutput()).contains("Remove an item from a pocket");
+    }
 }
