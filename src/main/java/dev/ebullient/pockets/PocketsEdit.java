@@ -24,7 +24,7 @@ public class PocketsEdit implements Callable<Integer> {
     @Spec
     private CommandSpec spec;
 
-    @Option(names = { "-f", "--force" }, description = "Edit attributes without confirmation", required = false)
+    @Option(names = { "-f", "--force" }, description = "Edit attributes without confirmation or prompting", required = false)
     boolean force = false;
 
     @ArgGroup(exclusive = false, heading = "%nPocket Attributes:%n")
@@ -38,7 +38,7 @@ public class PocketsEdit implements Callable<Integer> {
     @Override
     @Transactional
     public Integer call() throws Exception {
-        Optional<Long> id = CommonIO.toLong(nameOrId);
+        Optional<Long> id = CommonIO.toLong(nameOrId, false);
         Term.debugf("Parameters: %s, %s, %s", nameOrId, id, attrs);
 
         Pocket pocket = id.isPresent()
@@ -49,70 +49,101 @@ public class PocketsEdit implements Callable<Integer> {
 
         if (pocket == null) {
             return ExitCode.USAGE;
-        } else {
-            ParseResult pr = spec.commandLine().getParseResult();
-            boolean saveIt = force;
-
-            if (Term.isVerbose()) {
-                Term.outPrintf("%n%-2s %s [%d] has the following attributes:%n", pocket.type.icon(), pocket.name, pocket.id);
-                CommonIO.describe(pocket);
-            }
-
-            if (Term.canPrompt()) {
-                promptForUpdates(pocket, pr);
-            }
-
-            if (attrs.max_capacity.isPresent()) {
-                pocket.max_capacity = attrs.max_capacity.get();
-            }
-            if (attrs.max_volume.isPresent()) {
-                pocket.max_volume = attrs.max_volume.get();
-            }
-            if (attrs.weight.isPresent()) {
-                pocket.weight = attrs.weight.get();
-            }
-            if (pr.hasMatchedOption("--magic")) {
-                pocket.magic = attrs.magic;
-            }
-
-            if (Term.isVerbose()) {
-                Term.outPrintf("%n✨ %s [%d] now has the following attributes:%n", pocket.name, pocket.id);
-                CommonIO.describe(pocket);
-            }
-
-            if (Term.canPrompt() && !force) {
-                String line = Term.prompt("Save your changes (y|N)? ");
-                saveIt = CommonIO.yesOrTrue(line, false);
-            }
-
-            if (saveIt) {
-                pocket.persistAndFlush();
-                Term.outPrintf("%n✅ %s [%d] has been updated.%n", pocket.name, pocket.id);
-            }
         }
 
+        ParseResult pr = spec.commandLine().getParseResult();
+        boolean saveIt = force;
+        Previous previous = new Previous(pocket);
+
+        if (Term.isVerbose()) {
+            Term.outPrintf("%n%-2s %s [%d] has the following attributes:%n", pocket.type.icon(), pocket.name, pocket.id);
+            CommonIO.describe(pocket);
+        }
+
+        if (Term.canPrompt() && !force) {
+            promptForUpdates(pocket, pr);
+        }
+        if (attrs.max_weight.isPresent()) {
+            pocket.max_weight = attrs.max_weight.get();
+        }
+        if (attrs.max_volume.isPresent()) {
+            pocket.max_volume = attrs.max_volume.get();
+        }
+        if (attrs.weight.isPresent()) {
+            pocket.weight = attrs.weight.get();
+        }
+        if (pr.hasMatchedOption("--magic")) {
+            pocket.magic = attrs.magic;
+        }
+
+        if (previous.isUnchanged(pocket)) {
+            Term.outPrintf("%n🔶 %s [%d] was not updated (no changes).%n", pocket.name, pocket.id);
+            return ExitCode.OK;
+        }
+
+        if (Term.isVerbose()) {
+            Term.outPrintf("%n✨ %s [%d] now has the following attributes:%n", pocket.name, pocket.id);
+            CommonIO.describe(pocket);
+        }
+        if (Term.canPrompt() && !force) {
+            String line = Term.prompt("Save your changes (y|N)? ");
+            saveIt = CommonIO.yesOrTrue(line, false);
+        }
+        if (saveIt) {
+            pocket.persistAndFlush();
+            Term.outPrintf("%n✅ %s [%d] has been updated.%n", pocket.name, pocket.id);
+        } else if (!force) {
+            Term.outPrintf("%n🔶 %s [%d] was not updated (requires confirmation or use --force).%n", pocket.name, pocket.id);
+            return ExitCode.USAGE;
+        }
         return ExitCode.OK;
     }
 
     void promptForUpdates(Pocket pocket, ParseResult pr) throws IOException {
         String line = null;
-        if (attrs.max_capacity.isEmpty()) {
-            line = Term.prompt("Enter the maximum capacity of this pocket in pounds (" + pocket.max_capacity + "): ");
-            pocket.max_capacity = CommonIO.toDoubleOrDefault(line, pocket.max_capacity);
+        Term.outPrintln("Press enter to keep the previous value.");
+
+        if (attrs.weight.isEmpty()) {
+            line = Term.prompt("Weight of this pocket (when empty) in pounds [" + pocket.weight + "]: ");
+            pocket.weight = CommonIO.toDoubleOrDefault(line, pocket.weight);
+        }
+        if (attrs.max_weight.isEmpty()) {
+            line = Term.prompt("Enter the maximum weight of this pocket in pounds [" + pocket.max_weight + "]: ");
+            pocket.max_weight = CommonIO.toDoubleOrDefault(line, pocket.max_weight);
         }
         if (attrs.max_volume.isEmpty()) {
-            line = Term.prompt("Enter the maximum volume of this pocket in cubic feet (" + pocket.max_volume + "): ");
+            line = Term.prompt("Enter the maximum volume of this pocket in cubic feet [" + pocket.max_volume + "]: ");
             pocket.max_volume = CommonIO.toDoubleOrDefault(line, pocket.max_volume);
-        }
-        if (attrs.weight.isEmpty()) {
-            line = Term.prompt("Weight of the pocket itself in pounds (" + pocket.weight + "): ");
-            pocket.weight = CommonIO.toDoubleOrDefault(line, pocket.weight);
         }
         if (!pr.hasMatchedOption("--magic")) {
             String previous = pocket.magic ? "Y" : "N";
             Term.outPrintln("Magic pockets always weigh the same, regardless of their contents.");
-            line = Term.prompt("Is this a magic pocket (" + previous + ")? ");
+            line = Term.prompt("Is this a magic pocket [" + previous + "]? ");
             pocket.magic = CommonIO.yesOrTrue(line, pocket.magic);
+        }
+    }
+
+    class Previous {
+        String name;
+        double max_volume; // in cubic ft
+        double max_weight; // in lbs
+        double weight; // weight of the pocket itself
+        boolean magic; // magic pockets always weigh the same
+
+        Previous(Pocket pocket) {
+            this.name = pocket.name;
+            this.max_volume = pocket.max_volume;
+            this.max_weight = pocket.max_weight;
+            this.weight = pocket.weight;
+            this.magic = pocket.magic;
+        }
+
+        public boolean isUnchanged(Pocket pocket) {
+            return this.name.equals(pocket.name)
+                    && this.max_volume == pocket.max_volume
+                    && this.max_weight == pocket.max_weight
+                    && this.weight == pocket.weight
+                    && this.magic == pocket.magic;
         }
     }
 }

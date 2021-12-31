@@ -20,8 +20,7 @@ public final class Term {
     private static PrintWriter err = new PrintWriter(System.err);
 
     private static boolean debug;
-    private static boolean verbose;
-    private static boolean quiet;
+    private static boolean verbose = true;
 
     private static ColorScheme colors;
     private static CommandLine commandLine;
@@ -29,13 +28,6 @@ public final class Term {
     private static boolean dumbTerminal = false;
 
     public static void prepareStreams(CommandSpec spec) {
-        if (quiet) {
-            Term.debug = false;
-            Term.verbose = false;
-        } else if (verbose) {
-            Term.quiet = false;
-        }
-
         if (spec != null) {
             Term.commandLine = spec.commandLine();
             Term.out = Term.commandLine.getOut();
@@ -76,7 +68,7 @@ public final class Term {
     }
 
     public static String prompt(String prompt) {
-        return getReader().readLine("🔷 " + prompt);
+        return getReader().readLine("\n🔷 " + prompt);
     }
 
     public static void setDebug(boolean debug) {
@@ -87,20 +79,12 @@ public final class Term {
         return Term.debug || picocliDebugEnabled;
     }
 
-    public static void setVerbose(boolean verbose) {
-        Term.verbose = verbose;
+    public static void setBrief(boolean brief) {
+        Term.verbose = !brief;
     }
 
     public static boolean isVerbose() {
         return Term.verbose;
-    }
-
-    public static void setQuiet(boolean quiet) {
-        Term.quiet = quiet;
-    }
-
-    public static boolean isQuiet() {
-        return Term.quiet;
     }
 
     public static void debugf(String format, Object... params) {

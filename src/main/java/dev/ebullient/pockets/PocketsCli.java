@@ -30,19 +30,14 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
     @Spec
     private CommandSpec spec;
 
-    @Option(names = { "--debug" }, description = "Enable debug output", scope = ScopeType.INHERIT)
+    @Option(names = { "-d", "--debug" }, description = "Enable debug output", scope = ScopeType.INHERIT)
     void setDebug(boolean debug) {
         Term.setDebug(debug);
     }
 
-    @Option(names = { "--verbose" }, description = "Enable verbose output", scope = ScopeType.INHERIT)
-    void setVerbose(boolean verbose) {
-        Term.setVerbose(verbose);
-    }
-
-    @Option(names = { "--quiet" }, description = "Force quiet output", scope = ScopeType.INHERIT)
-    void setQuiet(boolean quiet) {
-        Term.setQuiet(quiet);
+    @Option(names = { "-b", "--brief" }, description = "Brief output", scope = ScopeType.INHERIT)
+    void setBrief(boolean brief) {
+        Term.setBrief(brief);
     }
 
     @Override

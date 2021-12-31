@@ -11,7 +11,7 @@ import io.quarkus.test.junit.main.QuarkusMainTest;
 @QuarkusMainTest
 public class PocketsEditTest {
     @Test
-    @Launch(value = { "edit", "backpack", "--verbose" }, exitCode = 2)
+    @Launch(value = { "edit", "backpack" }, exitCode = 2)
     public void testEditBackpack(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "[   2] 🎒 Backpack",
@@ -20,7 +20,7 @@ public class PocketsEditTest {
     }
 
     @Test
-    @Launch({ "edit", "2", "--verbose", "--force", "--magic" })
+    @Launch({ "edit", "2", "--force", "--magic" })
     public void testEditSpecificBackpack(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "This backpack is magical.");

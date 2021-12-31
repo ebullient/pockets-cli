@@ -25,7 +25,7 @@ public class PocketsCreate implements Callable<Integer> {
 
     Optional<String> name = Optional.empty();
 
-    @Parameters(index = "0", description = "Type of pocket%n  Choices: ${COMPLETION-CANDIDATES}")
+    @Parameters(index = "0", completionCandidates = PocketType.PocketCandidates.class, description = "Type of pocket%n  Choices: ${COMPLETION-CANDIDATES}")
     PocketType type;
 
     @ArgGroup(exclusive = false, heading = "%nPocket Attributes (required for custom pockets):%n")
@@ -37,18 +37,32 @@ public class PocketsCreate implements Callable<Integer> {
     }
 
     @Override
-    @Transactional
     public Integer call() throws Exception {
         Term.debugf("Parameters: %s, %s, %s", type, name, attrs);
+
+        Pocket pocket = createPocket();
+        Term.outPrintf("%n✨ A new pocket named %s has been created with id '%s'.%n",
+                pocket.name, pocket.id);
+
+        if (Term.isVerbose()) {
+            CommonIO.describe(pocket);
+            CommonIO.listAllPockets();
+        }
+
+        return ExitCode.OK;
+    }
+
+    @Transactional
+    Pocket createPocket() throws IOException {
         ParseResult pr = spec.commandLine().getParseResult();
 
-        final Pocket pocket = Pocket.createPocket(type, name);
+        final Pocket pocket = type.createPocket(name);
 
         if (Term.canPrompt() && type == PocketType.Custom) {
             promptForAttributes(pocket, pr);
         }
-        if (attrs.max_capacity.isPresent()) {
-            pocket.max_capacity = attrs.max_capacity.get();
+        if (attrs.max_weight.isPresent()) {
+            pocket.max_weight = attrs.max_weight.get();
         }
         if (attrs.max_volume.isPresent()) {
             pocket.max_volume = attrs.max_volume.get();
@@ -60,23 +74,14 @@ public class PocketsCreate implements Callable<Integer> {
             pocket.magic = attrs.magic;
         }
         pocket.persist(); // <-- Save it!
-
-        Term.outPrintf("%n✨ A new pocket named %s has been created with id '%s'.%n",
-                pocket.name, pocket.id);
-        CommonIO.describe(pocket);
-
-        if (Term.isVerbose()) {
-            CommonIO.listAllPockets();
-        }
-
-        return ExitCode.OK;
+        return pocket;
     }
 
     void promptForAttributes(Pocket pocket, ParseResult pr) throws IOException {
         String line = null;
-        if (attrs.max_capacity.isEmpty()) {
+        if (attrs.max_weight.isEmpty()) {
             line = Term.prompt("Enter the maximum weight of this pocket in pounds (e.g. 1, or 0.5): ");
-            pocket.max_capacity = Double.parseDouble(line);
+            pocket.max_weight = Double.parseDouble(line);
         }
         if (attrs.max_volume.isEmpty()) {
             line = Term.prompt("Enter the maximum volume of this pocket in cubic feet (e.g. 2, or 0.75): ");

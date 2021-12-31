@@ -19,7 +19,6 @@ import picocli.CommandLine.Spec;
         "add" }, header = "Add an item to a pocket", description = Constants.ADD_DESCRIPTION, footer = {
                 Constants.LIST_DESCRIPTION })
 public class PocketsItemAdd implements Callable<Integer> {
-    String description;
 
     @Spec
     private CommandSpec spec;
@@ -30,36 +29,41 @@ public class PocketsItemAdd implements Callable<Integer> {
     @ArgGroup(exclusive = false, heading = "%nItem attributes:%n")
     ItemAttributes attrs = new ItemAttributes();
 
-    @Parameters(index = "1", description = "Description of item to be added", arity = "1..*")
-    void setDescription(List<String> words) {
-        description = String.join(" ", words);
+    String name;
+
+    @Parameters(index = "1", description = "Name (or description) of item to be added", arity = "1..*")
+    void setName(List<String> words) {
+        name = String.join(" ", words);
     }
 
     @Override
     @Transactional
     public Integer call() throws Exception {
-        Term.debugf("Parameters: %s, %s", pocketId, description);
+        Term.debugf("Parameters: %s, %s", pocketId, name);
 
-        Pocket pocket = Pocket.findById(pocketId); // this is a full query.. maybe someday just ref
+        Pocket pocket = CommonIO.selectPocketById(pocketId);
         if (pocket == null) {
-            Term.outPrintf("Id %s doesn't match any of your pockets.%n", pocketId);
-            CommonIO.listAllPockets();
-        } else {
-            PocketItem item = new PocketItem();
-            item.description = description;
-            item.quantity = attrs.quantity;
-            item.weight = attrs.weight.orElse(null);
-            item.value = attrs.gpValue.map(v -> Coinage.gpValue(spec.commandLine(), v)).orElse(null);
-
-            item.addToPocket(pocket);
-            item.persistAndFlush();
-
-            Term.outPrintf("%n@|faint (%d)|@ %s [%s] added to %s [%s]%n",
-                    item.quantity, item.description, item.id, pocket.name, pocket.id);
-
-            CommonIO.listPocketContents(pocket);
+            return ExitCode.USAGE;
         }
 
+        PocketItem item = new PocketItem();
+        item.name = name;
+        item.quantity = attrs.quantity;
+        item.weight = attrs.weight.orElse(null);
+
+        item.value = attrs.value.isPresent()
+                ? CommonIO.gpValue(attrs.value.get(), true).orElse(null)
+                : null;
+
+        item.addToPocket(pocket);
+        item.persistAndFlush();
+
+        Term.outPrintf("%n✨ @|faint (%d)|@ %s [%s] added to %s [%s]%n",
+                item.quantity, item.name, item.id, pocket.name, pocket.id);
+
+        if (Term.isVerbose()) {
+            CommonIO.listPocketContents(pocket);
+        }
         return ExitCode.OK;
     }
 }

@@ -1,10 +1,8 @@
 package dev.ebullient.pockets;
 
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import picocli.CommandLine;
-import picocli.CommandLine.ParameterException;
 
 public class Coinage {
     static final Pattern COIN_VALUE = Pattern.compile("([0-9]*\\.?[0-9]+)([pgesc]p)");
@@ -27,16 +25,14 @@ public class Coinage {
         }
     }
 
-    public static double gpValue(CommandLine caller, String value) {
-        Matcher m = COIN_VALUE.matcher(value);
-        if (m.matches()) {
-            System.out.println(m);
+    public static Optional<Double> gpValue(String line) {
+        if (!line.isBlank()) {
+            Matcher m = COIN_VALUE.matcher(line);
+            if (m.matches()) {
+                System.out.println(m);
 
-        } else {
-            throw new ParameterException(caller,
-                    "Unable to determine value from the specified string: " + value
-                            + "\nA value should be specified as a decimal number and a unit, e.g. 1gp or 0.1pp");
+            }
         }
-        return 0;
+        return Optional.empty();
     }
 }

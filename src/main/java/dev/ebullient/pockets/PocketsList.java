@@ -32,7 +32,7 @@ public class PocketsList implements Callable<Integer> {
         if (nameOrId.isEmpty()) {
             CommonIO.listAllPockets();
         } else {
-            Optional<Long> id = CommonIO.toLong(nameOrId.get());
+            Optional<Long> id = CommonIO.toLong(nameOrId.get(), false);
             Pocket pocket = id.isPresent()
                     ? CommonIO.selectPocketById(id.get())
                     : CommonIO.selectPocketByName(nameOrId.get());

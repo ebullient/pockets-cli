@@ -11,7 +11,7 @@ import io.quarkus.test.junit.main.QuarkusMainTest;
 @QuarkusMainTest
 public class PocketsDeleteTest {
     @Test
-    @Launch(value = { "delete", "backpack", "--verbose" }, exitCode = 2)
+    @Launch(value = { "delete", "backpack" }, exitCode = 2)
     public void testDeleteBackpack(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "[   2] 🎒 Backpack",
@@ -20,7 +20,7 @@ public class PocketsDeleteTest {
     }
 
     @Test
-    @Launch({ "delete", "2", "--verbose", "--force" })
+    @Launch({ "delete", "2", "--force" })
     public void testDeleteSpecificBackpack(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "✅ Backpack [2] has been deleted.",
@@ -28,7 +28,7 @@ public class PocketsDeleteTest {
     }
 
     @Test
-    @Launch({ "delete", "3", "--verbose", "--force" })
+    @Launch({ "delete", "3", "--force" })
     public void testDeleteHaversack(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "✅ Haversack [3] has been deleted.",

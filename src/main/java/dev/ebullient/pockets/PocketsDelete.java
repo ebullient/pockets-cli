@@ -27,7 +27,7 @@ public class PocketsDelete implements Callable<Integer> {
     @Override
     @Transactional
     public Integer call() throws Exception {
-        Optional<Long> id = CommonIO.toLong(nameOrId);
+        Optional<Long> id = CommonIO.toLong(nameOrId, false);
         Term.debugf("Parameters: %s, %s", nameOrId, id);
 
         Pocket pocket = id.isPresent()
@@ -38,31 +38,34 @@ public class PocketsDelete implements Callable<Integer> {
 
         if (pocket == null) {
             return ExitCode.USAGE;
-        } else {
-            boolean deleteIt = force;
+        }
+
+        boolean deleteIt = force;
+        if (Term.isVerbose()) {
+            Term.outPrintf("%n%-2s %s [%d]:%n", pocket.type.icon(), pocket.name, pocket.id);
+            CommonIO.describe(pocket);
+            if (pocket.items == null || pocket.items.isEmpty() /* && pockets.pockets.isEmpty() */ ) {
+                Term.outPrintf("%n%s is empty.%n", pocket.name);
+            } else {
+                Term.outPrintf("%n%s contains %s.%n", pocket.name,
+                        CommonIO.howMany(pocket.items.size(), " pocket item", " pocket items"));
+            }
+        }
+
+        if (!force && Term.canPrompt()) {
+            String line = Term.prompt("Are you sure you want to delete this pocket (y|N)? ");
+            deleteIt = CommonIO.yesOrTrue(line, false);
+        }
+
+        if (deleteIt) {
+            pocket.delete();
+            Term.outPrintf("%n✅ %s [%d] has been deleted.%n", pocket.name, pocket.id);
             if (Term.isVerbose()) {
-                Term.outPrintf("%n%-2s %s [%d]:%n", pocket.type.icon(), pocket.name, pocket.id);
-                CommonIO.describe(pocket);
-                if (pocket.items == null || pocket.items.isEmpty() /* && pockets.pockets.isEmpty() */ ) {
-                    Term.outPrintf("%n%s is empty.%n", pocket.name);
-                } else {
-                    Term.outPrintf("%n%s contains %s.%n", pocket.name,
-                            CommonIO.howMany(pocket.items.size(), " pocket item", " pocket items"));
-                }
+                CommonIO.dumpStatistics();
             }
-
-            if (!force && Term.canPrompt()) {
-                String line = Term.prompt("Are you sure you want to delete this pocket (y|N)? ");
-                deleteIt = CommonIO.yesOrTrue(line, false);
-            }
-
-            if (deleteIt) {
-                pocket.delete();
-                Term.outPrintf("%n✅ %s [%d] has been deleted.%n", pocket.name, pocket.id);
-                if (Term.isVerbose()) {
-                    CommonIO.dumpStatistics();
-                }
-            }
+        } else if (!force) {
+            Term.outPrintf("%n🔶 %s [%d] was not deleted (requires confirmation or use --force).%n", pocket.name, pocket.id);
+            return ExitCode.USAGE;
         }
 
         return ExitCode.OK;

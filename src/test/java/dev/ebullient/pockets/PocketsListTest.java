@@ -12,25 +12,25 @@ import io.quarkus.test.junit.main.QuarkusMainTest;
 public class PocketsListTest {
 
     @Test
-    @Launch({ "list", "--verbose" })
+    @Launch({ "list" })
     public void testListAllPockets(LaunchResult result) {
         assertThat(result.getOutput()).contains("Your pockets:", "Coins", "Backpack", "Haversack");
     }
 
     @Test
-    @Launch({ "list", "2", "--verbose" })
+    @Launch({ "list", "2" })
     public void testListPocketById(LaunchResult result) {
         assertThat(result.getOutput()).contains("Backpack [2] contains:", "(  10) Rations");
     }
 
     @Test
-    @Launch({ "list", "Coins", "--verbose" })
+    @Launch({ "list", "Coins" })
     public void testListPocketByName(LaunchResult result) {
         assertThat(result.getOutput()).contains("Coins [1] is empty.");
     }
 
     @Test
-    @Launch(value = { "list", "backpack", "--verbose" }, exitCode = 2)
+    @Launch(value = { "list", "backpack" }, exitCode = 2)
     public void testListBackpack(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "[   2] 🎒 Backpack",

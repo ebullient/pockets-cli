@@ -20,7 +20,7 @@ class PocketsCliTest {
                 "What have you got in your pockets?",
                 "Create a new pocket",
                 "Add an item to a pocket",
-                "--verbose");
+                "--brief");
     }
 
     @Test

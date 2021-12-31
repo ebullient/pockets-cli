@@ -1,7 +1,6 @@
 package dev.ebullient.pockets.db;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -35,7 +34,7 @@ public class Pocket extends PanacheEntity {
     public double max_volume; // in cubic ft
 
     @NotNull
-    public double max_capacity; // in lbs
+    public double max_weight; // in lbs
 
     @NotNull
     public double weight; // weight of the pocket itself
@@ -51,15 +50,70 @@ public class Pocket extends PanacheEntity {
     @OneToMany(mappedBy = Constants.POCKET_TABLE, fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     public Set<PocketItem> items;
 
-    /** Add an item to the pocket: establish bi-directional relationship */
+    /**
+     * Add an item to the pocket
+     *
+     * @see PocketItem#addToPocket(Pocket)
+     */
     public void addItem(PocketItem item) {
-        items.add(item);
+        if (items.add(item)) {
+            item.pocket = this;
+        }
     }
 
-    /** Remove an item from the pocket: clear bi-directional relationship */
+    /**
+     * Remove an item from the pocket
+     *
+     * @see PocketItem#removeFromPocket(Pocket)
+     */
     public void removeItem(PocketItem item) {
-        items.remove(item);
+        if (items.remove(item)) {
+            item.pocket = null;
+        }
     }
+
+    // /** This pocket can contain several other pockets */
+    // @OneToMany
+    // @JoinTable(name = "NESTED_POCKETS",
+    //     joinColumns = {@JoinColumn(name = "PARENT", referencedColumnName = "id")},
+    //     inverseJoinColumns = {@JoinColumn(name = "CHILD", referencedColumnName = "id")})
+    // public Set<Pocket> children;
+
+    // /** This pocket can be in at most one other pocket */
+    // @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    // @JoinTable(name = "NESTED_POCKETS",
+    //     inverseJoinColumns = {@JoinColumn(name = "PARENT", referencedColumnName = "id", insertable = false, updatable = false)},
+    //     joinColumns = {@JoinColumn(name = "CHILD", referencedColumnName = "id", insertable = false, updatable = false)})
+    // Pocket parent;
+
+    // /** Add a child pocket: establish bi-directional relationship */
+    // public void addPocketToPocket(Pocket child) {
+    //     if ( !child.contains(this) && !this.contains(child)) {
+    //         children.add(child);
+    //         child.parent = this;
+    //     }
+    // }
+
+    // /** Remove an child pocket: clear bi-directional relationship */
+    // public void removePocketFromPocket(Pocket child) {
+    //     if ( children.remove(child) ) {
+    //         child.parent = null;
+    //     }
+    // }
+
+    // /** TODO: This is a thought exercise and therefore suspect. Test me */
+    // public boolean contains(Pocket pocket) {
+    //     if ( children == null || children.isEmpty() )
+    //         return false;
+    //     boolean contains = false;
+    //     for ( Pocket p : children ) {
+    //         if ( p.equals(pocket) || p.contains(pocket)) {
+    //             contains = true;
+    //             break;
+    //         }
+    //     }
+    //     return contains;
+    // }
 
     @Override
     public void persist() {
@@ -75,16 +129,8 @@ public class Pocket extends PanacheEntity {
 
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + "{" +
-                "name='" + name + '\'' +
-                ", max_volume=" + max_volume +
-                ", max_capacity=" + max_capacity +
-                ", weight=" + weight +
-                ", magic=" + magic +
-                ", type=" + type +
-                ", items=" + items +
-                ", id=" + id +
-                '}';
+        return "Pocket [items=" + items + ", magic=" + magic + ", max_volume=" + max_volume + ", max_weight="
+                + max_weight + ", name=" + name + ", slug=" + slug + ", type=" + type + ", weight=" + weight + "]";
     }
 
     /**
@@ -99,106 +145,5 @@ public class Pocket extends PanacheEntity {
         return allPockets.stream()
                 .filter(p -> p.slug.startsWith(query) || p.slug.matches(query))
                 .collect(Collectors.toList());
-    }
-
-    public static Pocket createPocket(PocketType type, Optional<String> name) {
-        switch (type) {
-            default:
-            case Backpack:
-                return createBackpack(name.orElse("Backpack"));
-            case Pouch:
-                return createPouch(name.orElse("Pouch"));
-            case Haversack:
-                return createHaversack(name.orElse(type.prettyName));
-            case BagOfHolding:
-                return createBagOfHolding(name.orElse(type.prettyName));
-            case PortableHole:
-                return createPortableHole(name.orElse(type.prettyName));
-            case Sack:
-                return createSack(name.orElse("Sack"));
-            case Custom:
-                return createCustom(name.orElse("Pocket"));
-        }
-    }
-
-    /** Custom */
-    public static Pocket createCustom(String name) {
-        Pocket pocket = new Pocket();
-        pocket.type = PocketType.Custom;
-        pocket.name = name;
-        pocket.magic = false;
-        return pocket;
-    }
-
-    /** Pouch */
-    public static Pocket createBackpack(String name) {
-        Pocket pocket = new Pocket();
-        pocket.type = PocketType.Backpack;
-        pocket.name = name;
-        pocket.max_volume = 1;
-        pocket.max_capacity = 30;
-        pocket.weight = 5;
-        pocket.magic = false;
-        return pocket;
-    }
-
-    /** Pouch */
-    public static Pocket createPouch(String name) {
-        Pocket pocket = new Pocket();
-        pocket.type = PocketType.Pouch;
-        pocket.name = name;
-        pocket.max_volume = 0.2;
-        pocket.max_capacity = 6;
-        pocket.weight = 1;
-        pocket.magic = false;
-        return pocket;
-    }
-
-    /** Haversacks are magical. One: up to you to manage volume between center & side pockets */
-    public static Pocket createHaversack(String name) {
-        Pocket pocket = new Pocket();
-        pocket.type = PocketType.Haversack;
-        pocket.name = name;
-        pocket.max_volume = 12;
-        pocket.max_capacity = 120;
-        pocket.weight = 5;
-        pocket.magic = true;
-        return pocket;
-    }
-
-    /** Bag of Holding */
-    public static Pocket createBagOfHolding(String name) {
-        Pocket pocket = new Pocket();
-        pocket.type = PocketType.BagOfHolding;
-        pocket.name = name;
-        pocket.max_volume = 64;
-        pocket.max_capacity = 500;
-        pocket.weight = 15;
-        pocket.magic = true;
-        return pocket;
-    }
-
-    /** Portable Hole */
-    public static Pocket createPortableHole(String name) {
-        Pocket pocket = new Pocket();
-        pocket.type = PocketType.PortableHole;
-        pocket.name = name;
-        pocket.max_volume = 282.7;
-        pocket.max_capacity = 0; // the limit is volume, not weight
-        pocket.weight = 0;
-        pocket.magic = true;
-        return pocket;
-    }
-
-    /** Sack */
-    public static Pocket createSack(String name) {
-        Pocket pocket = new Pocket();
-        pocket.type = PocketType.Sack;
-        pocket.name = name;
-        pocket.max_volume = 1;
-        pocket.max_capacity = 30;
-        pocket.weight = 0.5;
-        pocket.magic = false;
-        return pocket;
     }
 }
