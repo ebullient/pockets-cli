@@ -7,15 +7,26 @@ import java.util.Optional;
 
 import javax.persistence.Transient;
 
+import dev.ebullient.pockets.CommonIO;
+import dev.ebullient.pockets.Term;
+
 public enum PocketType {
-    Pouch("👛", "pouch", null),
     Backpack("🎒", "backpack", null),
+    BagOfHolding("🧳", "Bag of Holding", null),
     Basket("🧺", "basket", null),
+    Chest("🧰", "chest", null),
+    CrossbowBoltCase("🏹", "crossbow bolt case", null),
+    EfficientQuiver("🏹", "Efficient Quiver", null),
+    // EfficientQuiverParts("🏹", "Efficient Quiver", "efficient-quiver-parts"),
     Haversack("👝", "Handy Haversack", "haversack"),
-    BagOfHolding("🧳", "Bag of Holding", "bag-of-holding"),
-    PortableHole("🕳 ", "Portable Hole", "portable-hole"),
+    // HaversackParts("👝", "Handy Haversack ", "haversack-parts"),
+    MapCase("👝", "map case ", null),
+    PortableHole("🕳 ", "Portable Hole", null),
+    Pouch("👛", "pouch", null),
+    Quiver("🏹", "quiver", null),
     Sack("🗑", "sack", null),
-    Custom("🧰", "pocket", null);
+    ScrollCase("👝", "scroll case", null),
+    Custom("🥡", "pocket", "custom");
 
     @Transient
     private final String icon;
@@ -29,7 +40,7 @@ public enum PocketType {
     private PocketType(String icon, String prettyName, String slug) {
         this.icon = icon;
         this.prettyName = prettyName;
-        this.slug = (slug == null ? prettyName : slug);
+        this.slug = (slug == null ? CommonIO.slugify(prettyName) : slug);
     }
 
     public String icon() {
@@ -37,112 +48,106 @@ public enum PocketType {
     }
 
     public Pocket createPocket(Optional<String> name) {
+        Pocket pocket = new Pocket();
+        pocket.type = this;
+        pocket.magic = false;
+        pocket.name = name.orElse(titlecase(prettyName));
+
         switch (this) {
-            default:
             case Backpack:
-                return createBackpack(name.orElse("Backpack"));
-            case Basket:
-                return createBasket(name.orElse("Basket"));
-            case Pouch:
-                return createPouch(name.orElse("Pouch"));
-            case Haversack:
-                return createHaversack(name.orElse(prettyName));
+                pocket.max_volume = 1.0;
+                pocket.max_weight = 30.0;
+                pocket.weight = 5;
+                break;
             case BagOfHolding:
-                return createBagOfHolding(name.orElse(prettyName));
+                pocket.max_volume = 64.0;
+                pocket.max_weight = 500.0;
+                pocket.weight = 15;
+                pocket.magic = true;
+                break;
+            case Basket:
+                pocket.max_volume = 2.0;
+                pocket.max_weight = 40.0;
+                pocket.weight = 2;
+                break;
+            case Chest:
+                pocket.max_volume = 12.0;
+                pocket.max_weight = 300.0;
+                pocket.weight = 25;
+                break;
+            case CrossbowBoltCase:
+                pocket.weight = 1;
+                pocket.max_weight = 2.5;
+                pocket.comments = "This wooden case can hold up to 20 crossbow bolts.";
+                break;
+            case EfficientQuiver:
+                pocket.weight = 2;
+                pocket.max_weight = /* shortest */ 4.5 + /* midsize */ 36 + /* longest */ 24;
+                pocket.comments = "This quiver has 3 compartments.\n"
+                        + "The shortest can hold up to sixty arrows, bolts, or similar objects.\n"
+                        + "The midsize holds up to eighteen javelins or similar objects.\n"
+                        + "The longest holds up to six long objects, such as bows, quarterstaffs, or spears.";
+                pocket.magic = true;
+                break;
+            // case EfficientQuiverParts:
+            //     pocket.weight = 2;
+            //     pocket.magic = true;
+            //     pocket.c
+            //     break;
+            case Haversack:
+                pocket.max_volume = 12.0;
+                pocket.max_weight = 120.0;
+                pocket.weight = 5;
+                pocket.magic = true;
+                pocket.comments = "This backpack has a central pouch and two side pouches.\n"
+                        + "Each side pouch can hold up to 20 pounds or 2 cubic feet of material.\n"
+                        + "The central pouch can hold up to 8 cubic feet or 80 pounds of material.";
+                break;
+            // case HaversackParts:
+            //     break;
             case PortableHole:
-                return createPortableHole(name.orElse(prettyName));
+                pocket.max_volume = 282.7;
+                pocket.max_weight = 0.0; // the limit is volume, not weight
+                pocket.weight = 0;
+                pocket.magic = true;
+                pocket.comments =
+                          "The portable hole has the dimensions of a hankerchief when folded.\n"
+                        + "When unfolded and placed on a solid surface, it creates a hole that is \n"
+                        + "6 feet in diameter and 10 feet deep.";
+                break;
+            case Pouch:
+                pocket.max_volume = 0.2;
+                pocket.max_weight = 6.0;
+                pocket.weight = 1;
+                break;
+            case Quiver:
+                pocket.weight = 1.0;
+                pocket.max_weight = 2.0;
+                pocket.comments = "A quiver can hold up to 20 arrows.";
+                break;
             case Sack:
-                return createSack(name.orElse("Sack"));
-            case Custom:
-                return createCustom(name.orElse("Pocket"));
+                pocket.max_volume = 1.0;
+                pocket.max_weight = 30.0;
+                pocket.weight = 0.5;
+                break;
+            case MapCase:
+            case ScrollCase:
+                pocket.weight = 1.0;
+                pocket.comments =
+                          "This cylindrical leather case can hold up to ten rolled-up sheets of\n"
+                        + "paper or five rolled-up sheets of parchment.";
+                break;
+            default:
+                break;
         }
-    }
-
-    /** Custom */
-    public static Pocket createCustom(String name) {
-        Pocket pocket = new Pocket();
-        pocket.type = PocketType.Custom;
-        pocket.name = name;
-        pocket.magic = false;
         return pocket;
     }
 
-    public static Pocket createBackpack(String name) {
-        Pocket pocket = new Pocket();
-        pocket.type = PocketType.Backpack;
-        pocket.name = name;
-        pocket.max_volume = 1;
-        pocket.max_weight = 30;
-        pocket.weight = 5;
-        pocket.magic = false;
-        return pocket;
-    }
-
-    public static Pocket createBasket(String name) {
-        Pocket pocket = new Pocket();
-        pocket.type = PocketType.Basket;
-        pocket.name = name;
-        pocket.max_volume = 2;
-        pocket.max_weight = 40;
-        pocket.weight = 2;
-        pocket.magic = false;
-        return pocket;
-    }
-
-    public static Pocket createPouch(String name) {
-        Pocket pocket = new Pocket();
-        pocket.type = PocketType.Pouch;
-        pocket.name = name;
-        pocket.max_volume = 0.2;
-        pocket.max_weight = 6;
-        pocket.weight = 1;
-        pocket.magic = false;
-        return pocket;
-    }
-
-    /** Haversacks are magical. One: up to you to manage volume between center & side pockets */
-    public static Pocket createHaversack(String name) {
-        Pocket pocket = new Pocket();
-        pocket.type = PocketType.Haversack;
-        pocket.name = name;
-        pocket.max_volume = 12;
-        pocket.max_weight = 120;
-        pocket.weight = 5;
-        pocket.magic = true;
-        return pocket;
-    }
-
-    public static Pocket createBagOfHolding(String name) {
-        Pocket pocket = new Pocket();
-        pocket.type = PocketType.BagOfHolding;
-        pocket.name = name;
-        pocket.max_volume = 64;
-        pocket.max_weight = 500;
-        pocket.weight = 15;
-        pocket.magic = true;
-        return pocket;
-    }
-
-    public static Pocket createPortableHole(String name) {
-        Pocket pocket = new Pocket();
-        pocket.type = PocketType.PortableHole;
-        pocket.name = name;
-        pocket.max_volume = 282.7;
-        pocket.max_weight = 0; // the limit is volume, not weight
-        pocket.weight = 0;
-        pocket.magic = true;
-        return pocket;
-    }
-
-    public static Pocket createSack(String name) {
-        Pocket pocket = new Pocket();
-        pocket.type = PocketType.Sack;
-        pocket.name = name;
-        pocket.max_volume = 1;
-        pocket.max_weight = 30;
-        pocket.weight = 0.5;
-        pocket.magic = false;
-        return pocket;
+    String titlecase(String name) {
+        if (Character.isLowerCase(name.charAt(0))) {
+            return Character.toUpperCase(name.charAt(0)) + name.substring(1);
+        }
+        return name;
     }
 
     public static class PocketCandidates extends ArrayList<String> {
@@ -157,5 +162,19 @@ public enum PocketType {
             candidates.add(type.slug);
         }
         return candidates;
+    }
+
+    public static PocketType fromParameter(String value) {
+        String compare = CommonIO.slugify(value);
+        for (PocketType type : PocketType.values()) {
+            if (type.slug.equals(compare)) {
+                return type;
+            }
+        }
+        if ("pocket".equals(compare)) {
+            return PocketType.Custom;
+        }
+        Term.outPrintf("Did not recognize %s, creating a custom pocket", value);
+        return null;
     }
 }

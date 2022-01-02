@@ -24,9 +24,12 @@ public class PocketsCreate implements Callable<Integer> {
     private CommandSpec spec;
 
     Optional<String> name = Optional.empty();
+    PocketType type;
 
     @Parameters(index = "0", completionCandidates = PocketType.PocketCandidates.class, description = "Type of pocket%n  Choices: ${COMPLETION-CANDIDATES}")
-    PocketType type;
+    void setPocketType(String type) {
+        this.type = PocketType.fromParameter(type);
+    }
 
     @ArgGroup(exclusive = false, heading = "%nPocket Attributes (required for custom pockets):%n")
     PocketAttributes attrs = new PocketAttributes();

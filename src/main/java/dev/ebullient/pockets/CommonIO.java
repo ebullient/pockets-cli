@@ -215,16 +215,44 @@ public class CommonIO {
     public static void describe(Pocket pocket) {
         if (pocket.magic) {
             Term.outPrintf(
-                    "@|bold,underline This %s is magical.|@ It always weighs %s pounds, regardless of its contents.%n",
-                    pocket.type.prettyName, pocket.weight);
+                    "@|bold,underline This %s is magical.|@%nIt always weighs %s, regardless of its contents.%n",
+                    pocket.type.prettyName, weightUnits(pocket.weight));
         } else {
-            Term.outPrintf("This %s weighs %s pounds when empty.%n", pocket.type.prettyName, pocket.weight);
+            Term.outPrintf("This %s weighs %s when empty.%n", pocket.type.prettyName, weightUnits(pocket.weight));
         }
 
-        if (pocket.magic && pocket.max_weight == 0) {
-            Term.outPrintf("It can hold %s cubic feet of gear.%n", pocket.max_volume);
+        String weight = "";
+        if (pocket.max_weight != null && pocket.max_weight != 0) {
+            weight = weightUnits(pocket.max_weight);
+        }
+        String volume = "";
+        if (pocket.max_volume != null && pocket.max_volume != 0) {
+            volume = volumeUnits(pocket.max_volume);
+        }
+
+        Term.outPrintf("It can hold %s%s%s of gear.%n",
+                weight,
+                (weight.length() > 0 && volume.length() > 0) ? " or " : "",
+                volume);
+
+        if (pocket.comments != null && !pocket.comments.isBlank()) {
+            Term.outPrintln(pocket.comments);
+        }
+    }
+
+    static String weightUnits(double value) {
+        if ( value == 1.0 ) {
+            return "1 pound";
         } else {
-            Term.outPrintf("It can hold %s pounds or %s cubic feet of gear.%n", pocket.max_weight, pocket.max_volume);
+            return value + " pounds";
+        }
+    }
+
+    static String volumeUnits(double value) {
+        if ( value == 1.0 ) {
+            return "1 cubic foot";
+        } else {
+            return value + " cubic feet";
         }
     }
 
@@ -242,6 +270,9 @@ public class CommonIO {
                 "--magic" }, negatable = true, defaultValue = "false", description = "Is this a magic pocket?%n  Magic pockets always weigh the same, regardless of their contents")
         boolean magic = false;
 
+        @Option(names = { "-c", "--comments" }, description = "Comments or constraints")
+        Optional<String> comments;
+
         public PocketAttributes() {
         }
 
@@ -256,6 +287,7 @@ public class CommonIO {
                     ", max_volume=" + max_volume +
                     ", weight=" + weight +
                     ", magic=" + magic +
+                    ", comments=" + comments +
                     '}';
         }
     }

@@ -31,10 +31,9 @@ public class Pocket extends PanacheEntity {
     public String slug;
 
     @NotNull
-    public double max_volume; // in cubic ft
+    public Double max_weight; // in lbs
 
-    @NotNull
-    public double max_weight; // in lbs
+    public Double max_volume; // in cubic ft, might be null
 
     @NotNull
     public double weight; // weight of the pocket itself
@@ -45,6 +44,8 @@ public class Pocket extends PanacheEntity {
     @NotNull
     @Convert(converter = PocketTypeConverter.class)
     public PocketType type;
+
+    public String comments; // any other remarks about what this pocket can contain
 
     /** Many items in this pocket */
     @OneToMany(mappedBy = Constants.POCKET_TABLE, fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
