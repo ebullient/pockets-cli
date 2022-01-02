@@ -103,6 +103,10 @@ public final class Term {
         }
     }
 
+    public static String ansiPrintf(String format, Object... args) {
+        return colors.ansi().string(String.format(format, args));
+    }
+
     public static void errorf(String format, Object... args) {
         error(null, String.format(format, args));
     }

@@ -2,6 +2,7 @@ package dev.ebullient.pockets;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import com.github.slugify.Slugify;
@@ -18,6 +19,7 @@ public class CommonIO {
     private CommonIO() {
     }
 
+    static Optional<Map<String, Integer>> fieldWidths = Optional.empty();
     private static Slugify slugify;
 
     private static Slugify slugifier() {
@@ -78,7 +80,7 @@ public class CommonIO {
         return gpValue;
     }
 
-    public static double gpValueOrDefault(String line, double defaultValue) {
+    public static double gpValueOrDefault(String line, Double defaultValue) {
         return line.isBlank()
                 ? defaultValue
                 : gpValue(line, true).orElse(defaultValue);
@@ -101,19 +103,67 @@ public class CommonIO {
         return number + " " + more;
     }
 
+    static String ansiId(Long id) {
+        return Term.ansiPrintf("@|faint [|@%" + idWidth() + "d@|faint ]|@", id);
+    }
+
+    static String ansiQuantity(int quantity) {
+        return Term.ansiPrintf("@|faint (|@%" + quantityWidth() + "d@|faint )|@", quantity);
+    }
+
+    static String ansiWeight(Double weight) {
+        return Term.ansiPrintf("@|faint |@%" + weightWidth() + "s@|faint |@", weight == null ? "-" : weight);
+    }
+
+    static String ansiValue(Double value) {
+        return Term.ansiPrintf("@|faint |@%" + valueWidth() + "s@|faint |@", value == null ? "-" : value);
+    }
+
+    public static int idWidth() {
+        if (fieldWidths.isEmpty()) {
+            fieldWidths = Optional.of(PocketItem.fieldWidths());
+        }
+        return fieldWidths.get().get("id");
+    }
+
+    public static int quantityWidth() {
+        if (fieldWidths.isEmpty()) {
+            fieldWidths = Optional.of(PocketItem.fieldWidths());
+        }
+        return fieldWidths.get().get("quantity");
+    }
+
+    public static int weightWidth() {
+        if (fieldWidths.isEmpty()) {
+            fieldWidths = Optional.of(PocketItem.fieldWidths());
+        }
+        return fieldWidths.get().get("weight");
+    }
+
+    public static int valueWidth() {
+        if (fieldWidths.isEmpty()) {
+            fieldWidths = Optional.of(PocketItem.fieldWidths());
+        }
+        return fieldWidths.get().get("value");
+    }
+
     static void printPockets(List<Pocket> pockets) {
-        Term.outPrintln("@|faint [ ID ]    Name |@");
-        Term.outPrintln("@|faint ------+--+----------------------------------------------------+|@");
-        //   outPrintln("@|faint ------+--+ 12345678901234567890123456789012345678901234567890 +|@");
-        pockets.forEach(p -> Term.outPrintf("@|faint [|@%4d@|faint ]|@ %-2s %-50s\n", p.id, p.type.icon(), p.name));
+        Term.outPrintf("@|faint [%" + idWidth() + "s]    %-50s |@%n", "ID ", "Name");
+        Term.outPrintf("@|faint -%s-+--+-%s-|@%n", "-".repeat(idWidth()), "-".repeat(50));
+        pockets.forEach(p -> Term.outPrintf("%s %-2s %-50s%n", ansiId(p.id), p.type.icon(), p.name));
     }
 
     static void printPocketItems(Collection<PocketItem> items) {
-        Term.outPrintln("@|faint [ ID ] (   Q) Name / Description |@");
-        Term.outPrintln("@|faint ------+------+----------------------------------------------------+|@");
-        //   outPrintln("@|faint ------+------+ 12345678901234567890123456789012345678901234567890 +|@");
+        Term.outPrintf(
+                "@|faint [%" + idWidth() + "s] (%" + quantityWidth() + "s)  %-50s   %" + weightWidth() + "s   %" + valueWidth()
+                        + "s|@%n",
+                "ID ", "Q ", "Name / Description", "lbs", "gp");
+        Term.outPrintf("@|faint -%s-+-%s-+-%s-+-%s-+-%s-|@%n",
+                "-".repeat(idWidth()), "-".repeat(quantityWidth()), "-".repeat(50), "-".repeat(weightWidth()),
+                "-".repeat(valueWidth()));
         items.forEach(
-                i -> Term.outPrintf("@|faint [|@%4d@|faint ] (|@%4d@|faint )|@ %-50s \n", i.id, i.quantity, i.name));
+                i -> Term.outPrintf("%s %s  %-50s   %s   %s\n", ansiId(i.id), ansiQuantity(i.quantity), i.name,
+                        ansiWeight(i.weight), ansiValue(i.value)));
     }
 
     public static void dumpStatistics() {
@@ -241,7 +291,7 @@ public class CommonIO {
     }
 
     static String weightUnits(double value) {
-        if ( value == 1.0 ) {
+        if (value == 1.0) {
             return "1 pound";
         } else {
             return value + " pounds";
@@ -249,7 +299,7 @@ public class CommonIO {
     }
 
     static String volumeUnits(double value) {
-        if ( value == 1.0 ) {
+        if (value == 1.0) {
             return "1 cubic foot";
         } else {
             return value + " cubic feet";

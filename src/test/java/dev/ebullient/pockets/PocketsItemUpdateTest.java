@@ -17,7 +17,6 @@ public class PocketsItemUpdateTest {
     @Launch({ "update", "2", "rations", "-f" })
     public void testUpdateByNameVerboseNoChanges(LaunchResult result) {
         assertThat(result.getOutput()).contains(
-                "Rations [5] has the following attributes:", // verbose
                 "Rations [5] was not updated. There are no changes.");
     }
 
@@ -29,14 +28,12 @@ public class PocketsItemUpdateTest {
     }
 
     @Test
-    @Launch({ "update", "2", "rations", "-q", "15", "-w", "2.0", "-f" })
+    @Launch({ "update", "2", "rations", "-q", "15000", "-v", "2sp", "-w", "2.0", "-f" })
     public void testUpdateByNameVerbose(LaunchResult result) {
         assertThat(result.getOutput()).contains(
-                "Rations [5] has the following attributes", // verbose
-                "Quantity     : 15", // verbose
-                "Weight (lbs) : 2.0", // verbose
-                "Rations [5] will be updated with the following attributes", // verbose
-                "Rations [5] has been updated");
+                "Rations [5] has been updated",
+                "[ ID ] (    Q )  Name / Description", // adjusted column width
+                "[   5] ( 15000)  Rations "); // to match ginormous number
     }
 
     @Test
@@ -45,10 +42,7 @@ public class PocketsItemUpdateTest {
         assertThat(result.getOutput()).contains(
                 "Rations [5] has been updated"); // verbose
         assertThat(result.getOutput()).doesNotContain(
-                "Rations [5] has the following attributes", // verbose
-                "Quantity     : 15", // verbose
-                "Weight (lbs) : 2.0", // verbose
-                "Rations [5] now has the following attributes"); // verbose
+                "Backpack [2] contains:"); // verbose
     }
 
     @Test

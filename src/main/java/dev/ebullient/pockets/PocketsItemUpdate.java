@@ -65,11 +65,11 @@ public class PocketsItemUpdate implements Callable<Integer> {
         ParseResult pr = spec.commandLine().getParseResult();
         boolean saveIt = force;
 
-        if (Term.isVerbose()) {
-            Term.outPrintf("%n%s [%d] has the following attributes:%n", item.name, item.id);
-            CommonIO.describe(item);
-        }
         if (Term.canPrompt() && !force) {
+            if (Term.isVerbose()) {
+                Term.outPrintf("%n%s [%d] has the following attributes:%n", item.name, item.id);
+                CommonIO.describe(item);
+            }
             promptForUpdates(item, pr);
         }
         if (attrs.value.isPresent()) {
@@ -87,17 +87,20 @@ public class PocketsItemUpdate implements Callable<Integer> {
             return ExitCode.OK;
         }
 
-        if (Term.isVerbose()) {
-            Term.outPrintf("%n✨ %s [%d] will be updated with the following attributes:%n", item.name, item.id);
-            CommonIO.describe(item);
-        }
         if (Term.canPrompt() && !force) {
+            if (Term.isVerbose()) {
+                Term.outPrintf("%n✨ %s [%d] will be updated with the following attributes:%n", item.name, item.id);
+                CommonIO.describe(item);
+            }
             String line = Term.prompt("Save your changes (y|N)? ");
             saveIt = CommonIO.yesOrTrue(line, false);
         }
         if (saveIt) {
             item.persistAndFlush();
             Term.outPrintf("%n✅ %s [%d] has been updated.%n", item.name, item.id);
+            if (Term.isVerbose()) {
+                CommonIO.listPocketContents(pocket);
+            }
         } else {
             Term.outPrintf("%n🔶 %s [%d] was not updated (requires confirmation or use --force).%n", item.name, item.id);
             return ExitCode.USAGE;

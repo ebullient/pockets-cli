@@ -30,7 +30,19 @@ public class Coinage {
             Matcher m = COIN_VALUE.matcher(line);
             if (m.matches()) {
                 System.out.println(m);
-
+                double amount = Double.parseDouble(m.group(1)); // amount
+                switch (m.group(2)) { // coin
+                    case "cp":
+                        return Optional.of(Coin.cp.gpEx * amount);
+                    case "sp":
+                        return Optional.of(Coin.sp.gpEx * amount);
+                    case "ep":
+                        return Optional.of(Coin.ep.gpEx * amount);
+                    case "gp":
+                        return Optional.of(amount);
+                    case "pp":
+                        return Optional.of(Coin.pp.gpEx * amount);
+                }
             }
         }
         return Optional.empty();

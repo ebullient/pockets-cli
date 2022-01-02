@@ -21,17 +21,18 @@ public class PocketsItemAddTest {
 
         assertThat(result.getOutput()).doesNotContain(
                 "Backpack [2] contains", // verbose
-                "[   5] (  10) Rations", // verbose
+                "[   5] ( 10)  Rations", // verbose
                 "This backpack weighs 5.0 pounds when empty."); // verbose
     }
 
     @Test
-    @Launch({ "add", "2", "Jeweled Eyepatch" })
+    @Launch({ "add", "2", "-v", "30gp", "Jeweled Eyepatch" })
     public void testAddVerbose(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "(1) Jeweled Eyepatch [6] added to Backpack [2]",
                 "Backpack [2] contains", // verbose
-                "[   5] (  10) Rations", // verbose
+                "[   6] (  1)  Jeweled Eyepatch                                        -    30.0",
+                "[   5] ( 10)  Rations", // verbose
                 "This backpack weighs 5.0 pounds when empty."); // verbose
     }
 

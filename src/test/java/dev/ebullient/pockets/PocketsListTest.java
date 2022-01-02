@@ -20,7 +20,9 @@ public class PocketsListTest {
     @Test
     @Launch({ "list", "2" })
     public void testListPocketById(LaunchResult result) {
-        assertThat(result.getOutput()).contains("Backpack [2] contains:", "(  10) Rations");
+        assertThat(result.getOutput()).contains(
+                "Backpack [2] contains:",
+                "( 10)  Rations");
     }
 
     @Test

@@ -110,8 +110,7 @@ public enum PocketType {
                 pocket.max_weight = 0.0; // the limit is volume, not weight
                 pocket.weight = 0;
                 pocket.magic = true;
-                pocket.comments =
-                          "The portable hole has the dimensions of a hankerchief when folded.\n"
+                pocket.comments = "The portable hole has the dimensions of a hankerchief when folded.\n"
                         + "When unfolded and placed on a solid surface, it creates a hole that is \n"
                         + "6 feet in diameter and 10 feet deep.";
                 break;
@@ -133,8 +132,7 @@ public enum PocketType {
             case MapCase:
             case ScrollCase:
                 pocket.weight = 1.0;
-                pocket.comments =
-                          "This cylindrical leather case can hold up to ten rolled-up sheets of\n"
+                pocket.comments = "This cylindrical leather case can hold up to ten rolled-up sheets of\n"
                         + "paper or five rolled-up sheets of parchment.";
                 break;
             default:

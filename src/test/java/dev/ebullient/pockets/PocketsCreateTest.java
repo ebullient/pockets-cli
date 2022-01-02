@@ -25,7 +25,8 @@ public class PocketsCreateTest {
     public void testCreateMagicBackpack(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Magic beans has been created with id",
-                "This backpack is magical. It always weighs 5.0 pounds, regardless of its contents.",
+                "This backpack is magical.",
+                "It always weighs 5.0 pounds, regardless of its contents.",
                 "It can hold 30.0 pounds or 1 cubic foot of gear.");
     }
 
@@ -34,7 +35,8 @@ public class PocketsCreateTest {
     public void testCreateBagOfHolding(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Lovely Day has been created with id",
-                "This Bag of Holding is magical. It always weighs 15.0 pounds, regardless of its contents.",
+                "This Bag of Holding is magical.",
+                "It always weighs 15.0 pounds, regardless of its contents.",
                 "It can hold 500.0 pounds or 64.0 cubic feet of gear.");
     }
 
@@ -71,7 +73,8 @@ public class PocketsCreateTest {
     public void testCreateEfficientQuiver(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Efficient Quiver has been created with id",
-                "This Efficient Quiver is magical. It always weighs 2.0 pounds, regardless of its contents.",
+                "This Efficient Quiver is magical.",
+                "It always weighs 2.0 pounds, regardless of its contents.",
                 "This quiver has 3 compartments.");
     }
 
@@ -80,7 +83,8 @@ public class PocketsCreateTest {
     public void testCreateHaversack(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Toast tastes great in the morning! has been created with id",
-                "This Handy Haversack is magical. It always weighs 5.0 pounds, regardless of its contents.",
+                "This Handy Haversack is magical.",
+                "It always weighs 5.0 pounds, regardless of its contents.",
                 "It can hold 120.0 pounds or 12.0 cubic feet of gear.");
     }
 
@@ -89,7 +93,8 @@ public class PocketsCreateTest {
     public void testCreatePortableHole(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Summoner's Gift has been created with id",
-                "This Portable Hole is magical. It always weighs 0.0 pounds, regardless of its contents.",
+                "This Portable Hole is magical.",
+                "It always weighs 0.0 pounds, regardless of its contents.",
                 "It can hold 282.7 cubic feet of gear.");
     }
 
@@ -125,7 +130,8 @@ public class PocketsCreateTest {
     public void testCreateMagicalCustomPocket(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Pocket has been created with id",
-                "This pocket is magical. It always weighs 1 pound, regardless of its contents.",
+                "This pocket is magical.",
+                "It always weighs 1 pound, regardless of its contents.",
                 "It can hold 3.0 pounds or 2.0 cubic feet of gear.");
     }
 }
