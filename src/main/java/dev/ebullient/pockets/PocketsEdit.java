@@ -56,7 +56,7 @@ public class PocketsEdit implements Callable<Integer> {
         Previous previous = new Previous(pocket);
 
         if (Term.isVerbose()) {
-            Term.outPrintf("%n%-2s %s [%d] has the following attributes:%n", pocket.type.icon(), pocket.name, pocket.id);
+            Term.outPrintf("%n%-2s %s [%d] has the following attributes:%n", pocket.type().icon(), pocket.name, pocket.id);
             CommonIO.describe(pocket);
         }
 

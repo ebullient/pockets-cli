@@ -27,8 +27,8 @@ public class PocketsCreate implements Callable<Integer> {
     PocketType type;
 
     @Parameters(index = "0", completionCandidates = PocketType.PocketCandidates.class, description = "Type of pocket%n  Choices: ${COMPLETION-CANDIDATES}")
-    void setPocketType(String type) {
-        this.type = PocketType.fromParameter(type);
+    void setPocketType(String value) {
+        this.type = PocketType.fromParameter(value);
     }
 
     @ArgGroup(exclusive = false, heading = "%nPocket Attributes (required for custom pockets):%n")

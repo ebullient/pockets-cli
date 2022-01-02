@@ -42,7 +42,7 @@ public class PocketsDelete implements Callable<Integer> {
 
         boolean deleteIt = force;
         if (Term.isVerbose()) {
-            Term.outPrintf("%n%-2s %s [%d]:%n", pocket.type.icon(), pocket.name, pocket.id);
+            Term.outPrintf("%n%-2s %s [%d]:%n", pocket.type().icon(), pocket.name, pocket.id);
             CommonIO.describe(pocket);
             if (pocket.items == null || pocket.items.isEmpty() /* && pockets.pockets.isEmpty() */ ) {
                 Term.outPrintf("%n%s is empty.%n", pocket.name);

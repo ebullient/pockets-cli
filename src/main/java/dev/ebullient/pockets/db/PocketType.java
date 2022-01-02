@@ -18,7 +18,7 @@ public enum PocketType {
     CrossbowBoltCase("🏹", "crossbow bolt case", null),
     EfficientQuiver("🏹", "Efficient Quiver", null),
     // EfficientQuiverParts("🏹", "Efficient Quiver", "efficient-quiver-parts"),
-    Haversack("👝", "Handy Haversack", "haversack"),
+    Haversack("👝", "Handy Haversack", null),
     // HaversackParts("👝", "Handy Haversack ", "haversack-parts"),
     MapCase("👝", "map case ", null),
     PortableHole("🕳 ", "Portable Hole", null),
@@ -49,7 +49,7 @@ public enum PocketType {
 
     public Pocket createPocket(Optional<String> name) {
         Pocket pocket = new Pocket();
-        pocket.type = this;
+        pocket.setType(this);
         pocket.magic = false;
         pocket.name = name.orElse(titlecase(prettyName));
 
@@ -78,12 +78,12 @@ public enum PocketType {
             case CrossbowBoltCase:
                 pocket.weight = 1;
                 pocket.max_weight = 2.5;
-                pocket.comments = "This wooden case can hold up to 20 crossbow bolts.";
+                pocket.constraints = "This wooden case can hold up to 20 crossbow bolts.";
                 break;
             case EfficientQuiver:
                 pocket.weight = 2;
                 pocket.max_weight = /* shortest */ 4.5 + /* midsize */ 36 + /* longest */ 24;
-                pocket.comments = "This quiver has 3 compartments.\n"
+                pocket.constraints = "This quiver has 3 compartments.\n"
                         + "The shortest can hold up to sixty arrows, bolts, or similar objects.\n"
                         + "The midsize holds up to eighteen javelins or similar objects.\n"
                         + "The longest holds up to six long objects, such as bows, quarterstaffs, or spears.";
@@ -99,7 +99,7 @@ public enum PocketType {
                 pocket.max_weight = 120.0;
                 pocket.weight = 5;
                 pocket.magic = true;
-                pocket.comments = "This backpack has a central pouch and two side pouches.\n"
+                pocket.constraints = "This backpack has a central pouch and two side pouches.\n"
                         + "Each side pouch can hold up to 20 pounds or 2 cubic feet of material.\n"
                         + "The central pouch can hold up to 8 cubic feet or 80 pounds of material.";
                 break;
@@ -110,7 +110,7 @@ public enum PocketType {
                 pocket.max_weight = 0.0; // the limit is volume, not weight
                 pocket.weight = 0;
                 pocket.magic = true;
-                pocket.comments = "The portable hole has the dimensions of a hankerchief when folded.\n"
+                pocket.constraints = "The portable hole has the dimensions of a hankerchief when folded.\n"
                         + "When unfolded and placed on a solid surface, it creates a hole that is \n"
                         + "6 feet in diameter and 10 feet deep.";
                 break;
@@ -122,7 +122,7 @@ public enum PocketType {
             case Quiver:
                 pocket.weight = 1.0;
                 pocket.max_weight = 2.0;
-                pocket.comments = "A quiver can hold up to 20 arrows.";
+                pocket.constraints = "A quiver can hold up to 20 arrows.";
                 break;
             case Sack:
                 pocket.max_volume = 1.0;
@@ -132,7 +132,7 @@ public enum PocketType {
             case MapCase:
             case ScrollCase:
                 pocket.weight = 1.0;
-                pocket.comments = "This cylindrical leather case can hold up to ten rolled-up sheets of\n"
+                pocket.constraints = "This cylindrical leather case can hold up to ten rolled-up sheets of\n"
                         + "paper or five rolled-up sheets of parchment.";
                 break;
             default:

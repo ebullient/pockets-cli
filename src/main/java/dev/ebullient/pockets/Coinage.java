@@ -29,7 +29,6 @@ public class Coinage {
         if (!line.isBlank()) {
             Matcher m = COIN_VALUE.matcher(line);
             if (m.matches()) {
-                System.out.println(m);
                 double amount = Double.parseDouble(m.group(1)); // amount
                 switch (m.group(2)) { // coin
                     case "cp":

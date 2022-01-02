@@ -5,11 +5,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -42,14 +42,28 @@ public class Pocket extends PanacheEntity {
     public boolean magic; // magic pockets always weigh the same
 
     @NotNull
-    @Convert(converter = PocketTypeConverter.class)
-    public PocketType type;
+    public String type_id;
 
-    public String comments; // any other remarks about what this pocket can contain
+    @Transient
+    private PocketType pt;
+
+    public String constraints; // any other remarks about what this pocket can contain
 
     /** Many items in this pocket */
     @OneToMany(mappedBy = Constants.POCKET_TABLE, fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     public Set<PocketItem> items;
+
+    public void setType(PocketType type) {
+        this.type_id = type.slug;
+        this.pt = type;
+    }
+
+    public PocketType type() {
+        if (pt == null) {
+            this.pt = new PocketTypeConverter().convertToEntityAttribute(type_id);
+        }
+        return pt;
+    }
 
     /**
      * Add an item to the pocket
@@ -131,7 +145,7 @@ public class Pocket extends PanacheEntity {
     @Override
     public String toString() {
         return "Pocket [items=" + items + ", magic=" + magic + ", max_volume=" + max_volume + ", max_weight="
-                + max_weight + ", name=" + name + ", slug=" + slug + ", type=" + type + ", weight=" + weight + "]";
+                + max_weight + ", name=" + name + ", slug=" + slug + ", type=" + type_id + ", weight=" + weight + "]";
     }
 
     /**

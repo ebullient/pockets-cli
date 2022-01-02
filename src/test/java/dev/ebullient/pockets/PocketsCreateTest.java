@@ -79,7 +79,7 @@ public class PocketsCreateTest {
     }
 
     @Test
-    @Launch({ "create", "haversack", "Toast tastes great in the morning!" })
+    @Launch({ "create", "handy-haversack", "Toast tastes great in the morning!" })
     public void testCreateHaversack(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Toast tastes great in the morning! has been created with id",

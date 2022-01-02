@@ -150,7 +150,7 @@ public class CommonIO {
     static void printPockets(List<Pocket> pockets) {
         Term.outPrintf("@|faint [%" + idWidth() + "s]    %-50s |@%n", "ID ", "Name");
         Term.outPrintf("@|faint -%s-+--+-%s-|@%n", "-".repeat(idWidth()), "-".repeat(50));
-        pockets.forEach(p -> Term.outPrintf("%s %-2s %-50s%n", ansiId(p.id), p.type.icon(), p.name));
+        pockets.forEach(p -> Term.outPrintf("%s %-2s %-50s%n", ansiId(p.id), p.type().icon(), p.name));
     }
 
     static void printPocketItems(Collection<PocketItem> items) {
@@ -183,10 +183,10 @@ public class CommonIO {
     public static void listPocketContents(Pocket pocket) {
         Term.debug(pocket.toString());
         if (pocket.items.isEmpty()) {
-            Term.outPrintf("%n%-2s %s [%d] is empty.%n%n", pocket.type.icon(), pocket.name, pocket.id);
+            Term.outPrintf("%n%-2s %s [%d] is empty.%n%n", pocket.type().icon(), pocket.name, pocket.id);
             describe(pocket);
         } else {
-            Term.outPrintf("%n%-2s %s [%d] contains:%n%n", pocket.type.icon(), pocket.name, pocket.id);
+            Term.outPrintf("%n%-2s %s [%d] contains:%n%n", pocket.type().icon(), pocket.name, pocket.id);
             printPocketItems(pocket.items);
             Term.outPrintln("");
             describe(pocket);
@@ -266,9 +266,9 @@ public class CommonIO {
         if (pocket.magic) {
             Term.outPrintf(
                     "@|bold,underline This %s is magical.|@%nIt always weighs %s, regardless of its contents.%n",
-                    pocket.type.prettyName, weightUnits(pocket.weight));
+                    pocket.type().prettyName, weightUnits(pocket.weight));
         } else {
-            Term.outPrintf("This %s weighs %s when empty.%n", pocket.type.prettyName, weightUnits(pocket.weight));
+            Term.outPrintf("This %s weighs %s when empty.%n", pocket.type().prettyName, weightUnits(pocket.weight));
         }
 
         String weight = "";
@@ -285,8 +285,8 @@ public class CommonIO {
                 (weight.length() > 0 && volume.length() > 0) ? " or " : "",
                 volume);
 
-        if (pocket.comments != null && !pocket.comments.isBlank()) {
-            Term.outPrintln(pocket.comments);
+        if (pocket.constraints != null && !pocket.constraints.isBlank()) {
+            Term.outPrintln(pocket.constraints);
         }
     }
 
