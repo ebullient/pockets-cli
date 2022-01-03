@@ -31,25 +31,32 @@ pockets --help
 ## Use it
 
 ```
-Usage: pockets [-hvV] [COMMAND]
-  -h, --help      Show this help message and exit.
-  -v, --verbose   verbose output
-  -V, --version   Print version information and exit.
+$ pockets --help
+
+What have you got in your pockets?
+
+pockets [-bdhV] [--config=<config>] [COMMAND]
+
+Options:
+  -d, --debug             Enable debug output
+  -b, --brief             Brief output
+      --config=<config>   Config directory. Default is ~/.pockets
+  -h, --help              Show this help message and exit.
+  -V, --version           Print version information and exit.
+
 Commands:
-  create  Create a new pocket
-  list    What do we have in our pockets?
-  add     Add an item to a pocket
+  c, create  Create a new pocket
+  e, edit    Edit the attributes of a pocket
+  o, open    Open a pocket (interactive)
+  d, delete  Delete a pocket (and all contained items and history)
+  l, list    List all pockets, or the contents of one pocket
+  a, add     Add an item to a pocket
+  u, update  Update an item in a pocket
+  r, remove  Remove an item from a pocket
+  import     Import reference items and pockets
 ```
 
-
-Commands: 
-
-- list: What _have_ I got in my pockets?
-- add: add something
-- remove: remove something
-- exchange: exchange something for something else of equal value
-
-
+Use `--help` with any of the subcommands for more details about what they do, etc.
 
 ## Build it (optional)
 

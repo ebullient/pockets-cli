@@ -1,34 +1,33 @@
-{
-  "items" : {
-    "bedroll" : {
-      "name" : "Bedroll",
-      "idSlug" : "bedroll",
-      "weight" : 7.0,
-      "value" : "100cp",
-      "rarity" : "none",
-      "type" : "adventuring-gear"
-    },
-    "carpet-of-flying-6-ft-9-ft" : {
-      "name" : "Carpet of Flying, 6 ft. × 9 ft.",
-      "idSlug" : "carpet-of-flying-6-ft-9-ft",
-      "wondrous" : true,
-      "tier" : "major",
-      "rarity" : "very rare",
-      "type" : "wondrous"
+    {
+      "items": {
+        "bedroll": {
+          "name": "Bedroll",
+          "weight": 7.0,
+          "value": "100cp",
+          "rarity": "none",
+          "type": "adventuring-gear"
+        },
+        "carpet-of-flying-6-ft-9-ft": {
+          "name": "Carpet of Flying, 6 ft. × 9 ft.",
+          "wondrous": true,
+          "tier": "major",
+          "rarity": "very rare",
+          "type": "wondrous"
+        }
+      },
+      "pockets": {
+        "backpack": {
+          "name": "Backpack",
+          "weight": 5.0,
+          "value": "200cp",
+          "rarity": "none",
+          "type": "adventuring-gear",
+          "compartments": [
+            {
+              "max_weight": 30.0,
+              "max_volume": 1.0
+            }
+          ]
+        }
+      }
     }
-  },
-  "pockets" : {
-    "backpack" : {
-      "name" : "Backpack",
-      "idSlug" : "backpack",
-      "weight" : 5.0,
-      "value" : "200cp",
-      "rarity" : "none",
-      "type" : "adventuring-gear",
-      "compartments" : [ {
-        "max_weight" : 30.0,
-        "max_volume" : 1.0
-      } ]
-    }
-  }
-}
