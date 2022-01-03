@@ -2,6 +2,11 @@ package dev.ebullient.pockets;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import io.quarkus.test.TestTransaction;
@@ -11,7 +16,11 @@ import io.quarkus.test.junit.main.QuarkusMainTest;
 
 @QuarkusMainTest
 @TestTransaction
-public class PocketsItemUpdateTest {
+public class PocketItemUpdateTest {
+    @BeforeAll
+    static void beforeAll() throws IOException {
+        Files.deleteIfExists(Path.of("target/.pockets/cache.json"));
+    }
 
     @Test
     @Launch({ "update", "2", "rations", "-f" })

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.Callable;
 
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import dev.ebullient.pockets.db.Pocket;
@@ -24,11 +25,14 @@ public class PocketsEdit implements Callable<Integer> {
     @Spec
     private CommandSpec spec;
 
+    @Inject
+    CommonIO io;
+
     @Option(names = { "-f", "--force" }, description = "Edit attributes without confirmation or prompting", required = false)
     boolean force = false;
 
     @ArgGroup(exclusive = false, heading = "%nPocket Attributes:%n")
-    CommonIO.PocketAttributes attrs = new CommonIO.PocketAttributes();
+    PocketAttributes attrs = new PocketAttributes();
 
     @Parameters(index = "0", description = "Name or id of pocket to delete.", arity = "1..*")
     void setNameOrId(List<String> words) {
@@ -42,8 +46,8 @@ public class PocketsEdit implements Callable<Integer> {
         Term.debugf("Parameters: %s, %s, %s", nameOrId, id, attrs);
 
         Pocket pocket = id.isPresent()
-                ? CommonIO.selectPocketById(id.get())
-                : CommonIO.selectPocketByName(nameOrId);
+                ? io.selectPocketById(id.get())
+                : io.selectPocketByName(nameOrId);
 
         Term.debugf("Pocket to edit: %s", pocket);
 
@@ -56,10 +60,9 @@ public class PocketsEdit implements Callable<Integer> {
         Previous previous = new Previous(pocket);
 
         if (Term.isVerbose()) {
-            Term.outPrintf("%n%-2s %s [%d] has the following attributes:%n", pocket.type().icon(), pocket.name, pocket.id);
-            CommonIO.describe(pocket);
+            Term.outPrintf("%n%-2s %s [%d] has the following attributes:%n", io.getPocketEmoji(pocket), pocket.name, pocket.id);
+            io.describe(pocket);
         }
-
         if (Term.canPrompt() && !force) {
             promptForUpdates(pocket, pr);
         }
@@ -73,7 +76,7 @@ public class PocketsEdit implements Callable<Integer> {
             pocket.weight = attrs.weight.get();
         }
         if (pr.hasMatchedOption("--magic")) {
-            pocket.magic = attrs.magic;
+            pocket.extradimensional = attrs.magic;
         }
 
         if (previous.isUnchanged(pocket)) {
@@ -83,7 +86,7 @@ public class PocketsEdit implements Callable<Integer> {
 
         if (Term.isVerbose()) {
             Term.outPrintf("%n✨ %s [%d] now has the following attributes:%n", pocket.name, pocket.id);
-            CommonIO.describe(pocket);
+            io.describe(pocket);
         }
         if (Term.canPrompt() && !force) {
             String line = Term.prompt("Save your changes (y|N)? ");
@@ -91,6 +94,7 @@ public class PocketsEdit implements Callable<Integer> {
         }
         if (saveIt) {
             pocket.persistAndFlush();
+            io.checkFieldWidths(pocket);
             Term.outPrintf("%n✅ %s [%d] has been updated.%n", pocket.name, pocket.id);
         } else if (!force) {
             Term.outPrintf("%n🔶 %s [%d] was not updated (requires confirmation or use --force).%n", pocket.name, pocket.id);
@@ -116,10 +120,10 @@ public class PocketsEdit implements Callable<Integer> {
             pocket.max_volume = CommonIO.toDoubleOrDefault(line, pocket.max_volume);
         }
         if (!pr.hasMatchedOption("--magic")) {
-            String previous = pocket.magic ? "Y" : "N";
+            String previous = pocket.extradimensional ? "Y" : "N";
             Term.outPrintln("Magic pockets always weigh the same, regardless of their contents.");
             line = Term.prompt("Is this a magic pocket [" + previous + "]? ");
-            pocket.magic = CommonIO.yesOrTrue(line, pocket.magic);
+            pocket.extradimensional = CommonIO.yesOrTrue(line, pocket.extradimensional);
         }
     }
 
@@ -135,7 +139,7 @@ public class PocketsEdit implements Callable<Integer> {
             this.max_volume = pocket.max_volume;
             this.max_weight = pocket.max_weight;
             this.weight = pocket.weight;
-            this.magic = pocket.magic;
+            this.magic = pocket.extradimensional;
         }
 
         public boolean isUnchanged(Pocket pocket) {
@@ -143,7 +147,7 @@ public class PocketsEdit implements Callable<Integer> {
                     && this.max_volume == pocket.max_volume
                     && this.max_weight == pocket.max_weight
                     && this.weight == pocket.weight
-                    && this.magic == pocket.magic;
+                    && this.magic == pocket.extradimensional;
         }
     }
 }

@@ -11,10 +11,10 @@ import io.quarkus.test.junit.main.QuarkusMainTest;
 
 @QuarkusMainTest
 @TestTransaction
-public class PocketsItemAddTest {
+public class PocketItemAddTest {
 
     @Test
-    @Launch({ "add", "2", "Jeweled Eyepatch", "--brief" })
+    @Launch({ "add", "2", "Jeweled Eyepatch", "--brief", "--force" })
     public void testAdd(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "(1) Jeweled Eyepatch [6] added to Backpack [2]");
@@ -26,14 +26,14 @@ public class PocketsItemAddTest {
     }
 
     @Test
-    @Launch({ "add", "2", "-v", "30gp", "Jeweled Eyepatch" })
+    @Launch({ "add", "2", "-v", "30gp", "Jeweled Eyepatch", "--force" })
     public void testAddVerbose(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "(1) Jeweled Eyepatch [6] added to Backpack [2]",
                 "Backpack [2] contains", // verbose
                 "[   6] (  1)  Jeweled Eyepatch                                        -    30.0",
                 "[   5] ( 10)  Rations", // verbose
-                "This backpack weighs 5.0 pounds when empty."); // verbose
+                "This Backpack weighs 5.0 pounds when empty."); // verbose
     }
 
     @Test

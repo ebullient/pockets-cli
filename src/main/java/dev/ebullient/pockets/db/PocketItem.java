@@ -1,7 +1,6 @@
 package dev.ebullient.pockets.db;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -31,7 +30,7 @@ public class PocketItem extends PanacheEntity {
     public String slug;
     public int quantity;
     public Double weight; // weight in lbs
-    public Double value; // value in gp
+    public Double gpValue; // value in gp
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = Constants.POCKET_ID, nullable = false)
@@ -66,7 +65,7 @@ public class PocketItem extends PanacheEntity {
     @Override
     public String toString() {
         return "PocketItem [name=" + name + ", quantity=" + quantity + ", slug=" + slug
-                + ", value=" + value + ", weight=" + weight + "]";
+                + ", gpValue=" + gpValue + ", weight=" + weight + "]";
     }
 
     public static List<PocketItem> findByName(Pocket owner, String name) {
@@ -79,20 +78,18 @@ public class PocketItem extends PanacheEntity {
                 .collect(Collectors.toList());
     }
 
-    public static Map<String, Integer> fieldWidths() {
-        Map<String, Integer> fieldLengths = new HashMap<>();
+    public static void fieldWidths(Map<String, Integer> fieldWidths) {
         Query q = PocketItem.getEntityManager().createQuery(
-                "select max(p.id), max(p.quantity), max(p.weight), min(p.weight), max(p.value) from PocketItem as p");
+                "select max(pi.id), max(pi.quantity), max(pi.weight), min(pi.weight), max(pi.gpValue) from PocketItem as pi");
         Object[] o = (Object[]) q.getSingleResult();
         List<Integer> len = Stream.of(o)
                 .map(x -> x == null ? "" : x.toString())
                 .map(x -> x.length() + 1)
                 .collect(Collectors.toList());
 
-        fieldLengths.put("id", Math.max(4, len.get(0)));
-        fieldLengths.put("quantity", Math.max(3, len.get(1)));
-        fieldLengths.put("weight", Math.max(4, Math.max(len.get(2), len.get(3))));
-        fieldLengths.put("value", Math.max(4, len.get(4)));
-        return fieldLengths;
+        fieldWidths.put("pi.id", Math.max(4, len.get(0)));
+        fieldWidths.put("pi.quantity", Math.max(3, len.get(1)));
+        fieldWidths.put("pi.weight", Math.max(4, Math.max(len.get(2), len.get(3))));
+        fieldWidths.put("pi.gpValue", Math.max(4, len.get(4)));
     }
 }

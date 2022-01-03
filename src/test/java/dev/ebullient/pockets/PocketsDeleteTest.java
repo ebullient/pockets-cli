@@ -14,8 +14,8 @@ public class PocketsDeleteTest {
     @Launch(value = { "delete", "backpack" }, exitCode = 2)
     public void testDeleteBackpack(LaunchResult result) {
         assertThat(result.getOutput()).contains(
-                "[   2] 🎒 Backpack",
-                "[   4] 🎒 Backpack",
+                "[   2] 🎒  Backpack",
+                "[   4] 🎒  Backpack",
                 "Unable to choose a pocket. Please be more specific.");
     }
 

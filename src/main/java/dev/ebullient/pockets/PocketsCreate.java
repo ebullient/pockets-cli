@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.Callable;
 
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 
-import dev.ebullient.pockets.CommonIO.PocketAttributes;
 import dev.ebullient.pockets.db.Pocket;
-import dev.ebullient.pockets.db.PocketType;
+import dev.ebullient.pockets.reference.PocketReference;
 import picocli.CommandLine.ArgGroup;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;
@@ -23,13 +23,13 @@ public class PocketsCreate implements Callable<Integer> {
     @Spec
     private CommandSpec spec;
 
-    Optional<String> name = Optional.empty();
-    PocketType type;
+    @Inject
+    CommonIO io;
 
-    @Parameters(index = "0", completionCandidates = PocketType.PocketCandidates.class, description = "Type of pocket%n  Choices: ${COMPLETION-CANDIDATES}")
-    void setPocketType(String value) {
-        this.type = PocketType.fromParameter(value);
-    }
+    Optional<String> name = Optional.empty();
+
+    @Parameters(index = "0", description = "Type of pocket%n  See \"pocket index --pockets\"")
+    String pocketRef;
 
     @ArgGroup(exclusive = false, heading = "%nPocket Attributes (required for custom pockets):%n")
     PocketAttributes attrs = new PocketAttributes();
@@ -41,27 +41,28 @@ public class PocketsCreate implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        Term.debugf("Parameters: %s, %s, %s", type, name, attrs);
+        Term.debugf("Parameters: %s, %s, %s", pocketRef, name, attrs);
 
-        Pocket pocket = createPocket();
+        final PocketReference pRef = io.getPocketReference(pocketRef);
+
+        Pocket pocket = createPocket(pRef);
+        io.checkFieldWidths(pocket);
         Term.outPrintf("%n✨ A new pocket named %s has been created with id '%s'.%n",
                 pocket.name, pocket.id);
 
         if (Term.isVerbose()) {
-            CommonIO.describe(pocket);
-            CommonIO.listAllPockets();
+            io.describe(pocket, pRef);
+            io.listAllPockets();
         }
-
         return ExitCode.OK;
     }
 
     @Transactional
-    Pocket createPocket() throws IOException {
+    Pocket createPocket(final PocketReference pRef) throws IOException {
         ParseResult pr = spec.commandLine().getParseResult();
+        final Pocket pocket = pRef.createPocket(name);
 
-        final Pocket pocket = type.createPocket(name);
-
-        if (Term.canPrompt() && type == PocketType.Custom) {
+        if (Term.canPrompt() && pRef.isCustom()) {
             promptForAttributes(pocket, pr);
         }
         if (attrs.max_weight.isPresent()) {
@@ -74,7 +75,7 @@ public class PocketsCreate implements Callable<Integer> {
             pocket.weight = attrs.weight.get();
         }
         if (pr.hasMatchedOption("--magic")) {
-            pocket.magic = attrs.magic;
+            pocket.extradimensional = attrs.magic;
         }
         pocket.persist(); // <-- Save it!
         return pocket;
@@ -97,7 +98,7 @@ public class PocketsCreate implements Callable<Integer> {
         if (!pr.hasMatchedOption("--magic")) {
             Term.outPrintln("Magic pockets always weigh the same, regardless of their contents.");
             line = Term.prompt("Is this a magic pocket (y/N)? ");
-            pocket.magic = CommonIO.yesOrTrue(line, false);
+            pocket.extradimensional = CommonIO.yesOrTrue(line, false);
         }
     }
 }

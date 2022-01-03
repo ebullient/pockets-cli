@@ -14,8 +14,8 @@ public class PocketsEditTest {
     @Launch(value = { "edit", "backpack" }, exitCode = 2)
     public void testEditBackpack(LaunchResult result) {
         assertThat(result.getOutput()).contains(
-                "[   2] 🎒 Backpack",
-                "[   4] 🎒 Backpack",
+                "[   2] 🎒  Backpack",
+                "[   4] 🎒  Backpack",
                 "Unable to choose a pocket. Please be more specific.");
     }
 
@@ -23,6 +23,6 @@ public class PocketsEditTest {
     @Launch({ "edit", "2", "--force", "--magic" })
     public void testEditSpecificBackpack(LaunchResult result) {
         assertThat(result.getOutput()).contains(
-                "This backpack is magical.");
+                "This Backpack is magical.");
     }
 }

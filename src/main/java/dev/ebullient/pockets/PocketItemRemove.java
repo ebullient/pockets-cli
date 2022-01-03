@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.Callable;
 
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import dev.ebullient.pockets.db.Pocket;
@@ -16,10 +17,13 @@ import picocli.CommandLine.Parameters;
 import picocli.CommandLine.Spec;
 
 @Command(name = "r", aliases = { "remove" }, header = "Remove an item from a pocket")
-public class PocketsItemRemove implements Callable<Integer> {
+public class PocketItemRemove implements Callable<Integer> {
 
     @Spec
     private CommandSpec spec;
+
+    @Inject
+    CommonIO io;
 
     @Parameters(index = "0", description = "Id of the target Pocket")
     Long pocketId;
@@ -41,14 +45,14 @@ public class PocketsItemRemove implements Callable<Integer> {
         Optional<Long> id = CommonIO.toLong(nameOrId, false);
         Term.debugf("Parameters: %s, %s -> %s", pocketId, nameOrId, id);
 
-        Pocket pocket = CommonIO.selectPocketById(pocketId);
+        Pocket pocket = io.selectPocketById(pocketId);
         if (pocket == null) {
             return ExitCode.USAGE;
         }
 
         PocketItem item = id.isPresent()
-                ? CommonIO.selectPocketItemById(pocket, id.get())
-                : CommonIO.selectPocketItemByName(pocket, nameOrId);
+                ? io.selectPocketItemById(pocket, id.get())
+                : io.selectPocketItemByName(pocket, nameOrId);
 
         Term.debugf("Pocket item to remove: %s", item);
 
@@ -67,9 +71,12 @@ public class PocketsItemRemove implements Callable<Integer> {
             deleteIt = CommonIO.yesOrTrue(line, false);
         }
 
+        int result = ExitCode.OK;
         if (deleteIt) {
             item.removeFromPocket(pocket);
             item.delete();
+
+            io.checkFieldWidths(pocket);
 
             if (item.quantity <= 1) {
                 Term.outPrintf("%n✅ %s [%d] has been removed from %s [%d].%n", item.name, item.id, pocket.name, pocket.id);
@@ -77,16 +84,15 @@ public class PocketsItemRemove implements Callable<Integer> {
                 Term.outPrintf("%n✅ @|faint (%d)|@ %s [%d] have been removed from %s [%d].%n", item.quantity, item.name,
                         item.id, pocket.name, pocket.id);
             }
-
-            if (Term.isVerbose()) {
-                CommonIO.listPocketContents(pocket);
-            }
         } else if (!force) {
             Term.outPrintf("%n🔶 %s [%d] was not removed (requires confirmation or use --force).%n", item.name, item.id);
-            return ExitCode.USAGE;
+            result = ExitCode.USAGE;
         }
 
-        return ExitCode.OK;
-    }
+        if (Term.isVerbose()) {
+            io.listPocketContents(pocket);
+        }
 
+        return result;
+    }
 }

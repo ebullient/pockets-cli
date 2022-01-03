@@ -1,13 +1,16 @@
 package dev.ebullient.pockets.db;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.persistence.Query;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
@@ -15,6 +18,7 @@ import javax.validation.constraints.Size;
 
 import dev.ebullient.pockets.CommonIO;
 import dev.ebullient.pockets.Constants;
+import dev.ebullient.pockets.reference.PocketReference;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 /**
@@ -31,39 +35,23 @@ public class Pocket extends PanacheEntity {
     public String slug;
 
     @NotNull
-    public Double max_weight; // in lbs
+    public String pocketRef;
 
+    public Double max_weight; // in lbs
     public Double max_volume; // in cubic ft, might be null
 
     @NotNull
-    public double weight; // weight of the pocket itself
+    public Double weight; // weight of the pocket itself
 
     @NotNull
-    public boolean magic; // magic pockets always weigh the same
-
-    @NotNull
-    public String type_id;
+    public boolean extradimensional; // extradimensional always have the same carry weight
 
     @Transient
-    private PocketType pt;
-
-    public String constraints; // any other remarks about what this pocket can contain
+    PocketReference reference;
 
     /** Many items in this pocket */
     @OneToMany(mappedBy = Constants.POCKET_TABLE, fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     public Set<PocketItem> items;
-
-    public void setType(PocketType type) {
-        this.type_id = type.slug;
-        this.pt = type;
-    }
-
-    public PocketType type() {
-        if (pt == null) {
-            this.pt = new PocketTypeConverter().convertToEntityAttribute(type_id);
-        }
-        return pt;
-    }
 
     /**
      * Add an item to the pocket
@@ -144,8 +132,8 @@ public class Pocket extends PanacheEntity {
 
     @Override
     public String toString() {
-        return "Pocket [items=" + items + ", magic=" + magic + ", max_volume=" + max_volume + ", max_weight="
-                + max_weight + ", name=" + name + ", slug=" + slug + ", type=" + type_id + ", weight=" + weight + "]";
+        return "Pocket [items=" + items + ", magic=" + extradimensional + ", max_volume=" + max_volume + ", max_weight="
+                + max_weight + ", name=" + name + ", slug=" + slug + ", pocketRef=" + pocketRef + ", weight=" + weight + "]";
     }
 
     /**
@@ -160,5 +148,17 @@ public class Pocket extends PanacheEntity {
         return allPockets.stream()
                 .filter(p -> p.slug.startsWith(query) || p.slug.matches(query))
                 .collect(Collectors.toList());
+    }
+
+    public static void fieldWidths(Map<String, Integer> fieldWidths) {
+        Query q = PocketItem.getEntityManager().createQuery(
+                "select max(p.id), max(p.weight), max(p.max_weight) from Pocket as p");
+        Object[] o = (Object[]) q.getSingleResult();
+        List<Integer> len = Stream.of(o)
+                .map(x -> x == null ? "" : x.toString())
+                .map(x -> x.length() + 1)
+                .collect(Collectors.toList());
+
+        fieldWidths.put("p.id", Math.max(4, len.get(0)));
     }
 }

@@ -2,6 +2,11 @@ package dev.ebullient.pockets;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import io.quarkus.test.TestTransaction;
@@ -11,7 +16,11 @@ import io.quarkus.test.junit.main.QuarkusMainTest;
 
 @QuarkusMainTest
 @TestTransaction
-public class PocketsItemRemoveTest {
+public class PocketItemRemoveTest {
+    @BeforeAll
+    static void beforeAll() throws IOException {
+        Files.deleteIfExists(Path.of("target/.pockets/cache.json"));
+    }
 
     @Test
     @Launch({ "r", "2", "Rations", "--force", "--brief" })
@@ -21,7 +30,7 @@ public class PocketsItemRemoveTest {
 
         assertThat(result.getOutput()).doesNotContain(
                 "Backpack [2] is empty.", // verbose
-                "This backpack weighs 5.0 pounds when empty."); // verbose
+                "This Backpack weighs 5.0 pounds when empty."); // verbose
     }
 
     @Test
@@ -31,7 +40,7 @@ public class PocketsItemRemoveTest {
                 "Backpack [2] contains (10) Rations [5]", // verbose
                 "(10) Rations [5] have been removed from Backpack [2]",
                 "Backpack [2] is empty.", // verbose
-                "This backpack weighs 5.0 pounds when empty."); // verbose
+                "This Backpack weighs 5.0 pounds when empty."); // verbose
     }
 
     @Test

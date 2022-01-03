@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.Callable;
 
+import javax.inject.Inject;
+
 import dev.ebullient.pockets.db.Pocket;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;
@@ -18,6 +20,9 @@ public class PocketsList implements Callable<Integer> {
     @Spec
     private CommandSpec spec;
 
+    @Inject
+    CommonIO io;
+
     Optional<String> nameOrId = Optional.empty();
 
     @Parameters(index = "0", description = "Name or id of pocket to inspect.", arity = "0..*")
@@ -30,17 +35,17 @@ public class PocketsList implements Callable<Integer> {
         Term.debugf("Parameters: %s", nameOrId);
 
         if (nameOrId.isEmpty()) {
-            CommonIO.listAllPockets();
+            io.listAllPockets();
         } else {
             Optional<Long> id = CommonIO.toLong(nameOrId.get(), false);
             Pocket pocket = id.isPresent()
-                    ? CommonIO.selectPocketById(id.get())
-                    : CommonIO.selectPocketByName(nameOrId.get());
+                    ? io.selectPocketById(id.get())
+                    : io.selectPocketByName(nameOrId.get());
 
             if (pocket == null) {
                 return ExitCode.USAGE;
             } else {
-                CommonIO.listPocketContents(pocket);
+                io.listPocketContents(pocket);
             }
         }
         return ExitCode.OK;

@@ -3,31 +3,38 @@ package dev.ebullient.pockets;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 
-import dev.ebullient.pockets.CommonIO.ItemAttributes;
 import dev.ebullient.pockets.db.Pocket;
 import dev.ebullient.pockets.db.PocketItem;
 import picocli.CommandLine.ArgGroup;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;
 import picocli.CommandLine.Model.CommandSpec;
+import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 import picocli.CommandLine.Spec;
 
 @Command(name = "a", aliases = {
         "add" }, header = "Add an item to a pocket", description = Constants.ADD_DESCRIPTION, footer = {
                 Constants.LIST_DESCRIPTION })
-public class PocketsItemAdd implements Callable<Integer> {
+public class PocketItemAdd implements Callable<Integer> {
 
     @Spec
     private CommandSpec spec;
 
+    @Inject
+    CommonIO io;
+
     @Parameters(index = "0", description = "Id of the target Pocket")
     Long pocketId;
 
+    @Option(names = { "-f", "--force" }, description = "Add item without confirmation or prompting", required = false)
+    boolean force = false;
+
     @ArgGroup(exclusive = false, heading = "%nItem attributes:%n")
-    ItemAttributes attrs = new ItemAttributes();
+    PocketItemAttributes attrs = new PocketItemAttributes();
 
     String name;
 
@@ -41,7 +48,7 @@ public class PocketsItemAdd implements Callable<Integer> {
     public Integer call() throws Exception {
         Term.debugf("Parameters: %s, %s", pocketId, name);
 
-        Pocket pocket = CommonIO.selectPocketById(pocketId);
+        Pocket pocket = io.selectPocketById(pocketId);
         if (pocket == null) {
             return ExitCode.USAGE;
         }
@@ -51,19 +58,32 @@ public class PocketsItemAdd implements Callable<Integer> {
         item.quantity = attrs.quantity;
         item.weight = attrs.weight.orElse(null);
 
-        item.value = attrs.value.isPresent()
+        item.gpValue = attrs.value.isPresent()
                 ? CommonIO.gpValue(attrs.value.get(), true).orElse(null)
                 : null;
 
-        item.addToPocket(pocket);
-        item.persistAndFlush();
+        boolean addIt = force;
+        int result = ExitCode.OK;
 
-        Term.outPrintf("%n✨ @|faint (%d)|@ %s [%s] added to %s [%s]%n",
-                item.quantity, item.name, item.id, pocket.name, pocket.id);
+        if (!force && Term.canPrompt()) {
+            String line = Term.prompt("Do you want to add this item to this pocket? (y|N)? ");
+            addIt = CommonIO.yesOrTrue(line, false);
+        }
+        if (addIt) {
+            item.addToPocket(pocket);
+            item.persistAndFlush();
+            io.checkFieldWidths(item);
+
+            Term.outPrintf("%n✨ @|faint (%d)|@ %s [%s] added to %s [%s]%n",
+                    item.quantity, item.name, item.id, pocket.name, pocket.id);
+        } else if (!force) {
+            Term.outPrintf("%n🔶 %s was not added (requires confirmation or use --force).%n", item.name);
+            result = ExitCode.USAGE;
+        }
 
         if (Term.isVerbose()) {
-            CommonIO.listPocketContents(pocket);
+            io.listPocketContents(pocket);
         }
-        return ExitCode.OK;
+        return result;
     }
 }

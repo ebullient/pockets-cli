@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.Callable;
 
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import dev.ebullient.pockets.db.Pocket;
@@ -16,6 +17,9 @@ import picocli.CommandLine.Parameters;
 public class PocketsDelete implements Callable<Integer> {
     String nameOrId;
 
+    @Inject
+    CommonIO io;
+
     @Option(names = { "-f", "--force" }, description = "Delete the specified pocket without confirmation", required = false)
     boolean force = false;
 
@@ -25,14 +29,24 @@ public class PocketsDelete implements Callable<Integer> {
     }
 
     @Override
-    @Transactional
     public Integer call() throws Exception {
+        int result = deleteIt(); // Tx
+
+        if (result == ExitCode.OK && Term.isVerbose()) {
+            io.dumpStatistics();
+        }
+        return result;
+    }
+
+    @Transactional
+    int deleteIt() {
         Optional<Long> id = CommonIO.toLong(nameOrId, false);
         Term.debugf("Parameters: %s, %s", nameOrId, id);
 
+        boolean deleteIt = force;
         Pocket pocket = id.isPresent()
-                ? CommonIO.selectPocketById(id.get())
-                : CommonIO.selectPocketByName(nameOrId);
+                ? io.selectPocketById(id.get())
+                : io.selectPocketByName(nameOrId);
 
         Term.debugf("Pocket to delete: %s", pocket);
 
@@ -40,10 +54,9 @@ public class PocketsDelete implements Callable<Integer> {
             return ExitCode.USAGE;
         }
 
-        boolean deleteIt = force;
         if (Term.isVerbose()) {
-            Term.outPrintf("%n%-2s %s [%d]:%n", pocket.type().icon(), pocket.name, pocket.id);
-            CommonIO.describe(pocket);
+            Term.outPrintf("%n%-2s %s [%d]:%n", io.getPocketEmoji(pocket), pocket.name, pocket.id);
+            io.describe(pocket);
             if (pocket.items == null || pocket.items.isEmpty() /* && pockets.pockets.isEmpty() */ ) {
                 Term.outPrintf("%n%s is empty.%n", pocket.name);
             } else {
@@ -59,15 +72,13 @@ public class PocketsDelete implements Callable<Integer> {
 
         if (deleteIt) {
             pocket.delete();
+            io.checkFieldWidths(pocket);
+
             Term.outPrintf("%n✅ %s [%d] has been deleted.%n", pocket.name, pocket.id);
-            if (Term.isVerbose()) {
-                CommonIO.dumpStatistics();
-            }
         } else if (!force) {
             Term.outPrintf("%n🔶 %s [%d] was not deleted (requires confirmation or use --force).%n", pocket.name, pocket.id);
             return ExitCode.USAGE;
         }
-
         return ExitCode.OK;
     }
 }
