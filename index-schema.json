@@ -1,0 +1,146 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/ReferenceIndex",
+    "definitions": {
+        "ReferenceIndex": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "items": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/Item"
+                    }
+                },
+                "pockets": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/Item",
+                        "$ref": "#/definitions/Pocket"
+                    }
+                }
+            },
+            "required": [
+                "items",
+                "pockets"
+            ],
+            "title": "ReferenceIndex"
+        },
+        "Item": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "weight": {
+                    "type": "number"
+                },
+                "value": {
+                    "type": "string"
+                },
+                "wondrous": {
+                    "type": "boolean"
+                },
+                "tier": {
+                    "$ref": "#/definitions/Tier"
+                },
+                "rarity": {
+                    "$ref": "#/definitions/Rarity"
+                },
+                "type": {
+                    "$ref": "#/definitions/ItemType"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "title": "Item"
+        },
+        "Pocket": {
+            "properties": {
+              "compartments": {
+                  "type": "array",
+                  "items": {
+                      "$ref": "#/definitions/Compartment"
+                  }
+              },
+              "extradimensional": {
+                  "type": "boolean"
+              }
+            },
+            "required": [
+              "compartments"
+            ],
+            "title": "Pocket"
+        },
+        "Compartment": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "max_weight": {
+                    "type": "number"
+                },
+                "max_volume": {
+                    "type": "number"
+                },
+                "constraint": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "title": "Compartment"
+        },
+        "Rarity": {
+            "type": "string",
+            "enum": [
+                "uncommon",
+                "rare",
+                "very rare",
+                "none",
+                "legendary",
+                "artifact",
+                "common"
+            ],
+            "title": "Rarity"
+        },
+        "Tier": {
+            "type": "string",
+            "enum": [
+                "major",
+                "minor"
+            ],
+            "title": "Tier"
+        },
+        "ItemType": {
+            "type": "string",
+            "enum": [
+              "adventuring-gear",
+              "ammunition",
+              "artisans-tools",
+              "food",
+              "gaming-set",
+              "heavy-armor",
+              "instrument",
+              "light-armor",
+              "medium-armor",
+              "melee-weapon",
+              "mounts",
+              "potion",
+              "ranged-weapon",
+              "ring",
+              "rod",
+              "scroll",
+              "shield",
+              "spellcaster-focus",
+              "tack-harness",
+              "tools",
+              "trade-good",
+              "vehicle",
+              "wand",
+              "wondrous"
+            ],
+            "title": "ItemType"
+        }
+    }
+}

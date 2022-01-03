@@ -2,7 +2,6 @@
   "items" : {
     "1-wand-of-the-war-mage" : {
       "name" : "+1 Wand of the War Mage",
-      "idSlug" : "1-wand-of-the-war-mage",
       "weight" : 1.0,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -10,7 +9,6 @@
     },
     "2-wand-of-the-war-mage" : {
       "name" : "+2 Wand of the War Mage",
-      "idSlug" : "2-wand-of-the-war-mage",
       "weight" : 1.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -18,7 +16,6 @@
     },
     "3-wand-of-the-war-mage" : {
       "name" : "+3 Wand of the War Mage",
-      "idSlug" : "3-wand-of-the-war-mage",
       "weight" : 1.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -26,7 +23,6 @@
     },
     "abacus" : {
       "name" : "Abacus",
-      "idSlug" : "abacus",
       "weight" : 2.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -34,7 +30,6 @@
     },
     "acid-vial" : {
       "name" : "Acid (vial)",
-      "idSlug" : "acid-vial",
       "weight" : 1.0,
       "value" : "2500cp",
       "rarity" : "none",
@@ -42,7 +37,6 @@
     },
     "alchemists-fire-flask" : {
       "name" : "Alchemist's Fire (flask)",
-      "idSlug" : "alchemists-fire-flask",
       "weight" : 1.0,
       "value" : "5000cp",
       "rarity" : "none",
@@ -50,7 +44,6 @@
     },
     "alchemists-supplies" : {
       "name" : "Alchemist's Supplies",
-      "idSlug" : "alchemists-supplies",
       "weight" : 8.0,
       "value" : "5000cp",
       "rarity" : "none",
@@ -58,21 +51,18 @@
     },
     "ale-gallon" : {
       "name" : "Ale (Gallon)",
-      "idSlug" : "ale-gallon",
       "value" : "20cp",
       "rarity" : "none",
       "type" : "food"
     },
     "ale-mug" : {
       "name" : "Ale (Mug)",
-      "idSlug" : "ale-mug",
       "value" : "4cp",
       "rarity" : "none",
       "type" : "food"
     },
     "amulet" : {
       "name" : "Amulet",
-      "idSlug" : "amulet",
       "weight" : 1.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -80,7 +70,6 @@
     },
     "amulet-of-health" : {
       "name" : "Amulet of Health",
-      "idSlug" : "amulet-of-health",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "major",
@@ -89,7 +78,6 @@
     },
     "amulet-of-proof-against-detection-and-location" : {
       "name" : "Amulet of Proof against Detection and Location",
-      "idSlug" : "amulet-of-proof-against-detection-and-location",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "major",
@@ -98,7 +86,6 @@
     },
     "amulet-of-the-planes" : {
       "name" : "Amulet of the Planes",
-      "idSlug" : "amulet-of-the-planes",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "major",
@@ -107,7 +94,6 @@
     },
     "animated-shield" : {
       "name" : "Animated Shield",
-      "idSlug" : "animated-shield",
       "weight" : 6.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -115,14 +101,12 @@
     },
     "antitoxin-vial" : {
       "name" : "Antitoxin (vial)",
-      "idSlug" : "antitoxin-vial",
       "value" : "5000cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "apparatus-of-the-crab" : {
       "name" : "Apparatus of the Crab",
-      "idSlug" : "apparatus-of-the-crab",
       "weight" : 500.0,
       "wondrous" : true,
       "tier" : "major",
@@ -131,7 +115,6 @@
     },
     "armor-of-invulnerability" : {
       "name" : "Armor of Invulnerability",
-      "idSlug" : "armor-of-invulnerability",
       "weight" : 65.0,
       "tier" : "major",
       "rarity" : "legendary",
@@ -139,7 +122,6 @@
     },
     "armor-of-vulnerability-bludgeoning" : {
       "name" : "Armor of Vulnerability (Bludgeoning)",
-      "idSlug" : "armor-of-vulnerability-bludgeoning",
       "weight" : 65.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -147,7 +129,6 @@
     },
     "armor-of-vulnerability-piercing" : {
       "name" : "Armor of Vulnerability (Piercing)",
-      "idSlug" : "armor-of-vulnerability-piercing",
       "weight" : 65.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -155,7 +136,6 @@
     },
     "armor-of-vulnerability-slashing" : {
       "name" : "Armor of Vulnerability (Slashing)",
-      "idSlug" : "armor-of-vulnerability-slashing",
       "weight" : 65.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -163,7 +143,6 @@
     },
     "arrow" : {
       "name" : "Arrow",
-      "idSlug" : "arrow",
       "weight" : 0.05,
       "value" : "5cp",
       "rarity" : "none",
@@ -171,7 +150,6 @@
     },
     "arrow-catching-shield" : {
       "name" : "Arrow-Catching Shield",
-      "idSlug" : "arrow-catching-shield",
       "weight" : 6.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -179,7 +157,6 @@
     },
     "arrows-20" : {
       "name" : "Arrows (20)",
-      "idSlug" : "arrows-20",
       "weight" : 1.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -187,14 +164,12 @@
     },
     "assassins-blood" : {
       "name" : "Assassin's Blood",
-      "idSlug" : "assassins-blood",
       "value" : "15000cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "bag-of-beans" : {
       "name" : "Bag of Beans",
-      "idSlug" : "bag-of-beans",
       "weight" : 0.5,
       "wondrous" : true,
       "tier" : "minor",
@@ -203,7 +178,6 @@
     },
     "bag-of-devouring" : {
       "name" : "Bag of Devouring",
-      "idSlug" : "bag-of-devouring",
       "weight" : 0.5,
       "wondrous" : true,
       "tier" : "minor",
@@ -212,7 +186,6 @@
     },
     "bag-of-tricks-gray" : {
       "name" : "Bag of Tricks, Gray",
-      "idSlug" : "bag-of-tricks-gray",
       "weight" : 0.5,
       "wondrous" : true,
       "tier" : "major",
@@ -221,7 +194,6 @@
     },
     "bag-of-tricks-rust" : {
       "name" : "Bag of Tricks, Rust",
-      "idSlug" : "bag-of-tricks-rust",
       "weight" : 0.5,
       "wondrous" : true,
       "tier" : "major",
@@ -230,7 +202,6 @@
     },
     "bag-of-tricks-tan" : {
       "name" : "Bag of Tricks, Tan",
-      "idSlug" : "bag-of-tricks-tan",
       "weight" : 0.5,
       "wondrous" : true,
       "tier" : "major",
@@ -239,7 +210,6 @@
     },
     "bagpipes" : {
       "name" : "Bagpipes",
-      "idSlug" : "bagpipes",
       "weight" : 6.0,
       "value" : "3000cp",
       "rarity" : "none",
@@ -247,7 +217,6 @@
     },
     "ball-bearing" : {
       "name" : "Ball Bearing",
-      "idSlug" : "ball-bearing",
       "weight" : 0.002,
       "value" : "0.1cp",
       "rarity" : "none",
@@ -255,7 +224,6 @@
     },
     "ball-bearings-bag-of-1-000" : {
       "name" : "Ball Bearings (bag of 1,000)",
-      "idSlug" : "ball-bearings-bag-of-1-000",
       "weight" : 2.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -263,7 +231,6 @@
     },
     "barrel" : {
       "name" : "Barrel",
-      "idSlug" : "barrel",
       "weight" : 70.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -271,14 +238,12 @@
     },
     "basic-poison-vial" : {
       "name" : "Basic Poison (vial)",
-      "idSlug" : "basic-poison-vial",
       "value" : "10000cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "battleaxe" : {
       "name" : "Battleaxe",
-      "idSlug" : "battleaxe",
       "weight" : 4.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -286,7 +251,6 @@
     },
     "bead-of-force" : {
       "name" : "Bead of Force",
-      "idSlug" : "bead-of-force",
       "weight" : 0.0625,
       "wondrous" : true,
       "tier" : "minor",
@@ -295,7 +259,6 @@
     },
     "bedroll" : {
       "name" : "Bedroll",
-      "idSlug" : "bedroll",
       "weight" : 7.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -303,14 +266,12 @@
     },
     "bell" : {
       "name" : "Bell",
-      "idSlug" : "bell",
       "value" : "100cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "belt-of-cloud-giant-strength" : {
       "name" : "Belt of Cloud Giant Strength",
-      "idSlug" : "belt-of-cloud-giant-strength",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "legendary",
@@ -318,7 +279,6 @@
     },
     "belt-of-dwarvenkind" : {
       "name" : "Belt of Dwarvenkind",
-      "idSlug" : "belt-of-dwarvenkind",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -326,7 +286,6 @@
     },
     "belt-of-fire-giant-strength" : {
       "name" : "Belt of Fire Giant Strength",
-      "idSlug" : "belt-of-fire-giant-strength",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -334,7 +293,6 @@
     },
     "belt-of-frost-giant-strength" : {
       "name" : "Belt of Frost Giant Strength",
-      "idSlug" : "belt-of-frost-giant-strength",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -342,7 +300,6 @@
     },
     "belt-of-hill-giant-strength" : {
       "name" : "Belt of Hill Giant Strength",
-      "idSlug" : "belt-of-hill-giant-strength",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -350,7 +307,6 @@
     },
     "belt-of-stone-giant-strength" : {
       "name" : "Belt of Stone Giant Strength",
-      "idSlug" : "belt-of-stone-giant-strength",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -358,7 +314,6 @@
     },
     "belt-of-storm-giant-strength" : {
       "name" : "Belt of Storm Giant Strength",
-      "idSlug" : "belt-of-storm-giant-strength",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "legendary",
@@ -366,7 +321,6 @@
     },
     "bit-and-bridle" : {
       "name" : "Bit and bridle",
-      "idSlug" : "bit-and-bridle",
       "weight" : 1.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -374,7 +328,6 @@
     },
     "black-dragon-scale-mail" : {
       "name" : "Black Dragon Scale Mail",
-      "idSlug" : "black-dragon-scale-mail",
       "weight" : 45.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -382,7 +335,6 @@
     },
     "blanket" : {
       "name" : "Blanket",
-      "idSlug" : "blanket",
       "weight" : 3.0,
       "value" : "50cp",
       "rarity" : "none",
@@ -390,7 +342,6 @@
     },
     "block-and-tackle" : {
       "name" : "Block and Tackle",
-      "idSlug" : "block-and-tackle",
       "weight" : 5.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -398,7 +349,6 @@
     },
     "blowgun" : {
       "name" : "Blowgun",
-      "idSlug" : "blowgun",
       "weight" : 1.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -406,7 +356,6 @@
     },
     "blowgun-needle" : {
       "name" : "Blowgun Needle",
-      "idSlug" : "blowgun-needle",
       "weight" : 0.02,
       "value" : "2cp",
       "rarity" : "none",
@@ -414,7 +363,6 @@
     },
     "blowgun-needles-50" : {
       "name" : "Blowgun Needles (50)",
-      "idSlug" : "blowgun-needles-50",
       "weight" : 1.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -422,7 +370,6 @@
     },
     "blue-dragon-scale-mail" : {
       "name" : "Blue Dragon Scale Mail",
-      "idSlug" : "blue-dragon-scale-mail",
       "weight" : 45.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -430,7 +377,6 @@
     },
     "book" : {
       "name" : "Book",
-      "idSlug" : "book",
       "weight" : 5.0,
       "value" : "2500cp",
       "rarity" : "none",
@@ -438,7 +384,6 @@
     },
     "boots-of-elvenkind" : {
       "name" : "Boots of Elvenkind",
-      "idSlug" : "boots-of-elvenkind",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -446,7 +391,6 @@
     },
     "boots-of-levitation" : {
       "name" : "Boots of Levitation",
-      "idSlug" : "boots-of-levitation",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -454,7 +398,6 @@
     },
     "boots-of-speed" : {
       "name" : "Boots of Speed",
-      "idSlug" : "boots-of-speed",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -462,7 +405,6 @@
     },
     "boots-of-striding-and-springing" : {
       "name" : "Boots of Striding and Springing",
-      "idSlug" : "boots-of-striding-and-springing",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -470,7 +412,6 @@
     },
     "boots-of-the-winterlands" : {
       "name" : "Boots of the Winterlands",
-      "idSlug" : "boots-of-the-winterlands",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -478,7 +419,6 @@
     },
     "bowl-of-commanding-water-elementals" : {
       "name" : "Bowl of Commanding Water Elementals",
-      "idSlug" : "bowl-of-commanding-water-elementals",
       "weight" : 3.0,
       "wondrous" : true,
       "tier" : "major",
@@ -487,7 +427,6 @@
     },
     "bracers-of-archery" : {
       "name" : "Bracers of Archery",
-      "idSlug" : "bracers-of-archery",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -495,7 +434,6 @@
     },
     "bracers-of-defense" : {
       "name" : "Bracers of Defense",
-      "idSlug" : "bracers-of-defense",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -503,7 +441,6 @@
     },
     "brass-dragon-scale-mail" : {
       "name" : "Brass Dragon Scale Mail",
-      "idSlug" : "brass-dragon-scale-mail",
       "weight" : 45.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -511,7 +448,6 @@
     },
     "brazier-of-commanding-fire-elementals" : {
       "name" : "Brazier of Commanding Fire Elementals",
-      "idSlug" : "brazier-of-commanding-fire-elementals",
       "weight" : 5.0,
       "wondrous" : true,
       "tier" : "major",
@@ -520,7 +456,6 @@
     },
     "breastplate" : {
       "name" : "Breastplate",
-      "idSlug" : "breastplate",
       "weight" : 20.0,
       "value" : "40000cp",
       "rarity" : "none",
@@ -528,7 +463,6 @@
     },
     "brewers-supplies" : {
       "name" : "Brewer's Supplies",
-      "idSlug" : "brewers-supplies",
       "weight" : 9.0,
       "value" : "2000cp",
       "rarity" : "none",
@@ -536,7 +470,6 @@
     },
     "bronze-dragon-scale-mail" : {
       "name" : "Bronze Dragon Scale Mail",
-      "idSlug" : "bronze-dragon-scale-mail",
       "weight" : 45.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -544,7 +477,6 @@
     },
     "brooch-of-shielding" : {
       "name" : "Brooch of Shielding",
-      "idSlug" : "brooch-of-shielding",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -552,7 +484,6 @@
     },
     "broom-of-flying" : {
       "name" : "Broom of Flying",
-      "idSlug" : "broom-of-flying",
       "weight" : 3.0,
       "wondrous" : true,
       "tier" : "major",
@@ -561,7 +492,6 @@
     },
     "bucket" : {
       "name" : "Bucket",
-      "idSlug" : "bucket",
       "weight" : 2.0,
       "value" : "5cp",
       "rarity" : "none",
@@ -569,7 +499,6 @@
     },
     "bullseye-lantern" : {
       "name" : "Bullseye Lantern",
-      "idSlug" : "bullseye-lantern",
       "weight" : 2.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -577,7 +506,6 @@
     },
     "burglars-pack" : {
       "name" : "Burglar's Pack",
-      "idSlug" : "burglars-pack",
       "weight" : 44.5,
       "value" : "1600cp",
       "rarity" : "none",
@@ -585,14 +513,12 @@
     },
     "burnt-othur-fumes" : {
       "name" : "Burnt Othur Fumes",
-      "idSlug" : "burnt-othur-fumes",
       "value" : "50000cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "calligraphers-supplies" : {
       "name" : "Calligrapher's Supplies",
-      "idSlug" : "calligraphers-supplies",
       "weight" : 5.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -600,7 +526,6 @@
     },
     "caltrop" : {
       "name" : "Caltrop",
-      "idSlug" : "caltrop",
       "weight" : 0.1,
       "value" : "5cp",
       "rarity" : "none",
@@ -608,7 +533,6 @@
     },
     "caltrops-bag-of-20" : {
       "name" : "Caltrops (bag of 20)",
-      "idSlug" : "caltrops-bag-of-20",
       "weight" : 2.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -616,21 +540,18 @@
     },
     "camel" : {
       "name" : "Camel",
-      "idSlug" : "camel",
       "value" : "5000cp",
       "rarity" : "none",
       "type" : "mounts"
     },
     "candle" : {
       "name" : "Candle",
-      "idSlug" : "candle",
       "value" : "1cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "candle-of-invocation" : {
       "name" : "Candle of Invocation",
-      "idSlug" : "candle-of-invocation",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -638,14 +559,12 @@
     },
     "canvas-1-sq-yd" : {
       "name" : "Canvas (1 sq. yd.)",
-      "idSlug" : "canvas-1-sq-yd",
       "value" : "10cp",
       "rarity" : "none",
       "type" : "trade-good"
     },
     "cape-of-the-mountebank" : {
       "name" : "Cape of the Mountebank",
-      "idSlug" : "cape-of-the-mountebank",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -653,7 +572,6 @@
     },
     "carpenters-tools" : {
       "name" : "Carpenter's Tools",
-      "idSlug" : "carpenters-tools",
       "weight" : 6.0,
       "value" : "800cp",
       "rarity" : "none",
@@ -661,7 +579,6 @@
     },
     "carpet-of-flying-3-ft-5-ft" : {
       "name" : "Carpet of Flying, 3 ft. × 5 ft.",
-      "idSlug" : "carpet-of-flying-3-ft-5-ft",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -669,7 +586,6 @@
     },
     "carpet-of-flying-4-ft-6-ft" : {
       "name" : "Carpet of Flying, 4 ft. × 6 ft.",
-      "idSlug" : "carpet-of-flying-4-ft-6-ft",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -677,7 +593,6 @@
     },
     "carpet-of-flying-5-ft-7-ft" : {
       "name" : "Carpet of Flying, 5 ft. × 7 ft.",
-      "idSlug" : "carpet-of-flying-5-ft-7-ft",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -685,7 +600,6 @@
     },
     "carpet-of-flying-6-ft-9-ft" : {
       "name" : "Carpet of Flying, 6 ft. × 9 ft.",
-      "idSlug" : "carpet-of-flying-6-ft-9-ft",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -693,7 +607,6 @@
     },
     "carriage" : {
       "name" : "Carriage",
-      "idSlug" : "carriage",
       "weight" : 600.0,
       "value" : "10000cp",
       "rarity" : "none",
@@ -701,7 +614,6 @@
     },
     "cart" : {
       "name" : "Cart",
-      "idSlug" : "cart",
       "weight" : 200.0,
       "value" : "1500cp",
       "rarity" : "none",
@@ -709,7 +621,6 @@
     },
     "cartographers-tools" : {
       "name" : "Cartographer's Tools",
-      "idSlug" : "cartographers-tools",
       "weight" : 6.0,
       "value" : "1500cp",
       "rarity" : "none",
@@ -717,7 +628,6 @@
     },
     "censer-of-controlling-air-elementals" : {
       "name" : "Censer of Controlling Air Elementals",
-      "idSlug" : "censer-of-controlling-air-elementals",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "major",
@@ -726,7 +636,6 @@
     },
     "chain-10-feet" : {
       "name" : "Chain (10 feet)",
-      "idSlug" : "chain-10-feet",
       "weight" : 10.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -734,7 +643,6 @@
     },
     "chain-mail" : {
       "name" : "Chain Mail",
-      "idSlug" : "chain-mail",
       "weight" : 55.0,
       "value" : "7500cp",
       "rarity" : "none",
@@ -742,7 +650,6 @@
     },
     "chain-shirt" : {
       "name" : "Chain Shirt",
-      "idSlug" : "chain-shirt",
       "weight" : 20.0,
       "value" : "5000cp",
       "rarity" : "none",
@@ -750,14 +657,12 @@
     },
     "chalk-1-piece" : {
       "name" : "Chalk (1 piece)",
-      "idSlug" : "chalk-1-piece",
       "value" : "1cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "chariot" : {
       "name" : "Chariot",
-      "idSlug" : "chariot",
       "weight" : 100.0,
       "value" : "25000cp",
       "rarity" : "none",
@@ -765,14 +670,12 @@
     },
     "chicken" : {
       "name" : "Chicken",
-      "idSlug" : "chicken",
       "value" : "2cp",
       "rarity" : "none",
       "type" : "trade-good"
     },
     "chime-of-opening" : {
       "name" : "Chime of Opening",
-      "idSlug" : "chime-of-opening",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "minor",
@@ -781,14 +684,12 @@
     },
     "chunk-of-meat" : {
       "name" : "Chunk of Meat",
-      "idSlug" : "chunk-of-meat",
       "value" : "30cp",
       "rarity" : "none",
       "type" : "food"
     },
     "cinnamon" : {
       "name" : "Cinnamon",
-      "idSlug" : "cinnamon",
       "weight" : 1.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -796,7 +697,6 @@
     },
     "circlet-of-blasting" : {
       "name" : "Circlet of Blasting",
-      "idSlug" : "circlet-of-blasting",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -804,7 +704,6 @@
     },
     "climbers-kit" : {
       "name" : "Climber's Kit",
-      "idSlug" : "climbers-kit",
       "weight" : 12.0,
       "value" : "2500cp",
       "rarity" : "none",
@@ -812,7 +711,6 @@
     },
     "cloak-of-arachnida" : {
       "name" : "Cloak of Arachnida",
-      "idSlug" : "cloak-of-arachnida",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -820,7 +718,6 @@
     },
     "cloak-of-displacement" : {
       "name" : "Cloak of Displacement",
-      "idSlug" : "cloak-of-displacement",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -828,7 +725,6 @@
     },
     "cloak-of-elvenkind" : {
       "name" : "Cloak of Elvenkind",
-      "idSlug" : "cloak-of-elvenkind",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -836,7 +732,6 @@
     },
     "cloak-of-protection" : {
       "name" : "Cloak of Protection",
-      "idSlug" : "cloak-of-protection",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -844,7 +739,6 @@
     },
     "cloak-of-the-bat" : {
       "name" : "Cloak of the Bat",
-      "idSlug" : "cloak-of-the-bat",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -852,7 +746,6 @@
     },
     "cloak-of-the-manta-ray" : {
       "name" : "Cloak of the Manta Ray",
-      "idSlug" : "cloak-of-the-manta-ray",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "uncommon",
@@ -860,7 +753,6 @@
     },
     "cloves" : {
       "name" : "Cloves",
-      "idSlug" : "cloves",
       "weight" : 1.0,
       "value" : "300cp",
       "rarity" : "none",
@@ -868,7 +760,6 @@
     },
     "club" : {
       "name" : "Club",
-      "idSlug" : "club",
       "weight" : 2.0,
       "value" : "10cp",
       "rarity" : "none",
@@ -876,7 +767,6 @@
     },
     "cobblers-tools" : {
       "name" : "Cobbler's Tools",
-      "idSlug" : "cobblers-tools",
       "weight" : 5.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -884,7 +774,6 @@
     },
     "common-clothes" : {
       "name" : "Common Clothes",
-      "idSlug" : "common-clothes",
       "weight" : 3.0,
       "value" : "50cp",
       "rarity" : "none",
@@ -892,14 +781,12 @@
     },
     "common-wine-pitcher" : {
       "name" : "Common Wine (Pitcher)",
-      "idSlug" : "common-wine-pitcher",
       "value" : "20cp",
       "rarity" : "none",
       "type" : "food"
     },
     "component-pouch" : {
       "name" : "Component Pouch",
-      "idSlug" : "component-pouch",
       "weight" : 2.0,
       "value" : "2500cp",
       "rarity" : "none",
@@ -907,7 +794,6 @@
     },
     "cooks-utensils" : {
       "name" : "Cook's Utensils",
-      "idSlug" : "cooks-utensils",
       "weight" : 8.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -915,7 +801,6 @@
     },
     "copper" : {
       "name" : "Copper",
-      "idSlug" : "copper",
       "weight" : 1.0,
       "value" : "50cp",
       "rarity" : "none",
@@ -923,7 +808,6 @@
     },
     "copper-dragon-scale-mail" : {
       "name" : "Copper Dragon Scale Mail",
-      "idSlug" : "copper-dragon-scale-mail",
       "weight" : 45.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -931,7 +815,6 @@
     },
     "costume-clothes" : {
       "name" : "Costume Clothes",
-      "idSlug" : "costume-clothes",
       "weight" : 4.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -939,28 +822,24 @@
     },
     "cotton-cloth-1-sq-yd" : {
       "name" : "Cotton Cloth (1 sq. yd.)",
-      "idSlug" : "cotton-cloth-1-sq-yd",
       "value" : "50cp",
       "rarity" : "none",
       "type" : "trade-good"
     },
     "cow" : {
       "name" : "Cow",
-      "idSlug" : "cow",
       "value" : "1000cp",
       "rarity" : "none",
       "type" : "trade-good"
     },
     "crawler-mucus-contact" : {
       "name" : "Crawler Mucus (Contact)",
-      "idSlug" : "crawler-mucus-contact",
       "value" : "20000cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "crossbow-bolt" : {
       "name" : "Crossbow Bolt",
-      "idSlug" : "crossbow-bolt",
       "weight" : 0.075,
       "value" : "5cp",
       "rarity" : "none",
@@ -968,7 +847,6 @@
     },
     "crossbow-bolts-20" : {
       "name" : "Crossbow Bolts (20)",
-      "idSlug" : "crossbow-bolts-20",
       "weight" : 1.5,
       "value" : "100cp",
       "rarity" : "none",
@@ -976,7 +854,6 @@
     },
     "crowbar" : {
       "name" : "Crowbar",
-      "idSlug" : "crowbar",
       "weight" : 5.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -984,7 +861,6 @@
     },
     "crystal" : {
       "name" : "Crystal",
-      "idSlug" : "crystal",
       "weight" : 1.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -992,7 +868,6 @@
     },
     "crystal-ball" : {
       "name" : "Crystal Ball",
-      "idSlug" : "crystal-ball",
       "weight" : 3.0,
       "wondrous" : true,
       "tier" : "major",
@@ -1001,7 +876,6 @@
     },
     "cube-of-force" : {
       "name" : "Cube of Force",
-      "idSlug" : "cube-of-force",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -1009,7 +883,6 @@
     },
     "cubic-gate" : {
       "name" : "Cubic Gate",
-      "idSlug" : "cubic-gate",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "legendary",
@@ -1017,7 +890,6 @@
     },
     "dagger" : {
       "name" : "Dagger",
-      "idSlug" : "dagger",
       "weight" : 1.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -1025,7 +897,6 @@
     },
     "dagger-of-venom" : {
       "name" : "Dagger of Venom",
-      "idSlug" : "dagger-of-venom",
       "weight" : 1.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -1033,7 +904,6 @@
     },
     "dart" : {
       "name" : "Dart",
-      "idSlug" : "dart",
       "weight" : 0.25,
       "value" : "5cp",
       "rarity" : "none",
@@ -1041,7 +911,6 @@
     },
     "decanter-of-endless-water" : {
       "name" : "Decanter of Endless Water",
-      "idSlug" : "decanter-of-endless-water",
       "weight" : 2.0,
       "wondrous" : true,
       "tier" : "minor",
@@ -1050,7 +919,6 @@
     },
     "deck-of-illusions" : {
       "name" : "Deck of Illusions",
-      "idSlug" : "deck-of-illusions",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -1058,7 +926,6 @@
     },
     "deck-of-many-things" : {
       "name" : "Deck of Many Things",
-      "idSlug" : "deck-of-many-things",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "legendary",
@@ -1066,7 +933,6 @@
     },
     "demon-armor" : {
       "name" : "Demon Armor",
-      "idSlug" : "demon-armor",
       "weight" : 65.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -1074,14 +940,12 @@
     },
     "dice-set" : {
       "name" : "Dice Set",
-      "idSlug" : "dice-set",
       "value" : "10cp",
       "rarity" : "none",
       "type" : "gaming-set"
     },
     "dimensional-shackles" : {
       "name" : "Dimensional Shackles",
-      "idSlug" : "dimensional-shackles",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -1089,7 +953,6 @@
     },
     "diplomats-pack" : {
       "name" : "Diplomat's Pack",
-      "idSlug" : "diplomats-pack",
       "weight" : 36.0,
       "value" : "3900cp",
       "rarity" : "none",
@@ -1097,7 +960,6 @@
     },
     "disguise-kit" : {
       "name" : "Disguise Kit",
-      "idSlug" : "disguise-kit",
       "weight" : 3.0,
       "value" : "2500cp",
       "rarity" : "none",
@@ -1105,28 +967,24 @@
     },
     "donkey" : {
       "name" : "Donkey",
-      "idSlug" : "donkey",
       "value" : "800cp",
       "rarity" : "none",
       "type" : "mounts"
     },
     "draft-horse" : {
       "name" : "Draft Horse",
-      "idSlug" : "draft-horse",
       "value" : "5000cp",
       "rarity" : "none",
       "type" : "mounts"
     },
     "drow-poison" : {
       "name" : "Drow Poison",
-      "idSlug" : "drow-poison",
       "value" : "20000cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "drum" : {
       "name" : "Drum",
-      "idSlug" : "drum",
       "weight" : 3.0,
       "value" : "600cp",
       "rarity" : "none",
@@ -1134,7 +992,6 @@
     },
     "dulcimer" : {
       "name" : "Dulcimer",
-      "idSlug" : "dulcimer",
       "weight" : 10.0,
       "value" : "2500cp",
       "rarity" : "none",
@@ -1142,7 +999,6 @@
     },
     "dungeoneers-pack" : {
       "name" : "Dungeoneer's Pack",
-      "idSlug" : "dungeoneers-pack",
       "weight" : 61.5,
       "value" : "1200cp",
       "rarity" : "none",
@@ -1150,7 +1006,6 @@
     },
     "dust-of-disappearance" : {
       "name" : "Dust of Disappearance",
-      "idSlug" : "dust-of-disappearance",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "uncommon",
@@ -1158,7 +1013,6 @@
     },
     "dust-of-dryness" : {
       "name" : "Dust of Dryness",
-      "idSlug" : "dust-of-dryness",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "uncommon",
@@ -1166,7 +1020,6 @@
     },
     "dust-of-sneezing-and-choking" : {
       "name" : "Dust of Sneezing and Choking",
-      "idSlug" : "dust-of-sneezing-and-choking",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "uncommon",
@@ -1174,7 +1027,6 @@
     },
     "dwarven-plate" : {
       "name" : "Dwarven Plate",
-      "idSlug" : "dwarven-plate",
       "weight" : 65.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -1182,7 +1034,6 @@
     },
     "dwarven-thrower" : {
       "name" : "Dwarven Thrower",
-      "idSlug" : "dwarven-thrower",
       "weight" : 2.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -1190,7 +1041,6 @@
     },
     "efreeti-bottle" : {
       "name" : "Efreeti Bottle",
-      "idSlug" : "efreeti-bottle",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "major",
@@ -1199,14 +1049,12 @@
     },
     "eldritch-staff" : {
       "name" : "Eldritch Staff",
-      "idSlug" : "eldritch-staff",
       "weight" : 4.0,
       "rarity" : "very rare",
       "type" : "melee-weapon"
     },
     "elemental-gem-blue-sapphire" : {
       "name" : "Elemental Gem, Blue Sapphire",
-      "idSlug" : "elemental-gem-blue-sapphire",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "uncommon",
@@ -1214,7 +1062,6 @@
     },
     "elemental-gem-emerald" : {
       "name" : "Elemental Gem, Emerald",
-      "idSlug" : "elemental-gem-emerald",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "uncommon",
@@ -1222,7 +1069,6 @@
     },
     "elemental-gem-red-corundum" : {
       "name" : "Elemental Gem, Red Corundum",
-      "idSlug" : "elemental-gem-red-corundum",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "uncommon",
@@ -1230,7 +1076,6 @@
     },
     "elemental-gem-yellow-diamond" : {
       "name" : "Elemental Gem, Yellow Diamond",
-      "idSlug" : "elemental-gem-yellow-diamond",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "uncommon",
@@ -1238,14 +1083,12 @@
     },
     "elephant" : {
       "name" : "Elephant",
-      "idSlug" : "elephant",
       "value" : "20000cp",
       "rarity" : "none",
       "type" : "mounts"
     },
     "elven-chain" : {
       "name" : "Elven Chain",
-      "idSlug" : "elven-chain",
       "weight" : 20.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -1253,14 +1096,12 @@
     },
     "emblem" : {
       "name" : "Emblem",
-      "idSlug" : "emblem",
       "value" : "500cp",
       "rarity" : "none",
       "type" : "spellcaster-focus"
     },
     "entertainers-pack" : {
       "name" : "Entertainer's Pack",
-      "idSlug" : "entertainers-pack",
       "weight" : 38.0,
       "value" : "4000cp",
       "rarity" : "none",
@@ -1268,14 +1109,12 @@
     },
     "essence-of-ether" : {
       "name" : "Essence of Ether",
-      "idSlug" : "essence-of-ether",
       "value" : "30000cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "eversmoking-bottle" : {
       "name" : "Eversmoking Bottle",
-      "idSlug" : "eversmoking-bottle",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "major",
@@ -1284,7 +1123,6 @@
     },
     "exotic-saddle" : {
       "name" : "Exotic Saddle",
-      "idSlug" : "exotic-saddle",
       "weight" : 40.0,
       "value" : "6000cp",
       "rarity" : "none",
@@ -1292,7 +1130,6 @@
     },
     "explorers-pack" : {
       "name" : "Explorer's Pack",
-      "idSlug" : "explorers-pack",
       "weight" : 59.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -1300,7 +1137,6 @@
     },
     "eyes-of-charming" : {
       "name" : "Eyes of Charming",
-      "idSlug" : "eyes-of-charming",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -1308,7 +1144,6 @@
     },
     "eyes-of-minute-seeing" : {
       "name" : "Eyes of Minute Seeing",
-      "idSlug" : "eyes-of-minute-seeing",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "uncommon",
@@ -1316,7 +1151,6 @@
     },
     "eyes-of-the-eagle" : {
       "name" : "Eyes of the Eagle",
-      "idSlug" : "eyes-of-the-eagle",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -1324,7 +1158,6 @@
     },
     "feather-token-anchor" : {
       "name" : "Feather Token, Anchor",
-      "idSlug" : "feather-token-anchor",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "rare",
@@ -1332,7 +1165,6 @@
     },
     "feather-token-bird" : {
       "name" : "Feather Token, Bird",
-      "idSlug" : "feather-token-bird",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "rare",
@@ -1340,7 +1172,6 @@
     },
     "feather-token-fan" : {
       "name" : "Feather Token, Fan",
-      "idSlug" : "feather-token-fan",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "rare",
@@ -1348,7 +1179,6 @@
     },
     "feather-token-swan-boat" : {
       "name" : "Feather Token, Swan Boat",
-      "idSlug" : "feather-token-swan-boat",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "rare",
@@ -1356,7 +1186,6 @@
     },
     "feather-token-tree" : {
       "name" : "Feather Token, Tree",
-      "idSlug" : "feather-token-tree",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "rare",
@@ -1364,7 +1193,6 @@
     },
     "feather-token-whip" : {
       "name" : "Feather Token, Whip",
-      "idSlug" : "feather-token-whip",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "rare",
@@ -1372,7 +1200,6 @@
     },
     "feed-per-day" : {
       "name" : "Feed (per day)",
-      "idSlug" : "feed-per-day",
       "weight" : 10.0,
       "value" : "5cp",
       "rarity" : "none",
@@ -1380,7 +1207,6 @@
     },
     "figurine-of-wondrous-power-bronze-griffon" : {
       "name" : "Figurine of Wondrous Power, Bronze Griffon",
-      "idSlug" : "figurine-of-wondrous-power-bronze-griffon",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -1388,7 +1214,6 @@
     },
     "figurine-of-wondrous-power-ebony-fly" : {
       "name" : "Figurine of Wondrous Power, Ebony Fly",
-      "idSlug" : "figurine-of-wondrous-power-ebony-fly",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -1396,7 +1221,6 @@
     },
     "figurine-of-wondrous-power-golden-lions" : {
       "name" : "Figurine of Wondrous Power, Golden Lions",
-      "idSlug" : "figurine-of-wondrous-power-golden-lions",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -1404,7 +1228,6 @@
     },
     "figurine-of-wondrous-power-ivory-goats" : {
       "name" : "Figurine of Wondrous Power, Ivory Goats",
-      "idSlug" : "figurine-of-wondrous-power-ivory-goats",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -1412,7 +1235,6 @@
     },
     "figurine-of-wondrous-power-marble-elephant" : {
       "name" : "Figurine of Wondrous Power, Marble Elephant",
-      "idSlug" : "figurine-of-wondrous-power-marble-elephant",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -1420,7 +1242,6 @@
     },
     "figurine-of-wondrous-power-obsidian-steed" : {
       "name" : "Figurine of Wondrous Power, Obsidian Steed",
-      "idSlug" : "figurine-of-wondrous-power-obsidian-steed",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -1428,7 +1249,6 @@
     },
     "figurine-of-wondrous-power-onyx-dog" : {
       "name" : "Figurine of Wondrous Power, Onyx Dog",
-      "idSlug" : "figurine-of-wondrous-power-onyx-dog",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -1436,7 +1256,6 @@
     },
     "figurine-of-wondrous-power-serpentine-owl" : {
       "name" : "Figurine of Wondrous Power, Serpentine Owl",
-      "idSlug" : "figurine-of-wondrous-power-serpentine-owl",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -1444,7 +1263,6 @@
     },
     "figurine-of-wondrous-power-silver-raven" : {
       "name" : "Figurine of Wondrous Power, Silver Raven",
-      "idSlug" : "figurine-of-wondrous-power-silver-raven",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -1452,7 +1270,6 @@
     },
     "fine-clothes" : {
       "name" : "Fine Clothes",
-      "idSlug" : "fine-clothes",
       "weight" : 6.0,
       "value" : "1500cp",
       "rarity" : "none",
@@ -1460,14 +1277,12 @@
     },
     "fine-wine-bottle" : {
       "name" : "Fine Wine (Bottle)",
-      "idSlug" : "fine-wine-bottle",
       "value" : "1000cp",
       "rarity" : "none",
       "type" : "food"
     },
     "fishing-tackle" : {
       "name" : "Fishing Tackle",
-      "idSlug" : "fishing-tackle",
       "weight" : 4.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -1475,7 +1290,6 @@
     },
     "flail" : {
       "name" : "Flail",
-      "idSlug" : "flail",
       "weight" : 2.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -1483,7 +1297,6 @@
     },
     "flask" : {
       "name" : "Flask",
-      "idSlug" : "flask",
       "weight" : 1.0,
       "value" : "2cp",
       "rarity" : "none",
@@ -1491,7 +1304,6 @@
     },
     "flour" : {
       "name" : "Flour",
-      "idSlug" : "flour",
       "weight" : 1.0,
       "value" : "2cp",
       "rarity" : "none",
@@ -1499,7 +1311,6 @@
     },
     "flute" : {
       "name" : "Flute",
-      "idSlug" : "flute",
       "weight" : 1.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -1507,7 +1318,6 @@
     },
     "folding-boat" : {
       "name" : "Folding Boat",
-      "idSlug" : "folding-boat",
       "weight" : 4.0,
       "wondrous" : true,
       "tier" : "minor",
@@ -1516,7 +1326,6 @@
     },
     "forgery-kit" : {
       "name" : "Forgery Kit",
-      "idSlug" : "forgery-kit",
       "weight" : 5.0,
       "value" : "1500cp",
       "rarity" : "none",
@@ -1524,14 +1333,12 @@
     },
     "galley" : {
       "name" : "Galley",
-      "idSlug" : "galley",
       "value" : "3000000cp",
       "rarity" : "none",
       "type" : "vehicle"
     },
     "gauntlets-of-ogre-power" : {
       "name" : "Gauntlets of Ogre Power",
-      "idSlug" : "gauntlets-of-ogre-power",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -1539,7 +1346,6 @@
     },
     "gem-of-brightness" : {
       "name" : "Gem of Brightness",
-      "idSlug" : "gem-of-brightness",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "major",
@@ -1548,7 +1354,6 @@
     },
     "gem-of-seeing" : {
       "name" : "Gem of Seeing",
-      "idSlug" : "gem-of-seeing",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "major",
@@ -1557,7 +1362,6 @@
     },
     "ginger" : {
       "name" : "Ginger",
-      "idSlug" : "ginger",
       "weight" : 1.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -1565,7 +1369,6 @@
     },
     "glaive" : {
       "name" : "Glaive",
-      "idSlug" : "glaive",
       "weight" : 6.0,
       "value" : "2000cp",
       "rarity" : "none",
@@ -1573,7 +1376,6 @@
     },
     "glamoured-studded-leather" : {
       "name" : "Glamoured Studded Leather",
-      "idSlug" : "glamoured-studded-leather",
       "weight" : 13.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -1581,7 +1383,6 @@
     },
     "glass-bottle" : {
       "name" : "Glass Bottle",
-      "idSlug" : "glass-bottle",
       "weight" : 2.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -1589,7 +1390,6 @@
     },
     "glassblowers-tools" : {
       "name" : "Glassblower's Tools",
-      "idSlug" : "glassblowers-tools",
       "weight" : 5.0,
       "value" : "3000cp",
       "rarity" : "none",
@@ -1597,7 +1397,6 @@
     },
     "gloves-of-missile-snaring" : {
       "name" : "Gloves of Missile Snaring",
-      "idSlug" : "gloves-of-missile-snaring",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -1605,7 +1404,6 @@
     },
     "gloves-of-swimming-and-climbing" : {
       "name" : "Gloves of Swimming and Climbing",
-      "idSlug" : "gloves-of-swimming-and-climbing",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -1613,14 +1411,12 @@
     },
     "goat" : {
       "name" : "Goat",
-      "idSlug" : "goat",
       "value" : "100cp",
       "rarity" : "none",
       "type" : "trade-good"
     },
     "goggles-of-night" : {
       "name" : "Goggles of Night",
-      "idSlug" : "goggles-of-night",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "uncommon",
@@ -1628,7 +1424,6 @@
     },
     "gold" : {
       "name" : "Gold",
-      "idSlug" : "gold",
       "weight" : 1.0,
       "value" : "5000cp",
       "rarity" : "none",
@@ -1636,7 +1431,6 @@
     },
     "gold-dragon-scale-mail" : {
       "name" : "Gold Dragon Scale Mail",
-      "idSlug" : "gold-dragon-scale-mail",
       "weight" : 45.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -1644,7 +1438,6 @@
     },
     "grappling-hook" : {
       "name" : "Grappling Hook",
-      "idSlug" : "grappling-hook",
       "weight" : 4.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -1652,7 +1445,6 @@
     },
     "greataxe" : {
       "name" : "Greataxe",
-      "idSlug" : "greataxe",
       "weight" : 7.0,
       "value" : "3000cp",
       "rarity" : "none",
@@ -1660,7 +1452,6 @@
     },
     "greatclub" : {
       "name" : "Greatclub",
-      "idSlug" : "greatclub",
       "weight" : 10.0,
       "value" : "20cp",
       "rarity" : "none",
@@ -1668,7 +1459,6 @@
     },
     "greatsword" : {
       "name" : "Greatsword",
-      "idSlug" : "greatsword",
       "weight" : 6.0,
       "value" : "5000cp",
       "rarity" : "none",
@@ -1676,7 +1466,6 @@
     },
     "green-dragon-scale-mail" : {
       "name" : "Green Dragon Scale Mail",
-      "idSlug" : "green-dragon-scale-mail",
       "weight" : 45.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -1684,7 +1473,6 @@
     },
     "halberd" : {
       "name" : "Halberd",
-      "idSlug" : "halberd",
       "weight" : 6.0,
       "value" : "2000cp",
       "rarity" : "none",
@@ -1692,7 +1480,6 @@
     },
     "half-plate-armor" : {
       "name" : "Half Plate Armor",
-      "idSlug" : "half-plate-armor",
       "weight" : 40.0,
       "value" : "75000cp",
       "rarity" : "none",
@@ -1700,7 +1487,6 @@
     },
     "hammer" : {
       "name" : "Hammer",
-      "idSlug" : "hammer",
       "weight" : 3.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -1708,7 +1494,6 @@
     },
     "hammer-of-thunderbolts" : {
       "name" : "Hammer of Thunderbolts",
-      "idSlug" : "hammer-of-thunderbolts",
       "weight" : 10.0,
       "tier" : "major",
       "rarity" : "legendary",
@@ -1716,7 +1501,6 @@
     },
     "hand-crossbow" : {
       "name" : "Hand Crossbow",
-      "idSlug" : "hand-crossbow",
       "weight" : 3.0,
       "value" : "7500cp",
       "rarity" : "none",
@@ -1724,7 +1508,6 @@
     },
     "handaxe" : {
       "name" : "Handaxe",
-      "idSlug" : "handaxe",
       "weight" : 2.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -1732,7 +1515,6 @@
     },
     "hat-of-disguise" : {
       "name" : "Hat of Disguise",
-      "idSlug" : "hat-of-disguise",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -1740,7 +1522,6 @@
     },
     "headband-of-intellect" : {
       "name" : "Headband of Intellect",
-      "idSlug" : "headband-of-intellect",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -1748,7 +1529,6 @@
     },
     "healers-kit" : {
       "name" : "Healer's Kit",
-      "idSlug" : "healers-kit",
       "weight" : 3.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -1756,7 +1536,6 @@
     },
     "heavy-crossbow" : {
       "name" : "Heavy Crossbow",
-      "idSlug" : "heavy-crossbow",
       "weight" : 18.0,
       "value" : "5000cp",
       "rarity" : "none",
@@ -1764,7 +1543,6 @@
     },
     "helm-of-brilliance" : {
       "name" : "Helm of Brilliance",
-      "idSlug" : "helm-of-brilliance",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -1772,7 +1550,6 @@
     },
     "helm-of-comprehending-languages" : {
       "name" : "Helm of Comprehending Languages",
-      "idSlug" : "helm-of-comprehending-languages",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "uncommon",
@@ -1780,7 +1557,6 @@
     },
     "helm-of-telepathy" : {
       "name" : "Helm of Telepathy",
-      "idSlug" : "helm-of-telepathy",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -1788,7 +1564,6 @@
     },
     "helm-of-teleportation" : {
       "name" : "Helm of Teleportation",
-      "idSlug" : "helm-of-teleportation",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -1796,7 +1571,6 @@
     },
     "hempen-rope-50-feet" : {
       "name" : "Hempen Rope (50 feet)",
-      "idSlug" : "hempen-rope-50-feet",
       "weight" : 10.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -1804,7 +1578,6 @@
     },
     "herbalism-kit" : {
       "name" : "Herbalism Kit",
-      "idSlug" : "herbalism-kit",
       "weight" : 3.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -1812,7 +1585,6 @@
     },
     "hide-armor" : {
       "name" : "Hide Armor",
-      "idSlug" : "hide-armor",
       "weight" : 12.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -1820,7 +1592,6 @@
     },
     "holy-water-flask" : {
       "name" : "Holy Water (flask)",
-      "idSlug" : "holy-water-flask",
       "weight" : 1.0,
       "value" : "2500cp",
       "rarity" : "none",
@@ -1828,7 +1599,6 @@
     },
     "hooded-lantern" : {
       "name" : "Hooded Lantern",
-      "idSlug" : "hooded-lantern",
       "weight" : 2.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -1836,7 +1606,6 @@
     },
     "horn" : {
       "name" : "Horn",
-      "idSlug" : "horn",
       "weight" : 2.0,
       "value" : "300cp",
       "rarity" : "none",
@@ -1844,7 +1613,6 @@
     },
     "horn-of-blasting" : {
       "name" : "Horn of Blasting",
-      "idSlug" : "horn-of-blasting",
       "weight" : 2.0,
       "wondrous" : true,
       "tier" : "major",
@@ -1853,7 +1621,6 @@
     },
     "horn-of-valhalla-brass" : {
       "name" : "Horn of Valhalla, Brass",
-      "idSlug" : "horn-of-valhalla-brass",
       "weight" : 2.0,
       "wondrous" : true,
       "tier" : "major",
@@ -1862,7 +1629,6 @@
     },
     "horn-of-valhalla-bronze" : {
       "name" : "Horn of Valhalla, Bronze",
-      "idSlug" : "horn-of-valhalla-bronze",
       "weight" : 2.0,
       "wondrous" : true,
       "tier" : "major",
@@ -1871,7 +1637,6 @@
     },
     "horn-of-valhalla-iron" : {
       "name" : "Horn of Valhalla, Iron",
-      "idSlug" : "horn-of-valhalla-iron",
       "weight" : 2.0,
       "wondrous" : true,
       "tier" : "major",
@@ -1880,7 +1645,6 @@
     },
     "horn-of-valhalla-silver" : {
       "name" : "Horn of Valhalla, Silver",
-      "idSlug" : "horn-of-valhalla-silver",
       "weight" : 2.0,
       "wondrous" : true,
       "tier" : "major",
@@ -1889,7 +1653,6 @@
     },
     "horseshoes-of-a-zephyr" : {
       "name" : "Horseshoes of a Zephyr",
-      "idSlug" : "horseshoes-of-a-zephyr",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "very rare",
@@ -1897,7 +1660,6 @@
     },
     "horseshoes-of-speed" : {
       "name" : "Horseshoes of Speed",
-      "idSlug" : "horseshoes-of-speed",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "rare",
@@ -1905,7 +1667,6 @@
     },
     "hourglass" : {
       "name" : "Hourglass",
-      "idSlug" : "hourglass",
       "weight" : 1.0,
       "value" : "2500cp",
       "rarity" : "none",
@@ -1913,14 +1674,12 @@
     },
     "hunk-of-cheese" : {
       "name" : "Hunk of Cheese",
-      "idSlug" : "hunk-of-cheese",
       "value" : "10cp",
       "rarity" : "none",
       "type" : "food"
     },
     "hunting-trap" : {
       "name" : "Hunting Trap",
-      "idSlug" : "hunting-trap",
       "weight" : 25.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -1928,7 +1687,6 @@
     },
     "immovable-rod" : {
       "name" : "Immovable Rod",
-      "idSlug" : "immovable-rod",
       "weight" : 2.0,
       "tier" : "minor",
       "rarity" : "uncommon",
@@ -1936,21 +1694,18 @@
     },
     "ink-1-ounce-bottle" : {
       "name" : "Ink (1-ounce bottle)",
-      "idSlug" : "ink-1-ounce-bottle",
       "value" : "1000cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "ink-pen" : {
       "name" : "Ink Pen",
-      "idSlug" : "ink-pen",
       "value" : "2cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "instant-fortress" : {
       "name" : "Instant Fortress",
-      "idSlug" : "instant-fortress",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -1958,7 +1713,6 @@
     },
     "ioun-stone-absorption" : {
       "name" : "Ioun Stone, Absorption",
-      "idSlug" : "ioun-stone-absorption",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -1966,7 +1720,6 @@
     },
     "ioun-stone-agility" : {
       "name" : "Ioun Stone, Agility",
-      "idSlug" : "ioun-stone-agility",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -1974,7 +1727,6 @@
     },
     "ioun-stone-awareness" : {
       "name" : "Ioun Stone, Awareness",
-      "idSlug" : "ioun-stone-awareness",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -1982,7 +1734,6 @@
     },
     "ioun-stone-fortitude" : {
       "name" : "Ioun Stone, Fortitude",
-      "idSlug" : "ioun-stone-fortitude",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -1990,7 +1741,6 @@
     },
     "ioun-stone-greater-absorption" : {
       "name" : "Ioun Stone, Greater Absorption",
-      "idSlug" : "ioun-stone-greater-absorption",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "legendary",
@@ -1998,7 +1748,6 @@
     },
     "ioun-stone-insight" : {
       "name" : "Ioun Stone, Insight",
-      "idSlug" : "ioun-stone-insight",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -2006,7 +1755,6 @@
     },
     "ioun-stone-intellect" : {
       "name" : "Ioun Stone, Intellect",
-      "idSlug" : "ioun-stone-intellect",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -2014,7 +1762,6 @@
     },
     "ioun-stone-leadership" : {
       "name" : "Ioun Stone, Leadership",
-      "idSlug" : "ioun-stone-leadership",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -2022,7 +1769,6 @@
     },
     "ioun-stone-mastery" : {
       "name" : "Ioun Stone, Mastery",
-      "idSlug" : "ioun-stone-mastery",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "legendary",
@@ -2030,7 +1776,6 @@
     },
     "ioun-stone-protection" : {
       "name" : "Ioun Stone, Protection",
-      "idSlug" : "ioun-stone-protection",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -2038,7 +1783,6 @@
     },
     "ioun-stone-regeneration" : {
       "name" : "Ioun Stone, Regeneration",
-      "idSlug" : "ioun-stone-regeneration",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "legendary",
@@ -2046,7 +1790,6 @@
     },
     "ioun-stone-reserve" : {
       "name" : "Ioun Stone, Reserve",
-      "idSlug" : "ioun-stone-reserve",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -2054,7 +1797,6 @@
     },
     "ioun-stone-strength" : {
       "name" : "Ioun Stone, Strength",
-      "idSlug" : "ioun-stone-strength",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -2062,7 +1804,6 @@
     },
     "ioun-stone-sustenance" : {
       "name" : "Ioun Stone, Sustenance",
-      "idSlug" : "ioun-stone-sustenance",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -2070,7 +1811,6 @@
     },
     "iron" : {
       "name" : "Iron",
-      "idSlug" : "iron",
       "weight" : 1.0,
       "value" : "10cp",
       "rarity" : "none",
@@ -2078,7 +1818,6 @@
     },
     "iron-bands-of-binding" : {
       "name" : "Iron Bands of Binding",
-      "idSlug" : "iron-bands-of-binding",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "major",
@@ -2087,7 +1826,6 @@
     },
     "iron-flask" : {
       "name" : "Iron Flask",
-      "idSlug" : "iron-flask",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "major",
@@ -2096,7 +1834,6 @@
     },
     "iron-pot" : {
       "name" : "Iron Pot",
-      "idSlug" : "iron-pot",
       "weight" : 10.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -2104,7 +1841,6 @@
     },
     "iron-spike" : {
       "name" : "Iron Spike",
-      "idSlug" : "iron-spike",
       "weight" : 0.5,
       "value" : "10cp",
       "rarity" : "none",
@@ -2112,7 +1848,6 @@
     },
     "iron-spikes-10" : {
       "name" : "Iron Spikes (10)",
-      "idSlug" : "iron-spikes-10",
       "weight" : 5.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -2120,7 +1855,6 @@
     },
     "javelin" : {
       "name" : "Javelin",
-      "idSlug" : "javelin",
       "weight" : 2.0,
       "value" : "50cp",
       "rarity" : "none",
@@ -2128,7 +1862,6 @@
     },
     "javelin-of-lightning" : {
       "name" : "Javelin of Lightning",
-      "idSlug" : "javelin-of-lightning",
       "weight" : 2.0,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -2136,7 +1869,6 @@
     },
     "jewelers-tools" : {
       "name" : "Jeweler's Tools",
-      "idSlug" : "jewelers-tools",
       "weight" : 2.0,
       "value" : "2500cp",
       "rarity" : "none",
@@ -2144,7 +1876,6 @@
     },
     "jug" : {
       "name" : "Jug",
-      "idSlug" : "jug",
       "weight" : 4.0,
       "value" : "2cp",
       "rarity" : "none",
@@ -2152,14 +1883,12 @@
     },
     "keelboat" : {
       "name" : "Keelboat",
-      "idSlug" : "keelboat",
       "value" : "300000cp",
       "rarity" : "none",
       "type" : "vehicle"
     },
     "ladder-10-foot" : {
       "name" : "Ladder (10-foot)",
-      "idSlug" : "ladder-10-foot",
       "weight" : 25.0,
       "value" : "10cp",
       "rarity" : "none",
@@ -2167,7 +1896,6 @@
     },
     "lamp" : {
       "name" : "Lamp",
-      "idSlug" : "lamp",
       "weight" : 1.0,
       "value" : "50cp",
       "rarity" : "none",
@@ -2175,7 +1903,6 @@
     },
     "lance" : {
       "name" : "Lance",
-      "idSlug" : "lance",
       "weight" : 6.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -2183,7 +1910,6 @@
     },
     "lantern-of-revealing" : {
       "name" : "Lantern of Revealing",
-      "idSlug" : "lantern-of-revealing",
       "weight" : 2.0,
       "wondrous" : true,
       "tier" : "minor",
@@ -2192,7 +1918,6 @@
     },
     "leather-armor" : {
       "name" : "Leather Armor",
-      "idSlug" : "leather-armor",
       "weight" : 10.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -2200,7 +1925,6 @@
     },
     "leatherworkers-tools" : {
       "name" : "Leatherworker's Tools",
-      "idSlug" : "leatherworkers-tools",
       "weight" : 5.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -2208,7 +1932,6 @@
     },
     "light-crossbow" : {
       "name" : "Light Crossbow",
-      "idSlug" : "light-crossbow",
       "weight" : 5.0,
       "value" : "2500cp",
       "rarity" : "none",
@@ -2216,7 +1939,6 @@
     },
     "light-hammer" : {
       "name" : "Light Hammer",
-      "idSlug" : "light-hammer",
       "weight" : 2.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -2224,21 +1946,18 @@
     },
     "linen-1-sq-yd" : {
       "name" : "Linen (1 sq. yd.)",
-      "idSlug" : "linen-1-sq-yd",
       "value" : "500cp",
       "rarity" : "none",
       "type" : "trade-good"
     },
     "loaf-of-bread" : {
       "name" : "Loaf of Bread",
-      "idSlug" : "loaf-of-bread",
       "value" : "2cp",
       "rarity" : "none",
       "type" : "food"
     },
     "lock" : {
       "name" : "Lock",
-      "idSlug" : "lock",
       "weight" : 1.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -2246,7 +1965,6 @@
     },
     "longbow" : {
       "name" : "Longbow",
-      "idSlug" : "longbow",
       "weight" : 2.0,
       "value" : "5000cp",
       "rarity" : "none",
@@ -2254,14 +1972,12 @@
     },
     "longship" : {
       "name" : "Longship",
-      "idSlug" : "longship",
       "value" : "1000000cp",
       "rarity" : "none",
       "type" : "vehicle"
     },
     "longsword" : {
       "name" : "Longsword",
-      "idSlug" : "longsword",
       "weight" : 3.0,
       "value" : "1500cp",
       "rarity" : "none",
@@ -2269,7 +1985,6 @@
     },
     "lute" : {
       "name" : "Lute",
-      "idSlug" : "lute",
       "weight" : 2.0,
       "value" : "3500cp",
       "rarity" : "none",
@@ -2277,7 +1992,6 @@
     },
     "lyre" : {
       "name" : "Lyre",
-      "idSlug" : "lyre",
       "weight" : 2.0,
       "value" : "3000cp",
       "rarity" : "none",
@@ -2285,7 +1999,6 @@
     },
     "mace" : {
       "name" : "Mace",
-      "idSlug" : "mace",
       "weight" : 4.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -2293,7 +2006,6 @@
     },
     "mace-of-disruption" : {
       "name" : "Mace of Disruption",
-      "idSlug" : "mace-of-disruption",
       "weight" : 4.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -2301,7 +2013,6 @@
     },
     "mace-of-smiting" : {
       "name" : "Mace of Smiting",
-      "idSlug" : "mace-of-smiting",
       "weight" : 4.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -2309,7 +2020,6 @@
     },
     "mace-of-terror" : {
       "name" : "Mace of Terror",
-      "idSlug" : "mace-of-terror",
       "weight" : 4.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -2317,21 +2027,18 @@
     },
     "magnifying-glass" : {
       "name" : "Magnifying Glass",
-      "idSlug" : "magnifying-glass",
       "value" : "10000cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "malice" : {
       "name" : "Malice",
-      "idSlug" : "malice",
       "value" : "25000cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "manacles" : {
       "name" : "Manacles",
-      "idSlug" : "manacles",
       "weight" : 6.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -2339,7 +2046,6 @@
     },
     "mantle-of-spell-resistance" : {
       "name" : "Mantle of Spell Resistance",
-      "idSlug" : "mantle-of-spell-resistance",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -2347,7 +2053,6 @@
     },
     "manual-of-bodily-health" : {
       "name" : "Manual of Bodily Health",
-      "idSlug" : "manual-of-bodily-health",
       "weight" : 5.0,
       "wondrous" : true,
       "tier" : "major",
@@ -2356,7 +2061,6 @@
     },
     "manual-of-clay-golems" : {
       "name" : "Manual of Clay Golems",
-      "idSlug" : "manual-of-clay-golems",
       "weight" : 5.0,
       "wondrous" : true,
       "tier" : "major",
@@ -2365,7 +2069,6 @@
     },
     "manual-of-flesh-golems" : {
       "name" : "Manual of Flesh Golems",
-      "idSlug" : "manual-of-flesh-golems",
       "weight" : 5.0,
       "wondrous" : true,
       "tier" : "major",
@@ -2374,7 +2077,6 @@
     },
     "manual-of-gainful-exercise" : {
       "name" : "Manual of Gainful Exercise",
-      "idSlug" : "manual-of-gainful-exercise",
       "weight" : 5.0,
       "wondrous" : true,
       "tier" : "major",
@@ -2383,7 +2085,6 @@
     },
     "manual-of-iron-golems" : {
       "name" : "Manual of Iron Golems",
-      "idSlug" : "manual-of-iron-golems",
       "weight" : 5.0,
       "wondrous" : true,
       "tier" : "major",
@@ -2392,7 +2093,6 @@
     },
     "manual-of-quickness-of-action" : {
       "name" : "Manual of Quickness of Action",
-      "idSlug" : "manual-of-quickness-of-action",
       "weight" : 5.0,
       "wondrous" : true,
       "tier" : "major",
@@ -2401,7 +2101,6 @@
     },
     "manual-of-stone-golems" : {
       "name" : "Manual of Stone Golems",
-      "idSlug" : "manual-of-stone-golems",
       "weight" : 5.0,
       "wondrous" : true,
       "tier" : "major",
@@ -2410,7 +2109,6 @@
     },
     "marvelous-pigments" : {
       "name" : "Marvelous Pigments",
-      "idSlug" : "marvelous-pigments",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "minor",
@@ -2419,7 +2117,6 @@
     },
     "masons-tools" : {
       "name" : "Mason's Tools",
-      "idSlug" : "masons-tools",
       "weight" : 8.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -2427,14 +2124,12 @@
     },
     "mastiff" : {
       "name" : "Mastiff",
-      "idSlug" : "mastiff",
       "value" : "2500cp",
       "rarity" : "none",
       "type" : "mounts"
     },
     "maul" : {
       "name" : "Maul",
-      "idSlug" : "maul",
       "weight" : 10.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -2442,7 +2137,6 @@
     },
     "medallion-of-thoughts" : {
       "name" : "Medallion of Thoughts",
-      "idSlug" : "medallion-of-thoughts",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "major",
@@ -2451,7 +2145,6 @@
     },
     "merchants-scale" : {
       "name" : "Merchant's Scale",
-      "idSlug" : "merchants-scale",
       "weight" : 3.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -2459,7 +2152,6 @@
     },
     "mess-kit" : {
       "name" : "Mess Kit",
-      "idSlug" : "mess-kit",
       "weight" : 1.0,
       "value" : "20cp",
       "rarity" : "none",
@@ -2467,14 +2159,12 @@
     },
     "midnight-tears" : {
       "name" : "Midnight Tears",
-      "idSlug" : "midnight-tears",
       "value" : "150000cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "military-saddle" : {
       "name" : "Military Saddle",
-      "idSlug" : "military-saddle",
       "weight" : 30.0,
       "value" : "2000cp",
       "rarity" : "none",
@@ -2482,7 +2172,6 @@
     },
     "miners-pick" : {
       "name" : "Miner's Pick",
-      "idSlug" : "miners-pick",
       "weight" : 10.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -2490,7 +2179,6 @@
     },
     "mirror-of-life-trapping" : {
       "name" : "Mirror of Life Trapping",
-      "idSlug" : "mirror-of-life-trapping",
       "weight" : 50.0,
       "wondrous" : true,
       "tier" : "major",
@@ -2499,7 +2187,6 @@
     },
     "morningstar" : {
       "name" : "Morningstar",
-      "idSlug" : "morningstar",
       "weight" : 4.0,
       "value" : "1500cp",
       "rarity" : "none",
@@ -2507,14 +2194,12 @@
     },
     "mule" : {
       "name" : "Mule",
-      "idSlug" : "mule",
       "value" : "800cp",
       "rarity" : "none",
       "type" : "mounts"
     },
     "navigators-tools" : {
       "name" : "Navigator's Tools",
-      "idSlug" : "navigators-tools",
       "weight" : 2.0,
       "value" : "2500cp",
       "rarity" : "none",
@@ -2522,7 +2207,6 @@
     },
     "necklace-of-adaptation" : {
       "name" : "Necklace of Adaptation",
-      "idSlug" : "necklace-of-adaptation",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "major",
@@ -2531,7 +2215,6 @@
     },
     "necklace-of-fireballs" : {
       "name" : "Necklace of Fireballs",
-      "idSlug" : "necklace-of-fireballs",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "minor",
@@ -2540,7 +2223,6 @@
     },
     "necklace-of-prayer-beads" : {
       "name" : "Necklace of Prayer Beads",
-      "idSlug" : "necklace-of-prayer-beads",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "major",
@@ -2549,7 +2231,6 @@
     },
     "net" : {
       "name" : "Net",
-      "idSlug" : "net",
       "weight" : 3.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -2557,7 +2238,6 @@
     },
     "oathbow" : {
       "name" : "Oathbow",
-      "idSlug" : "oathbow",
       "weight" : 2.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -2565,7 +2245,6 @@
     },
     "oil-flask" : {
       "name" : "Oil (flask)",
-      "idSlug" : "oil-flask",
       "weight" : 1.0,
       "value" : "10cp",
       "rarity" : "none",
@@ -2573,35 +2252,30 @@
     },
     "oil-of-etherealness" : {
       "name" : "Oil of Etherealness",
-      "idSlug" : "oil-of-etherealness",
       "tier" : "minor",
       "rarity" : "rare",
       "type" : "potion"
     },
     "oil-of-sharpness" : {
       "name" : "Oil of Sharpness",
-      "idSlug" : "oil-of-sharpness",
       "tier" : "minor",
       "rarity" : "very rare",
       "type" : "potion"
     },
     "oil-of-slipperiness" : {
       "name" : "Oil of Slipperiness",
-      "idSlug" : "oil-of-slipperiness",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "potion"
     },
     "oil-of-taggit" : {
       "name" : "Oil of Taggit",
-      "idSlug" : "oil-of-taggit",
       "value" : "40000cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "orb" : {
       "name" : "Orb",
-      "idSlug" : "orb",
       "weight" : 3.0,
       "value" : "2000cp",
       "rarity" : "none",
@@ -2609,7 +2283,6 @@
     },
     "orb-of-dragonkind" : {
       "name" : "Orb of Dragonkind",
-      "idSlug" : "orb-of-dragonkind",
       "weight" : 3.0,
       "wondrous" : true,
       "rarity" : "artifact",
@@ -2617,14 +2290,12 @@
     },
     "ox" : {
       "name" : "Ox",
-      "idSlug" : "ox",
       "value" : "1500cp",
       "rarity" : "none",
       "type" : "trade-good"
     },
     "pack-saddle" : {
       "name" : "Pack Saddle",
-      "idSlug" : "pack-saddle",
       "weight" : 15.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -2632,7 +2303,6 @@
     },
     "padded-armor" : {
       "name" : "Padded Armor",
-      "idSlug" : "padded-armor",
       "weight" : 8.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -2640,7 +2310,6 @@
     },
     "painters-supplies" : {
       "name" : "Painter's Supplies",
-      "idSlug" : "painters-supplies",
       "weight" : 5.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -2648,14 +2317,12 @@
     },
     "pale-tincture" : {
       "name" : "Pale Tincture",
-      "idSlug" : "pale-tincture",
       "value" : "25000cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "pan-flute" : {
       "name" : "Pan Flute",
-      "idSlug" : "pan-flute",
       "weight" : 2.0,
       "value" : "1200cp",
       "rarity" : "none",
@@ -2663,21 +2330,18 @@
     },
     "paper-one-sheet" : {
       "name" : "Paper (one sheet)",
-      "idSlug" : "paper-one-sheet",
       "value" : "20cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "parchment-one-sheet" : {
       "name" : "Parchment (one sheet)",
-      "idSlug" : "parchment-one-sheet",
       "value" : "10cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "pearl-of-power" : {
       "name" : "Pearl of Power",
-      "idSlug" : "pearl-of-power",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -2685,7 +2349,6 @@
     },
     "pepper" : {
       "name" : "Pepper",
-      "idSlug" : "pepper",
       "weight" : 1.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -2693,14 +2356,12 @@
     },
     "perfume-vial" : {
       "name" : "Perfume (vial)",
-      "idSlug" : "perfume-vial",
       "value" : "500cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "periapt-of-health" : {
       "name" : "Periapt of Health",
-      "idSlug" : "periapt-of-health",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "minor",
@@ -2709,7 +2370,6 @@
     },
     "periapt-of-proof-against-poison" : {
       "name" : "Periapt of Proof against Poison",
-      "idSlug" : "periapt-of-proof-against-poison",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "major",
@@ -2718,7 +2378,6 @@
     },
     "periapt-of-wound-closure" : {
       "name" : "Periapt of Wound Closure",
-      "idSlug" : "periapt-of-wound-closure",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "major",
@@ -2727,21 +2386,18 @@
     },
     "philter-of-love" : {
       "name" : "Philter of Love",
-      "idSlug" : "philter-of-love",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "potion"
     },
     "pig" : {
       "name" : "Pig",
-      "idSlug" : "pig",
       "value" : "300cp",
       "rarity" : "none",
       "type" : "trade-good"
     },
     "pike" : {
       "name" : "Pike",
-      "idSlug" : "pike",
       "weight" : 18.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -2749,7 +2405,6 @@
     },
     "pipes-of-haunting" : {
       "name" : "Pipes of Haunting",
-      "idSlug" : "pipes-of-haunting",
       "weight" : 2.0,
       "wondrous" : true,
       "tier" : "major",
@@ -2758,7 +2413,6 @@
     },
     "pipes-of-the-sewers" : {
       "name" : "Pipes of the Sewers",
-      "idSlug" : "pipes-of-the-sewers",
       "weight" : 2.0,
       "wondrous" : true,
       "tier" : "major",
@@ -2767,7 +2421,6 @@
     },
     "pitcher" : {
       "name" : "Pitcher",
-      "idSlug" : "pitcher",
       "weight" : 4.0,
       "value" : "2cp",
       "rarity" : "none",
@@ -2775,7 +2428,6 @@
     },
     "piton" : {
       "name" : "Piton",
-      "idSlug" : "piton",
       "weight" : 0.25,
       "value" : "5cp",
       "rarity" : "none",
@@ -2783,7 +2435,6 @@
     },
     "plate-armor" : {
       "name" : "Plate Armor",
-      "idSlug" : "plate-armor",
       "weight" : 65.0,
       "value" : "150000cp",
       "rarity" : "none",
@@ -2791,7 +2442,6 @@
     },
     "plate-armor-of-etherealness" : {
       "name" : "Plate Armor of Etherealness",
-      "idSlug" : "plate-armor-of-etherealness",
       "weight" : 65.0,
       "tier" : "major",
       "rarity" : "legendary",
@@ -2799,7 +2449,6 @@
     },
     "platinum" : {
       "name" : "Platinum",
-      "idSlug" : "platinum",
       "weight" : 1.0,
       "value" : "50000cp",
       "rarity" : "none",
@@ -2807,14 +2456,12 @@
     },
     "playing-card-set" : {
       "name" : "Playing Card Set",
-      "idSlug" : "playing-card-set",
       "value" : "50cp",
       "rarity" : "none",
       "type" : "gaming-set"
     },
     "poisoners-kit" : {
       "name" : "Poisoner's Kit",
-      "idSlug" : "poisoners-kit",
       "weight" : 2.0,
       "value" : "5000cp",
       "rarity" : "none",
@@ -2822,7 +2469,6 @@
     },
     "pole-10-foot" : {
       "name" : "Pole (10-foot)",
-      "idSlug" : "pole-10-foot",
       "weight" : 7.0,
       "value" : "5cp",
       "rarity" : "none",
@@ -2830,14 +2476,12 @@
     },
     "pony" : {
       "name" : "Pony",
-      "idSlug" : "pony",
       "value" : "3000cp",
       "rarity" : "none",
       "type" : "mounts"
     },
     "portable-hole" : {
       "name" : "Portable Hole",
-      "idSlug" : "portable-hole",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "rare",
@@ -2845,7 +2489,6 @@
     },
     "portable-ram" : {
       "name" : "Portable Ram",
-      "idSlug" : "portable-ram",
       "weight" : 35.0,
       "value" : "400cp",
       "rarity" : "none",
@@ -2853,112 +2496,96 @@
     },
     "potion-of-acid-resistance" : {
       "name" : "Potion of Acid Resistance",
-      "idSlug" : "potion-of-acid-resistance",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "potion"
     },
     "potion-of-animal-friendship" : {
       "name" : "Potion of Animal Friendship",
-      "idSlug" : "potion-of-animal-friendship",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "potion"
     },
     "potion-of-clairvoyance" : {
       "name" : "Potion of Clairvoyance",
-      "idSlug" : "potion-of-clairvoyance",
       "tier" : "minor",
       "rarity" : "rare",
       "type" : "potion"
     },
     "potion-of-climbing" : {
       "name" : "Potion of Climbing",
-      "idSlug" : "potion-of-climbing",
       "tier" : "minor",
       "rarity" : "common",
       "type" : "potion"
     },
     "potion-of-cloud-giant-strength" : {
       "name" : "Potion of Cloud Giant Strength",
-      "idSlug" : "potion-of-cloud-giant-strength",
       "tier" : "minor",
       "rarity" : "very rare",
       "type" : "potion"
     },
     "potion-of-cold-resistance" : {
       "name" : "Potion of Cold Resistance",
-      "idSlug" : "potion-of-cold-resistance",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "potion"
     },
     "potion-of-diminution" : {
       "name" : "Potion of Diminution",
-      "idSlug" : "potion-of-diminution",
       "tier" : "minor",
       "rarity" : "rare",
       "type" : "potion"
     },
     "potion-of-fire-giant-strength" : {
       "name" : "Potion of Fire Giant Strength",
-      "idSlug" : "potion-of-fire-giant-strength",
       "tier" : "minor",
       "rarity" : "rare",
       "type" : "potion"
     },
     "potion-of-fire-resistance" : {
       "name" : "Potion of Fire Resistance",
-      "idSlug" : "potion-of-fire-resistance",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "potion"
     },
     "potion-of-flying" : {
       "name" : "Potion of Flying",
-      "idSlug" : "potion-of-flying",
       "tier" : "minor",
       "rarity" : "very rare",
       "type" : "potion"
     },
     "potion-of-force-resistance" : {
       "name" : "Potion of Force Resistance",
-      "idSlug" : "potion-of-force-resistance",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "potion"
     },
     "potion-of-frost-giant-strength" : {
       "name" : "Potion of Frost Giant Strength",
-      "idSlug" : "potion-of-frost-giant-strength",
       "tier" : "minor",
       "rarity" : "rare",
       "type" : "potion"
     },
     "potion-of-gaseous-form" : {
       "name" : "Potion of Gaseous Form",
-      "idSlug" : "potion-of-gaseous-form",
       "tier" : "minor",
       "rarity" : "rare",
       "type" : "potion"
     },
     "potion-of-greater-healing" : {
       "name" : "Potion of Greater Healing",
-      "idSlug" : "potion-of-greater-healing",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "potion"
     },
     "potion-of-growth" : {
       "name" : "Potion of Growth",
-      "idSlug" : "potion-of-growth",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "potion"
     },
     "potion-of-healing" : {
       "name" : "Potion of Healing",
-      "idSlug" : "potion-of-healing",
       "weight" : 0.5,
       "value" : "5000cp",
       "tier" : "minor",
@@ -2967,126 +2594,108 @@
     },
     "potion-of-heroism" : {
       "name" : "Potion of Heroism",
-      "idSlug" : "potion-of-heroism",
       "tier" : "minor",
       "rarity" : "rare",
       "type" : "potion"
     },
     "potion-of-hill-giant-strength" : {
       "name" : "Potion of Hill Giant Strength",
-      "idSlug" : "potion-of-hill-giant-strength",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "potion"
     },
     "potion-of-invisibility" : {
       "name" : "Potion of Invisibility",
-      "idSlug" : "potion-of-invisibility",
       "tier" : "minor",
       "rarity" : "very rare",
       "type" : "potion"
     },
     "potion-of-lightning-resistance" : {
       "name" : "Potion of Lightning Resistance",
-      "idSlug" : "potion-of-lightning-resistance",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "potion"
     },
     "potion-of-mind-reading" : {
       "name" : "Potion of Mind Reading",
-      "idSlug" : "potion-of-mind-reading",
       "tier" : "minor",
       "rarity" : "rare",
       "type" : "potion"
     },
     "potion-of-necrotic-resistance" : {
       "name" : "Potion of Necrotic Resistance",
-      "idSlug" : "potion-of-necrotic-resistance",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "potion"
     },
     "potion-of-poison" : {
       "name" : "Potion of Poison",
-      "idSlug" : "potion-of-poison",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "potion"
     },
     "potion-of-poison-resistance" : {
       "name" : "Potion of Poison Resistance",
-      "idSlug" : "potion-of-poison-resistance",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "potion"
     },
     "potion-of-psychic-resistance" : {
       "name" : "Potion of Psychic Resistance",
-      "idSlug" : "potion-of-psychic-resistance",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "potion"
     },
     "potion-of-radiant-resistance" : {
       "name" : "Potion of Radiant Resistance",
-      "idSlug" : "potion-of-radiant-resistance",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "potion"
     },
     "potion-of-speed" : {
       "name" : "Potion of Speed",
-      "idSlug" : "potion-of-speed",
       "tier" : "minor",
       "rarity" : "very rare",
       "type" : "potion"
     },
     "potion-of-stone-giant-strength" : {
       "name" : "Potion of Stone Giant Strength",
-      "idSlug" : "potion-of-stone-giant-strength",
       "tier" : "minor",
       "rarity" : "rare",
       "type" : "potion"
     },
     "potion-of-storm-giant-strength" : {
       "name" : "Potion of Storm Giant Strength",
-      "idSlug" : "potion-of-storm-giant-strength",
       "tier" : "minor",
       "rarity" : "legendary",
       "type" : "potion"
     },
     "potion-of-superior-healing" : {
       "name" : "Potion of Superior Healing",
-      "idSlug" : "potion-of-superior-healing",
       "tier" : "minor",
       "rarity" : "rare",
       "type" : "potion"
     },
     "potion-of-supreme-healing" : {
       "name" : "Potion of Supreme Healing",
-      "idSlug" : "potion-of-supreme-healing",
       "tier" : "minor",
       "rarity" : "very rare",
       "type" : "potion"
     },
     "potion-of-thunder-resistance" : {
       "name" : "Potion of Thunder Resistance",
-      "idSlug" : "potion-of-thunder-resistance",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "potion"
     },
     "potion-of-water-breathing" : {
       "name" : "Potion of Water Breathing",
-      "idSlug" : "potion-of-water-breathing",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "potion"
     },
     "potters-tools" : {
       "name" : "Potter's Tools",
-      "idSlug" : "potters-tools",
       "weight" : 3.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -3094,7 +2703,6 @@
     },
     "priests-pack" : {
       "name" : "Priest's Pack",
-      "idSlug" : "priests-pack",
       "weight" : 24.0,
       "value" : "1900cp",
       "rarity" : "none",
@@ -3102,14 +2710,12 @@
     },
     "purple-worm-poison" : {
       "name" : "Purple Worm Poison",
-      "idSlug" : "purple-worm-poison",
       "value" : "200000cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "quarterstaff" : {
       "name" : "Quarterstaff",
-      "idSlug" : "quarterstaff",
       "weight" : 4.0,
       "value" : "20cp",
       "rarity" : "none",
@@ -3117,7 +2723,6 @@
     },
     "rapier" : {
       "name" : "Rapier",
-      "idSlug" : "rapier",
       "weight" : 2.0,
       "value" : "2500cp",
       "rarity" : "none",
@@ -3125,7 +2730,6 @@
     },
     "rations-1-day" : {
       "name" : "Rations (1 day)",
-      "idSlug" : "rations-1-day",
       "weight" : 2.0,
       "value" : "50cp",
       "rarity" : "none",
@@ -3133,7 +2737,6 @@
     },
     "red-dragon-scale-mail" : {
       "name" : "Red Dragon Scale Mail",
-      "idSlug" : "red-dragon-scale-mail",
       "weight" : 45.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -3141,7 +2744,6 @@
     },
     "reliquary" : {
       "name" : "Reliquary",
-      "idSlug" : "reliquary",
       "weight" : 2.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -3149,7 +2751,6 @@
     },
     "restorative-ointment" : {
       "name" : "Restorative Ointment",
-      "idSlug" : "restorative-ointment",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "uncommon",
@@ -3157,14 +2758,12 @@
     },
     "riding-horse" : {
       "name" : "Riding Horse",
-      "idSlug" : "riding-horse",
       "value" : "7500cp",
       "rarity" : "none",
       "type" : "mounts"
     },
     "riding-saddle" : {
       "name" : "Riding Saddle",
-      "idSlug" : "riding-saddle",
       "weight" : 25.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -3172,7 +2771,6 @@
     },
     "ring-mail" : {
       "name" : "Ring Mail",
-      "idSlug" : "ring-mail",
       "weight" : 40.0,
       "value" : "3000cp",
       "rarity" : "none",
@@ -3180,245 +2778,210 @@
     },
     "ring-of-acid-resistance" : {
       "name" : "Ring of Acid Resistance",
-      "idSlug" : "ring-of-acid-resistance",
       "tier" : "major",
       "rarity" : "rare",
       "type" : "ring"
     },
     "ring-of-air-elemental-command" : {
       "name" : "Ring of Air Elemental Command",
-      "idSlug" : "ring-of-air-elemental-command",
       "tier" : "major",
       "rarity" : "legendary",
       "type" : "ring"
     },
     "ring-of-animal-influence" : {
       "name" : "Ring of Animal Influence",
-      "idSlug" : "ring-of-animal-influence",
       "tier" : "major",
       "rarity" : "rare",
       "type" : "ring"
     },
     "ring-of-cold-resistance" : {
       "name" : "Ring of Cold Resistance",
-      "idSlug" : "ring-of-cold-resistance",
       "tier" : "major",
       "rarity" : "rare",
       "type" : "ring"
     },
     "ring-of-djinni-summoning" : {
       "name" : "Ring of Djinni Summoning",
-      "idSlug" : "ring-of-djinni-summoning",
       "tier" : "major",
       "rarity" : "legendary",
       "type" : "ring"
     },
     "ring-of-earth-elemental-command" : {
       "name" : "Ring of Earth Elemental Command",
-      "idSlug" : "ring-of-earth-elemental-command",
       "tier" : "major",
       "rarity" : "legendary",
       "type" : "ring"
     },
     "ring-of-evasion" : {
       "name" : "Ring of Evasion",
-      "idSlug" : "ring-of-evasion",
       "tier" : "major",
       "rarity" : "rare",
       "type" : "ring"
     },
     "ring-of-feather-falling" : {
       "name" : "Ring of Feather Falling",
-      "idSlug" : "ring-of-feather-falling",
       "tier" : "major",
       "rarity" : "rare",
       "type" : "ring"
     },
     "ring-of-fire-elemental-command" : {
       "name" : "Ring of Fire Elemental Command",
-      "idSlug" : "ring-of-fire-elemental-command",
       "tier" : "major",
       "rarity" : "legendary",
       "type" : "ring"
     },
     "ring-of-fire-resistance" : {
       "name" : "Ring of Fire Resistance",
-      "idSlug" : "ring-of-fire-resistance",
       "tier" : "major",
       "rarity" : "rare",
       "type" : "ring"
     },
     "ring-of-force-resistance" : {
       "name" : "Ring of Force Resistance",
-      "idSlug" : "ring-of-force-resistance",
       "tier" : "major",
       "rarity" : "rare",
       "type" : "ring"
     },
     "ring-of-free-action" : {
       "name" : "Ring of Free Action",
-      "idSlug" : "ring-of-free-action",
       "tier" : "major",
       "rarity" : "rare",
       "type" : "ring"
     },
     "ring-of-invisibility" : {
       "name" : "Ring of Invisibility",
-      "idSlug" : "ring-of-invisibility",
       "tier" : "major",
       "rarity" : "legendary",
       "type" : "ring"
     },
     "ring-of-jumping" : {
       "name" : "Ring of Jumping",
-      "idSlug" : "ring-of-jumping",
       "tier" : "major",
       "rarity" : "uncommon",
       "type" : "ring"
     },
     "ring-of-lightning-resistance" : {
       "name" : "Ring of Lightning Resistance",
-      "idSlug" : "ring-of-lightning-resistance",
       "tier" : "major",
       "rarity" : "rare",
       "type" : "ring"
     },
     "ring-of-mind-shielding" : {
       "name" : "Ring of Mind Shielding",
-      "idSlug" : "ring-of-mind-shielding",
       "tier" : "major",
       "rarity" : "uncommon",
       "type" : "ring"
     },
     "ring-of-necrotic-resistance" : {
       "name" : "Ring of Necrotic Resistance",
-      "idSlug" : "ring-of-necrotic-resistance",
       "tier" : "major",
       "rarity" : "rare",
       "type" : "ring"
     },
     "ring-of-poison-resistance" : {
       "name" : "Ring of Poison Resistance",
-      "idSlug" : "ring-of-poison-resistance",
       "tier" : "major",
       "rarity" : "rare",
       "type" : "ring"
     },
     "ring-of-protection" : {
       "name" : "Ring of Protection",
-      "idSlug" : "ring-of-protection",
       "tier" : "major",
       "rarity" : "rare",
       "type" : "ring"
     },
     "ring-of-psychic-resistance" : {
       "name" : "Ring of Psychic Resistance",
-      "idSlug" : "ring-of-psychic-resistance",
       "tier" : "major",
       "rarity" : "rare",
       "type" : "ring"
     },
     "ring-of-radiant-resistance" : {
       "name" : "Ring of Radiant Resistance",
-      "idSlug" : "ring-of-radiant-resistance",
       "tier" : "major",
       "rarity" : "rare",
       "type" : "ring"
     },
     "ring-of-regeneration" : {
       "name" : "Ring of Regeneration",
-      "idSlug" : "ring-of-regeneration",
       "tier" : "major",
       "rarity" : "very rare",
       "type" : "ring"
     },
     "ring-of-shooting-stars" : {
       "name" : "Ring of Shooting Stars",
-      "idSlug" : "ring-of-shooting-stars",
       "tier" : "major",
       "rarity" : "very rare",
       "type" : "ring"
     },
     "ring-of-spell-storing" : {
       "name" : "Ring of Spell Storing",
-      "idSlug" : "ring-of-spell-storing",
       "tier" : "major",
       "rarity" : "rare",
       "type" : "ring"
     },
     "ring-of-spell-turning" : {
       "name" : "Ring of Spell Turning",
-      "idSlug" : "ring-of-spell-turning",
       "tier" : "major",
       "rarity" : "legendary",
       "type" : "ring"
     },
     "ring-of-swimming" : {
       "name" : "Ring of Swimming",
-      "idSlug" : "ring-of-swimming",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "ring"
     },
     "ring-of-telekinesis" : {
       "name" : "Ring of Telekinesis",
-      "idSlug" : "ring-of-telekinesis",
       "tier" : "major",
       "rarity" : "very rare",
       "type" : "ring"
     },
     "ring-of-the-ram" : {
       "name" : "Ring of the Ram",
-      "idSlug" : "ring-of-the-ram",
       "tier" : "major",
       "rarity" : "rare",
       "type" : "ring"
     },
     "ring-of-three-wishes" : {
       "name" : "Ring of Three Wishes",
-      "idSlug" : "ring-of-three-wishes",
       "tier" : "major",
       "rarity" : "legendary",
       "type" : "ring"
     },
     "ring-of-thunder-resistance" : {
       "name" : "Ring of Thunder Resistance",
-      "idSlug" : "ring-of-thunder-resistance",
       "tier" : "major",
       "rarity" : "rare",
       "type" : "ring"
     },
     "ring-of-warmth" : {
       "name" : "Ring of Warmth",
-      "idSlug" : "ring-of-warmth",
       "tier" : "major",
       "rarity" : "uncommon",
       "type" : "ring"
     },
     "ring-of-water-elemental-command" : {
       "name" : "Ring of Water Elemental Command",
-      "idSlug" : "ring-of-water-elemental-command",
       "tier" : "major",
       "rarity" : "legendary",
       "type" : "ring"
     },
     "ring-of-water-walking" : {
       "name" : "Ring of Water Walking",
-      "idSlug" : "ring-of-water-walking",
       "tier" : "major",
       "rarity" : "uncommon",
       "type" : "ring"
     },
     "ring-of-x-ray-vision" : {
       "name" : "Ring of X-ray Vision",
-      "idSlug" : "ring-of-x-ray-vision",
       "tier" : "major",
       "rarity" : "rare",
       "type" : "ring"
     },
     "robe-of-eyes" : {
       "name" : "Robe of Eyes",
-      "idSlug" : "robe-of-eyes",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -3426,7 +2989,6 @@
     },
     "robe-of-scintillating-colors" : {
       "name" : "Robe of Scintillating Colors",
-      "idSlug" : "robe-of-scintillating-colors",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -3434,7 +2996,6 @@
     },
     "robe-of-stars" : {
       "name" : "Robe of Stars",
-      "idSlug" : "robe-of-stars",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "very rare",
@@ -3442,7 +3003,6 @@
     },
     "robe-of-the-archmagi" : {
       "name" : "Robe of the Archmagi",
-      "idSlug" : "robe-of-the-archmagi",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "legendary",
@@ -3450,7 +3010,6 @@
     },
     "robe-of-useful-items" : {
       "name" : "Robe of Useful Items",
-      "idSlug" : "robe-of-useful-items",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "uncommon",
@@ -3458,7 +3017,6 @@
     },
     "robes" : {
       "name" : "Robes",
-      "idSlug" : "robes",
       "weight" : 4.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -3466,7 +3024,6 @@
     },
     "rod" : {
       "name" : "Rod",
-      "idSlug" : "rod",
       "weight" : 2.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -3474,7 +3031,6 @@
     },
     "rod-of-absorption" : {
       "name" : "Rod of Absorption",
-      "idSlug" : "rod-of-absorption",
       "weight" : 2.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -3482,7 +3038,6 @@
     },
     "rod-of-alertness" : {
       "name" : "Rod of Alertness",
-      "idSlug" : "rod-of-alertness",
       "weight" : 2.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -3490,7 +3045,6 @@
     },
     "rod-of-lordly-might" : {
       "name" : "Rod of Lordly Might",
-      "idSlug" : "rod-of-lordly-might",
       "weight" : 2.0,
       "tier" : "major",
       "rarity" : "legendary",
@@ -3498,7 +3052,6 @@
     },
     "rod-of-rulership" : {
       "name" : "Rod of Rulership",
-      "idSlug" : "rod-of-rulership",
       "weight" : 2.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -3506,7 +3059,6 @@
     },
     "rod-of-security" : {
       "name" : "Rod of Security",
-      "idSlug" : "rod-of-security",
       "weight" : 2.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -3514,7 +3066,6 @@
     },
     "rope-of-climbing" : {
       "name" : "Rope of Climbing",
-      "idSlug" : "rope-of-climbing",
       "weight" : 3.0,
       "wondrous" : true,
       "tier" : "minor",
@@ -3523,7 +3074,6 @@
     },
     "rope-of-entanglement" : {
       "name" : "Rope of Entanglement",
-      "idSlug" : "rope-of-entanglement",
       "weight" : 3.0,
       "wondrous" : true,
       "tier" : "major",
@@ -3532,7 +3082,6 @@
     },
     "rowboat" : {
       "name" : "Rowboat",
-      "idSlug" : "rowboat",
       "weight" : 100.0,
       "value" : "5000cp",
       "rarity" : "none",
@@ -3540,7 +3089,6 @@
     },
     "saddlebags" : {
       "name" : "Saddlebags",
-      "idSlug" : "saddlebags",
       "weight" : 8.0,
       "value" : "400cp",
       "rarity" : "none",
@@ -3548,7 +3096,6 @@
     },
     "saffron" : {
       "name" : "Saffron",
-      "idSlug" : "saffron",
       "weight" : 1.0,
       "value" : "1500cp",
       "rarity" : "none",
@@ -3556,14 +3103,12 @@
     },
     "sailing-ship" : {
       "name" : "Sailing Ship",
-      "idSlug" : "sailing-ship",
       "value" : "1000000cp",
       "rarity" : "none",
       "type" : "vehicle"
     },
     "salt" : {
       "name" : "Salt",
-      "idSlug" : "salt",
       "weight" : 1.0,
       "value" : "5cp",
       "rarity" : "none",
@@ -3571,7 +3116,6 @@
     },
     "scale-mail" : {
       "name" : "Scale Mail",
-      "idSlug" : "scale-mail",
       "weight" : 45.0,
       "value" : "5000cp",
       "rarity" : "none",
@@ -3579,7 +3123,6 @@
     },
     "scarab-of-protection" : {
       "name" : "Scarab of Protection",
-      "idSlug" : "scarab-of-protection",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "legendary",
@@ -3587,7 +3130,6 @@
     },
     "scholars-pack" : {
       "name" : "Scholar's Pack",
-      "idSlug" : "scholars-pack",
       "weight" : 10.0,
       "value" : "4000cp",
       "rarity" : "none",
@@ -3595,7 +3137,6 @@
     },
     "scimitar" : {
       "name" : "Scimitar",
-      "idSlug" : "scimitar",
       "weight" : 3.0,
       "value" : "2500cp",
       "rarity" : "none",
@@ -3603,7 +3144,6 @@
     },
     "scimitar-of-speed" : {
       "name" : "Scimitar of Speed",
-      "idSlug" : "scimitar-of-speed",
       "weight" : 3.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -3611,21 +3151,18 @@
     },
     "sealing-wax" : {
       "name" : "Sealing Wax",
-      "idSlug" : "sealing-wax",
       "value" : "50cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "serpent-venom" : {
       "name" : "Serpent Venom",
-      "idSlug" : "serpent-venom",
       "value" : "20000cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "shawm" : {
       "name" : "Shawm",
-      "idSlug" : "shawm",
       "weight" : 1.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -3633,14 +3170,12 @@
     },
     "sheep" : {
       "name" : "Sheep",
-      "idSlug" : "sheep",
       "value" : "200cp",
       "rarity" : "none",
       "type" : "trade-good"
     },
     "shield" : {
       "name" : "Shield",
-      "idSlug" : "shield",
       "weight" : 6.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -3648,7 +3183,6 @@
     },
     "shield-of-missile-attraction" : {
       "name" : "Shield of Missile Attraction",
-      "idSlug" : "shield-of-missile-attraction",
       "weight" : 6.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -3656,7 +3190,6 @@
     },
     "shortbow" : {
       "name" : "Shortbow",
-      "idSlug" : "shortbow",
       "weight" : 2.0,
       "value" : "2500cp",
       "rarity" : "none",
@@ -3664,7 +3197,6 @@
     },
     "shortsword" : {
       "name" : "Shortsword",
-      "idSlug" : "shortsword",
       "weight" : 2.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -3672,7 +3204,6 @@
     },
     "shovel" : {
       "name" : "Shovel",
-      "idSlug" : "shovel",
       "weight" : 5.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -3680,7 +3211,6 @@
     },
     "sickle" : {
       "name" : "Sickle",
-      "idSlug" : "sickle",
       "weight" : 2.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -3688,28 +3218,24 @@
     },
     "signal-whistle" : {
       "name" : "Signal Whistle",
-      "idSlug" : "signal-whistle",
       "value" : "5cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "signet-ring" : {
       "name" : "Signet Ring",
-      "idSlug" : "signet-ring",
       "value" : "500cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "silk-1-sq-yd" : {
       "name" : "Silk (1 sq. yd.)",
-      "idSlug" : "silk-1-sq-yd",
       "value" : "1000cp",
       "rarity" : "none",
       "type" : "trade-good"
     },
     "silk-rope-50-feet" : {
       "name" : "Silk Rope (50 feet)",
-      "idSlug" : "silk-rope-50-feet",
       "weight" : 5.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -3717,7 +3243,6 @@
     },
     "silver" : {
       "name" : "Silver",
-      "idSlug" : "silver",
       "weight" : 1.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -3725,7 +3250,6 @@
     },
     "silver-dragon-scale-mail" : {
       "name" : "Silver Dragon Scale Mail",
-      "idSlug" : "silver-dragon-scale-mail",
       "weight" : 45.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -3733,7 +3257,6 @@
     },
     "sled" : {
       "name" : "Sled",
-      "idSlug" : "sled",
       "weight" : 300.0,
       "value" : "2000cp",
       "rarity" : "none",
@@ -3741,7 +3264,6 @@
     },
     "sledgehammer" : {
       "name" : "Sledgehammer",
-      "idSlug" : "sledgehammer",
       "weight" : 10.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -3749,14 +3271,12 @@
     },
     "sling" : {
       "name" : "Sling",
-      "idSlug" : "sling",
       "value" : "10cp",
       "rarity" : "none",
       "type" : "ranged-weapon"
     },
     "sling-bullet" : {
       "name" : "Sling Bullet",
-      "idSlug" : "sling-bullet",
       "weight" : 0.075,
       "value" : "0.2cp",
       "rarity" : "none",
@@ -3764,7 +3284,6 @@
     },
     "sling-bullets-20" : {
       "name" : "Sling Bullets (20)",
-      "idSlug" : "sling-bullets-20",
       "weight" : 1.5,
       "value" : "4cp",
       "rarity" : "none",
@@ -3772,7 +3291,6 @@
     },
     "slippers-of-spider-climbing" : {
       "name" : "Slippers of Spider Climbing",
-      "idSlug" : "slippers-of-spider-climbing",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -3780,7 +3298,6 @@
     },
     "smiths-tools" : {
       "name" : "Smith's Tools",
-      "idSlug" : "smiths-tools",
       "weight" : 8.0,
       "value" : "2000cp",
       "rarity" : "none",
@@ -3788,14 +3305,12 @@
     },
     "soap" : {
       "name" : "Soap",
-      "idSlug" : "soap",
       "value" : "2cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "sovereign-glue" : {
       "name" : "Sovereign Glue",
-      "idSlug" : "sovereign-glue",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "legendary",
@@ -3803,7 +3318,6 @@
     },
     "spear" : {
       "name" : "Spear",
-      "idSlug" : "spear",
       "weight" : 3.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -3811,77 +3325,66 @@
     },
     "spell-scroll-1st-level" : {
       "name" : "Spell Scroll (1st Level)",
-      "idSlug" : "spell-scroll-1st-level",
       "tier" : "minor",
       "rarity" : "common",
       "type" : "scroll"
     },
     "spell-scroll-2nd-level" : {
       "name" : "Spell Scroll (2nd Level)",
-      "idSlug" : "spell-scroll-2nd-level",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "scroll"
     },
     "spell-scroll-3rd-level" : {
       "name" : "Spell Scroll (3rd Level)",
-      "idSlug" : "spell-scroll-3rd-level",
       "tier" : "minor",
       "rarity" : "uncommon",
       "type" : "scroll"
     },
     "spell-scroll-4th-level" : {
       "name" : "Spell Scroll (4th Level)",
-      "idSlug" : "spell-scroll-4th-level",
       "tier" : "minor",
       "rarity" : "rare",
       "type" : "scroll"
     },
     "spell-scroll-5th-level" : {
       "name" : "Spell Scroll (5th Level)",
-      "idSlug" : "spell-scroll-5th-level",
       "tier" : "minor",
       "rarity" : "rare",
       "type" : "scroll"
     },
     "spell-scroll-6th-level" : {
       "name" : "Spell Scroll (6th Level)",
-      "idSlug" : "spell-scroll-6th-level",
       "tier" : "minor",
       "rarity" : "very rare",
       "type" : "scroll"
     },
     "spell-scroll-7th-level" : {
       "name" : "Spell Scroll (7th Level)",
-      "idSlug" : "spell-scroll-7th-level",
       "tier" : "minor",
       "rarity" : "very rare",
       "type" : "scroll"
     },
     "spell-scroll-8th-level" : {
       "name" : "Spell Scroll (8th Level)",
-      "idSlug" : "spell-scroll-8th-level",
       "tier" : "minor",
       "rarity" : "very rare",
       "type" : "scroll"
     },
     "spell-scroll-9th-level" : {
       "name" : "Spell Scroll (9th Level)",
-      "idSlug" : "spell-scroll-9th-level",
       "tier" : "minor",
       "rarity" : "legendary",
       "type" : "scroll"
     },
     "spell-scroll-cantrip" : {
       "name" : "Spell Scroll (Cantrip)",
-      "idSlug" : "spell-scroll-cantrip",
       "tier" : "minor",
       "rarity" : "common",
       "type" : "scroll"
     },
     "spellbook" : {
       "name" : "Spellbook",
-      "idSlug" : "spellbook",
       "weight" : 3.0,
       "value" : "5000cp",
       "rarity" : "none",
@@ -3889,7 +3392,6 @@
     },
     "spellguard-shield" : {
       "name" : "Spellguard Shield",
-      "idSlug" : "spellguard-shield",
       "weight" : 6.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -3897,7 +3399,6 @@
     },
     "sphere-of-annihilation" : {
       "name" : "Sphere of Annihilation",
-      "idSlug" : "sphere-of-annihilation",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "legendary",
@@ -3905,7 +3406,6 @@
     },
     "splint-armor" : {
       "name" : "Splint Armor",
-      "idSlug" : "splint-armor",
       "weight" : 60.0,
       "value" : "20000cp",
       "rarity" : "none",
@@ -3913,14 +3413,12 @@
     },
     "sprig-of-mistletoe" : {
       "name" : "Sprig of Mistletoe",
-      "idSlug" : "sprig-of-mistletoe",
       "value" : "100cp",
       "rarity" : "none",
       "type" : "spellcaster-focus"
     },
     "spyglass" : {
       "name" : "Spyglass",
-      "idSlug" : "spyglass",
       "weight" : 1.0,
       "value" : "100000cp",
       "rarity" : "none",
@@ -3928,14 +3426,12 @@
     },
     "stabling-per-day" : {
       "name" : "Stabling (per day)",
-      "idSlug" : "stabling-per-day",
       "value" : "50cp",
       "rarity" : "none",
       "type" : "tack-harness"
     },
     "staff" : {
       "name" : "Staff",
-      "idSlug" : "staff",
       "weight" : 4.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -3943,98 +3439,84 @@
     },
     "staff-of-charming" : {
       "name" : "Staff of Charming",
-      "idSlug" : "staff-of-charming",
       "weight" : 4.0,
       "tier" : "major",
       "rarity" : "rare"
     },
     "staff-of-fate" : {
       "name" : "Staff of Fate",
-      "idSlug" : "staff-of-fate",
       "weight" : 4.0,
       "rarity" : "very rare",
       "type" : "melee-weapon"
     },
     "staff-of-fire" : {
       "name" : "Staff of Fire",
-      "idSlug" : "staff-of-fire",
       "weight" : 4.0,
       "tier" : "major",
       "rarity" : "very rare"
     },
     "staff-of-frost" : {
       "name" : "Staff of Frost",
-      "idSlug" : "staff-of-frost",
       "weight" : 4.0,
       "tier" : "major",
       "rarity" : "very rare"
     },
     "staff-of-healing" : {
       "name" : "Staff of Healing",
-      "idSlug" : "staff-of-healing",
       "weight" : 4.0,
       "tier" : "major",
       "rarity" : "rare"
     },
     "staff-of-power" : {
       "name" : "Staff of Power",
-      "idSlug" : "staff-of-power",
       "weight" : 4.0,
       "tier" : "major",
       "rarity" : "very rare"
     },
     "staff-of-striking" : {
       "name" : "Staff of Striking",
-      "idSlug" : "staff-of-striking",
       "weight" : 4.0,
       "tier" : "major",
       "rarity" : "very rare"
     },
     "staff-of-swarming-insects" : {
       "name" : "Staff of Swarming Insects",
-      "idSlug" : "staff-of-swarming-insects",
       "weight" : 4.0,
       "tier" : "major",
       "rarity" : "rare"
     },
     "staff-of-the-magi" : {
       "name" : "Staff of the Magi",
-      "idSlug" : "staff-of-the-magi",
       "weight" : 4.0,
       "tier" : "major",
       "rarity" : "legendary"
     },
     "staff-of-the-python" : {
       "name" : "Staff of the Python",
-      "idSlug" : "staff-of-the-python",
       "weight" : 4.0,
       "tier" : "major",
       "rarity" : "uncommon"
     },
     "staff-of-the-woodlands" : {
       "name" : "Staff of the Woodlands",
-      "idSlug" : "staff-of-the-woodlands",
       "weight" : 4.0,
       "tier" : "major",
       "rarity" : "rare"
     },
     "staff-of-thunder-and-lightning" : {
       "name" : "Staff of Thunder and Lightning",
-      "idSlug" : "staff-of-thunder-and-lightning",
       "weight" : 4.0,
       "tier" : "major",
       "rarity" : "very rare"
     },
     "staff-of-withering" : {
       "name" : "Staff of Withering",
-      "idSlug" : "staff-of-withering",
       "weight" : 4.0,
       "tier" : "major",
       "rarity" : "rare"
     },
     "steel-mirror" : {
       "name" : "Steel Mirror",
-      "idSlug" : "steel-mirror",
       "weight" : 0.5,
       "value" : "500cp",
       "rarity" : "none",
@@ -4042,7 +3524,6 @@
     },
     "stone-of-controlling-earth-elementals" : {
       "name" : "Stone of Controlling Earth Elementals",
-      "idSlug" : "stone-of-controlling-earth-elementals",
       "weight" : 5.0,
       "wondrous" : true,
       "tier" : "major",
@@ -4051,7 +3532,6 @@
     },
     "stone-of-good-luck" : {
       "name" : "Stone of Good Luck",
-      "idSlug" : "stone-of-good-luck",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -4059,7 +3539,6 @@
     },
     "studded-leather-armor" : {
       "name" : "Studded Leather Armor",
-      "idSlug" : "studded-leather-armor",
       "weight" : 13.0,
       "value" : "4500cp",
       "rarity" : "none",
@@ -4067,7 +3546,6 @@
     },
     "sun-blade" : {
       "name" : "Sun Blade",
-      "idSlug" : "sun-blade",
       "weight" : 3.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -4075,7 +3553,6 @@
     },
     "talisman-of-pure-good" : {
       "name" : "Talisman of Pure Good",
-      "idSlug" : "talisman-of-pure-good",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "major",
@@ -4084,7 +3561,6 @@
     },
     "talisman-of-the-sphere" : {
       "name" : "Talisman of the Sphere",
-      "idSlug" : "talisman-of-the-sphere",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "major",
@@ -4093,7 +3569,6 @@
     },
     "talisman-of-ultimate-evil" : {
       "name" : "Talisman of Ultimate Evil",
-      "idSlug" : "talisman-of-ultimate-evil",
       "weight" : 1.0,
       "wondrous" : true,
       "tier" : "major",
@@ -4102,7 +3577,6 @@
     },
     "tankard" : {
       "name" : "Tankard",
-      "idSlug" : "tankard",
       "weight" : 1.0,
       "value" : "2cp",
       "rarity" : "none",
@@ -4110,7 +3584,6 @@
     },
     "thieves-tools" : {
       "name" : "Thieves' Tools",
-      "idSlug" : "thieves-tools",
       "weight" : 1.0,
       "value" : "2500cp",
       "rarity" : "none",
@@ -4118,7 +3591,6 @@
     },
     "tinderbox" : {
       "name" : "Tinderbox",
-      "idSlug" : "tinderbox",
       "weight" : 1.0,
       "value" : "50cp",
       "rarity" : "none",
@@ -4126,7 +3598,6 @@
     },
     "tinkers-tools" : {
       "name" : "Tinker's Tools",
-      "idSlug" : "tinkers-tools",
       "weight" : 10.0,
       "value" : "5000cp",
       "rarity" : "none",
@@ -4134,7 +3605,6 @@
     },
     "tome-of-clear-thought" : {
       "name" : "Tome of Clear Thought",
-      "idSlug" : "tome-of-clear-thought",
       "weight" : 5.0,
       "wondrous" : true,
       "tier" : "major",
@@ -4143,7 +3613,6 @@
     },
     "tome-of-leadership-and-influence" : {
       "name" : "Tome of Leadership and Influence",
-      "idSlug" : "tome-of-leadership-and-influence",
       "weight" : 5.0,
       "wondrous" : true,
       "tier" : "major",
@@ -4152,7 +3621,6 @@
     },
     "tome-of-understanding" : {
       "name" : "Tome of Understanding",
-      "idSlug" : "tome-of-understanding",
       "weight" : 5.0,
       "wondrous" : true,
       "tier" : "major",
@@ -4161,7 +3629,6 @@
     },
     "torch" : {
       "name" : "Torch",
-      "idSlug" : "torch",
       "weight" : 1.0,
       "value" : "1cp",
       "rarity" : "none",
@@ -4169,21 +3636,18 @@
     },
     "torpor" : {
       "name" : "Torpor",
-      "idSlug" : "torpor",
       "value" : "60000cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "totem" : {
       "name" : "Totem",
-      "idSlug" : "totem",
       "value" : "100cp",
       "rarity" : "none",
       "type" : "spellcaster-focus"
     },
     "travelers-clothes" : {
       "name" : "Traveler's Clothes",
-      "idSlug" : "travelers-clothes",
       "weight" : 4.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -4191,7 +3655,6 @@
     },
     "trident" : {
       "name" : "Trident",
-      "idSlug" : "trident",
       "weight" : 4.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -4199,7 +3662,6 @@
     },
     "trident-of-fish-command" : {
       "name" : "Trident of Fish Command",
-      "idSlug" : "trident-of-fish-command",
       "weight" : 4.0,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -4207,14 +3669,12 @@
     },
     "truth-serum" : {
       "name" : "Truth Serum",
-      "idSlug" : "truth-serum",
       "value" : "15000cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "two-person-tent" : {
       "name" : "Two-Person Tent",
-      "idSlug" : "two-person-tent",
       "weight" : 20.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -4222,7 +3682,6 @@
     },
     "universal-solvent" : {
       "name" : "Universal Solvent",
-      "idSlug" : "universal-solvent",
       "wondrous" : true,
       "tier" : "minor",
       "rarity" : "legendary",
@@ -4230,14 +3689,12 @@
     },
     "vial" : {
       "name" : "Vial",
-      "idSlug" : "vial",
       "value" : "100cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "viol" : {
       "name" : "Viol",
-      "idSlug" : "viol",
       "weight" : 1.0,
       "value" : "3000cp",
       "rarity" : "none",
@@ -4245,7 +3702,6 @@
     },
     "wagon" : {
       "name" : "Wagon",
-      "idSlug" : "wagon",
       "weight" : 400.0,
       "value" : "3500cp",
       "rarity" : "none",
@@ -4253,7 +3709,6 @@
     },
     "wand" : {
       "name" : "Wand",
-      "idSlug" : "wand",
       "weight" : 1.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -4261,7 +3716,6 @@
     },
     "wand-of-binding" : {
       "name" : "Wand of Binding",
-      "idSlug" : "wand-of-binding",
       "weight" : 1.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -4269,7 +3723,6 @@
     },
     "wand-of-enemy-detection" : {
       "name" : "Wand of Enemy Detection",
-      "idSlug" : "wand-of-enemy-detection",
       "weight" : 1.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -4277,7 +3730,6 @@
     },
     "wand-of-fear" : {
       "name" : "Wand of Fear",
-      "idSlug" : "wand-of-fear",
       "weight" : 1.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -4285,7 +3737,6 @@
     },
     "wand-of-fireballs" : {
       "name" : "Wand of Fireballs",
-      "idSlug" : "wand-of-fireballs",
       "weight" : 1.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -4293,7 +3744,6 @@
     },
     "wand-of-lightning-bolts" : {
       "name" : "Wand of Lightning Bolts",
-      "idSlug" : "wand-of-lightning-bolts",
       "weight" : 1.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -4301,7 +3751,6 @@
     },
     "wand-of-magic-detection" : {
       "name" : "Wand of Magic Detection",
-      "idSlug" : "wand-of-magic-detection",
       "weight" : 1.0,
       "tier" : "minor",
       "rarity" : "uncommon",
@@ -4309,7 +3758,6 @@
     },
     "wand-of-magic-missiles" : {
       "name" : "Wand of Magic Missiles",
-      "idSlug" : "wand-of-magic-missiles",
       "weight" : 1.0,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -4317,7 +3765,6 @@
     },
     "wand-of-paralysis" : {
       "name" : "Wand of Paralysis",
-      "idSlug" : "wand-of-paralysis",
       "weight" : 1.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -4325,7 +3772,6 @@
     },
     "wand-of-polymorph" : {
       "name" : "Wand of Polymorph",
-      "idSlug" : "wand-of-polymorph",
       "weight" : 1.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -4333,7 +3779,6 @@
     },
     "wand-of-secrets" : {
       "name" : "Wand of Secrets",
-      "idSlug" : "wand-of-secrets",
       "weight" : 1.0,
       "tier" : "minor",
       "rarity" : "uncommon",
@@ -4341,7 +3786,6 @@
     },
     "wand-of-web" : {
       "name" : "Wand of Web",
-      "idSlug" : "wand-of-web",
       "weight" : 1.0,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -4349,7 +3793,6 @@
     },
     "wand-of-wonder" : {
       "name" : "Wand of Wonder",
-      "idSlug" : "wand-of-wonder",
       "weight" : 1.0,
       "tier" : "major",
       "rarity" : "rare",
@@ -4357,7 +3800,6 @@
     },
     "war-pick" : {
       "name" : "War Pick",
-      "idSlug" : "war-pick",
       "weight" : 2.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -4365,7 +3807,6 @@
     },
     "warhammer" : {
       "name" : "Warhammer",
-      "idSlug" : "warhammer",
       "weight" : 2.0,
       "value" : "1500cp",
       "rarity" : "none",
@@ -4373,21 +3814,18 @@
     },
     "warhorse" : {
       "name" : "Warhorse",
-      "idSlug" : "warhorse",
       "value" : "40000cp",
       "rarity" : "none",
       "type" : "mounts"
     },
     "warship" : {
       "name" : "Warship",
-      "idSlug" : "warship",
       "value" : "2500000cp",
       "rarity" : "none",
       "type" : "vehicle"
     },
     "waterskin" : {
       "name" : "Waterskin",
-      "idSlug" : "waterskin",
       "weight" : 5.0,
       "value" : "20cp",
       "rarity" : "none",
@@ -4395,7 +3833,6 @@
     },
     "weavers-tools" : {
       "name" : "Weaver's Tools",
-      "idSlug" : "weavers-tools",
       "weight" : 5.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -4403,7 +3840,6 @@
     },
     "well-of-many-worlds" : {
       "name" : "Well of Many Worlds",
-      "idSlug" : "well-of-many-worlds",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "legendary",
@@ -4411,7 +3847,6 @@
     },
     "wheat" : {
       "name" : "Wheat",
-      "idSlug" : "wheat",
       "weight" : 1.0,
       "value" : "1cp",
       "rarity" : "none",
@@ -4419,7 +3854,6 @@
     },
     "whetstone" : {
       "name" : "Whetstone",
-      "idSlug" : "whetstone",
       "weight" : 1.0,
       "value" : "1cp",
       "rarity" : "none",
@@ -4427,7 +3861,6 @@
     },
     "whip" : {
       "name" : "Whip",
-      "idSlug" : "whip",
       "weight" : 3.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -4435,7 +3868,6 @@
     },
     "white-dragon-scale-mail" : {
       "name" : "White Dragon Scale Mail",
-      "idSlug" : "white-dragon-scale-mail",
       "weight" : 45.0,
       "tier" : "major",
       "rarity" : "very rare",
@@ -4443,7 +3875,6 @@
     },
     "wind-fan" : {
       "name" : "Wind Fan",
-      "idSlug" : "wind-fan",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -4451,7 +3882,6 @@
     },
     "winged-boots" : {
       "name" : "Winged Boots",
-      "idSlug" : "winged-boots",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "uncommon",
@@ -4459,7 +3889,6 @@
     },
     "wings-of-flying" : {
       "name" : "Wings of Flying",
-      "idSlug" : "wings-of-flying",
       "wondrous" : true,
       "tier" : "major",
       "rarity" : "rare",
@@ -4467,7 +3896,6 @@
     },
     "woodcarvers-tools" : {
       "name" : "Woodcarver's Tools",
-      "idSlug" : "woodcarvers-tools",
       "weight" : 5.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -4475,7 +3903,6 @@
     },
     "wooden-staff" : {
       "name" : "Wooden Staff",
-      "idSlug" : "wooden-staff",
       "weight" : 4.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -4483,14 +3910,12 @@
     },
     "wyvern-poison" : {
       "name" : "Wyvern Poison",
-      "idSlug" : "wyvern-poison",
       "value" : "120000cp",
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
     "yew-wand" : {
       "name" : "Yew Wand",
-      "idSlug" : "yew-wand",
       "weight" : 1.0,
       "value" : "1000cp",
       "rarity" : "none",
@@ -4500,7 +3925,6 @@
   "pockets" : {
     "backpack" : {
       "name" : "Backpack",
-      "idSlug" : "backpack",
       "weight" : 5.0,
       "value" : "200cp",
       "rarity" : "none",
@@ -4512,7 +3936,6 @@
     },
     "bag-of-holding" : {
       "name" : "Bag of Holding",
-      "idSlug" : "bag-of-holding",
       "weight" : 15.0,
       "wondrous" : true,
       "tier" : "minor",
@@ -4526,7 +3949,6 @@
     },
     "basket" : {
       "name" : "Basket",
-      "idSlug" : "basket",
       "weight" : 2.0,
       "value" : "40cp",
       "rarity" : "none",
@@ -4538,7 +3960,6 @@
     },
     "chest" : {
       "name" : "Chest",
-      "idSlug" : "chest",
       "weight" : 25.0,
       "value" : "500cp",
       "rarity" : "none",
@@ -4550,7 +3971,6 @@
     },
     "crossbow-bolt-case" : {
       "name" : "Crossbow Bolt Case",
-      "idSlug" : "crossbow-bolt-case",
       "weight" : 1.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -4562,7 +3982,6 @@
     },
     "efficient-quiver" : {
       "name" : "Efficient Quiver",
-      "idSlug" : "efficient-quiver",
       "weight" : 2.0,
       "wondrous" : true,
       "tier" : "major",
@@ -4582,7 +4001,6 @@
     },
     "handy-haversack" : {
       "name" : "Handy Haversack",
-      "idSlug" : "handy-haversack",
       "weight" : 5.0,
       "wondrous" : true,
       "tier" : "minor",
@@ -4602,7 +4020,6 @@
     },
     "map-case" : {
       "name" : "Map Case",
-      "idSlug" : "map-case",
       "weight" : 1.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -4614,7 +4031,6 @@
     },
     "portable-hole" : {
       "name" : "Portable Hole",
-      "idSlug" : "portable-hole",
       "weight" : 0,
       "wondrous" : true,
       "tier" : "minor",
@@ -4628,7 +4044,6 @@
     },
     "pouch" : {
       "name" : "Pouch",
-      "idSlug" : "pouch",
       "weight" : 1.0,
       "value" : "50cp",
       "rarity" : "none",
@@ -4641,7 +4056,6 @@
     },
     "quiver" : {
       "name" : "Quiver",
-      "idSlug" : "quiver",
       "weight" : 1.0,
       "value" : "100cp",
       "rarity" : "none",
@@ -4653,7 +4067,6 @@
     },
     "sack" : {
       "name" : "Sack",
-      "idSlug" : "sack",
       "weight" : 0.5,
       "value" : "1cp",
       "rarity" : "none",
@@ -4665,7 +4078,6 @@
     },
     "scroll-case" : {
       "name" : "Scroll Case",
-      "idSlug" : "scroll-case",
       "weight" : 1.0,
       "value" : "100cp",
       "rarity" : "none",

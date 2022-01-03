@@ -34,6 +34,8 @@ public class Index {
             ref.idSlug = CommonIO.slugify(pocketRef == null ? ref.name : pocketRef);
             ref.custom = true;
             Term.debugf("Using custom Pocket reference for %s", pocketRef);
+        } else {
+            ref.idSlug = pocketRef;
         }
         return ref;
     }

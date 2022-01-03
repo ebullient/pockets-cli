@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_DEFAULT)
 public class ItemReference {
     public String name;
+
+    @JsonIgnore
     public String idSlug; // key
 
     public Double weight;
@@ -16,13 +18,13 @@ public class ItemReference {
     public String rarity;
     public String type;
 
+    @JsonIgnore
     boolean custom = false; // was this found in an index or created on the fly
 
     public ItemReference() {
     }
 
-    @JsonIgnore
     public boolean isCustom() {
-        return false;
+        return custom;
     }
 }

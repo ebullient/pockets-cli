@@ -8,56 +8,48 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
 import dev.ebullient.pockets.CommonIO;
+import dev.ebullient.pockets.Constants;
 import dev.ebullient.pockets.Term;
 import dev.ebullient.pockets.reference.PocketReference.Compartment;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;
 import picocli.CommandLine.Model.CommandSpec;
 import picocli.CommandLine.Option;
-import picocli.CommandLine.ParameterException;
 import picocli.CommandLine.Parameters;
+import picocli.CommandLine.ParentCommand;
 import picocli.CommandLine.Spec;
 
-@Command(name = "5etools", header = "Convert 5etools Json to Pocket Json")
+@Command(name = "5etools", header = "Import references from 5eTools json", footer = {
+        "Use the sources option to filter items from 5eTools.",
+        "Specify values as they appear in the exported json, e.g. -s PHB -s DMG.",
+        "Only include items from sources you own."
+})
 public class Convert5eTools implements Callable<Integer> {
-
-    ObjectMapper mapper = new ObjectMapper();
-    Path output;
-
     @Spec
     CommandSpec spec;
 
-    @Option(names = "-o", description = "Output directory", required = true)
-    void setOutputPath(File outputDir) {
-        if (outputDir.exists() && outputDir.isFile()) {
-            throw new ParameterException(spec.commandLine(),
-                    "Specified output path exists and is a file: " + output.toString());
-        }
-        outputDir.mkdirs();
-        output = outputDir.toPath().toAbsolutePath().normalize();
-    }
+    @ParentCommand
+    Import parent;
 
-    @Option(names = "-s", description = "Sources")
+    @Option(names = "-s", description = "Sources%n  Comma-separated list or multiple declarations")
     List<String> source = Collections.emptyList();
 
-    @Parameters
+    @Parameters(paramLabel = "5etools.json")
     List<File> itemFile;
 
     @Override
     public Integer call() throws Exception {
-        mapper.setVisibility(mapper.getVisibilityChecker().withFieldVisibility(Visibility.ANY));
         Index index = new Index();
+        Path output = parent.getOutputPath();
 
         for (File f : itemFile) {
-            JsonNode node = mapper.readTree(f);
+            JsonNode node = Constants.MAPPER.readTree(f);
             if (node.has("baseitem")) {
                 processItemList(node.get("baseitem"), index);
             }
@@ -66,10 +58,10 @@ public class Convert5eTools implements Callable<Integer> {
             }
         }
 
-        final ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+        final ObjectWriter writer = Constants.MAPPER.writer(new DefaultPrettyPrinter());
         if (!index.isEmpty()) {
-            writer.writeValue(output.resolve("index.json").toFile(), index);
-            Term.outPrintln("📄 index.json");
+            writer.writeValue(output.resolve("5etoolsIndex.json").toFile(), index);
+            Term.outPrintln("📄 5etoolsIndex.json");
         }
 
         Term.outPrintln("✅ Done.");
@@ -102,7 +94,6 @@ public class Convert5eTools implements Callable<Integer> {
                 return; // skip this item
             }
         }
-
         if (item instanceof PocketReference) {
             target.pockets.put(item.idSlug, (PocketReference) item);
         } else {
@@ -120,7 +111,7 @@ public class Convert5eTools implements Callable<Integer> {
         String[] constraints = null;
 
         if (capacity.has("weight")) {
-            weight = mapper.treeToValue(capacity.get("weight"), double[].class);
+            weight = Constants.MAPPER.treeToValue(capacity.get("weight"), double[].class);
             num = Math.max(num, weight.length);
         }
         if (capacity.has("item")) {

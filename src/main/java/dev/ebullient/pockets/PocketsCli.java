@@ -8,7 +8,7 @@ import javax.enterprise.context.control.ActivateRequestContext;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 
-import dev.ebullient.pockets.reference.Convert5eTools;
+import dev.ebullient.pockets.reference.Import;
 import dev.ebullient.pockets.reference.Index;
 import io.quarkus.runtime.LaunchMode;
 import io.quarkus.runtime.QuarkusApplication;
@@ -29,7 +29,7 @@ import picocli.CommandLine.Spec;
         PocketsCreate.class, PocketsEdit.class, PocketsOpen.class, PocketsDelete.class,
         PocketsList.class,
         PocketItemAdd.class, PocketItemUpdate.class, PocketItemRemove.class,
-        Convert5eTools.class
+        Import.class
 }, scope = ScopeType.INHERIT, mixinStandardHelpOptions = true, sortOptions = false, showDefaultValues = true, headerHeading = "%n", synopsisHeading = "%n", parameterListHeading = "%nParameters:%n", optionListHeading = "%nOptions:%n", commandListHeading = "%nCommands:%n")
 public class PocketsCli implements Callable<Integer>, QuarkusApplication {
     @Inject
