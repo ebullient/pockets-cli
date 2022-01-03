@@ -37,6 +37,10 @@
           "type": "number",
           "description": "weight of the item in pounds"
         },
+        "quantity": {
+          "type": "number",
+          "description": "number of items (e.g. batch of 20 arrows)"
+        },
         "value": {
           "type": "string",
           "description": "value of the item: 0.01cp, 0.1sp, 0.5ep, 1gp, 10pp"

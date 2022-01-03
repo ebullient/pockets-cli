@@ -25,7 +25,10 @@ import picocli.CommandLine.Parameters;
 import picocli.CommandLine.ParentCommand;
 import picocli.CommandLine.Spec;
 
-@Command(name = "5etools", header = "Import references from 5eTools json", footer = {
+@Command(name = "5etools", header = "Import references from 5eTools json", description = {
+        "This will read from a 5etools json file containing items or baseitems",
+        "and will produce a 5toolsIndex.json file in the specified output directory."
+}, footer = {
         "Use the sources option to filter items from 5eTools.",
         "Specify values as they appear in the exported json, e.g. -s PHB -s DMG.",
         "Only include items from sources you own."

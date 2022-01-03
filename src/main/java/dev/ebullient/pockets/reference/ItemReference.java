@@ -11,6 +11,7 @@ public class ItemReference {
     public String idSlug; // key
 
     public Double weight;
+    public Integer quantity;
     public String value; // string with units
 
     public boolean wondrous;
