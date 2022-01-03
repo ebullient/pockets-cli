@@ -1,11 +1,14 @@
 package dev.ebullient.pockets.reference;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import dev.ebullient.pockets.CommonIO;
+import dev.ebullient.pockets.Constants;
 import dev.ebullient.pockets.Term;
 
 public class Index {
@@ -33,5 +36,48 @@ public class Index {
             Term.debugf("Using custom Pocket reference for %s", pocketRef);
         }
         return ref;
+    }
+
+    public static class Builder {
+        File userIndexFile;
+
+        public Builder() {
+        }
+
+        public Builder setConfigDirectory(File configDirectory) {
+            this.userIndexFile = new File(configDirectory, "index.json");
+            ;
+            return this;
+        }
+
+        public Index build() {
+            Index index = readIndex();
+            Index userIndex = readUserIndex();
+            return index.merge(userIndex);
+        }
+
+        private Index readIndex() {
+            try {
+                return Constants.MAPPER.readValue(ClassLoader.getSystemResourceAsStream("index.json"), Index.class);
+            } catch (IOException e) {
+                if (Term.isDebug()) {
+                    e.printStackTrace(Term.err());
+                }
+            }
+            return new Index();
+        }
+
+        private Index readUserIndex() {
+            if (userIndexFile != null && userIndexFile.exists()) {
+                try {
+                    return Constants.MAPPER.readValue(userIndexFile, Index.class);
+                } catch (IOException e) {
+                    if (Term.isDebug()) {
+                        e.printStackTrace(Term.err());
+                    }
+                }
+            }
+            return new Index();
+        }
     }
 }

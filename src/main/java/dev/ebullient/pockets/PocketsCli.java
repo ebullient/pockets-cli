@@ -1,12 +1,16 @@
 package dev.ebullient.pockets;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.concurrent.Callable;
 
 import javax.enterprise.context.control.ActivateRequestContext;
+import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 
 import dev.ebullient.pockets.reference.Convert5eTools;
+import dev.ebullient.pockets.reference.Index;
+import io.quarkus.runtime.LaunchMode;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
 import picocli.CommandLine;
@@ -34,8 +38,18 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
     @Spec
     private CommandSpec spec;
 
-    @Inject
-    Config config;
+    File configDirectory;
+    PocketsCache cache;
+    Index index;
+
+    public PocketsCli() {
+        if (LaunchMode.current().isDevOrTest()) {
+            configDirectory = Path.of(System.getProperty("user.dir"), "target/.pockets").toFile();
+        } else {
+            configDirectory = Path.of(System.getProperty("user.home"), ".pockets").toFile();
+        }
+        Term.debug("Default config directory: " + configDirectory);
+    }
 
     @Option(names = { "-d", "--debug" }, description = "Enable debug output", scope = ScopeType.INHERIT)
     void setDebug(boolean debug) {
@@ -51,9 +65,9 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
     void setConfig(File configDir) {
         if (configDir.exists() && configDir.isFile()) {
             throw new ParameterException(spec.commandLine(),
-                    "Specified output path exists and is a file: " + configDir.toString());
+                    "Specified output path exists and is a file: " + configDir);
         }
-        config.setConfigPath(configDir);
+        this.configDirectory = configDir;
     }
 
     @Override
@@ -62,13 +76,29 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
         return ExitCode.OK;
     }
 
-    private int executionStrategy(ParseResult parseResult) {
-        // Initialize log streams (after parameters have been read), carry on with the rest of the show
+    private void init(ParseResult parseResult) {
         Term.prepareStreams(parseResult.commandSpec());
-        config.init();
-        int result = new CommandLine.RunLast().execute(parseResult);
-        config.close();
+        configDirectory.mkdirs();
+        cache = new PocketsCache.Builder()
+                .setConfigDirectory(configDirectory)
+                .build();
+
+        index = new Index.Builder()
+                .setConfigDirectory(configDirectory)
+                .build();
+    }
+
+    private void close() {
+        cache.persist();
         Term.close();
+    }
+
+    private int executionStrategy(ParseResult parseResult) {
+        // Initialize log streams and caches after parameters have been read,
+        // then carry on with the rest of the show
+        init(parseResult);
+        int result = new CommandLine.RunLast().execute(parseResult);
+        close();
         return result;
     }
 
@@ -79,5 +109,15 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
                 .setCaseInsensitiveEnumValuesAllowed(true)
                 .setExecutionStrategy(this::executionStrategy)
                 .execute(args);
+    }
+
+    @Produces
+    PocketsCache getCache() {
+        return cache;
+    }
+
+    @Produces
+    Index getIndex() {
+        return index;
     }
 }

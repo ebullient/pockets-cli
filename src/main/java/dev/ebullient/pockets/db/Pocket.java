@@ -44,7 +44,7 @@ public class Pocket extends PanacheEntity {
     public Double weight; // weight of the pocket itself
 
     @NotNull
-    public boolean extradimensional; // extradimensional always have the same carry weight
+    public boolean extradimensional = false; // extradimensional always have the same carry weight
 
     @Transient
     PocketReference reference;

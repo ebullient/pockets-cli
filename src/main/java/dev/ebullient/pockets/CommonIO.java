@@ -9,9 +9,9 @@ import javax.enterprise.context.ApplicationScoped;
 
 import com.github.slugify.Slugify;
 
-import dev.ebullient.pockets.Config.Cache;
 import dev.ebullient.pockets.db.Pocket;
 import dev.ebullient.pockets.db.PocketItem;
+import dev.ebullient.pockets.reference.Index;
 import dev.ebullient.pockets.reference.PocketReference;
 
 /**
@@ -22,19 +22,21 @@ import dev.ebullient.pockets.reference.PocketReference;
 public class CommonIO {
 
     private static Slugify slugify;
-    final Config config;
-    final Cache cache;
+    private final PocketsCache cache;
+    private final Index index;
 
-    public CommonIO(Config config) {
-        this.config = config;
-        this.cache = config.getCache();
+    public CommonIO(PocketsCache cache, Index index) {
+        this.cache = cache;
+        this.index = index;
     }
 
-    public void checkFieldWidths(Pocket pocket) {
+    public void checkFieldWidths(Pocket ignoredPocket) {
+        // TODO: maybe optimize later to compare against cached lengths
         cache.checkFieldWidths();
     }
 
-    public void checkFieldWidths(PocketItem item) {
+    public void checkFieldWidths(PocketItem ignoredItem) {
+        // TODO: maybe optimize later to compare against cached lengths
         cache.checkFieldWidths();
     }
 
@@ -191,7 +193,7 @@ public class CommonIO {
     }
 
     public String getPocketEmoji(Pocket pocket) {
-        PocketReference ref = config.getPocketReference(pocket);
+        PocketReference ref = getPocketReference(pocket.pocketRef);
         String emoji = ref.getEmoji();
         if (emoji == null) {
             emoji = ref.setEmoji(cache.getPocketEmoji(ref.idSlug));
@@ -200,7 +202,7 @@ public class CommonIO {
     }
 
     public PocketReference getPocketReference(String pocketRef) {
-        return config.getPocketReference(pocketRef);
+        return index.getPocketReference(pocketRef);
     }
 
     public static void pocketTableFormat(Map<String, Integer> fieldWidths, Map<String, String> ansiFormat) {

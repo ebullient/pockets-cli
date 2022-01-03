@@ -89,4 +89,36 @@ public class PocketReference extends ItemReference {
             this.constraint = constraint;
         }
     }
+
+    public static String emojiForSlug(String idSlug) {
+        switch (idSlug) {
+            case "backpack":
+                return "🎒";
+            case "bag-of-holding":
+                return "🧳";
+            case "basket":
+                return "🧺";
+            case "chest":
+                return "🧰";
+            case "portable-hole":
+                return "🕳 ";
+            case "pouch":
+                return "👛";
+            case "sack":
+                return "🗑";
+            case "crossbow-bolt-case":
+                return "🏹";
+            default:
+                if (idSlug.endsWith("quiver")) {
+                    return "🏹";
+                }
+                if (idSlug.contains("haversack")) {
+                    return "👝";
+                }
+                if (idSlug.endsWith("-case")) {
+                    return "🗞";
+                }
+                return "🥡";
+        }
+    }
 }

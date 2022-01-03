@@ -1,5 +1,9 @@
 package dev.ebullient.pockets;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
+
 public class Constants {
 
     final static String LIST_DESCRIPTION = "%n"
@@ -14,4 +18,8 @@ public class Constants {
 
     public static final String ITEM_ENTITY = "PocketItem";
     public static final String ITEM_TABLE = "pocket_item";
+
+    public final static ObjectMapper MAPPER = new ObjectMapper()
+            .setVisibility(VisibilityChecker.Std.defaultInstance().with(JsonAutoDetect.Visibility.ANY));
+
 }
