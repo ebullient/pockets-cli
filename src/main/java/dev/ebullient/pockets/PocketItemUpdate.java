@@ -85,6 +85,9 @@ public class PocketItemUpdate implements Callable<Integer> {
         if (pr.hasMatchedOption("--quantity")) {
             item.quantity = attrs.quantity;
         }
+        if (attrs.tradable.isPresent()) {
+            item.tradable = attrs.tradable.get();
+        }
         if (previous.isUnchanged(item)) {
             Term.outPrintf("%n🔶 %s [%d] was not updated. There are no changes.%n", item.name, item.id);
             return ExitCode.OK;
@@ -121,6 +124,11 @@ public class PocketItemUpdate implements Callable<Integer> {
         if (!pr.hasMatchedOption("--quantity")) {
             line = Term.prompt("How many (" + item.quantity + "): ");
             item.quantity = (int) CommonIO.toLongOrDefault(line, item.quantity);
+        }
+        if (attrs.tradable.isEmpty()) {
+            String previous = item.tradable ? "Y" : "N";
+            line = Term.prompt("Is this item tradable (" + previous + "): ");
+            item.tradable = CommonIO.yesOrTrue(line, item.tradable);
         }
 
         Term.outPrintln("For the following prompts, use a space to remove the previous value.");

@@ -11,7 +11,7 @@ import io.quarkus.test.junit.main.QuarkusMainTest;
 @QuarkusMainTest
 public class Import5etoolsTest {
     @Test
-    @Launch({ "import", "5etools", "-o", "target", "src/test/resources/5etools_srd.json" })
+    @Launch({ "import", "5etools", "-o", "target", "src/test/resources/5etools_srd.json", "--brief" })
     public void testConvertJson(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "5etoolsIndex.json",

@@ -103,10 +103,10 @@ public class Import5eTools implements Callable<Integer> {
         }
 
         if (item instanceof PocketReference) {
-            Term.outPrintf("Pocket %s from %s (%s)%n", item.name, itemSource, isSRD);
+            Term.verbosef("Pocket %s from %s (%s)%n", item.name, itemSource, isSRD);
             target.pockets.put(item.idSlug, (PocketReference) item);
         } else {
-            Term.outPrintf("Item %s from %s (%s)%n", item.name, itemSource, isSRD);
+            Term.verbosef("Item %s from %s (%s)%n", item.name, itemSource, isSRD);
             target.items.put(item.idSlug, item);
         }
     }

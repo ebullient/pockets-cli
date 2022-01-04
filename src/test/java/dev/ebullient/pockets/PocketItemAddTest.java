@@ -26,13 +26,24 @@ public class PocketItemAddTest {
     }
 
     @Test
-    @Launch({ "add", "2", "-v", "30gp", "Jeweled Eyepatch", "--force" })
-    public void testAddVerbose(LaunchResult result) {
+    @Launch({ "add", "2", "-v", "30gp", "Jeweled Eyepatch", "--force", "--trade" })
+    public void testAddTrade(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "(1) Jeweled Eyepatch [6] added to Backpack [2]",
                 "Backpack [2] contains", // verbose
-                "[   6] (  1)  Jeweled Eyepatch                                        -    30.0",
+                "[   6] (  1)  Jeweled Eyepatch                                        -    30.0   ",
                 "[   5] ( 10)  Rations", // verbose
+                "This Backpack weighs 5.0 pounds when empty."); // verbose
+    }
+
+    @Test
+    @Launch({ "add", "2", "-v", "30gp", "Jeweled Eyepatch", "--force", "--no-trade" })
+    public void testAddNoTrade(LaunchResult result) {
+        assertThat(result.getOutput()).contains(
+                "(1) Jeweled Eyepatch [6] added to Backpack [2]",
+                "Backpack [2] contains", // verbose
+                "[   5] ( 10)  Rations", // verbose
+                "[   6] (  1)  Jeweled Eyepatch                                        -    30.0  🔒",
                 "This Backpack weighs 5.0 pounds when empty."); // verbose
     }
 

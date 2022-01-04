@@ -40,3 +40,6 @@ nb-configuration.xml
 
 # Local environment
 .env
+
+items.json
+items-base.json

@@ -61,10 +61,8 @@ public class PocketItemRemove implements Callable<Integer> {
         }
 
         boolean deleteIt = force;
-        if (Term.isVerbose()) {
-            Term.outPrintf("%n%s [%d] contains @|faint (%d)|@ %s [%d]%n",
-                    pocket.name, pocket.id, item.quantity, item.name, item.id);
-        }
+        Term.verbosef("%n%s [%d] contains @|faint (%d)|@ %s [%d]%n",
+                pocket.name, pocket.id, item.quantity, item.name, item.id);
 
         if (!force && Term.canPrompt()) {
             String line = Term.prompt("Do you want to remove this item from this pocket? (y|N)? ");

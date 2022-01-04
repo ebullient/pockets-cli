@@ -2,6 +2,10 @@ package dev.ebullient.pockets;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import io.quarkus.test.junit.main.Launch;
@@ -10,6 +14,11 @@ import io.quarkus.test.junit.main.QuarkusMainTest;
 
 @QuarkusMainTest
 public class PocketsCreateTest {
+
+    @BeforeAll
+    static void beforeAll() throws Exception {
+        Files.deleteIfExists(Path.of("target/.pockets/cache.json"));
+    }
 
     @Test
     @Launch({ "create", "backpack", "Jellybeans" })

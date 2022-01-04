@@ -143,7 +143,8 @@ public class CommonIO {
         items.forEach(
                 i -> Term.outPrintf(cache.ansiFormat("pi.tr"), i.id, i.quantity, i.name,
                         i.weight == null ? "-" : i.weight,
-                        i.gpValue == null ? "-" : i.gpValue));
+                        i.gpValue == null ? "-" : i.gpValue,
+                        i.tradable ? " " : "🔒"));
     }
 
     public void describe(Pocket pocket) {
@@ -223,16 +224,16 @@ public class CommonIO {
         int gp = fieldWidths.get("pi.gpValue");
 
         ansiFormat.put("pi.th",
-                String.format("@|faint [%" + id + "s] (%" + q + "s)  %-50s   %" + w + "s   %" + gp + "s|@",
+                String.format("@|faint [%" + id + "s] (%" + q + "s)  %-50s   %" + w + "s   %" + gp + "s  t|@",
                         "ID ", "Q ", "Name / Description", "lbs", "gp"));
 
         ansiFormat.put("pi.thr",
-                String.format("@|faint -%s-+-%s-+-%s-+-%s-+-%s-|@",
+                String.format("@|faint -%s-+-%s-+-%s-+-%s-+-%s-+-|@",
                         "-".repeat(id), "-".repeat(q), "-".repeat(50), "-".repeat(w), "-".repeat(gp)));
 
         ansiFormat.put("pi.tr",
-                "@|faint [|@%" + id + "d@|faint ]|@ @|faint (|@%" + q + "d@|faint )|@  %-50s   @|faint |@%" + w
-                        + "s@|faint |@   @|faint |@%" + gp + "s@|faint |@%n");
+                "@|faint [|@%" + id + "d@|faint ]|@ @|faint (|@%" + q + "d@|faint )|@  %-50s   %" + w
+                        + "s   %" + gp + "s  %s%n");
     }
 
     public static Optional<Long> toLong(String line, boolean warn) {

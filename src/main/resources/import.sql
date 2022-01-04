@@ -8,6 +8,6 @@ values
   (nextval('hibernate_sequence'), 'handy-haversack', 'Haversack', 'haversack', true, 120, 12, 5),
   (nextval('hibernate_sequence'), 'backpack',  'Backpack',  'backpack', false, 30, 1, 5);
 
-insert into pocket_item (id, pocket_id, name, slug, quantity, gpValue, weight)
-values (nextval('hibernate_sequence'), 2, 'Rations', 'rations', 10, null, null);
+insert into pocket_item (id, pocket_id, name, slug, quantity, gpValue, weight, tradable)
+values (nextval('hibernate_sequence'), 2, 'Rations', 'rations', 10, null, null, true);
 

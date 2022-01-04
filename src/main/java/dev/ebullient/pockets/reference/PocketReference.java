@@ -100,11 +100,11 @@ public class PocketReference extends ItemReference {
             case "chest":
                 return "🧰";
             case "portable-hole":
-                return "🕳 ";
+                return "⚫️";
             case "pouch":
                 return "👛";
             case "sack":
-                return "🗑";
+                return "🧸";
             case "crossbow-bolt-case":
                 return "🏹";
             default:

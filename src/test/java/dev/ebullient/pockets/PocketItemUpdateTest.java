@@ -37,12 +37,21 @@ public class PocketItemUpdateTest {
     }
 
     @Test
-    @Launch({ "update", "2", "rations", "-q", "15000", "-v", "2sp", "-w", "2.0", "-f" })
-    public void testUpdateByNameVerbose(LaunchResult result) {
+    @Launch({ "update", "2", "rations", "-q", "15000", "-v", "2sp", "-w", "2.0", "-f", "--trade" })
+    public void testUpdateByNameTrade(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "Rations [5] has been updated",
                 "[ ID ] (    Q )  Name / Description", // adjusted column width
-                "[   5] ( 15000)  Rations "); // to match ginormous number
+                "[   5] ( 15000)  Rations                                               2.0    0.2   ");
+    }
+
+    @Test
+    @Launch({ "update", "2", "rations", "-q", "1500", "-v", "2sp", "-w", "2.0", "-f", "--no-trade" })
+    public void testUpdateByNameNoTrade(LaunchResult result) {
+        assertThat(result.getOutput()).contains(
+                "Rations [5] has been updated",
+                "[ ID ] (   Q )  Name / Description", // adjusted column width
+                "[   5] ( 1500)  Rations                                               2.0    0.2  🔒");
     }
 
     @Test

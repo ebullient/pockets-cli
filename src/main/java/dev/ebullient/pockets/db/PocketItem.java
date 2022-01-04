@@ -31,6 +31,7 @@ public class PocketItem extends PanacheEntity {
     public int quantity;
     public Double weight; // weight in lbs
     public Double gpValue; // value in gp
+    public boolean tradable = true;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = Constants.POCKET_ID, nullable = false)
@@ -64,8 +65,8 @@ public class PocketItem extends PanacheEntity {
 
     @Override
     public String toString() {
-        return "PocketItem [name=" + name + ", quantity=" + quantity + ", slug=" + slug
-                + ", gpValue=" + gpValue + ", weight=" + weight + "]";
+        return "PocketItem [gpValue=" + gpValue + ", name=" + name + ", quantity=" + quantity + ", slug=" + slug
+                + ", tradable=" + tradable + ", weight=" + weight + "]";
     }
 
     public static List<PocketItem> findByName(Pocket owner, String name) {

@@ -57,6 +57,7 @@ public class PocketItemAdd implements Callable<Integer> {
         item.name = name;
         item.quantity = attrs.quantity;
         item.weight = attrs.weight.orElse(null);
+        item.tradable = attrs.tradable.orElse(true); // TODO: based on item type?
 
         item.gpValue = attrs.value.isPresent()
                 ? CommonIO.gpValue(attrs.value.get(), true).orElse(null)

@@ -103,8 +103,16 @@ public final class Term {
         }
     }
 
-    public static String ansiPrintf(String format, Object... args) {
-        return colors.ansi().string(String.format(format, args));
+    public static void verbosef(String format, Object... params) {
+        if (isVerbose()) {
+            Term.outPrintf(format, params);
+        }
+    }
+
+    public static void verbose(String output) {
+        if (isVerbose()) {
+            Term.outPrintln(output);
+        }
     }
 
     public static void errorf(String format, Object... args) {
