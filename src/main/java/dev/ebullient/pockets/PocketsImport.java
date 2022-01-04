@@ -1,11 +1,10 @@
-package dev.ebullient.pockets.reference;
+package dev.ebullient.pockets;
 
 import java.io.File;
 import java.nio.file.Path;
 import java.util.concurrent.Callable;
 
-import dev.ebullient.pockets.Constants;
-import dev.ebullient.pockets.Term;
+import dev.ebullient.pockets.reference.Import5eTools;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;
 import picocli.CommandLine.Model.CommandSpec;
@@ -15,23 +14,23 @@ import picocli.CommandLine.ScopeType;
 import picocli.CommandLine.Spec;
 
 @Command(name = "import", header = "Import reference items and pockets", subcommands = {
-        Convert5eTools.class
+        Import5eTools.class
 }, footer = {
-        "%n%nItems from the SRD are already included in pockets by default.",
-        "You can add your own items to pockets by creating an index.json file",
-        "in the pockets configuration directory (~/.pockets by default).",
-        "The file should contain something like the following: ",
+        "%n",
+        "Items from the SRD are already included in pockets by default. You can add",
+        "your own items to pockets by creating an index.json file in the pockets",
+        "configuration directory (~/.pockets by default). The file should contain ",
+        "something like the following:%n",
         Constants.JSON_EXAMPLE,
-        "Please note:",
-        "- Both the \"items\" and \"pockets\" elements should be defined",
-        "  though they may be empty.",
-        "- The key used to define an object should be a slugified version",
-        "  of the item's name: all lowercase with special characters removed",
-        "  and spaces replaced with '-'.",
+        "Please note:%n",
+        "- Both the \"items\" and \"pockets\" elements should be defined.%n",
+        "- The key used to define an object should be a slugified version of the item's",
+        "  name: all lowercase; remove special characters; replace spaces with '-'.%n",
         "- You can use the following schema to validate your index:",
-        "  " + Constants.JSON_SCHEMA
+        "  " + Constants.JSON_SCHEMA,
+        "%n"
 })
-public class Import implements Callable<Integer> {
+public class PocketsImport implements Callable<Integer> {
     Path output;
 
     @Spec
@@ -47,7 +46,7 @@ public class Import implements Callable<Integer> {
         output = outputDir.toPath().toAbsolutePath().normalize();
     }
 
-    Path getOutputPath() {
+    public Path getOutputPath() {
         return output;
     }
 

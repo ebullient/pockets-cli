@@ -77,12 +77,18 @@ class PocketsCache {
 
     public static class Builder {
         File cacheFile;
+        boolean clearCache;
 
         public Builder() {
         }
 
         public Builder setConfigDirectory(File configDirectory) {
             this.cacheFile = new File(configDirectory, "cache.json");
+            return this;
+        }
+
+        public Builder setClearCache(boolean clearCache) {
+            this.clearCache = clearCache;
             return this;
         }
 
@@ -93,7 +99,7 @@ class PocketsCache {
         }
 
         private PocketsCache readCacheFile() {
-            if (cacheFile.exists()) {
+            if (cacheFile.exists() && !clearCache) {
                 try {
                     return Constants.MAPPER.readValue(cacheFile, PocketsCache.class);
                 } catch (IOException e) {
@@ -104,5 +110,6 @@ class PocketsCache {
             }
             return new PocketsCache();
         }
+
     }
 }

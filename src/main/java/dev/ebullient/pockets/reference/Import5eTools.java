@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 
 import dev.ebullient.pockets.CommonIO;
 import dev.ebullient.pockets.Constants;
+import dev.ebullient.pockets.PocketsImport;
 import dev.ebullient.pockets.Term;
 import dev.ebullient.pockets.reference.PocketReference.Compartment;
 import picocli.CommandLine.Command;
@@ -25,20 +26,21 @@ import picocli.CommandLine.Parameters;
 import picocli.CommandLine.ParentCommand;
 import picocli.CommandLine.Spec;
 
-@Command(name = "5etools", header = "Import references from 5eTools json", description = {
-        "This will read from a 5etools json file containing items or baseitems",
+@Command(name = "5etools", header = "Create Pockets reference items from 5eTools items", description = {
+        "This will read from a 5etools json file containing items or baseitems elements",
         "and will produce a 5toolsIndex.json file in the specified output directory."
 }, footer = {
-        "Use the sources option to filter items from 5eTools.",
+        "Use the sources option to filter converted items by source. If no sources",
+        "are specified, only items from the SRD will be included.",
         "Specify values as they appear in the exported json, e.g. -s PHB -s DMG.",
         "Only include items from sources you own."
 })
-public class Convert5eTools implements Callable<Integer> {
+public class Import5eTools implements Callable<Integer> {
     @Spec
     CommandSpec spec;
 
     @ParentCommand
-    Import parent;
+    PocketsImport parent;
 
     @Option(names = "-s", description = "Sources%n  Comma-separated list or multiple declarations")
     List<String> source = Collections.emptyList();
@@ -50,6 +52,8 @@ public class Convert5eTools implements Callable<Integer> {
     public Integer call() throws Exception {
         Index index = new Index();
         Path output = parent.getOutputPath();
+        Term.debugf("Importing/Converting items from 5e tools %s to %s. %s",
+                itemFile, output, source.isEmpty() ? "Including only SRD items." : "Including items from " + source);
 
         for (File f : itemFile) {
             JsonNode node = Constants.MAPPER.readTree(f);
@@ -78,7 +82,7 @@ public class Convert5eTools implements Callable<Integer> {
             if (element.has("containerCapacity")) {
                 PocketReference pocket = new PocketReference();
                 pocketReferenceAttributes(element, pocket);
-                item = pocket;
+                item = (ItemReference) pocket;
             } else {
                 item = new ItemReference();
             }
@@ -90,18 +94,31 @@ public class Convert5eTools implements Callable<Integer> {
     void saveValue(JsonNode element, ItemReference item, Index index) {
         final Index target = index;
 
-        if (!element.has("srd")) {
-            // this isn't an SRD item. Compare it against selected sources
-            String itemSource = element.get("source").asText();
-            if (itemSource == null || itemSource.isEmpty() || !source.contains(itemSource)) {
-                return; // skip this item
-            }
+        boolean isSRD = element.has("srd");
+        JsonNode itemSource = element.get("source");
+        if (excludeItem(itemSource, isSRD)) {
+            // skip this item: not from a specified source
+            Term.debugf("Skipped %s from %s (%s)", item.name, itemSource, isSRD);
+            return;
         }
+
         if (item instanceof PocketReference) {
+            Term.outPrintf("Pocket %s from %s (%s)%n", item.name, itemSource, isSRD);
             target.pockets.put(item.idSlug, (PocketReference) item);
         } else {
+            Term.outPrintf("Item %s from %s (%s)%n", item.name, itemSource, isSRD);
             target.items.put(item.idSlug, item);
         }
+    }
+
+    boolean excludeItem(JsonNode itemSource, boolean isSRD) {
+        if (source.isEmpty()) {
+            return !isSRD; // exclude non-SRD sources when no filter is specified.
+        }
+        if (itemSource == null || !itemSource.isTextual()) {
+            return true; // unlikely, but skip items if we can't check their source
+        }
+        return !source.contains(itemSource.asText());
     }
 
     void pocketReferenceAttributes(JsonNode element, PocketReference pocket)
@@ -185,6 +202,8 @@ public class Convert5eTools implements Callable<Integer> {
                 return "ammunition";
             case "AF":
                 return "ammunition-firearm";
+            case "EXP":
+                return "explosive";
 
             case "RD":
                 return "rod";
@@ -235,8 +254,11 @@ public class Convert5eTools implements Callable<Integer> {
             case "SHP":
             case "VEH":
                 return "vehicle";
+
+            case "MR":
+                return "master-rune";
         }
-        Term.outPrintf("Unknown type %s for %s", type, element);
+        Term.debugf("Unknown type %s for %s", type, element);
         return null;
     }
 

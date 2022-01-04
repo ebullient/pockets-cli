@@ -133,7 +133,7 @@ public class CommonIO {
         Term.outPrintln(cache.ansiFormat("p.thr"));
         pockets.forEach(
                 p -> Term.outPrintf(cache.ansiFormat("p.tr"), p.id, getPocketEmoji(p),
-                        p.extradimensional ? "*" : " ",
+                        p.extradimensional ? "@|fg(magenta) *|@" : " ",
                         p.name));
     }
 
@@ -213,7 +213,7 @@ public class CommonIO {
         ansiFormat.put("p.thr",
                 String.format("@|faint -%s-+--+-%s-|@", "-".repeat(idWidth), "-".repeat(50)));
 
-        ansiFormat.put("p.tr", "@|faint [|@%" + idWidth + "d@|faint ]|@ %-2s %s%-50s%n");
+        ansiFormat.put("p.tr", "@|faint [|@%" + idWidth + "d@|faint ]|@ %-2s%s %-50s%n");
     }
 
     public static void pocketItemTableFormat(Map<String, Integer> fieldWidths, Map<String, String> ansiFormat) {

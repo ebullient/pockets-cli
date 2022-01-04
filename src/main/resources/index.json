@@ -2486,13 +2486,6 @@
       "rarity" : "none",
       "type" : "mounts"
     },
-    "portable-hole" : {
-      "name" : "Portable Hole",
-      "wondrous" : true,
-      "tier" : "minor",
-      "rarity" : "rare",
-      "type" : "wondrous"
-    },
     "portable-ram" : {
       "name" : "Portable Ram",
       "weight" : 35.0,

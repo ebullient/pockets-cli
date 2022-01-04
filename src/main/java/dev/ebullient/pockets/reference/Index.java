@@ -3,6 +3,7 @@ package dev.ebullient.pockets.reference;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Optional;
 import java.util.TreeMap;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -17,12 +18,6 @@ public class Index {
 
     boolean isEmpty() {
         return items.isEmpty() && pockets.isEmpty();
-    }
-
-    public Index merge(Index userItems) {
-        items.putAll(userItems.items);
-        pockets.putAll(userItems.pockets);
-        return this;
     }
 
     @JsonIgnore
@@ -40,6 +35,21 @@ public class Index {
         return ref;
     }
 
+    @JsonIgnore
+    public Optional<ItemReference> getItemReference(String itemRef) {
+        // Look for pockets first
+        ItemReference ref = pockets.get(itemRef);
+        if (ref == null) {
+            ref = items.get(itemRef);
+        }
+
+        if (ref != null) {
+            ref.idSlug = itemRef;
+            return Optional.of(ref);
+        }
+        return Optional.empty();
+    }
+
     public static class Builder {
         File userIndexFile;
 
@@ -48,14 +58,23 @@ public class Index {
 
         public Builder setConfigDirectory(File configDirectory) {
             this.userIndexFile = new File(configDirectory, "index.json");
-            ;
             return this;
         }
 
         public Index build() {
             Index index = readIndex();
             Index userIndex = readUserIndex();
-            return index.merge(userIndex);
+
+            index.items.putAll(userIndex.items);
+            index.pockets.putAll(userIndex.pockets);
+
+            index.pockets.keySet().forEach(k -> {
+                if (index.items.containsKey(k)) {
+                    Term.outPrintf("🔶 @|fg(red) %s|@ refers to both a pocket and an item. The pocket will be preferred.%n",
+                            k);
+                }
+            });
+            return index;
         }
 
         private Index readIndex() {

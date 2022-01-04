@@ -12,7 +12,6 @@ import dev.ebullient.pockets.CommonIO;
 import dev.ebullient.pockets.db.Pocket;
 
 @JsonInclude(JsonInclude.Include.NON_DEFAULT)
-
 public class PocketReference extends ItemReference {
     String emoji;
     boolean extradimensional;

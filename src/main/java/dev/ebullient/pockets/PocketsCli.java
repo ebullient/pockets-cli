@@ -8,7 +8,6 @@ import javax.enterprise.context.control.ActivateRequestContext;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 
-import dev.ebullient.pockets.reference.Import;
 import dev.ebullient.pockets.reference.Index;
 import io.quarkus.runtime.LaunchMode;
 import io.quarkus.runtime.QuarkusApplication;
@@ -29,7 +28,7 @@ import picocli.CommandLine.Spec;
         PocketsCreate.class, PocketsEdit.class, PocketsOpen.class, PocketsDelete.class,
         PocketsList.class,
         PocketItemAdd.class, PocketItemUpdate.class, PocketItemRemove.class,
-        Import.class
+        PocketsImport.class
 }, scope = ScopeType.INHERIT, mixinStandardHelpOptions = true, sortOptions = false, showDefaultValues = true, headerHeading = "%n", synopsisHeading = "%n", parameterListHeading = "%nParameters:%n", optionListHeading = "%nOptions:%n", commandListHeading = "%nCommands:%n")
 public class PocketsCli implements Callable<Integer>, QuarkusApplication {
     @Inject
@@ -61,6 +60,9 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
         Term.setBrief(brief);
     }
 
+    @Option(names = { "--fresh" }, description = "Clear cache", scope = ScopeType.INHERIT)
+    boolean clearCache = false;
+
     @Option(names = { "--config" }, description = "Config directory. Default is ~/.pockets", scope = ScopeType.INHERIT)
     void setConfig(File configDir) {
         if (configDir.exists() && configDir.isFile()) {
@@ -81,6 +83,7 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
         configDirectory.mkdirs();
         cache = new PocketsCache.Builder()
                 .setConfigDirectory(configDirectory)
+                .setClearCache(clearCache)
                 .build();
 
         index = new Index.Builder()

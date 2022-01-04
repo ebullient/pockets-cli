@@ -28,7 +28,7 @@ public class PocketsCreate implements Callable<Integer> {
 
     Optional<String> name = Optional.empty();
 
-    @Parameters(index = "0", description = "Type of pocket%n  See \"pocket index --pockets\"")
+    @Parameters(index = "0", description = "Type of pocket; see index --types")
     String pocketRef;
 
     @ArgGroup(exclusive = false, heading = "%nPocket Attributes (required for custom pockets):%n")

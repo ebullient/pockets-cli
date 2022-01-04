@@ -28,7 +28,7 @@ public class PocketsListTest {
                 "Your pockets:",
                 "Coins",
                 "Backpack",
-                "*Haversack");
+                "* Haversack");
     }
 
     @Test
