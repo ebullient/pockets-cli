@@ -22,11 +22,20 @@ class PocketsCache {
     @JsonIgnore
     private File cacheFile;
 
-    public Map<String, Integer> getFieldWidths() {
+    public void updateFieldWidths(Pocket p) {
         if (fieldWidths == null) {
             checkFieldWidths();
+        } else if (Pocket.updateCachedWidth(p, fieldWidths)) {
+            CommonIO.pocketTableFormat(fieldWidths, ansiFormat);
         }
-        return fieldWidths;
+    }
+
+    public void updateFieldWidths(PocketItem pi) {
+        if (fieldWidths == null) {
+            checkFieldWidths();
+        } else if (PocketItem.updateCachedWidth(pi, fieldWidths)) {
+            CommonIO.pocketItemTableFormat(fieldWidths, ansiFormat);
+        }
     }
 
     public void checkFieldWidths() {

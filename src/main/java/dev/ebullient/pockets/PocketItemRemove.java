@@ -73,7 +73,6 @@ public class PocketItemRemove implements Callable<Integer> {
         if (deleteIt) {
             item.removeFromPocket(pocket);
             item.delete();
-
             io.checkFieldWidths(pocket);
 
             if (item.quantity <= 1) {

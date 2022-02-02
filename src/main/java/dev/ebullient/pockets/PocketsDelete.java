@@ -55,7 +55,7 @@ public class PocketsDelete implements Callable<Integer> {
         }
 
         if (Term.isVerbose()) {
-            Term.outPrintf("%n%-2s %s [%d]:%n", io.getPocketEmoji(pocket), pocket.name, pocket.id);
+            Term.outPrintf("%n%-2s %s [%d]%n%n", io.getPocketEmoji(pocket), pocket.name, pocket.id);
             io.describe(pocket);
             if (pocket.items == null || pocket.items.isEmpty() /* && pockets.pockets.isEmpty() */ ) {
                 Term.outPrintf("%n%s is empty.%n", pocket.name);

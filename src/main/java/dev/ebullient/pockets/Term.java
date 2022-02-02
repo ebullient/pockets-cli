@@ -68,7 +68,12 @@ public final class Term {
     }
 
     public static String prompt(String prompt) {
-        return getReader().readLine("\n🔷 " + prompt);
+        try {
+            return getReader().readLine("\n🔷 " + prompt);
+        } catch (org.jline.reader.UserInterruptException ex) {
+            System.exit(3);
+            return "";
+        }
     }
 
     public static void setDebug(boolean debug) {

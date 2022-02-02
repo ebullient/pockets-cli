@@ -93,4 +93,11 @@ public class PocketItem extends PanacheEntity {
         fieldWidths.put("pi.weight", Math.max(4, Math.max(len.get(2), len.get(3))));
         fieldWidths.put("pi.gpValue", Math.max(4, len.get(4)));
     }
+
+    public static boolean updateCachedWidth(PocketItem pi, Map<String, Integer> fieldWidths) {
+        return Util.updateFieldWidth(fieldWidths, "pi.id", pi.id)
+                || Util.updateFieldWidth(fieldWidths, "pi.quantity", pi.quantity)
+                || Util.updateFieldWidth(fieldWidths, "pi.weight", pi.weight)
+                || Util.updateFieldWidth(fieldWidths, "pi.gpValue", pi.gpValue);
+    }
 }

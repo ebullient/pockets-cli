@@ -30,14 +30,12 @@ public class CommonIO {
         this.index = index;
     }
 
-    public void checkFieldWidths(Pocket ignoredPocket) {
-        // TODO: maybe optimize later to compare against cached lengths
-        cache.checkFieldWidths();
+    public void checkFieldWidths(Pocket pocket) {
+        cache.updateFieldWidths(pocket);
     }
 
     public void checkFieldWidths(PocketItem ignoredItem) {
-        // TODO: maybe optimize later to compare against cached lengths
-        cache.checkFieldWidths();
+        cache.updateFieldWidths(ignoredItem);
     }
 
     public Pocket selectPocketById(Long pocketId) {
@@ -212,7 +210,7 @@ public class CommonIO {
                 String.format("@|faint [%" + idWidth + "s]     %-50s |@", "ID ", "Name"));
 
         ansiFormat.put("p.thr",
-                String.format("@|faint -%s-+--+-%s-|@", "-".repeat(idWidth), "-".repeat(50)));
+                String.format("@|faint -%s-┼--┼-%s-|@", "-".repeat(idWidth), "-".repeat(50)));
 
         ansiFormat.put("p.tr", "@|faint [|@%" + idWidth + "d@|faint ]|@ %-2s%s %-50s%n");
     }
@@ -228,7 +226,7 @@ public class CommonIO {
                         "ID ", "Q ", "Name / Description", "lbs", "gp"));
 
         ansiFormat.put("pi.thr",
-                String.format("@|faint -%s-+-%s-+-%s-+-%s-+-%s-+-|@",
+                String.format("@|faint -%s-┼-%s-┼-%s-┼-%s-┼-%s-┼-|@",
                         "-".repeat(id), "-".repeat(q), "-".repeat(50), "-".repeat(w), "-".repeat(gp)));
 
         ansiFormat.put("pi.tr",

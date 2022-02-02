@@ -161,4 +161,8 @@ public class Pocket extends PanacheEntity {
 
         fieldWidths.put("p.id", Math.max(4, len.get(0)));
     }
+
+    public static boolean updateCachedWidth(Pocket p, Map<String, Integer> fieldWidths) {
+        return Util.updateFieldWidth(fieldWidths, "p.id", p.id);
+    }
 }

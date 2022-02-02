@@ -1,6 +1,6 @@
 package dev.ebullient.pockets;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -23,14 +23,14 @@ public class PocketItemUpdateTest {
     }
 
     @Test
-    @Launch({ "update", "2", "rations", "-f" })
+    @Launch({ "update", "2", "rations", "-f", "--fresh" })
     public void testUpdateByNameVerboseNoChanges(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "Rations [5] was not updated. There are no changes.");
     }
 
     @Test
-    @Launch(value = { "u", "2", "Rations", "--quantity", "15", "--brief" }, exitCode = 2)
+    @Launch(value = { "u", "2", "Rations", "--quantity", "15", "--brief", "--fresh" }, exitCode = 2)
     public void testUpdateNoConfirmation(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "Rations [5] was not updated");
@@ -46,7 +46,7 @@ public class PocketItemUpdateTest {
     }
 
     @Test
-    @Launch({ "update", "2", "rations", "-q", "1500", "-v", "2sp", "-w", "2.0", "-f", "--no-trade" })
+    @Launch({ "update", "2", "rations", "-q", "1500", "-v", "2sp", "-w", "2.0", "-f", "--no-trade", "--fresh" })
     public void testUpdateByNameNoTrade(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "Rations [5] has been updated",
@@ -55,7 +55,7 @@ public class PocketItemUpdateTest {
     }
 
     @Test
-    @Launch({ "update", "2", "rations", "--quantity", "15", "-w", "2.0", "-fb" })
+    @Launch({ "update", "2", "rations", "--quantity", "15", "-w", "2.0", "-fb", "--fresh" })
     public void testUpdateByNameBrief(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "Rations [5] has been updated"); // verbose
@@ -64,14 +64,14 @@ public class PocketItemUpdateTest {
     }
 
     @Test
-    @Launch({ "update", "2", "5", "-w", "2.0", "-bf" })
+    @Launch({ "update", "2", "5", "-w", "2.0", "-bf", "--fresh" })
     public void testUpdateById(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "Rations [5] has been updated");
     }
 
     @Test
-    @Launch(value = { "update", "12", "Rations" }, exitCode = 2)
+    @Launch(value = { "update", "12", "Rations", "--fresh" }, exitCode = 2)
     public void testUpdateUnknownPocket(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "The specified value [12] doesn't match any of your pockets.",
@@ -79,7 +79,7 @@ public class PocketItemUpdateTest {
     }
 
     @Test
-    @Launch(value = { "update", "2", "Eyepatch" }, exitCode = 2)
+    @Launch(value = { "update", "2", "Eyepatch", "--fresh" }, exitCode = 2)
     public void testUpdateUnknownPocketItem(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "'Eyepatch' doesn't match any of the items in your pocket.",
