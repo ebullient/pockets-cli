@@ -6,7 +6,7 @@
   <artifactId>pockets-cli</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <properties>
-    <compiler-plugin.version>3.10.0</compiler-plugin.version>
+    <compiler-plugin.version>3.10.1</compiler-plugin.version>
     <formatter-plugin.version>2.18.0</formatter-plugin.version>
     <github-slugify.version>2.5</github-slugify.version>
     <impsort-plugin.version>1.6.2</impsort-plugin.version>
