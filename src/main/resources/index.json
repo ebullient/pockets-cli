@@ -1,0 +1,170 @@
+{
+  "items" : {
+  },
+  "pockets" : {
+    "backpack" : {
+      "name" : "Backpack",
+      "weight" : 5.0,
+      "value" : "200cp",
+      "rarity" : "none",
+      "type" : "adventuring-gear",
+      "compartments" : [ {
+        "max_weight" : 30.0,
+        "max_volume" : 1.0
+      } ]
+    },
+    "bag-of-holding" : {
+      "name" : "Bag of Holding",
+      "weight" : 15.0,
+      "wondrous" : true,
+      "tier" : "minor",
+      "rarity" : "uncommon",
+      "type" : "wondrous",
+      "extradimensional" : true,
+      "compartments" : [ {
+        "max_weight" : 500.0,
+        "max_volume" : 64.0
+      } ]
+    },
+    "basket" : {
+      "name" : "Basket",
+      "weight" : 2.0,
+      "value" : "40cp",
+      "rarity" : "none",
+      "type" : "adventuring-gear",
+      "compartments" : [ {
+        "max_weight" : 40.0,
+        "max_volume" : 2.0
+      } ]
+    },
+    "chest" : {
+      "name" : "Chest",
+      "weight" : 25.0,
+      "value" : "500cp",
+      "rarity" : "none",
+      "type" : "adventuring-gear",
+      "compartments" : [ {
+        "max_weight" : 300.0,
+        "max_volume" : 12.0
+      } ]
+    },
+    "crossbow-bolt-case" : {
+      "name" : "Crossbow Bolt Case",
+      "weight" : 1.0,
+      "value" : "100cp",
+      "rarity" : "none",
+      "type" : "adventuring-gear",
+      "compartments" : [ {
+        "max_weight" : 2.5,
+        "constraint" : "20 crossbow bolts"
+      } ]
+    },
+    "efficient-quiver" : {
+      "name" : "Efficient Quiver",
+      "weight" : 2.0,
+      "wondrous" : true,
+      "tier" : "major",
+      "rarity" : "uncommon",
+      "type" : "wondrous",
+      "extradimensional" : true,
+      "compartments" : [ {
+        "max_weight" : 4.5,
+        "constraint" : "60 crossbow bolts, arrows, or similar"
+      }, {
+        "max_weight" : 36,
+        "constraint" : "18 javelins or similar"
+      }, {
+        "max_weight" : 24,
+        "constraint" : "6 long objects like bows, quarterstaffs, or spears"
+      } ]
+    },
+    "handy-haversack" : {
+      "name" : "Handy Haversack",
+      "weight" : 5.0,
+      "wondrous" : true,
+      "tier" : "minor",
+      "rarity" : "rare",
+      "type" : "wondrous",
+      "extradimensional" : true,
+      "compartments" : [ {
+        "max_weight" : 20.0,
+        "max_volume" : 2.0
+      }, {
+        "max_weight" : 20.0,
+        "max_volume" : 2.0
+      }, {
+        "max_weight" : 80.0,
+        "max_volume" : 8.0
+      } ]
+    },
+    "map-case" : {
+      "name" : "Map Case",
+      "weight" : 1.0,
+      "value" : "100cp",
+      "rarity" : "none",
+      "type" : "adventuring-gear",
+      "compartments" : [ {
+        "max_weight" : 1.0,
+        "constraint" : "5 sheets of parchment, or 10 sheets of paper"
+      } ]
+    },
+    "portable-hole" : {
+      "name" : "Portable Hole",
+      "weight" : 0,
+      "wondrous" : true,
+      "tier" : "minor",
+      "rarity" : "rare",
+      "type" : "wondrous",
+      "extradimensional" : true,
+      "compartments" : [ {
+        "max_volume" : 282.7,
+        "constraint" : "items that fit in the hole (6 feet in diameter, 10 feet deep)."
+      } ]
+    },
+    "pouch" : {
+      "name" : "Pouch",
+      "weight" : 1.0,
+      "value" : "50cp",
+      "rarity" : "none",
+      "type" : "adventuring-gear",
+      "compartments" : [ {
+        "max_weight" : 6.0,
+        "max_volume" : 0.2,
+        "constraint" : "20 sling bullets, 50 blowgun needles, and other things..."
+      } ]
+    },
+    "quiver" : {
+      "name" : "Quiver",
+      "weight" : 1.0,
+      "value" : "100cp",
+      "rarity" : "none",
+      "type" : "adventuring-gear",
+      "compartments" : [ {
+        "max_weight" : 2.0,
+        "constraint" : "20 arrows"
+      } ]
+    },
+    "sack" : {
+      "name" : "Sack",
+      "weight" : 0.5,
+      "value" : "1cp",
+      "rarity" : "none",
+      "type" : "adventuring-gear",
+      "compartments" : [ {
+        "max_weight" : 30.0,
+        "max_volume" : 1.0
+      } ]
+    },
+    "scroll-case" : {
+      "name" : "Scroll Case",
+      "weight" : 1.0,
+      "value" : "100cp",
+      "rarity" : "none",
+      "type" : "adventuring-gear",
+      "compartments" : [ {
+        "max_weight" : 1.0,
+        "constraint" : "5 sheets of parchment, or 10 sheets of paper"
+      } ]
+    }
+  }
+}

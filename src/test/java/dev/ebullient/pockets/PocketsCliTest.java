@@ -12,9 +12,11 @@ import io.quarkus.test.junit.main.QuarkusMainTest;
 @QuarkusMainTest
 public class PocketsCliTest {
     @Test
-    @Launch({})
+    @Launch({"--debug"})
     public void testBasicCommand(LaunchResult result) {
-        System.out.println(result.exitCode());
+        assertThat(result.getOutput()).contains(
+            "What have you got in your pockets?",
+            "Usage: pockets");
     }
 
     @Test

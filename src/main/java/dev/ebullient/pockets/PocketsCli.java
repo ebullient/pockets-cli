@@ -2,25 +2,75 @@ package dev.ebullient.pockets;
 
 import java.util.concurrent.Callable;
 
-import io.quarkus.picocli.runtime.annotations.TopCommand;
+import javax.enterprise.inject.Produces;
+import javax.inject.Inject;
+
+import dev.ebullient.pockets.io.PocketTui;
+import io.quarkus.runtime.QuarkusApplication;
+import io.quarkus.runtime.annotations.QuarkusMain;
+import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;
-import picocli.CommandLine.Parameters;
+import picocli.CommandLine.IFactory;
+import picocli.CommandLine.Option;
+import picocli.CommandLine.ParseResult;
 import picocli.CommandLine.ScopeType;
+import picocli.CommandLine.Spec;
+import picocli.CommandLine.Model.CommandSpec;
 
-@TopCommand
+@QuarkusMain
 @Command(name = "pockets", header = "What have you got in your pockets?",
     mixinStandardHelpOptions = true,
     scope = ScopeType.INHERIT)
-public class PocketsCli implements Callable<Integer> {
+public class PocketsCli implements Callable<Integer>, QuarkusApplication {
 
-    @Parameters(paramLabel = "<name>", defaultValue = "picocli",
-        description = "Your name.")
-    String name;
+    final PocketTui tui = new PocketTui();
+
+    @Spec
+    CommandSpec spec;
+
+    @Inject
+    IFactory factory;
+
+    @Option(names = { "-d", "--debug" }, description = "Enable debug output", scope = ScopeType.INHERIT)
+    boolean debug;
+
+    @Option(names = { "-b", "--brief" }, description = "Brief output", scope = ScopeType.INHERIT)
+    boolean brief;
 
     @Override
     public Integer call() throws Exception {
-        System.out.printf("Hello %s, go go commando!\n", name);
+        // invocation of `pockets` command
+        tui.showUsage(spec);
         return ExitCode.OK;
+    }
+
+    private int executionStrategy(ParseResult parseResult) {
+        init(parseResult);
+        int result = new CommandLine.RunLast().execute(parseResult);
+        shutdown();
+        return result;
+    }
+
+    private void init(ParseResult parseResult) {
+        tui.init(spec, debug, !brief);
+        tui.debug("HERE WE ARE: INIT");
+    }
+
+    private void shutdown() {
+        tui.debug("HERE WE ARE: SHUTDOWN");
+    }
+
+    @Override
+    public int run(String... args) throws Exception {
+        return new CommandLine(this, factory)
+            .setCaseInsensitiveEnumValuesAllowed(true)
+            .setExecutionStrategy(this::executionStrategy)
+            .execute(args);
+    }
+
+    @Produces
+    PocketTui getTui() {
+        return tui;
     }
 }
