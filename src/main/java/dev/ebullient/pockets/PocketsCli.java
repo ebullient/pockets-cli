@@ -80,7 +80,6 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
 
     @Produces
     Index getIndex() {
-        tui.debug("HERE WE ARE: getIndex");
         return index;
     }
 }

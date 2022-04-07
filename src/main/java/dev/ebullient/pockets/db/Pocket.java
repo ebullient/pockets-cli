@@ -1,4 +1,5 @@
 package dev.ebullient.pockets.db;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -61,7 +62,7 @@ public class Pocket extends PanacheEntity {
         final String query = Mapper.slugify(name);
         List<Pocket> allPockets = Pocket.listAll();
         return allPockets.stream()
-                .filter(p -> p.slug.startsWith(query) || p.slug.matches(query))
+                .filter(p -> p.slug.startsWith(query))
                 .collect(Collectors.toList());
     }
 

@@ -12,8 +12,13 @@ import io.quarkus.test.junit.main.QuarkusMainTest;
 public class PocketCreateTest {
 
     @Test
-    @Launch({"c", "--debug"})
+    @Launch({"c", "basket",  "--debug"})
     public void testCreateCommand() {
+    }
+
+    @Test
+    @Launch({"c", "--types"})
+    public void testCreateTypesCommand() {
     }
 
     @Test
