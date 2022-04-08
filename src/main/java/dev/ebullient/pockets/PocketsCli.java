@@ -68,13 +68,9 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
         tui.init(spec, debug, !brief);
         index.init();
         tui.format().setIndex(index); // reference for formatting
-
-        tui.debug("HERE WE ARE: INIT");
     }
 
-    private void shutdown() {
-        tui.debug("HERE WE ARE: SHUTDOWN");
-    }
+    private void shutdown() {}
 
     @Override
     @ActivateRequestContext

@@ -11,8 +11,8 @@ import dev.ebullient.pockets.db.Mapper;
 import dev.ebullient.pockets.db.Pocket;
 import dev.ebullient.pockets.io.PocketTui;
 import picocli.CommandLine.ExitCode;
-import picocli.CommandLine.Spec;
 import picocli.CommandLine.Model.CommandSpec;
+import picocli.CommandLine.Spec;
 
 public class BaseCommand implements Callable<Integer> {
 
@@ -35,7 +35,6 @@ public class BaseCommand implements Callable<Integer> {
 
     public Pocket selectPocketByNameOrId(String nameOrId) {
         Optional<Long> id = Mapper.toLong(nameOrId);
-
         return id.isPresent()
             ? selectPocketById(id.get())
             : selectPocketByName(nameOrId);

@@ -1,12 +1,9 @@
 package dev.ebullient.pockets;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
-import dev.ebullient.pockets.db.Mapper;
 import dev.ebullient.pockets.db.Pocket;
 import dev.ebullient.pockets.io.PocketTui;
 import picocli.CommandLine.ArgGroup;
@@ -28,8 +25,26 @@ public class PocketEdit extends BaseCommand {
     }
 
     @Override
+    @Transactional
     public Integer call() throws Exception {
+        Pocket pocket = selectPocketByNameOrId(nameOrId);
+        if (pocket == null) {
+            return PocketTui.NOT_FOUND;
+        }
+        tui.debugf("Pocket to edit: %s", pocket);
 
+        Previous previous = new Previous(pocket);
+        attrs.applyTo(pocket);
+
+        if (previous.isUnchanged(pocket)) {
+            tui.warnf("%s [%d] was not updated (no changes).%n", pocket.name, pocket.id);
+            return ExitCode.OK;
+        }
+
+        pocket.persistAndFlush();
+        tui.donef("%s [%d] has been updated.%n", pocket.name, pocket.id);
+
+        tui.verbose(tui.format().describe(pocket));
         return ExitCode.OK;
     }
 

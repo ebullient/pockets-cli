@@ -27,8 +27,27 @@ public class ItemRemove extends BaseCommand {
     @Override
     @Transactional
     public Integer call() throws Exception {
+        Pocket pocket = selectPocketById(pocketId);
+        if (pocket == null) {
+            return PocketTui.NOT_FOUND;
+        }
 
+        Item item = selectItemByNameOrId(pocket, nameOrId);
+        if (item == null) {
+            return PocketTui.NOT_FOUND;
+        }
 
+        item.removeFromPocket(pocket);
+        item.delete();
+
+        if (item.quantity <= 1) {
+            tui.donef("%s [%d] has been removed from %s [%d].%n", item.name, item.id, pocket.name, pocket.id);
+        } else {
+            tui.donef("@|faint (%d)|@ %s [%d] have been removed from %s [%d].%n", item.quantity, item.name,
+                item.id, pocket.name, pocket.id);
+        }
+
+        tui.verbose(tui.format().describe(pocket));
         return ExitCode.OK;
     }
 }

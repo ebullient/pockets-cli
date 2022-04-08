@@ -53,6 +53,7 @@ public class PocketCreate extends BaseCommand {
 
         tui.createf("A new pocket named %s has been created with id '%s'.%n",
                 pocket.name, pocket.id);
+        tui.verbose(tui.format().describe(pocket));
         return ExitCode.OK;
     }
 }

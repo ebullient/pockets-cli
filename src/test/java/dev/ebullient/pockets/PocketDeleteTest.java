@@ -1,32 +1,37 @@
 package dev.ebullient.pockets;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.Test;
+
+import dev.ebullient.pockets.io.PocketTui;
 import io.quarkus.test.junit.main.Launch;
 import io.quarkus.test.junit.main.LaunchResult;
 import io.quarkus.test.junit.main.QuarkusMainTest;
-import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @QuarkusMainTest
 public class PocketDeleteTest {
     @Test
-    @Launch({"l"})
-    public void testListCommand() {
+    @Launch({"d", "1"})
+    public void testPocketDeleteCommand(LaunchResult result) {
+        assertThat(result.getOutput()).contains(
+            "✅ Coins [1] has been deleted.");
     }
 
     @Test
-    @Launch({"l", "1"})
-    public void testListPocketCommand(LaunchResult result) {
+    @Launch(value = {"delete", "backpack"}, exitCode = PocketTui.NOT_FOUND)
+    public void testPocketDeleteCommandDuplicate(LaunchResult result) {
         assertThat(result.getOutput()).contains(
-            "👛 Coins [1] is empty.",
-            "This Pouch weighs 1 pound when empty.");
+            "[   2] 🎒  Backpack",
+            "[   4] 🎒  Backpack",
+            "The specified value [backpack] matches more than one pocket.");
     }
 
     @Test
-    @Launch({"l", "--help"})
-    public void testListHelp(LaunchResult result) {
+    @Launch({"d", "--help"})
+    public void testPocketDeleteHelp(LaunchResult result) {
         assertThat(result.getOutput()).contains(
-            "What do we have in our pockets?",
-            "Usage: pockets l ");
+            "Delete a pocket",
+            "Usage: pockets d ");
     }
 }

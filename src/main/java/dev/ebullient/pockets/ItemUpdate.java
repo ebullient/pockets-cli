@@ -1,12 +1,10 @@
 package dev.ebullient.pockets;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
 import dev.ebullient.pockets.db.Item;
-import dev.ebullient.pockets.db.Mapper;
 import dev.ebullient.pockets.db.Pocket;
 import dev.ebullient.pockets.io.PocketTui;
 import picocli.CommandLine.ArgGroup;
@@ -33,7 +31,28 @@ public class ItemUpdate extends BaseCommand {
     @Override
     @Transactional
     public Integer call() throws Exception {
+        Pocket pocket = selectPocketById(pocketId);
+        if (pocket == null) {
+            return PocketTui.NOT_FOUND;
+        }
 
+        Item item = selectItemByNameOrId(pocket, nameOrId);
+        if (item == null) {
+            return PocketTui.NOT_FOUND;
+        }
+
+        Previous previous = new Previous(item);
+        attrs.applyTo(item, tui);
+
+        if (previous.isUnchanged(item)) {
+            tui.warnf("%s [%d] was not updated (no changes).%n", item.name, item.id);
+            return ExitCode.OK;
+        }
+
+        item.persistAndFlush();
+        tui.donef("%s [%d] has been updated.%n", item.name, item.id);
+
+        tui.verbose(tui.format().describe(pocket));
         return ExitCode.OK;
     }
 
