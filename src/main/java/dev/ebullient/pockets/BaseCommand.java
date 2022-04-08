@@ -6,6 +6,7 @@ import java.util.concurrent.Callable;
 
 import javax.inject.Inject;
 
+import dev.ebullient.pockets.db.Item;
 import dev.ebullient.pockets.db.Mapper;
 import dev.ebullient.pockets.db.Pocket;
 import dev.ebullient.pockets.io.PocketTui;
@@ -63,6 +64,38 @@ public class BaseCommand implements Callable<Integer> {
             tui.outPrintf("%n'%s' doesn't match any of your pockets.%n", name);
         }
         listAllPockets();
+        return null;
+    }
+
+    public Item selectItemByNameOrId(Pocket pocket, String nameOrId) {
+        Optional<Long> id = Mapper.toLong(nameOrId);
+        return id.isPresent()
+            ? selectItemById(pocket, id.get())
+            : selectItemByName(pocket, nameOrId);
+    }
+
+    public Item selectItemById(Pocket pocket, Long item_id) {
+        Item item = Item.findById(item_id);
+        if (item == null || !item.belongsTo(pocket)) {
+            tui.outPrintf("%nThe specified value [%s] doesn't match any of the items in this pocket.%n", item_id);
+            return null;
+        }
+        return item;
+    }
+
+    public Item selectItemByName(Pocket pocket, String name) {
+        List<Item> items = Item.findByName(pocket, name);
+
+        if (items.size() == 1) {
+            return items.iterator().next();
+        }
+
+        if (items.size() > 1) {
+            tui.outPrintf("%nThe specified value [%s] matches more than one item in your pocket.%n", name);
+        } else  {
+            tui.outPrintf("%n'%s' doesn't match any of the items in your pocket.%n", name);
+        }
+        tui.outPrintln(tui.format().describe(pocket));
         return null;
     }
 }

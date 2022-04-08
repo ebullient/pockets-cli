@@ -22,8 +22,16 @@ import picocli.CommandLine.Model.CommandSpec;
 
 @QuarkusMain
 @Command(name = "pockets", header = "What have you got in your pockets?",
-    subcommands = { PocketCreate.class, PocketList.class },
-    mixinStandardHelpOptions = true,
+    subcommands = {
+        PocketList.class,
+        PocketCreate.class,
+        PocketDelete.class,
+        PocketEdit.class,
+        ItemAdd.class,
+        ItemRemove.class,
+        ItemUpdate.class },
+    mixinStandardHelpOptions = true, sortOptions = false,
+    headerHeading = "%n", synopsisHeading = "%nUsage: ", parameterListHeading = "%nParameters:%n", optionListHeading = "%nOptions:%n", commandListHeading = "%nCommands:%n",
     scope = ScopeType.INHERIT)
 public class PocketsCli implements Callable<Integer>, QuarkusApplication {
 

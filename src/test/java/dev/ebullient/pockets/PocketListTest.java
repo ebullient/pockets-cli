@@ -1,5 +1,4 @@
 package dev.ebullient.pockets;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
@@ -9,25 +8,25 @@ import io.quarkus.test.junit.main.LaunchResult;
 import io.quarkus.test.junit.main.QuarkusMainTest;
 
 @QuarkusMainTest
-public class PocketCreateTest {
-
+public class PocketListTest {
     @Test
-    @Launch({"c", "basket",  "--debug"})
-    public void testCreateCommand() {
+    @Launch({"l"})
+    public void testListCommand() {
     }
 
     @Test
-    @Launch({"c", "--types"})
-    public void testCreateTypesCommand(LaunchResult result) {
+    @Launch({"l", "1"})
+    public void testListPocketCommand(LaunchResult result) {
         assertThat(result.getOutput()).contains(
-            "bag-of-holding","Bag of Holding");
+            "👛 Coins [1] is empty.",
+            "This Pouch weighs 1 pound when empty.");
     }
 
     @Test
-    @Launch({"c", "--help"})
-    public void testCreateHelp(LaunchResult result) {
+    @Launch({"l", "--help"})
+    public void testListHelp(LaunchResult result) {
         assertThat(result.getOutput()).contains(
-            "Create a new pocket",
-            "Usage: pockets c ");
+            "What do we have in our pockets?",
+            "Usage: pockets l ");
     }
 }

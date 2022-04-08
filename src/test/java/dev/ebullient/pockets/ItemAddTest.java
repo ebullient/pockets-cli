@@ -9,25 +9,17 @@ import io.quarkus.test.junit.main.LaunchResult;
 import io.quarkus.test.junit.main.QuarkusMainTest;
 
 @QuarkusMainTest
-public class PocketCreateTest {
-
+public class ItemAddTest {
     @Test
-    @Launch({"c", "basket",  "--debug"})
+    @Launch({"a", "1", "basket",  "--debug"})
     public void testCreateCommand() {
     }
 
     @Test
-    @Launch({"c", "--types"})
-    public void testCreateTypesCommand(LaunchResult result) {
-        assertThat(result.getOutput()).contains(
-            "bag-of-holding","Bag of Holding");
-    }
-
-    @Test
-    @Launch({"c", "--help"})
+    @Launch({"a", "--help"})
     public void testCreateHelp(LaunchResult result) {
         assertThat(result.getOutput()).contains(
-            "Create a new pocket",
-            "Usage: pockets c ");
+            "Add an item to a pocket",
+            "Usage: pockets a ");
     }
 }

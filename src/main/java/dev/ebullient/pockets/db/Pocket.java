@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -40,8 +39,35 @@ public class Pocket extends PanacheEntity {
     @NotNull // extradimensional always have the same carry weight
     public boolean extradimensional = false;
 
-    @Transient
+    /** Many items in this pocket */
+    @OneToMany(mappedBy = EntityConstants.POCKET_TABLE, fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     public Set<Item> items;
+
+    /**
+     * Add an item to the pocket
+     *
+     * @see Item#addToPocket(Pocket)
+     */
+    public boolean addItem(Item item) {
+        if (item.pocket == null && items.add(item)) {
+            item.pocket = this;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Remove an item from the pocket
+     *
+     * @see Item#removeFromPocket(Pocket)
+     */
+    public boolean removeItem(Item item) {
+        if (items.remove(item)) {
+            item.pocket = null;
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public void persist() {

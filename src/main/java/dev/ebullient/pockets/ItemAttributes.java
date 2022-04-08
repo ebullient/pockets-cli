@@ -2,6 +2,9 @@ package dev.ebullient.pockets;
 
 import java.util.Optional;
 
+import dev.ebullient.pockets.db.Item;
+import dev.ebullient.pockets.db.Mapper;
+import dev.ebullient.pockets.io.PocketTui;
 import picocli.CommandLine.Help.Visibility;
 import picocli.CommandLine.Option;
 
@@ -19,6 +22,21 @@ public class ItemAttributes {
     @Option(names = {
             "--trade" }, negatable = true, showDefaultValue = Visibility.NEVER, description = "Is this a tradable item?%n  tradable items are included in the cumulative value (gp) of your pocket.")
     Optional<Boolean> tradable = Optional.empty();
+
+    public void applyTo(Item item, PocketTui tui) {
+        if (value.isPresent()) {
+            item.gpValue = Mapper.Currency.gpValueOrDefault(value.get(), item.gpValue, tui);
+        }
+        if (weight.isPresent()) {
+            item.weight = weight.get();
+        }
+        if (quantity.isPresent()) {
+            item.quantity = quantity.get();
+        }
+        if (tradable.isPresent()) {
+            item.tradable = tradable.get();
+        }
+    }
 
     @Override
     public String toString() {
