@@ -11,4 +11,16 @@ import io.quarkus.test.junit.main.QuarkusMainTest;
 @QuarkusMainTest
 public class PocketCreateTest {
 
+    @Test
+    @Launch({"c", "--debug"})
+    public void testCreateCommand() {
+    }
+
+    @Test
+    @Launch({"c", "--help"})
+    public void testCreateHelp(LaunchResult result) {
+        assertThat(result.getOutput()).contains(
+            "Create a new pocket",
+            "Usage: pockets c ");
+    }
 }

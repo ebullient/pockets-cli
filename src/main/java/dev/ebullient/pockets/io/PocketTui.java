@@ -10,14 +10,16 @@ import picocli.CommandLine.Model.CommandSpec;
 public class PocketTui {
     static final boolean picocliDebugEnabled = "DEBUG".equalsIgnoreCase(System.getProperty("picocli.trace"));
 
-    private Ansi ansi;
-    private ColorScheme colors;
+    Ansi ansi;
+    ColorScheme colors;
 
     private PrintWriter out;
     private PrintWriter err;
 
     private boolean debug;
     private boolean verbose;
+
+    private final Formatter formatter = new Formatter(this);
 
     public PocketTui() {
         this.ansi = Help.Ansi.OFF;
@@ -80,6 +82,22 @@ public class PocketTui {
         out.println(ansi.new Text("🔸 " + output));
     }
 
+    public void donef(String format, Object... params) {
+        done(String.format(format, params));
+    }
+
+    public void done(String output) {
+        out.println(ansi.new Text("✅ " + output));
+    }
+
+    public void createf(String format, Object... params) {
+        create(String.format(format, params));
+    }
+
+    public void create(String output) {
+        out.println(ansi.new Text("✨ " + output));
+    }
+
     public void outPrintf(String format, Object... args) {
         String output = String.format(format, args);
         out.print(ansi.new Text(output, colors));
@@ -89,6 +107,10 @@ public class PocketTui {
     public void outPrintln(String output) {
         out.println(ansi.new Text(output));
         out.flush();
+    }
+
+    public Formatter format() {
+        return formatter;
     }
 
     public void errorf(String format, Object... args) {

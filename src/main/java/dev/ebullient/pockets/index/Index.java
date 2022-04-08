@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -69,6 +70,11 @@ public class Index {
             return Optional.of(ref);
         }
         return Optional.empty();
+    }
+
+    public void listPocketTypes() {
+        tui.outPrintln(tui.format().table(data.pockets.entrySet().stream()
+            .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue().name, (o1, o2) -> o1, TreeMap::new))));
     }
 
     private void readIndex() {

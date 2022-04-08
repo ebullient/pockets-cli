@@ -1,4 +1,7 @@
 package dev.ebullient.pockets.db;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,7 +17,9 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 /**
  * A pocket (or backpack, or haversack, or purse, or ... )
  */
-public class Pocket {
+@Entity(name = EntityConstants.POCKET_ENTITY)
+@Table(name = EntityConstants.POCKET_TABLE)
+public class Pocket extends PanacheEntity {
 
     @Size(min = 1, max = 50)
     public String name;
@@ -33,4 +38,37 @@ public class Pocket {
 
     @NotNull // extradimensional always have the same carry weight
     public boolean extradimensional = false;
+
+    @Override
+    public void persist() {
+        slug = Mapper.slugify(name);
+        super.persist();
+    }
+
+    @Override
+    public void persistAndFlush() {
+        slug = Mapper.slugify(name);
+        super.persistAndFlush();
+    }
+
+    /**
+     * Find pocket by slugified name
+     *
+     * @param name -- will be slugified
+     * @return List of pockets that match the slugified name
+     */
+    public static List<Pocket> findByName(String name) {
+        final String query = Mapper.slugify(name);
+        List<Pocket> allPockets = Pocket.listAll();
+        return allPockets.stream()
+                .filter(p -> p.slug.startsWith(query) || p.slug.matches(query))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public String toString() {
+        return "Pocket [extradimensional=" + extradimensional + ", max_volume=" + max_volume + ", max_weight="
+                + max_weight + ", name=" + name + ", pocketRef=" + pocketRef + ", slug=" + slug + ", weight=" + weight
+                + "]";
+    }
 }
