@@ -22,7 +22,7 @@ import picocli.CommandLine.Model.CommandSpec;
 
 @QuarkusMain
 @Command(name = "pockets", header = "What have you got in your pockets?",
-    subcommands = { PocketCreate.class },
+    subcommands = { PocketCreate.class, PocketList.class },
     mixinStandardHelpOptions = true,
     scope = ScopeType.INHERIT)
 public class PocketsCli implements Callable<Integer>, QuarkusApplication {

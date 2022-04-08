@@ -1,10 +1,13 @@
 package dev.ebullient.pockets.io;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BinaryOperator;
 
+import dev.ebullient.pockets.db.Item;
 import dev.ebullient.pockets.db.Pocket;
 import dev.ebullient.pockets.index.Index;
 import dev.ebullient.pockets.index.PocketReference;
@@ -17,6 +20,7 @@ public class Formatter {
 
     Index index;
     int pocketIdWidth = 0;
+    int[] itemWidths = { 0, 0, 0, 0 };
 
     public Formatter(PocketTui tui) {
         this.tui = tui;
@@ -45,22 +49,56 @@ public class Formatter {
 
         StringBuilder builder = new StringBuilder();
         builder.append("\n 🛍 Your pockets:\n");
-        tableOfPockets(builder, pockets);
+        appendTableOfPockets(builder, pockets);
         builder.append("\n");
         return builder.toString();
     }
 
     public String describe(Pocket pocket) {
+        PocketReference ref = index.getPocketReference(pocket.pocketRef);
         tui.debug(pocket.toString());
 
         StringBuilder builder = new StringBuilder();
-        builder.append(String.format("%n%-2s %s [%d] is empty.%n", getPocketEmoji(pocket), pocket.name, pocket.id));
+
+        if (pocket.items == null || pocket.items.isEmpty()) {
+            builder.append(String.format("%n%-2s %s [%d] is empty.%n", getPocketEmoji(pocket, ref), pocket.name, pocket.id));
+        } else {
+            builder.append(String.format("%n%-2s %s [%d] contains:%n%n", getPocketEmoji(pocket, ref), pocket.name, pocket.id));
+            appendTableOfItems(builder, pocket.items);
+        }
+        builder.append("\n");
+
+        if (pocket.extradimensional) {
+            builder.append(String.format(
+                    "@|bold,underline This %s is magical.|@%nIt always weighs %s, regardless of its contents.%n",
+                    ref.name, weightUnits(pocket.weight)));
+        } else {
+            builder.append(String.format("This %s weighs %s when empty.%n", ref.name, weightUnits(pocket.weight)));
+        }
+
+        String weight = "";
+        if (pocket.max_weight != null && pocket.max_weight != 0) {
+            weight = weightUnits(pocket.max_weight);
+        }
+        String volume = "";
+        if (pocket.max_volume != null && pocket.max_volume != 0) {
+            volume = volumeUnits(pocket.max_volume);
+        }
+
+        builder.append(String.format("It can hold %s%s%s of gear.%n",
+                weight,
+                (weight.length() > 0 && volume.length() > 0) ? " or " : "",
+                volume));
+
+        if (ref.hasConstraints()) {
+            builder.append(ref.constraint(pocket.slug));
+        }
+
         builder.append("\n");
         return builder.toString();
     }
 
-
-    private void tableOfPockets(StringBuilder builder, List<Pocket> pockets) {
+    private void appendTableOfPockets(StringBuilder builder, List<Pocket> pockets) {
         int idWidth = pockets.stream()
                     .filter(p -> p.id != null)
                     .map(p -> p.id.toString().length())
@@ -77,6 +115,29 @@ public class Formatter {
                         p.id, getPocketEmoji(p),
                         p.extradimensional ? "@|fg(magenta) *|@" : " ",
                         p.name)));
+    }
+
+    private void appendTableOfItems(StringBuilder builder, Collection<Item> items) {
+        int[] widths = {4, 3, 4, 4};
+        items.forEach(i -> {
+            widths[0] = Math.max(widths[0], valueToString(i.id).length());
+            widths[1] = Math.max(widths[1], valueToString(i.quantity).length());
+            widths[2] = Math.max(widths[2], valueToString(i.weight).length());
+            widths[3] = Math.max(widths[3], valueToString(i.gpValue).length());
+        });
+
+        if ( !Arrays.equals(itemWidths, widths) ) {
+            setItemTableFormat(widths);
+        }
+
+        builder.append(ansiFormat.get("pi.th"));
+        builder.append(ansiFormat.get("pi.thr"));
+        items.forEach(
+                i -> builder.append(String.format(ansiFormat.get("pi.tr"),
+                        i.id, i.quantity, i.name,
+                        i.weight == null ? "-" : i.weight,
+                        i.gpValue == null ? "-" : i.gpValue,
+                        i.tradable ? " " : "🔒")));
     }
 
     private String getPocketEmoji(Pocket pocket) {
@@ -106,5 +167,46 @@ public class Formatter {
         ansiFormat.put("p.tr", "@|faint [|@%" + idWidth + "d@|faint ]|@ %-2s%s %-50s%n");
 
         pocketIdWidth = idWidth;
+    }
+
+    private void setItemTableFormat(int[] widths) {
+        int id = widths[0];
+        int q = widths[1];
+        int w = widths[2];
+        int gp = widths[3];
+
+        ansiFormat.put("pi.th",
+                String.format("@|faint [%" + id + "s] (%" + q + "s)  %-50s   %" + w + "s   %" + gp + "s  t|@%n",
+                        "ID ", "Q ", "Name / Description", "lbs", "gp"));
+
+        ansiFormat.put("pi.thr",
+                String.format("@|faint -%s-|-%s-|-%s-|-%s-|-%s-|-|@%n",
+                        "-".repeat(id), "-".repeat(q), "-".repeat(50), "-".repeat(w), "-".repeat(gp)));
+
+        ansiFormat.put("pi.tr",
+                "@|faint [|@%" + id + "d@|faint ]|@ @|faint (|@%" + q + "d@|faint )|@  %-50s   %" + w
+                        + "s   %" + gp + "s  %s%n");
+
+        itemWidths = widths;
+    }
+
+    private String weightUnits(double value) {
+        if (value == 1.0) {
+            return "1 pound";
+        } else {
+            return value + " pounds";
+        }
+    }
+
+    private String volumeUnits(double value) {
+        if (value == 1.0) {
+            return "1 cubic foot";
+        } else {
+            return value + " cubic feet";
+        }
+    }
+
+    private String valueToString(Object o) {
+        return o == null ? "" : o.toString();
     }
 }

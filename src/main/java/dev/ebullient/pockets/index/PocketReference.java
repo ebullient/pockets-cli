@@ -121,4 +121,10 @@ public class PocketReference extends ItemReference {
                 return "🥡";
         }
     }
+
+    @Override
+    public String toString() {
+        return "PocketReference [compartments=" + compartments + ", emoji=" + emoji + ", extradimensional="
+                + extradimensional + "]";
+    }
 }
