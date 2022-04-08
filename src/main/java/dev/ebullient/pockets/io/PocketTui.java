@@ -10,6 +10,8 @@ import picocli.CommandLine.Model.CommandSpec;
 public class PocketTui {
     static final boolean picocliDebugEnabled = "DEBUG".equalsIgnoreCase(System.getProperty("picocli.trace"));
 
+    public static final int NOT_FOUND = 3;
+
     Ansi ansi;
     ColorScheme colors;
 

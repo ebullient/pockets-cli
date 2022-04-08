@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
 import dev.ebullient.pockets.db.Pocket;
 import dev.ebullient.pockets.index.Index;
@@ -37,6 +38,7 @@ public class PocketCreate extends BaseCommand {
     }
 
     @Override
+    @Transactional
     public Integer call() throws Exception {
         if ( showTypes ) {
             index.listPocketTypes();

@@ -2,6 +2,7 @@ package dev.ebullient.pockets;
 
 import java.util.concurrent.Callable;
 
+import javax.enterprise.context.control.ActivateRequestContext;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 
@@ -58,6 +59,8 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
     private void init(ParseResult parseResult) {
         tui.init(spec, debug, !brief);
         index.init();
+        tui.format().setIndex(index); // reference for formatting
+
         tui.debug("HERE WE ARE: INIT");
     }
 
@@ -66,6 +69,7 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
     }
 
     @Override
+    @ActivateRequestContext
     public int run(String... args) throws Exception {
         return new CommandLine(this, factory)
             .setCaseInsensitiveEnumValuesAllowed(true)
