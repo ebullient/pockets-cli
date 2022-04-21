@@ -11,7 +11,7 @@ public class Util {
 
     public static String outputWithoutLogs(LaunchResult result) {
         return result.getOutputStream().stream()
-                .filter(x -> !Util.LOG_PATTERN.matcher(x).matches())
+                .filter(x -> !LOG_PATTERN.matcher(x).matches())
                 .filter(x -> !x.startsWith("[INFO]"))
                 .collect(Collectors.joining("\n"));
     }

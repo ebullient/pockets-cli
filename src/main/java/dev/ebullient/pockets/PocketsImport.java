@@ -4,7 +4,11 @@ import java.io.File;
 import java.nio.file.Path;
 import java.util.concurrent.Callable;
 
-import dev.ebullient.pockets.reference.Import5eTools;
+import javax.inject.Inject;
+
+import dev.ebullient.pockets.index.Import5eTools;
+import dev.ebullient.pockets.index.IndexConstants;
+import dev.ebullient.pockets.io.PocketTui;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;
 import picocli.CommandLine.Model.CommandSpec;
@@ -13,7 +17,7 @@ import picocli.CommandLine.ParameterException;
 import picocli.CommandLine.ScopeType;
 import picocli.CommandLine.Spec;
 
-@Command(name = "import", header = "Import reference items and pockets", subcommands = {
+@Command(name = "i", aliases = { "import" }, header = "Import reference items and pockets", subcommands = {
         Import5eTools.class
 }, footer = {
         "%n",
@@ -21,17 +25,20 @@ import picocli.CommandLine.Spec;
         "your own items to pockets by creating an index.json file in the pockets",
         "configuration directory (~/.pockets by default). The file should contain ",
         "something like the following:%n",
-        Constants.JSON_EXAMPLE,
+        IndexConstants.JSON_EXAMPLE,
         "Please note:%n",
         "- Both the \"items\" and \"pockets\" elements should be defined.%n",
         "- The key used to define an object should be a slugified version of the item's",
         "  name: all lowercase; remove special characters; replace spaces with '-'.%n",
         "- You can use the following schema to validate your index:",
-        "  " + Constants.JSON_SCHEMA,
+        "  " + IndexConstants.JSON_SCHEMA,
         "%n"
 })
 public class PocketsImport implements Callable<Integer> {
     Path output;
+
+    @Inject
+    PocketTui tui;
 
     @Spec
     CommandSpec spec;
@@ -52,7 +59,7 @@ public class PocketsImport implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        Term.showUsage(spec);
+        tui.showUsage(spec);
         return ExitCode.OK;
     }
 }

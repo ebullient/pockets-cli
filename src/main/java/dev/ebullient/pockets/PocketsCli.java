@@ -1,15 +1,13 @@
 package dev.ebullient.pockets;
 
-import java.io.File;
-import java.nio.file.Path;
 import java.util.concurrent.Callable;
 
 import javax.enterprise.context.control.ActivateRequestContext;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 
-import dev.ebullient.pockets.reference.Index;
-import io.quarkus.runtime.LaunchMode;
+import dev.ebullient.pockets.index.Index;
+import dev.ebullient.pockets.io.PocketTui;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
 import picocli.CommandLine;
@@ -18,96 +16,70 @@ import picocli.CommandLine.ExitCode;
 import picocli.CommandLine.IFactory;
 import picocli.CommandLine.Model.CommandSpec;
 import picocli.CommandLine.Option;
-import picocli.CommandLine.ParameterException;
 import picocli.CommandLine.ParseResult;
 import picocli.CommandLine.ScopeType;
 import picocli.CommandLine.Spec;
 
 @QuarkusMain
 @Command(name = "pockets", header = "What have you got in your pockets?", subcommands = {
-        PocketsCreate.class, PocketsEdit.class, PocketsOpen.class, PocketsDelete.class,
-        PocketsList.class,
-        PocketItemAdd.class, PocketItemUpdate.class, PocketItemRemove.class,
-        PocketsImport.class
-}, scope = ScopeType.INHERIT, mixinStandardHelpOptions = true, sortOptions = false, showDefaultValues = true, headerHeading = "%n", synopsisHeading = "%n", parameterListHeading = "%nParameters:%n", optionListHeading = "%nOptions:%n", commandListHeading = "%nCommands:%n")
+        PocketList.class,
+        PocketCreate.class,
+        PocketDelete.class,
+        PocketEdit.class,
+        ItemAdd.class,
+        ItemRemove.class,
+        ItemUpdate.class,
+        PocketsImport.class }, mixinStandardHelpOptions = true, sortOptions = false, headerHeading = "%n", synopsisHeading = "%nUsage: ", parameterListHeading = "%nParameters:%n", optionListHeading = "%nOptions:%n", commandListHeading = "%nCommands:%n", scope = ScopeType.INHERIT)
 public class PocketsCli implements Callable<Integer>, QuarkusApplication {
+
+    final PocketTui tui = new PocketTui();
+    final Index index = new Index(tui);
+
+    @Spec
+    CommandSpec spec;
+
     @Inject
     IFactory factory;
 
-    @Spec
-    private CommandSpec spec;
-
-    File configDirectory;
-    PocketsCache cache;
-    Index index;
-
-    public PocketsCli() {
-        if (LaunchMode.current().isDevOrTest()) {
-            configDirectory = Path.of(System.getProperty("user.dir"), "target/.pockets").toFile();
-        } else {
-            configDirectory = Path.of(System.getProperty("user.home"), ".pockets").toFile();
-        }
-        Term.debug("Default config directory: " + configDirectory);
-    }
-
     @Option(names = { "-d", "--debug" }, description = "Enable debug output", scope = ScopeType.INHERIT)
-    void setDebug(boolean debug) {
-        Term.setDebug(debug);
-    }
+    boolean debug;
 
     @Option(names = { "-b", "--brief" }, description = "Brief output", scope = ScopeType.INHERIT)
-    void setBrief(boolean brief) {
-        Term.setBrief(brief);
-    }
+    boolean brief;
 
-    @Option(names = { "--fresh" }, description = "Clear cache", scope = ScopeType.INHERIT)
-    boolean clearCache = false;
-
-    @Option(names = { "--config" }, description = "Config directory. Default is ~/.pockets", scope = ScopeType.INHERIT)
-    void setConfig(File configDir) {
-        if (configDir.exists() && configDir.isFile()) {
-            throw new ParameterException(spec.commandLine(),
-                    "Specified output path exists and is a file: " + configDir);
-        }
-        this.configDirectory = configDir;
-    }
+    @Option(names = { "-i",
+            "--interactive" }, description = "Confirm and prompt for missing arguments.", required = false, help = true, scope = ScopeType.INHERIT)
+    boolean interactive = false;
 
     @Override
-    public Integer call() {
-        Term.showUsage(spec);
+    public Integer call() throws Exception {
+        // invocation of `pockets` command
+        tui.showUsage(spec);
         return ExitCode.OK;
     }
 
-    private void init(ParseResult parseResult) {
-        Term.prepareStreams(parseResult.commandSpec());
-        configDirectory.mkdirs();
-        cache = new PocketsCache.Builder()
-                .setConfigDirectory(configDirectory)
-                .setClearCache(clearCache)
-                .build();
-
-        index = new Index.Builder()
-                .setConfigDirectory(configDirectory)
-                .build();
-    }
-
-    private void close() {
-        cache.persist();
-        Term.close();
-    }
-
     private int executionStrategy(ParseResult parseResult) {
-        // Initialize log streams and caches after parameters have been read,
-        // then carry on with the rest of the show
-        init(parseResult);
-        int result = new CommandLine.RunLast().execute(parseResult);
-        close();
-        return result;
+        try {
+            init(parseResult);
+            return new CommandLine.RunLast().execute(parseResult);
+        } finally {
+            shutdown();
+        }
+    }
+
+    private void init(ParseResult parseResult) {
+        tui.init(spec, debug, !brief, interactive);
+        index.init();
+        tui.format().setIndex(index); // reference for formatting
+    }
+
+    private void shutdown() {
+        tui.close();
     }
 
     @Override
     @ActivateRequestContext
-    public int run(String... args) {
+    public int run(String... args) throws Exception {
         return new CommandLine(this, factory)
                 .setCaseInsensitiveEnumValuesAllowed(true)
                 .setExecutionStrategy(this::executionStrategy)
@@ -115,8 +87,8 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
     }
 
     @Produces
-    PocketsCache getCache() {
-        return cache;
+    PocketTui getTui() {
+        return tui;
     }
 
     @Produces
