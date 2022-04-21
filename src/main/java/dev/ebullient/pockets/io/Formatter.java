@@ -55,6 +55,10 @@ public class Formatter {
     }
 
     public String describe(Pocket pocket) {
+        return describe(pocket, true);
+    }
+
+    public String describe(Pocket pocket, boolean details) {
         PocketReference ref = index.getPocketReference(pocket.pocketRef);
         tui.debug(pocket.toString());
 
@@ -68,34 +72,59 @@ public class Formatter {
         }
         builder.append("\n");
 
-        if (pocket.extradimensional) {
-            builder.append(String.format(
-                    "@|bold,underline This %s is magical.|@%nIt always weighs %s, regardless of its contents.%n",
-                    ref.name, weightUnits(pocket.weight)));
-        } else {
-            builder.append(String.format("This %s weighs %s when empty.%n", ref.name, weightUnits(pocket.weight)));
+        if (details) {
+            if (pocket.extradimensional) {
+                builder.append(String.format(
+                        "@|bold,underline This %s is magical.|@%nIt always weighs %s, regardless of its contents.%n",
+                        ref.name, weightUnits(pocket.weight)));
+            } else {
+                builder.append(String.format("This %s weighs %s when empty.%n", ref.name, weightUnits(pocket.weight)));
+            }
+
+            String weight = "";
+            if (pocket.max_weight != null && pocket.max_weight != 0) {
+                weight = weightUnits(pocket.max_weight);
+            }
+            String volume = "";
+            if (pocket.max_volume != null && pocket.max_volume != 0) {
+                volume = volumeUnits(pocket.max_volume);
+            }
+
+            builder.append(String.format("It can hold %s%s%s of gear.%n",
+                    weight,
+                    (weight.length() > 0 && volume.length() > 0) ? " or " : "",
+                    volume));
+
+            if (ref.hasConstraints()) {
+                builder.append(ref.describeConstraints());
+            }
+            if ( pocket.notes != null) {
+                builder.append(String.format("Additional Notes:%n%s%n", pocket.notes));
+            }
+
+            builder.append("\n");
         }
 
-        String weight = "";
-        if (pocket.max_weight != null && pocket.max_weight != 0) {
-            weight = weightUnits(pocket.max_weight);
-        }
-        String volume = "";
-        if (pocket.max_volume != null && pocket.max_volume != 0) {
-            volume = volumeUnits(pocket.max_volume);
-        }
-
-        builder.append(String.format("It can hold %s%s%s of gear.%n",
-                weight,
-                (weight.length() > 0 && volume.length() > 0) ? " or " : "",
-                volume));
-
-        if (ref.hasConstraints()) {
-            builder.append(ref.constraint(pocket.slug));
-        }
-
-        builder.append("\n");
         return builder.toString();
+    }
+
+    public String describe(Item item) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("  Name         : ").append(item.name).append("\n");
+        builder.append("  Quantity     : ").append(item.quantity).append("\n");
+        builder.append("  Weight (lbs) : ").append((item.weight == null ? "unknown" : item.weight)).append("\n");
+        builder.append("  Value (gp)   : ").append((item.gpValue == null ? "unknown" : item.gpValue)).append("\n");
+        builder.append("  Tradeable    : ").append(item.tradable).append("\n");
+        return builder.toString();
+    }
+
+    public String howMany(long number, String one, String more) {
+        if (number == 0) {
+            return "no " + more;
+        } else if (number == 1) {
+            return number + " " + one;
+        }
+        return number + " " + more;
     }
 
     private void appendTableOfPockets(StringBuilder builder, List<Pocket> pockets) {

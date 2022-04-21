@@ -10,7 +10,7 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;
 import picocli.CommandLine.Parameters;
 
-@Command(name = "d", aliases = { "delete" }, header = "Delete a pocket")
+@Command(name = "d", aliases = { "delete" }, header = "Delete a pocket.")
 public class PocketDelete extends BaseCommand {
 
     String nameOrId;
@@ -27,11 +27,22 @@ public class PocketDelete extends BaseCommand {
         if (pocket == null) {
             return PocketTui.NOT_FOUND;
         }
-        tui.debugf("Pocket to delete: %s", pocket);
+        tui.verbose(tui.format().describe(pocket, false));
+
+        if (tui.interactive()) {
+            tui.outPrintf("%s [%d] will be deleted.%n", pocket.name, pocket.id);
+            if (!tui.reader().confirm("Are you sure you want to delete this pocket")) {
+                tui.warnf("%s [%d] was not deleted.%n", pocket.name, pocket.id);
+                return ExitCode.USAGE;
+            }
+        }
 
         pocket.delete();
         tui.donef("%s [%d] has been deleted.%n", pocket.name, pocket.id);
 
+        if ( tui.isVerbose()) {
+            listAllPockets();
+        }
         return ExitCode.OK;
     }
 }

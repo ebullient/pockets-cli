@@ -43,14 +43,45 @@ public class Mapper {
      */
     public static Optional<Long> toLong(String line, PocketTui tui) {
         try {
-            long id = Long.parseLong(line);
-            return Optional.of(id);
+            long value = Long.parseLong(line);
+            return Optional.of(value);
         } catch (NumberFormatException ignored) {
             if (tui != null) {
                 tui.warnf("Unable to determine value from the specified string: %s%n", line);
             }
         }
         return Optional.empty();
+    }
+
+    public static double toLongOrDefault(String line, long defaultValue, PocketTui tui) {
+        return line.isBlank()
+                ? defaultValue
+                : toLong(line, tui).orElse(defaultValue);
+    }
+
+    public static Optional<Double> toDouble(String line, PocketTui tui) {
+        try {
+            return Optional.of(Double.parseDouble(line));
+        } catch (NumberFormatException ignored) {
+            if (tui != null) {
+                tui.warnf("Unable to determine value from the specified string: %s%n", line);
+            }
+        }
+        return Optional.empty();
+    }
+
+    public static double toDoubleOrDefault(String line, double defaultValue, PocketTui tui) {
+        return line.isBlank()
+                ? defaultValue
+                : toDouble(line, tui).orElse(defaultValue);
+    }
+
+    public static boolean toBooleanOrDefault(String line, boolean defaultValue) {
+        if (line.isBlank()) {
+            return defaultValue;
+        }
+        char first = Character.toLowerCase(line.charAt(0));
+        return first == 'y' || first == 't';
     }
 
     public static class Currency {

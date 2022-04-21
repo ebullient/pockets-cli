@@ -11,7 +11,7 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;
 import picocli.CommandLine.Parameters;
 
-@Command(name = "r", aliases = { "remove" }, header = "Remove an item from a pocket")
+@Command(name = "r", aliases = { "remove" }, header = "Remove an item from a pocket.")
 public class ItemRemove extends BaseCommand {
 
     @Parameters(index = "0", description = "Id of the target Pocket")
@@ -19,7 +19,7 @@ public class ItemRemove extends BaseCommand {
 
     String nameOrId;
 
-    @Parameters(index = "1", description = "Name or id of item to delete from pocket.", arity = "1..*")
+    @Parameters(index = "1", description = "Name or id of item to remove from the pocket.", arity = "1..*")
     void setNameOrId(List<String> words) {
         nameOrId = String.join(" ", words);
     }
@@ -35,6 +35,17 @@ public class ItemRemove extends BaseCommand {
         Item item = selectItemByNameOrId(pocket, nameOrId);
         if (item == null) {
             return PocketTui.NOT_FOUND;
+        }
+
+        if ( tui.interactive() ) {
+            tui.outPrintf("%n%s [%d] contains @|faint (%d)|@ %s [%d]%n",
+                pocket.name, pocket.id, item.quantity, item.name, item.id);
+            if (!tui.reader().confirm("Do you want to remove this item from this pocket")) {
+                tui.warnf("%s [%d] was not removed from %s [%d].%n",
+                    item.name, item.id, pocket.name, pocket.id);
+                tui.verbose(tui.format().describe(pocket));
+                return ExitCode.USAGE;
+            }
         }
 
         item.removeFromPocket(pocket);

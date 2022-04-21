@@ -34,6 +34,11 @@ public class BaseCommand implements Callable<Integer> {
     }
 
     public Pocket selectPocketByNameOrId(String nameOrId) {
+        if ( tui.interactive() && nameOrId == null ) {
+            listAllPockets();
+            nameOrId = tui.reader().prompt("Enter name or id of desired pocket");
+        }
+
         Optional<Long> id = Mapper.toLong(nameOrId);
         return id.isPresent()
             ? selectPocketById(id.get())
@@ -67,6 +72,11 @@ public class BaseCommand implements Callable<Integer> {
     }
 
     public Item selectItemByNameOrId(Pocket pocket, String nameOrId) {
+        if ( tui.interactive() && nameOrId == null ) {
+            tui.outPrintln(tui.format().describe(pocket, false));
+            nameOrId = tui.reader().prompt("Enter name or id of item in this pocket");
+        }
+
         Optional<Long> id = Mapper.toLong(nameOrId);
         return id.isPresent()
             ? selectItemById(pocket, id.get())

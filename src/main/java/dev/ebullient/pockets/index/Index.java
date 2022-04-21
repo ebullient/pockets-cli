@@ -23,10 +23,16 @@ public class Index {
         }
 
         ItemReference getItem(String itemRef) {
+            if ( itemRef == null || itemRef.isEmpty()) {
+                return null;
+            }
             return items.get(itemRef);
         }
 
         PocketReference getPocket(String pocketRef) {
+            if ( pocketRef == null || pocketRef.isEmpty()) {
+                return null;
+            }
             return pockets.get(pocketRef);
         }
     }
@@ -74,6 +80,11 @@ public class Index {
 
     public void listPocketTypes() {
         tui.outPrintln(tui.format().table(data.pockets.entrySet().stream()
+            .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue().name, (o1, o2) -> o1, TreeMap::new))));
+    }
+
+    public void listItemTypes() {
+        tui.outPrintln(tui.format().table(data.items.entrySet().stream()
             .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue().name, (o1, o2) -> o1, TreeMap::new))));
     }
 

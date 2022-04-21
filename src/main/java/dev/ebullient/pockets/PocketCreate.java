@@ -15,7 +15,7 @@ import picocli.CommandLine.ExitCode;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
-@Command(name = "c", aliases = { "create" }, header = "Create a new pocket")
+@Command(name = "c", aliases = { "create" }, header = "Create a new pocket.")
 public class PocketCreate extends BaseCommand {
 
     @Inject
@@ -45,15 +45,28 @@ public class PocketCreate extends BaseCommand {
             return ExitCode.OK;
         }
 
+        if (tui.interactive() && pocketRef == null) {
+            index.listPocketTypes();
+            pocketRef = tui.reader().prompt("Specify pocket type (leave blank for custom)");
+        }
+
+        if (tui.interactive() && name == null) {
+            name = Optional.of(tui.reader().prompt("Specify a name for this pocket (leave blank to use the Pocket's name)"));
+        }
+
         final PocketReference pRef = index.getPocketReference(pocketRef);
         final Pocket pocket = pRef.createPocket(name);
-        attrs.applyTo(pocket);
+        attrs.applyWithDefaults(pocket, pRef, tui);
 
         pocket.persist(); // <-- Save it!
 
         tui.createf("A new pocket named %s has been created with id '%s'.%n",
                 pocket.name, pocket.id);
-        tui.verbose(tui.format().describe(pocket));
+
+        if ( tui.isVerbose()) {
+            tui.outPrintln(tui.format().describe(pocket));
+            listAllPockets();
+        }
         return ExitCode.OK;
     }
 }

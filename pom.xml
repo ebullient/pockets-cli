@@ -10,6 +10,7 @@
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
     <failsafe.useModulePath>false</failsafe.useModulePath>
     <github-slugify.version>2.5</github-slugify.version>
+    <jline.version>3.21.0</jline.version>
     <maven.compiler.release>11</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -36,6 +37,10 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-hibernate-validator</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
       <artifactId>quarkus-picocli</artifactId>
     </dependency>
     <dependency>
@@ -48,7 +53,7 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-hibernate-validator</artifactId>
+      <artifactId>quarkus-jackson</artifactId>
     </dependency>
     <dependency>
       <groupId>com.github.slugify</groupId>
@@ -56,8 +61,9 @@
       <version>${github-slugify.version}</version>
     </dependency>
     <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-jackson</artifactId>
+      <groupId>org.jline</groupId>
+      <artifactId>jline-reader</artifactId>
+      <version>${jline.version}</version>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import dev.ebullient.pockets.db.Mapper;
@@ -31,7 +29,12 @@ public class PocketReference extends ItemReference {
 
     public Pocket createPocket(Optional<String> pocketName) {
         Pocket pocket = new Pocket();
+
         pocket.name = pocketName.orElse(this.name);
+        if ( pocket.name.isEmpty() ) {
+            pocket.name = this.name;
+        }
+
         pocket.slug = Mapper.slugify(pocket.name);
         pocket.pocketRef = this.idSlug;
         pocket.weight = this.weight;
@@ -58,7 +61,7 @@ public class PocketReference extends ItemReference {
         return compartments.stream().anyMatch(c -> c.constraint != null);
     }
 
-    public String constraint(@NotNull String slug) {
+    public String describeConstraints() {
         if (compartments.size() == 1) {
             return "This may contain " + compartments.get(0).constraint;
         }

@@ -12,7 +12,7 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;
 import picocli.CommandLine.Parameters;
 
-@Command(name = "u", aliases = { "update" }, header = "Update an item in a pocket")
+@Command(name = "u", aliases = { "update" }, header = "Update an item in a pocket.")
 public class ItemUpdate extends BaseCommand {
 
     @ArgGroup(exclusive = false, heading = "%nItem attributes:%n")
@@ -35,18 +35,27 @@ public class ItemUpdate extends BaseCommand {
         if (pocket == null) {
             return PocketTui.NOT_FOUND;
         }
-
         Item item = selectItemByNameOrId(pocket, nameOrId);
         if (item == null) {
             return PocketTui.NOT_FOUND;
         }
 
         Previous previous = new Previous(item);
-        attrs.applyTo(item, tui);
+        attrs.applyWithExisting(item, tui);
 
         if (previous.isUnchanged(item)) {
             tui.warnf("%s [%d] was not updated (no changes).%n", item.name, item.id);
             return ExitCode.OK;
+        }
+
+        if ( tui.interactive() ) {
+            tui.outPrintf("%s [%d] will be updated with the following attributes:%n", item.name, item.id);
+            tui.outPrintln(tui.format().describe(item));
+            if (!tui.reader().confirm()) {
+                tui.warnf("%s [%d] was not updated.%n", item.name, item.id);
+                tui.verbose(tui.format().describe(pocket));
+                return ExitCode.USAGE;
+            }
         }
 
         item.persistAndFlush();

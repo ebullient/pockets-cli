@@ -15,12 +15,14 @@ public class PocketTui {
     Ansi ansi;
     ColorScheme colors;
 
-    private PrintWriter out;
-    private PrintWriter err;
+    PrintWriter out;
+    PrintWriter err;
 
     private boolean debug;
     private boolean verbose;
+    private boolean interactive;
 
+    private Reader reader;
     private final Formatter formatter = new Formatter(this);
 
     public PocketTui() {
@@ -31,17 +33,30 @@ public class PocketTui {
         this.err = new PrintWriter(System.err);
         this.debug = false;
         this.verbose = true;
+        this.interactive = false;
     }
 
-    public void init(CommandSpec spec, boolean debug, boolean verbose) {
+    public void init(CommandSpec spec, boolean debug, boolean verbose, boolean interactive) {
         this.ansi = spec.commandLine().getHelp().ansi();
         this.colors = spec.commandLine().getHelp().colorScheme();
 
         this.out = spec.commandLine().getOut();
         this.err = spec.commandLine().getErr();
-
         this.debug = debug;
         this.verbose = verbose;
+        this.interactive = interactive;
+    }
+
+    public void close() {
+        out.flush();
+        if ( reader != null ) {
+            reader.close();
+        }
+        err.flush();
+    }
+
+    public Formatter format() {
+        return formatter;
     }
 
     public boolean isDebug() {
@@ -111,10 +126,6 @@ public class PocketTui {
         out.flush();
     }
 
-    public Formatter format() {
-        return formatter;
-    }
-
     public void errorf(String format, Object... args) {
         error(null, String.format(format, args));
     }
@@ -141,5 +152,16 @@ public class PocketTui {
 
     public void errShowUsage(CommandSpec spec) {
         spec.commandLine().usage(err, ansi);
+    }
+
+    public boolean interactive() {
+        return interactive;
+    }
+
+    public Reader reader() {
+        if ( interactive && reader == null ) {
+            reader = new Reader(interactive, this);
+        }
+        return reader;
     }
 }

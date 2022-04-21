@@ -27,6 +27,8 @@ public class Item extends PanacheEntity {
     @NotNull // identifier: name-as-slug
     public String slug;
 
+    public String itemRef;
+
     public int quantity;
     public Double weight; // weight in lbs
     public Double gpValue; // value in gp
@@ -71,5 +73,11 @@ public class Item extends PanacheEntity {
         return owner.items.stream()
                 .filter(p -> p.slug.startsWith(query))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public String toString() {
+        return "Item [gpValue=" + gpValue + ", name=" + name + ", pocket=" + pocket + ", quantity=" + quantity
+                + ", slug=" + slug + ", tradable=" + tradable + ", weight=" + weight + "]";
     }
 }

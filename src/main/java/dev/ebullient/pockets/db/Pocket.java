@@ -33,6 +33,8 @@ public class Pocket extends PanacheEntity {
     public Double max_weight; // in lbs
     public Double max_volume; // in cubic ft, might be null
 
+    public String notes;
+
     @NotNull
     public Double weight; // weight of the pocket itself
 

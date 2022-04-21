@@ -50,6 +50,10 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
     @Option(names = { "-b", "--brief" }, description = "Brief output", scope = ScopeType.INHERIT)
     boolean brief;
 
+    @Option(names = { "-i", "--interactive" }, description = "Confirm and prompt for missing arguments.",
+        required = false, help = true, scope = ScopeType.INHERIT)
+    boolean interactive = false;
+
     @Override
     public Integer call() throws Exception {
         // invocation of `pockets` command
@@ -58,19 +62,23 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
     }
 
     private int executionStrategy(ParseResult parseResult) {
-        init(parseResult);
-        int result = new CommandLine.RunLast().execute(parseResult);
-        shutdown();
-        return result;
+        try {
+            init(parseResult);
+            return new CommandLine.RunLast().execute(parseResult);
+        } finally {
+            shutdown();
+        }
     }
 
     private void init(ParseResult parseResult) {
-        tui.init(spec, debug, !brief);
+        tui.init(spec, debug, !brief, interactive);
         index.init();
         tui.format().setIndex(index); // reference for formatting
     }
 
-    private void shutdown() {}
+    private void shutdown() {
+        tui.close();
+    }
 
     @Override
     @ActivateRequestContext
