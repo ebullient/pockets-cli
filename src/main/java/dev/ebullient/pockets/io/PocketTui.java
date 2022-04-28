@@ -11,6 +11,7 @@ public class PocketTui {
     static final boolean picocliDebugEnabled = "DEBUG".equalsIgnoreCase(System.getProperty("picocli.trace"));
 
     public static final int NOT_FOUND = 3;
+    public static final int INSUFFICIENT_FUNDS = 4;
 
     Ansi ansi;
     ColorScheme colors;
@@ -87,7 +88,7 @@ public class PocketTui {
 
     public void verbose(String output) {
         if (isVerbose()) {
-            outPrintln(output);
+            outPrintln(output.trim());
         }
     }
 

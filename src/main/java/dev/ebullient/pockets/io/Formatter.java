@@ -7,11 +7,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BinaryOperator;
 
+import dev.ebullient.pockets.db.Currency;
+import dev.ebullient.pockets.db.Currency.CoinPurse;
 import dev.ebullient.pockets.db.Item;
 import dev.ebullient.pockets.db.Pocket;
 import dev.ebullient.pockets.index.Index;
 import dev.ebullient.pockets.index.PocketReference;
-import picocli.CommandLine.Help.TextTable;
 
 public class Formatter {
 
@@ -31,17 +32,23 @@ public class Formatter {
         this.index = index;
     }
 
-    public String table(Map<String, String> values) {
+    public String table(String header1, String header2, Map<String, String> values) {
         int[] max = { 0, 0 };
         values.forEach((k, v) -> {
             max[0] = Integer.max(max[0], k.length());
             max[1] = Integer.max(max[1], v.length());
         });
+        String format = "%-" + max[0] + "s @|faint ||@ %-" + max[1] + "s%n";
+        StringBuilder builder = new StringBuilder();
 
-        TextTable table = TextTable.forColumnWidths(tui.colors, max[0] + 2, max[1]);
+        builder.append(String.format(format, header1, header2));
+        builder.append(String.format(format,
+                "@|faint " + "-".repeat(max[0]) + "|@",
+                "@|faint " + "-".repeat(max[1]) + "|@"));
 
-        values.forEach((k, v) -> table.addRowValues(k, v));
-        return table.toString();
+        values.forEach((k, v) -> builder.append(String.format(format, k, v)));
+
+        return builder.toString();
     }
 
     public String listPockets(List<Pocket> pockets) {
@@ -81,6 +88,10 @@ public class Formatter {
                 builder.append(String.format("This %s weighs %s when empty.%n", ref.name, weightUnits(pocket.weight)));
             }
 
+            if (pocket.notes != null) {
+                builder.append(String.format("🔖 %s%n", pocket.notes));
+            }
+
             String weight = "";
             if (pocket.max_weight != null && pocket.max_weight != 0) {
                 weight = weightUnits(pocket.max_weight);
@@ -89,8 +100,7 @@ public class Formatter {
             if (pocket.max_volume != null && pocket.max_volume != 0) {
                 volume = volumeUnits(pocket.max_volume);
             }
-
-            builder.append(String.format("It can hold %s%s%s of gear.%n",
+            builder.append(String.format("⚖️ It can hold %s%s%s of gear.%n",
                     weight,
                     (weight.length() > 0 && volume.length() > 0) ? " or " : "",
                     volume));
@@ -98,11 +108,6 @@ public class Formatter {
             if (ref.hasConstraints()) {
                 builder.append(ref.describeConstraints());
             }
-            if (pocket.notes != null) {
-                builder.append(String.format("Additional Notes:%n%s%n", pocket.notes));
-            }
-
-            builder.append("\n");
         }
 
         return builder.toString();
@@ -113,8 +118,19 @@ public class Formatter {
         builder.append("  Name         : ").append(item.name).append("\n");
         builder.append("  Quantity     : ").append(item.quantity).append("\n");
         builder.append("  Weight (lbs) : ").append((item.weight == null ? "unknown" : item.weight)).append("\n");
-        builder.append("  Value (gp)   : ").append((item.gpValue == null ? "unknown" : item.gpValue)).append("\n");
-        builder.append("  Tradeable    : ").append(item.tradable).append("\n");
+        builder.append("  Value (gp)   : ").append((item.cpValue == null ? "unknown" : item.cpValue * Currency.cp.gpEx))
+                .append("\n");
+        builder.append("  Tradable     : ").append(item.tradable).append("\n");
+        return builder.toString();
+    }
+
+    public String describe(Pocket pocket, CoinPurse coinPurse) {
+        PocketReference ref = index.getPocketReference(pocket.pocketRef);
+
+        StringBuilder builder = new StringBuilder();
+        builder.append(String.format("%n%-2s %s [%d] contains:%n%n", getPocketEmoji(pocket, ref), pocket.name, pocket.id));
+        appendTableOfItems(builder, coinPurse.collectItems());
+
         return builder.toString();
     }
 
@@ -152,7 +168,7 @@ public class Formatter {
             widths[0] = Math.max(widths[0], valueToString(i.id).length());
             widths[1] = Math.max(widths[1], valueToString(i.quantity).length());
             widths[2] = Math.max(widths[2], valueToString(i.weight).length());
-            widths[3] = Math.max(widths[3], valueToString(i.gpValue).length());
+            widths[3] = Math.max(widths[3], valueToString(i.cpValue).length());
         });
 
         if (!Arrays.equals(itemWidths, widths)) {
@@ -162,11 +178,16 @@ public class Formatter {
         builder.append(ansiFormat.get("pi.th"));
         builder.append(ansiFormat.get("pi.thr"));
         items.forEach(
-                i -> builder.append(String.format(ansiFormat.get("pi.tr"),
-                        i.id, i.quantity, i.name,
-                        i.weight == null ? "-" : i.weight,
-                        i.gpValue == null ? "-" : i.gpValue,
-                        i.tradable ? " " : "🔒")));
+                i -> {
+                    // Display items that have a quantity > 0. Show all in verbose mode
+                    if (i.quantity > 0 || tui.isVerbose()) {
+                        builder.append(String.format(ansiFormat.get("pi.tr"),
+                                i.id, i.quantity, i.name,
+                                i.weight == null ? "-" : i.weight,
+                                i.cpValue == null ? "-" : i.cpValue * Currency.cp.gpEx, // display in gp
+                                i.tradable ? " " : "🔒"));
+                    }
+                });
     }
 
     private String getPocketEmoji(Pocket pocket) {

@@ -49,6 +49,9 @@ public class BaseCommand implements Callable<Integer> {
         Pocket pocket = Pocket.findById(pocketId);
         if (pocket == null) {
             tui.outPrintf("%nThe specified value [%s] doesn't match any of your pockets.%n", pocketId);
+            if (tui.interactive()) {
+                return selectPocketByNameOrId(null);
+            }
             listAllPockets();
             return null;
         }
@@ -66,6 +69,10 @@ public class BaseCommand implements Callable<Integer> {
             tui.outPrintf("%nThe specified value [%s] matches more than one pocket.%n", name);
         } else {
             tui.outPrintf("%n'%s' doesn't match any of your pockets.%n", name);
+        }
+
+        if (tui.interactive()) {
+            return selectPocketByNameOrId(null);
         }
         listAllPockets();
         return null;
@@ -98,7 +105,6 @@ public class BaseCommand implements Callable<Integer> {
         if (items.size() == 1) {
             return items.iterator().next();
         }
-
         if (items.size() > 1) {
             tui.outPrintf("%nThe specified value [%s] matches more than one item in your pocket.%n", name);
         } else {

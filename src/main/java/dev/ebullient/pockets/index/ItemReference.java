@@ -1,10 +1,9 @@
 package dev.ebullient.pockets.index;
 
-import java.util.Optional;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import dev.ebullient.pockets.db.Currency;
 import dev.ebullient.pockets.db.Item;
 import dev.ebullient.pockets.db.Mapper;
 
@@ -34,22 +33,24 @@ public class ItemReference {
         return custom;
     }
 
-    public Item createItem(Optional<String> itemName) {
+    public Item createItem() {
+        return createItem(null);
+    }
+
+    public Item createItem(String itemName) {
         Item item = new Item();
 
-        item.name = itemName.orElse(this.name);
-        if (item.name.isEmpty()) {
-            item.name = this.name;
-        }
+        item.name = itemName == null
+                ? this.name
+                : itemName;
 
         item.slug = Mapper.slugify(item.name);
         item.itemRef = this.idSlug;
         item.weight = this.weight;
         item.quantity = this.quantity == null ? 1 : this.quantity;
-        item.gpValue = Mapper.Currency.gpValue(this.value).orElse(null);
+        item.cpValue = Currency.cpValue(this.value).orElse(null);
         item.tradable = this.value != null; // if it has a currency value, it is tradeable
 
         return item;
     }
-
 }

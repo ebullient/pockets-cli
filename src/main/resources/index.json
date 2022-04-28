@@ -1,5 +1,30 @@
 {
   "items" : {
+    "platinum-pp" : {
+      "name": "Platinum (pp)",
+      "weight": 0.02,
+      "value": "1pp"
+    },
+    "gold-gp" : {
+      "name": "Gold (gp)",
+      "weight": 0.02,
+      "value": "1gp"
+    },
+    "electrum-ep" : {
+      "name": "Electrum (ep)",
+      "weight": 0.02,
+      "value": "1ep"
+    },
+    "silver-sp" : {
+      "name": "Silver (sp)",
+      "weight": 0.02,
+      "value": "1sp"
+    },
+    "copper-cp" : {
+      "name": "Copper (cp)",
+      "weight": 0.02,
+      "value": "1cp"
+    },
     "1-wand-of-the-war-mage" : {
       "name" : "+1 Wand of the War Mage",
       "weight" : 1.0,
@@ -803,8 +828,8 @@
       "rarity" : "none",
       "type" : "artisans-tools"
     },
-    "copper" : {
-      "name" : "Copper",
+    "copper-bar" : {
+      "name" : "Copper Bar",
       "weight" : 1.0,
       "value" : "50cp",
       "rarity" : "none",
@@ -1427,8 +1452,8 @@
       "rarity" : "uncommon",
       "type" : "wondrous"
     },
-    "gold" : {
-      "name" : "Gold",
+    "gold-bar" : {
+      "name" : "Gold bar",
       "weight" : 1.0,
       "value" : "5000cp",
       "rarity" : "none",
@@ -2453,8 +2478,8 @@
       "rarity" : "legendary",
       "type" : "heavy-armor"
     },
-    "platinum" : {
-      "name" : "Platinum",
+    "platinum-bar" : {
+      "name" : "Platinum Bar",
       "weight" : 1.0,
       "value" : "50000cp",
       "rarity" : "none",
@@ -3240,8 +3265,8 @@
       "rarity" : "none",
       "type" : "adventuring-gear"
     },
-    "silver" : {
-      "name" : "Silver",
+    "silver-bar" : {
+      "name" : "Silver bar",
       "weight" : 1.0,
       "value" : "500cp",
       "rarity" : "none",

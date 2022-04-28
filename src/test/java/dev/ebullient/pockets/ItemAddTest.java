@@ -15,7 +15,7 @@ public class ItemAddTest {
     @Launch({ "add", "2", "Jeweled Eyepatch", "--brief" })
     public void testItemAdd(LaunchResult result) {
         assertThat(result.getOutput()).contains(
-                "(1) Jeweled Eyepatch [6] added to Backpack [2]");
+                "(1) Jeweled Eyepatch [8] added to Backpack [2]");
 
         assertThat(result.getOutput()).doesNotContain(
                 "Backpack [2] contains", // verbose
@@ -27,21 +27,21 @@ public class ItemAddTest {
     @Launch({ "add", "2", "-v", "30gp", "Jeweled Eyepatch", "--trade" })
     public void testItemAddTrade(LaunchResult result) {
         assertThat(result.getOutput()).contains(
-                "(1) Jeweled Eyepatch [6] added to Backpack [2]",
-                "Backpack [2] contains", // verbose
-                "[   6] (  1)  Jeweled Eyepatch                                        -   30.0   ",
+                "(1) Jeweled Eyepatch [8] (30.0 gp) added to Backpack [2]",
+                "Backpack [2] contains:", // verbose
+                "[   8] (  1)  Jeweled Eyepatch                                        -     30.0   ",
                 "[   5] ( 10)  Rations", // verbose
                 "This Backpack weighs 5.0 pounds when empty."); // verbose
     }
 
     @Test
-    @Launch({ "add", "2", "-v", "30gp", "Jeweled Eyepatch", "--no-trade" })
+    @Launch({ "add", "2", "-v", "30gp", "Jeweled Eyepatch", "-w", "0.01", "--no-trade" })
     public void testItemAddNoTrade(LaunchResult result) {
         assertThat(result.getOutput()).contains(
-                "(1) Jeweled Eyepatch [6] added to Backpack [2]",
+                "(1) Jeweled Eyepatch [8] (0.01 lbs) (30.0 gp) added to Backpack [2]",
                 "Backpack [2] contains", // verbose
                 "[   5] ( 10)  Rations", // verbose
-                "[   6] (  1)  Jeweled Eyepatch                                        -   30.0  🔒",
+                "[   8] (  1)  Jeweled Eyepatch                                     0.01     30.0  🔒",
                 "This Backpack weighs 5.0 pounds when empty."); // verbose
     }
 

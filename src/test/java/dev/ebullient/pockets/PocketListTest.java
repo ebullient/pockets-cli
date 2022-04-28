@@ -19,8 +19,18 @@ public class PocketListTest {
     @Launch({ "l", "1" })
     public void testListPocketCommand(LaunchResult result) {
         assertThat(result.getOutput()).contains(
-                "👛 Coins [1] is empty.",
+                "👛 Coins [1] contains:",
+                "[   6] ( 50)  Gold (gp)                                            0.02     1.0   ",
+                "[   7] (  1)  Silver (sp)                                          0.02     0.1   ",
                 "This Pouch weighs 1 pound when empty.");
+    }
+
+    @Test
+    @Launch({ "l", "haversack" })
+    public void testListHaversackCommand(LaunchResult result) {
+        assertThat(result.getOutput()).contains(
+                "Haversack [3] is empty.",
+                "This Handy Haversack is magical.");
     }
 
     @Test

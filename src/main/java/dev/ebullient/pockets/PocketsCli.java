@@ -26,6 +26,7 @@ import picocli.CommandLine.Spec;
         PocketCreate.class,
         PocketDelete.class,
         PocketEdit.class,
+        Coins.class,
         ItemAdd.class,
         ItemRemove.class,
         ItemUpdate.class,

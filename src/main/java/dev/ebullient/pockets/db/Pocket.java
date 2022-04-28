@@ -1,5 +1,6 @@
 package dev.ebullient.pockets.db;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -43,7 +44,7 @@ public class Pocket extends PanacheEntity {
 
     /** Many items in this pocket */
     @OneToMany(mappedBy = EntityConstants.POCKET_TABLE, fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-    public Set<Item> items;
+    public Set<Item> items = new HashSet<>();
 
     /**
      * Add an item to the pocket
@@ -102,5 +103,13 @@ public class Pocket extends PanacheEntity {
         return "Pocket [extradimensional=" + extradimensional + ", max_volume=" + max_volume + ", max_weight="
                 + max_weight + ", name=" + name + ", pocketRef=" + pocketRef + ", slug=" + slug + ", weight=" + weight
                 + "]";
+    }
+
+    class Coins {
+        Item platinum;
+        Item gold;
+        Item electrum;
+        Item silver;
+        Item copper;
     }
 }

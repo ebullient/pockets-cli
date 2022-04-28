@@ -24,7 +24,7 @@ public class PocketCreate extends BaseCommand {
     @ArgGroup(exclusive = false, heading = "%nPocket Attributes (required for custom pockets):%n")
     PocketAttributes attrs = new PocketAttributes();
 
-    @Parameters(index = "0", description = "Specify the type of pocket (see --types).")
+    @Parameters(index = "0", description = "Specify the type of pocket 'Pocket Type' or 'pocket-type' (see --types). Use quotes if there are spaces.")
     String pocketRef;
 
     @Option(names = { "--types" }, description = "List pocket types and exit.", help = true)
@@ -44,12 +44,10 @@ public class PocketCreate extends BaseCommand {
             index.listPocketTypes();
             return ExitCode.OK;
         }
-
         if (tui.interactive() && pocketRef == null) {
             index.listPocketTypes();
             pocketRef = tui.reader().prompt("Specify pocket type (leave blank for custom)");
         }
-
         if (tui.interactive() && name == null) {
             name = Optional.of(tui.reader().prompt("Specify a name for this pocket (leave blank to use the Pocket's name)"));
         }

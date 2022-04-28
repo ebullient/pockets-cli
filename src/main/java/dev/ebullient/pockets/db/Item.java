@@ -31,7 +31,7 @@ public class Item extends PanacheEntity {
 
     public int quantity;
     public Double weight; // weight in lbs
-    public Double gpValue; // value in gp
+    public Double cpValue; // value in cp
     public boolean tradable = true;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -71,13 +71,13 @@ public class Item extends PanacheEntity {
             return Collections.emptyList();
         }
         return owner.items.stream()
-                .filter(p -> p.slug.startsWith(query))
+                .filter(i -> i.slug.startsWith(query))
                 .collect(Collectors.toList());
     }
 
     @Override
     public String toString() {
-        return "Item [gpValue=" + gpValue + ", name=" + name + ", pocket=" + pocket + ", quantity=" + quantity
+        return "Item [cpValue=" + cpValue + ", name=" + name + ", pocket=" + pocket + ", quantity=" + quantity
                 + ", slug=" + slug + ", tradable=" + tradable + ", weight=" + weight + "]";
     }
 }

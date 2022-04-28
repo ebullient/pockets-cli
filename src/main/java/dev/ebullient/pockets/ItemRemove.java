@@ -14,8 +14,8 @@ import picocli.CommandLine.Parameters;
 @Command(name = "r", aliases = { "remove" }, header = "Remove an item from a pocket.")
 public class ItemRemove extends BaseCommand {
 
-    @Parameters(index = "0", description = "Id of the target Pocket")
-    Long pocketId;
+    @Parameters(index = "0", description = "Name or ID of the target Pocket. Use quotes if there are spaces.")
+    String pocketId;
 
     String nameOrId;
 
@@ -27,11 +27,10 @@ public class ItemRemove extends BaseCommand {
     @Override
     @Transactional
     public Integer call() throws Exception {
-        Pocket pocket = selectPocketById(pocketId);
+        Pocket pocket = selectPocketByNameOrId(pocketId);
         if (pocket == null) {
             return PocketTui.NOT_FOUND;
         }
-
         Item item = selectItemByNameOrId(pocket, nameOrId);
         if (item == null) {
             return PocketTui.NOT_FOUND;

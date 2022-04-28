@@ -118,12 +118,14 @@ public class PocketCreateTest {
     }
 
     @Test
-    @Launch({ "create", "custom", "-w", "3", "-v", "2", "-p", "1", "--no-magic" })
+    @Launch({ "create", "custom", "-w", "3", "-v", "2", "-p", "1", "--no-magic",
+            "-n", "This pocket can only hold elephants." })
     public void testCreateCustomPocket(LaunchResult result) {
         assertThat(result.getOutput()).contains(
                 "A new pocket named Pocket (custom) has been created with id",
                 "This Pocket (custom) weighs 1 pound when empty.",
-                "It can hold 3.0 pounds or 2.0 cubic feet of gear");
+                "It can hold 3.0 pounds or 2.0 cubic feet of gear",
+                "This pocket can only hold elephants.");
     }
 
     @Test
