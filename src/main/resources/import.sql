@@ -1,5 +1,5 @@
 DROP SEQUENCE IF EXISTS hibernate_sequence;
-CREATE SEQUENCE hibernate_sequence START 1;
+CREATE SEQUENCE hibernate_sequence START WITH 1 INCREMENT BY 1;
 
 insert into pocket (id, pocketRef, name, slug, extradimensional, max_weight, max_volume, weight, notes)
 values
