@@ -1,5 +1,6 @@
 package dev.ebullient.pockets;
 
+import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -15,4 +16,15 @@ public class Util {
                 .filter(x -> !x.startsWith("[INFO]"))
                 .collect(Collectors.joining("\n"));
     }
+
+    public static String noWhitespace(String input) {
+        return replaceFunction.apply(input);
+    }
+
+    public static Function<String, String> replaceFunction = new Function<String, String>() {
+        @Override
+        public String apply(String t) {
+            return t.replaceAll(" +", "✦");
+        }
+    };
 }

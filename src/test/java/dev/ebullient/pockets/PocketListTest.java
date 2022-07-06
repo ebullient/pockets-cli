@@ -18,11 +18,11 @@ public class PocketListTest {
     @Test
     @Launch({ "l", "1" })
     public void testListPocketCommand(LaunchResult result) {
-        assertThat(result.getOutput()).contains(
-                "👛 Coins [1] contains:",
-                "[   6] ( 50)  Gold (gp)                                            0.02     1.0   ",
-                "[   7] (  1)  Silver (sp)                                          0.02     0.1   ",
-                "This Pouch weighs 1 pound when empty.");
+        assertThat(Util.noWhitespace(result.getOutput())).contains(
+                Util.noWhitespace("👛 Coins [1] contains:"),
+                Util.noWhitespace("[   6] ( 50)  Gold (gp)     0.02     1.0   "),
+                Util.noWhitespace("[   7] (  1)  Silver (sp)   0.02     0.1   "),
+                Util.noWhitespace("This Pouch weighs 1 pound when empty."));
     }
 
     @Test

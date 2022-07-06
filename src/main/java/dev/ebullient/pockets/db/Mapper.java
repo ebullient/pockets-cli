@@ -12,9 +12,10 @@ public class Mapper {
     private static Slugify slugifier() {
         Slugify s = slugify;
         if (s == null) {
-            s = slugify = new Slugify()
-                    .withCustomReplacement("'", "")
-                    .withLowerCase(true);
+            s = slugify = Slugify.builder()
+                    .customReplacement("'", "")
+                    .lowerCase(true)
+                    .build();
         }
         return s;
     }
