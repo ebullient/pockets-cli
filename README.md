@@ -21,7 +21,7 @@ Goals:
 1. Install JBang: https://www.jbang.dev/documentation/guide/latest/installation.html
 2. Install the snapshot jar: 
 ```
-jbang app install --name pockets --force --fresh https://jitpack.io/dev/ebullient/pockets-cli/1.0.0-SNAPSHOT/pockets-cli-1.0.0-SNAPSHOT-runner.jar
+jbang app install --name pockets --force --fresh https://jitpack.io/dev/ebullient/pockets-cli/1.0.0/pockets-cli-1.0.0-runner.jar
 ```
 3. Run the command: 
 ```
@@ -64,10 +64,10 @@ Prerequisites: Java 11 and Maven
 
 1. Clone this repository
 2. Build this project: `quarkus build` or `./mvnw install`
-3. `java -jar target/pockets-cli-1.0.0-SNAPSHOT-runner.jar --help`
+3. `java -jar target/pockets-cli-1.0.0-runner.jar --help`
 
 If you want to use the snazzy alias with your freshly built local snapshot, JBang can help with that, too:
 ```
-jbang app install --name pockets --force ~/.m2/repository/dev/ebullient/pockets-cli/1.0.0-SNAPSHOT/pockets-cli-1.0.0-SNAPSHOT-runner.jar
+jbang app install --name pockets --force ~/.m2/repository/dev/ebullient/pockets-cli/1.0.0/pockets-cli-1.0.0-runner.jar
 ```
 
