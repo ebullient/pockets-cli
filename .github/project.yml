@@ -1,0 +1,9 @@
+name: Pockets CLI
+release:
+  current-version: 1.0.0-SNAPSHOT
+  next-version: 1.0.0
+  snapshot-version: 199-SNAPSHOT
+jitpack:
+  group: com.github.ebullient
+  artifact: pockets-cli
+toggle: false
