@@ -40,13 +40,6 @@ jobs:
     - name: Fetch tags
       run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
 
-    - name: Set up JDK 11
-      uses: actions/setup-java@v2
-      with:
-        java-version: 11
-        distribution: 'temurin'
-        cache: maven
-
     - name: yq - portable yaml processor
       uses: mikefarah/yq@v4.27.3
 
@@ -72,8 +65,15 @@ jobs:
         echo "::set-output name=artifact::${ARTIFACT}"
         echo "::set-output name=group::${GROUP}"
 
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: 11
+        distribution: 'temurin'
+        cache: maven
+
     - name: Maven release
-      if: steps.filter.outputs.project == 'true'
+      if: ${{ github.ref == 'refs/heads/main' && steps.filter.outputs.project == 'true' }}
       id: mvn-build-release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -84,7 +84,7 @@ jobs:
       run: |
         if git rev-parse "refs/tags/$NEXT" >/dev/null 2>&1; then
           echo "🔹 Tagged release alreay exists"
-          mvn -B formatter:validate install --file pom.xml
+          mvn -B --no-transfer-progress formatter:validate install --file pom.xml
           echo "::set-output name=release::false"
         else
           echo "🔹 Creating new release"
@@ -93,7 +93,7 @@ jobs:
           sed -i -r "s/$CURRENT/$NEXT/g" README.md
           sed -i -r "s|<revision>.*</revision>|<revision>$NEXT</revision>|" pom.xml
 
-          mvn -B clean package
+          mvn -B --no-transfer-progress clean package
 
           git config user.name github-actions
           git config user.email github-actions@github.com
@@ -113,10 +113,10 @@ jobs:
         fi
 
     - name: Build with Maven
-      if: steps.filter.outputs.project == 'false'
+      if: ${{ steps.filter.outputs.project == 'false' }}
       id: mvn-build
       run: |
-        mvn -B formatter:validate install --file pom.xml
+        mvn -B --no-transfer-progress formatter:validate install --file pom.xml
 
     # Temporarily disable native builds
     # - name: Build in native
@@ -125,7 +125,7 @@ jobs:
 
     # Create the release on github
     - name: Create Release
-      if: steps.mvn-build-release.outputs.release == 'true'
+      if: ${{ steps.mvn-build-release.outputs.release == 'true' }}
       id: create_release
       uses: actions/create-release@v1
       env:
@@ -137,7 +137,7 @@ jobs:
         prerelease: false
 
     - name: Upload runner.jar
-      if: steps.mvn-build-release.outputs.release == 'true'
+      if: ${{ steps.mvn-build-release.outputs.release == 'true' }}
       id: upload-jar
       uses: actions/upload-release-asset@v1
       env:
@@ -151,7 +151,7 @@ jobs:
   update-snapshot:
     # Only run for successful build of the main branch
     needs: build
-    if: github.ref == 'refs/heads/main'
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
 
     steps:
