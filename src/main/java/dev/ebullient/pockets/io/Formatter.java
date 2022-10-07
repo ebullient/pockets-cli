@@ -80,7 +80,9 @@ public class Formatter {
         builder.append("\n");
 
         if (details) {
-            if (pocket.extradimensional) {
+            if (pocket.weight == null) {
+                builder.append(String.format("The weight of %s (%s) is unknown.%n", pocket.name, ref.name));
+            } else if (pocket.extradimensional) {
                 builder.append(String.format(
                         "@|bold,underline This %s is magical.|@%nIt always weighs %s, regardless of its contents.%n",
                         ref.name, weightUnits(pocket.weight)));
@@ -92,18 +94,22 @@ public class Formatter {
                 builder.append(String.format("🔖 %s%n", pocket.notes));
             }
 
-            String weight = "";
-            if (pocket.max_weight != null && pocket.max_weight != 0) {
-                weight = weightUnits(pocket.max_weight);
+            if (pocket.max_weight == null && pocket.max_volume == null) {
+                builder.append(String.format("⚖️ The carrying capacity of %s (%s) is unknown.%n", pocket.name, ref.name));
+            } else {
+                String weight = "";
+                if (pocket.max_weight != null && pocket.max_weight != 0) {
+                    weight = weightUnits(pocket.max_weight);
+                }
+                String volume = "";
+                if (pocket.max_volume != null && pocket.max_volume != 0) {
+                    volume = volumeUnits(pocket.max_volume);
+                }
+                builder.append(String.format("⚖️ It can hold %s%s%s of gear.%n",
+                        weight,
+                        (weight.length() > 0 && volume.length() > 0) ? " or " : "",
+                        volume));
             }
-            String volume = "";
-            if (pocket.max_volume != null && pocket.max_volume != 0) {
-                volume = volumeUnits(pocket.max_volume);
-            }
-            builder.append(String.format("⚖️ It can hold %s%s%s of gear.%n",
-                    weight,
-                    (weight.length() > 0 && volume.length() > 0) ? " or " : "",
-                    volume));
 
             if (ref.hasConstraints()) {
                 builder.append(ref.describeConstraints());
@@ -240,7 +246,7 @@ public class Formatter {
         itemWidths = widths;
     }
 
-    private String weightUnits(double value) {
+    private String weightUnits(Double value) {
         if (value == 1.0) {
             return "1 pound";
         } else {

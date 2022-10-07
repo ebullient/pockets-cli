@@ -36,7 +36,6 @@ public class Pocket extends PanacheEntity {
 
     public String notes;
 
-    @NotNull
     public Double weight; // weight of the pocket itself
 
     @NotNull // extradimensional always have the same carry weight
