@@ -15,6 +15,19 @@ import dev.ebullient.pockets.io.PocketTui;
 
 public class Index {
 
+    private static final IndexData BUILT_IN = initBuiltInData();
+
+    private static IndexData initBuiltInData() {
+        try (InputStream is = Index.class.getResourceAsStream("/index.json")) {
+            final IndexData builtin = IndexConstants.FROM_JSON.readValue(is, IndexData.class);
+            builtin.pockets.forEach((k, v) -> v.idSlug = k);
+            builtin.items.forEach((k, v) -> v.idSlug = k);
+            return builtin;
+        } catch (IOException e) {
+            throw new RuntimeException("Error reading index.json");
+        }
+    }
+
     static class IndexData {
         final Map<String, ItemReference> items = new TreeMap<>();
         final Map<String, PocketReference> pockets = new TreeMap<>();
@@ -114,18 +127,9 @@ public class Index {
     }
 
     private void readIndex() {
-        try {
-            InputStream is = this.getClass().getResourceAsStream("/index.json");
-            IndexData builtin = IndexConstants.FROM_JSON.readValue(is, IndexData.class);
-            builtin.pockets.forEach((k, v) -> v.idSlug = k);
-            builtin.items.forEach((k, v) -> v.idSlug = k);
-            this.data.pockets.putAll(builtin.pockets);
-            this.data.items.putAll(builtin.items);
-            tui.debugf("Index: %d pockets and %d items", this.data.pockets.size(), this.data.items.size());
-        } catch (IOException e) {
-            tui.error(e, "Error reading index.json");
-        }
-
+        this.data.pockets.putAll(BUILT_IN.pockets);
+        this.data.items.putAll(BUILT_IN.items);
+        tui.debugf("Index: %d pockets and %d items", this.data.pockets.size(), this.data.items.size());
         data.pockets.keySet().forEach(k -> {
             if (data.items.containsKey(k)) {
                 tui.warnf("@|fg(red) %s|@ refers to both a pocket and an item. The pocket will be preferred.%n",
