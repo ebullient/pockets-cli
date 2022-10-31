@@ -36,9 +36,9 @@ jobs:
         GROUP=$(yq '.jitpack.group' .github/project.yml)
         echo $GROUP $ARTIFACT $SNAPSHOT
 
-        echo "::set-output name=snapshot::${SNAPSHOT}"
-        echo "::set-output name=artifact::${ARTIFACT}"
-        echo "::set-output name=group::${GROUP}"
+        echo "snapshot=${SNAPSHOT}" >> $GITHUB_OUTPUT
+        echo "artifact=${ARTIFACT}" >> $GITHUB_OUTPUT
+        echo "group=${GROUP}" >> $GITHUB_OUTPUT
 
     - name: Delete Jitpack resource
       id: jitpack-antifreeze

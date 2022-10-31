@@ -95,7 +95,7 @@ public class Formatter {
             }
 
             if (pocket.max_weight == null && pocket.max_volume == null) {
-                builder.append(String.format("⚖️ The carrying capacity of %s (%s) is unknown.%n", pocket.name, ref.name));
+                builder.append(String.format("⚖️  The carrying capacity of %s (%s) is unknown.%n", pocket.name, ref.name));
             } else {
                 String weight = "";
                 if (pocket.max_weight != null && pocket.max_weight != 0) {
@@ -105,7 +105,7 @@ public class Formatter {
                 if (pocket.max_volume != null && pocket.max_volume != 0) {
                     volume = volumeUnits(pocket.max_volume);
                 }
-                builder.append(String.format("⚖️ It can hold %s%s%s of gear.%n",
+                builder.append(String.format("⚖️  It can hold %s%s%s of gear.%n",
                         weight,
                         (weight.length() > 0 && volume.length() > 0) ? " or " : "",
                         volume));

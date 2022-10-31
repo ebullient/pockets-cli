@@ -9,3 +9,7 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    ignore:
+      # Ignore some updates to the 'quarkus' 3.x alpha
+      - dependency-name: "quarkus.platform.version"
+        versions: ["3.x"]
