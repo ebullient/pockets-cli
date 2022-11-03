@@ -13,3 +13,7 @@ updates:
       # Ignore some updates to the 'quarkus' 3.x alpha
       - dependency-name: "quarkus.platform.version"
         versions: ["3.x"]
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
