@@ -1,0 +1,116 @@
+environment:
+  properties:
+    nativeImageDir: target/jreleaser/assemble/native-archive/archive
+    uberJarDir: target
+
+project:
+  name: pockets-cli
+  description: RPG inventory management
+  longDescription: |
+    What have you got in your pockets? This is a command line application
+    written with Java using Quarkus, Picocli, and JPA. It uses a file-based
+    h2 datastore to track the contents of your "pockets".
+  links:
+    homepage: https://github.com/ebullient/pockets-cli
+    documentation: https://github.com/ebullient/pockets-cli#readme
+    license: https://github.com/ebullient/pockets-cli/LICENSE
+  authors:
+    - "ebullient (Erin Schnabel)"
+  license: Apache-2.0
+  inceptionYear: 2022
+  stereotype: CLI
+  java:
+    groupId: dev.ebullient
+    version: 11
+    multiProject: false
+  tags:
+    - "quarkus"
+    - "cli"
+    - "5e-tools"
+    - "java"
+    - "inventory"
+
+assemble:
+  # Archives for native images
+  archive:
+    native-archive:
+      active: ALWAYS
+      exported: false
+      attachPlatform: true
+      archiveName: "{{projectName}}-{{projectVersion}}"
+      formats:
+        - ZIP
+        - TGZ
+      fileSets:
+        - input: "."
+          includes:
+            - "LICENSE"
+            - "README.md"
+        - input: "target/"
+          includes:
+            - "pockets{.exe,}"
+          output: "bin"
+
+checksum:
+  individual: true
+
+distributions:
+  uber-jar:
+    type: SINGLE_JAR
+    artifacts:
+      - path: '{{uberJarDir}}/{{projectName}}-{{projectVersion}}-runner.jar'
+
+  native-archive:
+    type: NATIVE_IMAGE
+    artifacts:
+      - path: '{{nativeImageDir}}/{{projectName}}-{{projectVersion}}-linux-x86_64.tgz'
+        platform: linux-x86_64
+      - path: '{{nativeImageDir}}/{{projectName}}-{{projectVersion}}-windows-x86_64.zip'
+        platform: windows-x86_64
+      - path: '{{nativeImageDir}}/{{projectName}}-{{projectVersion}}-osx-x86_64.zip'
+        platform: osx-x86_64
+      - path: '{{nativeImageDir}}/{{projectName}}-{{projectVersion}}-osx-aarch_64.zip'
+        platform: osx-aarch_64
+
+release:
+  github:
+    changelog:
+      formatted: ALWAYS
+      format: "- {{commitShortHash}} {{commitTitle}}"
+      content: |
+        # Summary of changes
+
+        {{changelogChanges}}
+        {{changelogContributors}}
+      labelers:
+        - label: "infra"
+          title: "regex:(🔧|👷)"
+        - label: "deps"
+          title: "Bump "
+        - label: "release"
+          title: "🔖 "
+      excludeLabels:
+        - "infra"
+        - "deps"
+        - "release"
+      hide:
+        contributors:
+          - "ebullient"
+          - "Erin Schnabel"
+          - github-actions
+          - GitHub
+          - "[bot]"
+    checksums: true
+    discussionCategoryName: Announcements
+    issues:
+      enabled: false
+    milestone:
+      close: false
+    overwrite: false
+    update:
+      enabled: true
+      sections:
+        - ASSETS
+    skipTag: true
+    sign: false
+    tagName: "{{projectVersion}}"
