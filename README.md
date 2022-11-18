@@ -44,7 +44,7 @@ Notes:
 2. Install the pre-built release: 
 
     ```shell
-    jbang app install --name pockets --force --fresh https://github.com/ebullient/pockets-cli/releases/download/1.0.0/pockets-cli-1.0.0-runner.jar
+    jbang app install --name pockets --force --fresh https://github.com/ebullient/pockets-cli/releases/download/1.0.1/pockets-cli-1.0.1-runner.jar
     ```
 
     If you want the latest unreleased snapshot: 
@@ -119,10 +119,10 @@ Prerequisites: Java 11 and Maven
 
 1. Clone this repository
 2. Build this project: `quarkus build` or `./mvnw install`
-3. `java -jar target/pockets-cli-1.0.0-runner.jar --help`
+3. `java -jar target/pockets-cli-1.0.1-runner.jar --help`
 
 If you want to use the snazzy alias with your freshly built local snapshot, JBang can help with that, too:
 ```
-jbang app install --name pockets --force ~/.m2/repository/dev/ebullient/pockets-cli/1.0.0/pockets-cli-1.0.0-runner.jar
+jbang app install --name pockets --force ~/.m2/repository/dev/ebullient/pockets-cli/1.0.1/pockets-cli-1.0.1-runner.jar
 ```
 
