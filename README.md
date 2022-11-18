@@ -16,17 +16,72 @@ Goals:
 - [ ] Track cumulative value of items in a pocket (and then across pockets)
 - [ ] Allow addition of standard items (with quick modifications as necessary)
 
-## Install it
+## Install the command line utility
 
-1. Install JBang: https://www.jbang.dev/documentation/guide/latest/installation.html
-2. Install the snapshot jar: 
-```
-jbang app install --name pockets --force --fresh https://jitpack.io/dev/ebullient/pockets-cli/1.0.0/pockets-cli-1.0.0-runner.jar
-```
-3. Run the command: 
-```
+- [Use pre-built platform binary](#use-pre-built-platform-binary)
+- [Use Java Jar](#use-java-jar)
+- [Build from source](#build-and-run)
+
+### Use pre-built platform binary
+
+[Download the latest release](https://github.com/ebullient/pockets-cli/releases/latest) of the zip or tgz for your platform. Extract the archive. A `pockets` binary executable will be in the extracted bin directory. 
+
+```shell
 pockets --help
 ```
+
+Use this binary in the instructions below. Continue to notes about [Conventions](#conventions).
+
+Notes:
+
+- [Open a command prompt in a folder (Windows) ](https://www.lifewire.com/open-command-prompt-in-a-folder-5185505)
+- [Running executables from the command line (Windows)](https://www.techwalla.com/articles/how-to-use-quotcdquot-command-in-command-prompt-window)
+
+### Use Java Jar
+
+1. Install JBang: https://www.jbang.dev/documentation/guide/latest/installation.html
+
+2. Install the pre-built release: 
+
+    ```shell
+    jbang app install --name pockets --force --fresh https://github.com/ebullient/pockets-cli/releases/download/1.0.0/pockets-cli-1.0.0-runner.jar
+    ```
+
+    If you want the latest unreleased snapshot: 
+
+    ```shell
+    jbang app install --name pockets --force --fresh https://jitpack.io/dev/ebullient/pockets-cli/199-SNAPSHOT/pockets-cli-199-SNAPSHOT-runner.jar
+    ```
+
+    There may be a pause if you download the snapshot; it is rebuilt on demand.
+
+    > 🔹 Feel free to use an alternate alias by replacing the value specified as the name: `--name pockets`, and adjust the commands shown below accordingly.
+
+3. Verify the install by running the command: 
+
+    ```shell
+    pockets --help
+    ```
+
+Continue to notes about [Conventions](#conventions).
+
+### Build and run
+
+1. Clone this repository
+2. Build this project: `quarkus build` or `./mvnw install`
+3. Verify the build: `java -jar target/pockets-cli-199-SNAPSHOT-runner.jar --help`
+
+To run commands listed below, either: 
+
+- Replace `5e-convert` with `java -jar target/pockets-cli-199-SNAPSHOT-runner.jar`, or
+- Use JBang to create an alias that points to the built jar: 
+
+    ```shell
+    jbang app install --name 5e-convert --force --fresh ~/.m2/repository/dev/ebullient/pockets-cli/199-SNAPSHOT/pockets-cli-199-SNAPSHOT-runner.jar
+    ```
+
+    > 🔹 Feel free to use an alternate alias by replacing the value specified as the name: `--name pockets`, and adjust the commands shown below accordingly.
+
 
 ## Use it
 
