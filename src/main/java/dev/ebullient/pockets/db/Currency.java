@@ -48,7 +48,7 @@ public enum Currency {
                 case "gp":
                     return Optional.of(gp.cpEx * amount);
                 case "pp":
-                    return Optional.of(pp.gpEx * amount);
+                    return Optional.of(pp.cpEx * amount);
             }
         }
         return Optional.empty(); // no match
