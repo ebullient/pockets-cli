@@ -1,0 +1,37 @@
+{@dev.ebullient.pockets.db.Pocket p}
+{#let d=p.pocketDetails}
+{#if d.notes }
+
+{d.notes}
+{/if}{#if d.bottomless }
+
+@|bold,underline This is a bottomless pocket.|@ It will always accept and provide items. Cumulative value and capacity will not be checked.
+{/if}{#if d.magical }
+
+@|bold,underline This pocket is magical.|@ It will always {#if useBulk }have {#else }weigh {/if}{p.bulkWeight}, regardless of its contents.
+{/if}
+
+{#if p.cumulativeValue }
+  💰 Value     : {p.cumulativeValue} (full-value trade)
+{/if}{#if p.approximateTradableValue }
+  💸 Value     : {p.approximateTradableValue} (trade for partial value, approximate)
+{/if}{#if p.approximateTradableValue }
+  ⚖️ Carrying  : {pocket.cumulativeBulkWeight}
+{/if}{#if d.bulk || d.weight }
+{#if useBulk }  Item Bulk    : {#else }  Item Weight  : {/if}{p.bulkWeight} (not including contents)
+{/if}{#if p.unitValue }
+  Item Value   : {p.unitValue} (not including contents)
+{/if}{#if d.tradable }
+  Tradable     : {d.tradable} {#if d.fullValueTrade }(full value){#else}(partial value){/if}
+{/if}{#if d.maxBulk || d.maxWeight }
+{#if useBulk }  Max Bulk     : {#else }  Max Weight   : {/if}{p.maxBulkWeight}
+{/if}{#if p.parentPocket }
+
+This pocket is held by {p.parentPocket.nameNumberId}
+{/if}{#if p.nestedPockets }
+
+{p.emoji} {p.name} contains other pockets:
+{#for pn in p.nestedPockets}
+- {pn.flags} {pn.nameNumberId}{#if pn.pocketDetails.notes } {pn.pocketDetails.notes}{/if}
+{/for}{/if}
+{/let}

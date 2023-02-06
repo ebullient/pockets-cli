@@ -1,0 +1,58 @@
+{@java.util.List<dev.ebullient.pockets.db.Item> items}
+{@java.util.List<dev.ebullient.pockets.db.Pocket> pockets}
+---
+obsidianUIMode: preview
+cssclass: pockets,inventory
+---
+# Inventory
+
+## Pockets
+
+{#if pockets }
+|   | Name          | Current {#if useBulk }Bulk{#else }Weight{/if} | Maximum Capacity |
+|---|---------------|----------------|------------|
+{#for p in pockets}{#let details=p.pocketDetails}
+| {p.flags} | [{p.name}](pocket-{p.slug}.md) | {p.cumulativeBulkWeight} | {p.maxBulkWeight} |
+{/let}{/for}
+
+- 🪄 Magic item or extradimensional pocket
+- ∞  Bottomless pocket
+{#else}
+None
+{/if}
+
+## Currency
+
+{#if currency }
+Total: {currency.cumulativeValue(pcd)}
+
+| Qty | Name          | Pocket(s)   |
+|-----|---------------|-------------|
+{#for c in currency}
+| {c.quantity} | {c.name} | {c.pockets} |
+{/for}
+{#else}
+None
+{/if}
+
+## Items
+
+| Qty | Item        |   | {#if useBulk }Bulk{#else }Weight{/if} | Value | Pocket(s)                        |
+|-----|-------------|---|-{#if useBulk }----{#else }------{/if}-|-------|----------------------------------|
+{#for item in items}{#each pi in item.pocketItems }
+| {pi.quantity} | {item.name} | {item.flags} | {pi.bulkWeight} | {pi.currentValue} | {item.pockets} |
+{/each}{/for}
+
+- 💸 Item will trade for approximately half of its original value (depending on condition)
+- 💰 Item will trade for full value (more or less depending on the other party)
+
+{#let orphans=items.orphans}{#if orphans}
+### Other known items
+
+| Item        |   | {#if useBulk }Bulk{#else }Weight{/if} | Value |
+|-------------|---|-{#if useBulk }----{#else }------{/if}-|-------|
+{#for item in orphans}
+| {item.name} | {item.flags} | {item.bulkWeight} | {item.unitValue} |
+{/for}
+{/if}{/let}
+

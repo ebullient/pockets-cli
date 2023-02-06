@@ -1,0 +1,41 @@
+{@java.util.List<dev.ebullient.pockets.db.Journal> journal}
+{@dev.ebullient.pockets.config.ProfileConfigData pcd}
+---
+obsidianUIMode: preview
+cssclass: pockets,events
+---
+# Event log
+
+<!-- Generated content -->
+<table>
+<thead><tr>
+<th>Date / Time</th>
+<th>Memo</th>
+<th>Type</th>
+<th>Item type</th>
+<th>Item Id</th>
+<th>Qty</th>
+<th>Target Pocket</th>
+</tr></thead>
+{#if journal }
+<tbody>
+{#for j in journal }{#if j.changes }{#for c in j.changes }
+<tr>
+<td>{#if j.datetime}{j.datetime}{/if}</td>
+<td>{#if j.memo}{j.postMemo}{/if}{#if j.memo && c.created}<br />{/if}{#if c.created}{c.createMemo(pcd)}{/if}</td>
+<td>{#if c.type}{c.type}{/if}</td>
+<td>{#if c.itemType}{c.itemType}{/if}</td>
+<td>{#if c.itemId}{c.itemId}{/if}</td>
+<td>{#if c.quantity}{c.quantity}{/if}</td>
+<td>{#if c.pocketId}{c.pocketId}{/if}</td>
+</tr>
+{/for}{#else}
+<tr>
+<td>{#if j.datetime}{j.datetime}{/if}</td>
+<td>{#if j.memo}{j.memo}{/if}</td>
+<td></td><td></td><td></td><td></td><td></td>
+</tr>
+{/if}{/for}
+</tbody>
+{/if}
+</table>

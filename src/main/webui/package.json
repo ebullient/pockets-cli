@@ -1,0 +1,26 @@
+{
+  "name": "webui",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "npx vite",
+    "build": "npx vite build",
+    "preview": "npx vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "start": "npx vite"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.0.2",
+    "@tsconfig/svelte": "^3.0.0",
+    "sass": "^1.53.0",
+    "svelte": "^3.55.1",
+    "svelte-check": "^2.10.3",
+    "svelte-preprocess": "^4.10.7",
+    "svelte-simple-modal": "^1.5.2",
+    "svelte-spa-router": "^3.3.0",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0"
+  }
+}

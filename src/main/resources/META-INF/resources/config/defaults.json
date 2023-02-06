@@ -1,0 +1,10 @@
+{
+  "presets": {
+    "dnd5e": {
+      "name": "D&D 5e"
+    },
+    "pf2e": {
+      "name": "Pathfinder 2e"
+    }
+  }
+}

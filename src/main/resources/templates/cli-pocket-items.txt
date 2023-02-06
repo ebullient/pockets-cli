@@ -1,0 +1,9 @@
+{@dev.ebullient.pockets.db.Pocket p}
+{#if p.pocketItems }
+
+{p.emoji} {p.nameNumberId} contains the following items:
+
+{p.pocketItemHeader}
+{#for pi in pocket.pocketItems.values}
+{pi.pocketItemRow}
+{/for}{/if}
