@@ -1,6 +1,6 @@
-# Pockets ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ebullient/pockets-cli/Java%20CI%20with%20Maven) [![](https://jitpack.io/v/ebullient/pockets-cli.svg)](https://jitpack.io/#ebullient/pockets-cli) 
+# Pockets ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ebullient/pockets-cli/maven.yml?branch=main) [![](https://jitpack.io/v/ebullient/pockets-cli.svg)](https://jitpack.io/#ebullient/pockets-cli) 
 
-A D&amp;D Inventory tracking CLI
+A TTRPG Inventory tracking CLI
 
 <table><tr><td>Jump: </td>
 <td><a href="#install-it">Install It</a></td>
