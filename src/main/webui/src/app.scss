@@ -1,0 +1,140 @@
+/* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.2;
+  font-weight: 400;
+  --font-size: 15px;
+
+  color-scheme: light dark;
+  --fg-color: #cdcdcd;
+  --bg-color: #1e1e1e;
+  --bg-color-alt: #272727;
+  --faint: #a0a0a0;
+
+  --accent-fg: #f1f1f1;
+  --hover: rgb(142, 103, 135);
+  --accent: rgb(69, 117, 174);
+  --ok: #91a695;
+  --warning: #c49a52;
+  --error: #e68584;
+
+  color: var(--fg-color);
+  background-color: var(--bg-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-size: var(--font-size);
+}
+hr {
+  color: var(--accent);
+}
+a {
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--hover);
+}
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  min-height: 100vh;
+}
+main {
+  flex-grow: 1;
+}
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  margin: 0;
+}
+form,
+section {
+  text-align: left;
+  padding: 0px 1em;
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 1em 0 0 0;
+    padding: 0 0 .5em 0;
+  }
+}
+.title {
+  text-transform: capitalize;
+}
+.subtext {
+  margin: 0;
+  font-size: small;
+  color: var(--faint);
+  padding-bottom: .5em;
+}
+footer {
+  font-size: smaller;
+}
+h4 .subtext {
+  font-weight: normal;
+  font-size: var(--font-size);
+  padding: 0 6px;
+}
+.profile {
+  margin-top: .5em;
+  border-top: 1px dotted var(--faint);
+  padding-top: .5em;
+}
+#settings {
+  #apply-presets {
+    padding-right: 6px;
+  }
+}
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
+
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0 1em;
+
+      a > svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --fg-color: #484848;
+    --bg-color: #f8f8f8;
+    --bg-color-alt: #f1f1f1;
+    --accent-fg: var(--bg-color-alt);
+    --faint: #737373;
+    --ok: #5c7a62;
+    --error: #c24c4a;
+  }
+}
+@import "./assets/form.scss";
+@import "./assets/table.scss";
+@import "./assets/tooltip.scss";

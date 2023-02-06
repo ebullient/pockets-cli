@@ -1,11 +1,10 @@
 # Pockets
 *.csv
+items*.json
 
 #Maven
 target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
+pom.xml.*
 release.properties
 
 # Eclipse
@@ -41,5 +40,19 @@ nb-configuration.xml
 # Local environment
 .env
 
-items.json
-items-base.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+node_modules
+dist
+dist-ssr
+*.local
+
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*

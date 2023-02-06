@@ -1,0 +1,20 @@
+table {
+  margin-top: .5em;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+
+  width: 100%;
+
+  td, th {
+    vertical-align: top;
+    border: 1px solid var(--bg-color-alt);
+    padding: 2px 4px;
+  }
+
+  th {
+    color: var(--accent-fg);
+    background-color: var(--accent);
+    font-weight: bold;
+  }
+
+}

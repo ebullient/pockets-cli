@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import dev.ebullient.pockets.index.Index;
 import dev.ebullient.pockets.io.PocketTui;
+import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
 import picocli.CommandLine;
@@ -54,8 +55,20 @@ public class PocketsCli implements Callable<Integer>, QuarkusApplication {
 
     @Override
     public Integer call() throws Exception {
-        // invocation of `pockets` command
-        tui.showUsage(spec);
+        // invocation of `pockets` command with no other command specified.
+        // Point to the web ui and wait..
+        tui.outPrintln("");
+        tui.outPrintln("🛍️  What have you got in your pockets?");
+        tui.outPrintln("");
+        tui.outPrintln("Visit the UI: http://localhost:" + System.getProperty("quarkus.http.port"));
+        tui.outPrintln("");
+        tui.outPrintln("⏱️  Waiting until you're done...   Use [Ctrl/Cmd-C] to cancel");
+        tui.outPrintln("");
+        tui.outPrintln(
+                "🔹 This is a locally running process that does not gather any information about you or your usage. Use --help for other commands and options.");
+
+        Quarkus.waitForExit();
+
         return ExitCode.OK;
     }
 

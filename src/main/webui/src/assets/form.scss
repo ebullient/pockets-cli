@@ -1,0 +1,78 @@
+form > *:not(table):not(p) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+}
+form > div > p:first-child {
+  margin-top: 0;
+}
+.buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+
+  label {
+    padding-right: .5em;
+    font-weight: 600;
+    display: block;
+  }
+  > select {
+    min-width: 10em;
+    padding: 0 .5em;
+  }
+  > button {
+    margin: 0;
+    padding: 0;
+
+    svg {
+      padding-top: 1px;
+      height: 20px;
+      stroke: var(--fg-color);
+      stroke-width: 1.5px;
+    }
+    svg:hover {
+      height: 20px;
+      stroke: var(--hover);
+      background-color: var(--bg-color);
+    }
+
+    &.dirty svg {
+      stroke: var(--warning);
+    }
+  }
+  select,
+  button {
+    height: 25px;
+  }
+  select,
+  > button {
+    background-color: var(--bg-color-alt);
+    border-radius: 0;
+    border: 1px solid var(--faint);
+    border-left-width: 0;
+
+    &:first-child,
+    &:first-child:hover {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      border-left-width: 1px;
+    }
+    &:last-child,
+    &:last-child:hover {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+  textarea,
+  input[type="text"] {
+    width: 200px;
+    margin: 0;
+  }
+  textarea {
+    margin-left: .5em;
+    flex-grow: 1;
+  }
+}

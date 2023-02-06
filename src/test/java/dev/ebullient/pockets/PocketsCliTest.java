@@ -4,20 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 
-import io.quarkus.test.junit.main.Launch;
 import io.quarkus.test.junit.main.LaunchResult;
 import io.quarkus.test.junit.main.QuarkusMainLauncher;
 import io.quarkus.test.junit.main.QuarkusMainTest;
 
 @QuarkusMainTest
 public class PocketsCliTest {
-    @Test
-    @Launch({ "--debug" })
-    public void testBasicCommand(LaunchResult result) {
-        assertThat(result.getOutput()).contains(
-                "What have you got in your pockets?",
-                "Usage: pockets");
-    }
 
     @Test
     public void testHelpCommand(QuarkusMainLauncher launcher) {

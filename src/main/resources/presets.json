@@ -1,0 +1,516 @@
+{
+  "config5e": {
+    "name": "D&D 5e",
+    "capacityType": "weight",
+    "additionalCurrency": {
+      "waterdeep": [
+        {
+          "notation": "dragon",
+          "name": "Dragon",
+          "unitConversion": 100
+        },
+        {
+          "notation": "shard",
+          "name": "Shard",
+          "unitConversion": 10
+        },
+        {
+          "notation": "nib",
+          "name": "Nib",
+          "unitConversion": 1
+        },
+        {
+          "notation": "hm",
+          "name": "Harbor Moon",
+          "unitConversion": 5000
+        },
+        {
+          "notation": "taol",
+          "name": "Taol",
+          "unitConversion": 200
+        }
+      ]
+    },
+    "currency": [
+      {
+        "notation": "pp",
+        "name": "Platinum (pp)",
+        "items": "platinum-pp",
+        "unitConversion": 1000
+      },
+      {
+        "notation": "gp",
+        "name": "Gold (gp)",
+        "items": "gold-gp",
+        "unitConversion": 100
+      },
+      {
+        "notation": "ep",
+        "name": "Electrum (ep)",
+        "items": "gold-gp",
+        "unitConversion": 50
+      },
+      {
+        "notation": "sp",
+        "name": "Silver (sp)",
+        "items": "silver-sp",
+        "unitConversion": 10
+      },
+      {
+        "notation": "cp",
+        "name": "Copper (cp)",
+        "items": "copper-cp",
+        "unitConversion": 1
+      }
+    ],
+    "pockets": [
+      {
+        "name": "Player character",
+        "category": "Character",
+        "emoji": "👤",
+        "compartments": [
+          {
+            "constraint": "Your Strength score multiplied by 15 is the weight (in pounds) that you can carry. For each size category above Medium, double the creature's carrying capacity. For a Tiny creature, halve these weights."
+          }
+        ]
+      },
+      {
+        "name": "Backpack",
+        "weight": 5.0,
+        "value": "200cp",
+        "type": "adventuring-gear",
+        "emoji": "🎒",
+        "compartments": [
+          {
+            "max_weight": 30.0,
+            "max_volume": 1.0
+          }
+        ]
+      },
+      {
+        "name": "Bag of Holding",
+        "weight": 15.0,
+        "rarity": "minor uncommon",
+        "type": "wondrous",
+        "extradimensional": true,
+        "emoji": "🧳",
+        "compartments": [
+          {
+            "max_weight": 500.0,
+            "max_volume": 64.0
+          }
+        ]
+      },
+      {
+        "name": "Basket",
+        "weight": 2.0,
+        "value": "40cp",
+        "type": "adventuring-gear",
+        "emoji": "🧺",
+        "compartments": [
+          {
+            "max_weight": 40.0,
+            "max_volume": 2.0
+          }
+        ]
+      },
+      {
+        "name": "Chest",
+        "weight": 25.0,
+        "value": "500cp",
+        "type": "adventuring-gear",
+        "emoji": "🧰",
+        "compartments": [
+          {
+            "max_weight": 300.0,
+            "max_volume": 12.0
+          }
+        ]
+      },
+      {
+        "name": "Crossbow Bolt Case",
+        "weight": 1.0,
+        "value": "100cp",
+        "type": "adventuring-gear",
+        "emoji": "🏹",
+        "compartments": [
+          {
+            "max_weight": 2.5,
+            "constraint": "20 crossbow bolts"
+          }
+        ]
+      },
+      {
+        "name": "Efficient Quiver",
+        "weight": 2.0,
+        "rarity": "major uncommon",
+        "type": "wondrous",
+        "extradimensional": true,
+        "emoij": "🏹",
+        "compartments": [
+          {
+            "max_weight": 4.5,
+            "constraint": "60 crossbow bolts, arrows, or similar"
+          },
+          {
+            "max_weight": 36,
+            "constraint": "18 javelins or similar"
+          },
+          {
+            "max_weight": 24,
+            "constraint": "6 long objects like bows, quarterstaffs, or spears"
+          }
+        ]
+      },
+      {
+        "name": "Handy Haversack",
+        "weight": 5.0,
+        "rarity": "minor rare",
+        "type": "wondrous",
+        "extradimensional": true,
+        "emoji": "👝",
+        "compartments": [
+          {
+            "max_weight": 20.0,
+            "max_volume": 2.0
+          },
+          {
+            "max_weight": 20.0,
+            "max_volume": 2.0
+          },
+          {
+            "max_weight": 80.0,
+            "max_volume": 8.0
+          }
+        ]
+      },
+      {
+        "name": "Map Case",
+        "weight": 1.0,
+        "value": "100cp",
+        "type": "adventuring-gear",
+        "emoji": "🗞",
+        "compartments": [
+          {
+            "max_weight": 1.0,
+            "constraint": "5 sheets of parchment, or 10 sheets of paper"
+          }
+        ]
+      },
+      {
+        "name": "Portable Hole",
+        "weight": 0,
+        "rarity": "minor rare",
+        "type": "wondrous",
+        "extradimensional": true,
+        "emoji": "⚫️",
+        "compartments": [
+          {
+            "max_volume": 282.7,
+            "constraint": "items that fit in the hole (6 feet in diameter, 10 feet deep)."
+          }
+        ]
+      },
+      {
+        "name": "Pouch",
+        "weight": 1.0,
+        "value": "50cp",
+        "type": "adventuring-gear",
+        "emoji": "👛",
+        "compartments": [
+          {
+            "max_weight": 6.0,
+            "max_volume": 0.2,
+            "constraint": "20 sling bullets, 50 blowgun needles, and other things..."
+          }
+        ]
+      },
+      {
+        "name": "Quiver",
+        "weight": 1.0,
+        "value": "100cp",
+        "type": "adventuring-gear",
+        "emoij": "🏹",
+        "compartments": [
+          {
+            "max_weight": 2.0,
+            "constraint": "20 arrows"
+          }
+        ]
+      },
+      {
+        "name": "Sack",
+        "weight": 0.5,
+        "value": "1cp",
+        "type": "adventuring-gear",
+        "emoij": "🧸",
+        "compartments": [
+          {
+            "max_weight": 30.0,
+            "max_volume": 1.0
+          }
+        ]
+      },
+      {
+        "name": "Scroll Case",
+        "weight": 1.0,
+        "value": "100cp",
+        "type": "adventuring-gear",
+        "emoji": "🗞",
+        "compartments": [
+          {
+            "max_weight": 1.0,
+            "constraint": "5 sheets of parchment, or 10 sheets of paper"
+          }
+        ]
+      }
+    ],
+    "items": {}
+  },
+  "configPf2e": {
+    "name": "Pathfinder 2e",
+    "capacityType": "bulk",
+    "currency": [
+      {
+        "name": "Platinum (pp)",
+        "notation": "pp",
+        "unitConversion": 1000
+      },
+      {
+        "name": "Gold (gp)",
+        "notation": "gp",
+        "unitConversion": 100
+      },
+      {
+        "name": "Silver (sp)",
+        "notation": "sp",
+        "unitConversion": 10
+      },
+      {
+        "name": "Copper (cp)",
+        "notation": "cp",
+        "unitConversion": 1
+      }
+    ],
+    "pockets": [
+      {
+        "name": "Player character",
+        "category": "Character",
+        "emoji": "👤",
+        "compartments": [
+          {
+            "constraint": "You can carry Bulk up to 5 + STR without penalty. You can't carry or hold more than 10 + STR."
+          }
+        ]
+      },
+      {
+        "name": "Backpack",
+        "bulk": "negligible",
+        "category": "Adventuring Gear",
+        "emoji": "🎒",
+        "value": "1sp",
+        "compartments": [
+          {
+            "max_bulk": "4",
+            "constraint": "The first 2 Bulk of items don't count against your Bulk limits. If you're carrying or stowing the pack rather than wearing it, its Bulk is light instead of negligible."
+          }
+        ]
+      },
+      {
+        "name": "Bag of Holding (Type I)",
+        "bulk": "1",
+        "category": "Held",
+        "emoji": "🧳",
+        "extradimensional": true,
+        "value": "75gp",
+        "compartments": [
+          {
+            "max_bulk": "25",
+            "constraint": "The Bulk held inside the bag doesn't change the Bulk of the bag of holding itself."
+          }
+        ]
+      },
+      {
+        "name": "Bag of Holding (Type II)",
+        "bulk": "1",
+        "category": "Held",
+        "emoji": "🧳",
+        "extradimensional": true,
+        "value": "300gp",
+        "compartments": [
+          {
+            "max_bulk": "50",
+            "constraint": "The Bulk held inside the bag doesn't change the Bulk of the bag of holding itself."
+          }
+        ]
+      },
+      {
+        "name": "Bag of Holding (Type III)",
+        "bulk": "1",
+        "category": "Held",
+        "emoji": "🧳",
+        "extradimensional": true,
+        "value": "1200gp",
+        "compartments": [
+          {
+            "max_bulk": "100",
+            "constraint": "The Bulk held inside the bag doesn't change the Bulk of the bag of holding itself."
+          }
+        ]
+      },
+      {
+        "name": "Bag of Holding (Type IV)",
+        "bulk": "1",
+        "category": "Held",
+        "emoji": "🧳",
+        "extradimensional": true,
+        "value": "2400gp",
+        "compartments": [
+          {
+            "max_bulk": "150",
+            "constraint": "The Bulk held inside the bag doesn't change the Bulk of the bag of holding itself."
+          }
+        ]
+      },
+      {
+        "name": "Belt Pouch",
+        "bulk": "L",
+        "value": "200gp",
+        "category": "Consumable",
+        "extradimensional": true,
+        "emoji": "👛",
+        "compartments": [
+          {
+            "max_bulk": "1",
+            "constraint": "Ordinary belt pouch."
+          },
+          {
+            "max_bulk": "1",
+            "constraint": "Extradimensional space"
+          }
+        ]
+      },
+      {
+        "name": "Chest",
+        "bulk": "2",
+        "value": "6sp",
+        "category": "Adventuring Gear",
+        "emoji": "🧰",
+        "compartments": [
+          {
+            "max_bulk": "8"
+          }
+        ]
+      },
+      {
+        "name": "Knapsack of Halflingkind",
+        "bulk": "L",
+        "category": "Worn Item",
+        "emoji": "🎒",
+        "extradimensional": true,
+        "value": "675gp",
+        "compartments": [
+          {
+            "max_bulk": "1",
+            "constraint": "Lined in blue satin. An extradimensional space equivalent to a Type II bag of holding"
+          },
+          {
+            "constraint": "Unlined. Supplies cookware and utensils."
+          },
+          {
+            "constraint": "Lined with plush purple velvet. Supplies berry tarts."
+          }
+        ]
+      },
+      {
+        "name": "Greater Knapsack of Halflingkind",
+        "bulk": "L",
+        "category": "Worn Item",
+        "emoji": "🎒",
+        "extradimensional": true,
+        "value": "2850gp",
+        "compartments": [
+          {
+            "max_bulk": "1",
+            "constraint": "Lined in blue satin. An extradimensional space equivalent to a Type II bag of holding"
+          },
+          {
+            "constraint": "Unlined. Supplies cookware and utensils."
+          },
+          {
+            "constraint": "Lined with plush purple velvet. Supplies berry tarts."
+          },
+          {
+            "constraint": "Lined in golden velvet. Supplies lucky magic sling bullets."
+          },
+          {
+            "constraint": "Lined in black wool. Acts as a 5th-level dimension door spell."
+          }
+        ]
+      },
+      {
+        "name": "Misdirecting Haversack",
+        "bulk": "L",
+        "value": "200gp",
+        "category": "Held",
+        "emoji": "👝",
+        "compartments": [
+          {
+            "max_bulk": "1",
+            "constraint": "Particularly good for papers."
+          }
+        ]
+      },
+      {
+        "name": "Pathfinder's Pouch",
+        "bulk": "L",
+        "value": "200gp",
+        "category": "Consumable",
+        "extradimensional": true,
+        "emoji": "👛",
+        "compartments": [
+          {
+            "max_bulk": "1",
+            "constraint": "Ordinary belt pouch."
+          },
+          {
+            "max_bulk": "1",
+            "constraint": "Extradimensional space"
+          }
+        ]
+      },
+      {
+        "name": "Sack",
+        "bulk": "L",
+        "value": "1cp",
+        "quantity": 5,
+        "category": "Adventuring Gear",
+        "emoji": "🧸",
+        "compartments": [
+          {
+            "max_bulk": "8",
+            "constraint": "A sack containing 2 Bulk or less can be worn on the body, usually tucked into a belt."
+          }
+        ]
+      },
+      {
+        "name": "Saddlebags",
+        "bulk": "L",
+        "value": "2sp",
+        "category": "Adventuring Gear",
+        "emoji": "👝",
+        "compartments": [
+          {
+            "max_bulk": "3",
+            "constraint": "The first 1 Bulk of items doesn't count against the Bulk limit. If you are carrying or stowing saddlebags, they count as 1 Bulk instead of light Bulk."
+          },
+          {
+            "max_bulk": "3",
+            "constraint": "The first 1 Bulk of items doesn't count against the Bulk limit. If you are carrying or stowing saddlebags, they count as 1 Bulk instead of light Bulk."
+          }
+        ]
+      }
+    ],
+    "items": {}
+  }
+}
