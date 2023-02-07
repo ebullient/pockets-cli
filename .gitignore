@@ -45,6 +45,7 @@ nb-configuration.xml
 *.njsproj
 *.sln
 
+.quinoa
 node_modules
 dist
 dist-ssr
