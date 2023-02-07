@@ -1,5 +1,5 @@
 <script>
-  import { additionalCurrencies, applyPreset, activeProfileData, isDirty, presets, resetToDefaults, resetToPrevious, addCurrency } from "../lib/stores";
+  import { isDirty, resetToDefaults, resetToPrevious } from "../lib/stores";
   import Button from "../lib/ButtonTooltip.svelte";
   import ResetSvg from "../svg/delete.svelte";
   import RestoreSvg from "../svg/rotate-ccw.svelte";

@@ -1,10 +1,10 @@
 <script lang="ts">
   import { link } from "svelte-spa-router";
   import {
+    activePresetName,
     activeProfileData,
     addPocket,
     presetPockets,
-    presets,
   } from "../lib/stores";
   import Header from "../lib/Header.svelte";
   import ProfileSelect from "../lib/ProfileSelect.svelte";
@@ -90,7 +90,7 @@
     <ProfileSelect />
     <h4 class="buttons profile">
       Profile: {$activeProfileData.name}
-      <span class="subtext">({presets[$activeProfileData.preset].name})</span>
+      <span class="subtext">({$activePresetName})</span>
     </h4>
 
     You can always make custom pockets on the fly, but these predefined pockets are ready to use.

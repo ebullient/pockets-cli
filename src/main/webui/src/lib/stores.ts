@@ -1,10 +1,8 @@
-import { writable, derived } from 'svelte/store';
+import { writable, derived, get } from 'svelte/store';
 import type { Writable } from "svelte/store";
 import type { Config, Currency, Pocket, Preset } from '../@types/pockets';
 
-const endpoint = "https://jsonplaceholder.typicode.com/posts";
-
-export const presets: Record<string, Preset> = {
+const defaultPresets: Record<string, Preset> = {
   config5e: {
     name: "D&D 5e",
     capacityType: "weight",
@@ -94,7 +92,7 @@ export const presets: Record<string, Preset> = {
   }
 };
 
-let defaultData: Config = {
+const defaultData: Config = {
   profiles: {
     default: {
       name: "default",
@@ -106,17 +104,15 @@ let defaultData: Config = {
   }
 };
 
-const previousStr = JSON.stringify(defaultData);
-const previous = JSON.parse(previousStr);
 
-
+const previousStr: Writable<string> = writable(JSON.stringify(defaultData));
 const configStore: Writable<Config> = writable(JSON.parse(JSON.stringify(defaultData)));
-export const allProfiles = derived(configStore, $c => Object.keys($c.profiles));
+
+export const fetchedPresets: Writable<Record<string, Preset>> = writable(defaultPresets);
 export const activeProfileName: Writable<string> = writable("default");
 
-export const isDirty = derived(configStore, $c => {
-  return JSON.stringify($c) != previousStr
-});
+export const allProfiles = derived(configStore, $c => Object.keys($c.profiles));
+export const isDirty = derived([configStore, previousStr], ([$c, $p]) => JSON.stringify($c) != $p);
 
 export const activeProfileData = derived([configStore, activeProfileName],
   ([$config, $active]) => {
@@ -124,9 +120,13 @@ export const activeProfileData = derived([configStore, activeProfileName],
     return $config.profiles[$active]
   });
 
+export const activePresetName = derived([fetchedPresets, activeProfileData],
+  ([$presets, $p]) => $presets[$p.preset]
+      ?  $presets[$p.preset].name
+      : undefined );
 
 export const resetToPrevious = () => {
-  configStore.set(JSON.parse(JSON.stringify(previous)));
+  configStore.set(JSON.parse(get(previousStr)));
 }
 
 export const resetToDefaults = () => {
@@ -144,12 +144,12 @@ export const createProfile = () => {
   activeProfileName.set(name);
 };
 
-export const applyPreset = (preset: string, profile: string) => {
-  if (presets[preset] && profile) {
+export const applyPreset = (fetched: Record<string, Preset>, preset: string, profile: string) => {
+  if (fetched[preset] && profile) {
     configStore.update((cfg: Config) => {
       cfg.profiles[profile].preset = preset;
-      cfg.profiles[profile].capacityType = presets[preset].capacityType;
-      cfg.profiles[profile].currency = JSON.parse(JSON.stringify(presets[preset].currency));
+      cfg.profiles[profile].capacityType = fetched[preset].capacityType;
+      cfg.profiles[profile].currency = JSON.parse(JSON.stringify(fetched[preset].currency));
       return cfg;
     });
   }
@@ -170,13 +170,14 @@ export const addCurrency = (currency: Currency, profile: string) => {
   }
 }
 
-export const additionalCurrencies = derived(activeProfileData, $p => {
-  if (!presets[$p.preset] || !presets[$p.preset].additionalCurrency) {
+export const additionalCurrencies = derived([fetchedPresets, activeProfileData], ([$presets, $p]) => {
+  const preset = $presets[$p.preset];
+  if (! preset || !preset.additionalCurrency) {
     console.log("Preset or additional currency does not exist", $p.preset);
     return undefined;
   }
   const result: Record<string, Currency[]> = {};
-  Object.entries(presets[$p.preset].additionalCurrency).forEach(([key, value]) => {
+  Object.entries(preset.additionalCurrency).forEach(([key, value]) => {
     const currencies = value.filter(c => !$p.currency.find(x => c.notation == x.notation));
     if (currencies.length > 0) {
       result[key] = currencies;
@@ -193,17 +194,16 @@ export const addPocket = (pocket: Pocket, profile: string) => {
         console.error("Conflict or duplicate. Pocket with name already exists", pocket, pockets);
       } else {
         pockets.push(JSON.parse(JSON.stringify(pocket)));
-        pockets.sort((a, b) => a.name.localeCompare(b.name) );
       }
       return cfg;
     });
   }
 };
 
-export const presetPockets = derived(activeProfileData, $p => {
-  const key = $p.preset;
-  if (presets[key]) {
-    return presets[key].pockets.filter(p => !$p.pockets.find(x => x.name == p.name));
+export const presetPockets = derived([fetchedPresets, activeProfileData], ([$presets, $p]) => {
+  const preset = $presets[$p.preset];
+  if (preset) {
+    return preset.pockets.filter(p => !$p.pockets.find(x => x.name == p.name));
   }
   return undefined;
 });

@@ -4,9 +4,12 @@
   import Menu from './lib/Menu.svelte';
   import { onMount, onDestroy } from 'svelte';
 
-  onMount(() => {
-    console.log('the component has mounted');
-  });
+  onMount(async () => {
+    const response = await fetch(window.location.origin + '/config/presets.json');
+    const data = await response.json();
+    console.log(data);
+  })
+
 	onDestroy(() => {
 		console.log('the component is being destroyed');
 	});
@@ -15,6 +18,7 @@
   <h1>Pockets</h1>
   <Menu/>
 </header>
+{window.location.origin}
 <main>
   <Router {routes}/>
 </main>

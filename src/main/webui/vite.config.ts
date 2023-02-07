@@ -14,8 +14,11 @@ export default defineConfig({
   server: {
     port: 5173,
     hmr: {
-        protocol: 'ws',
-        host: 'localhost',
+      // for proxying from quarkus dev
+      port: 5173,
+      // for testing standalone
+      // protocol: 'ws',
+      // host: 'localhost',
     }
   }
 })

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { additionalCurrencies, applyPreset, activeProfileData, isDirty, presets, resetToDefaults, resetToPrevious, addCurrency } from "../lib/stores";
+  import { additionalCurrencies, applyPreset, activeProfileData, addCurrency, fetchedPresets, activePresetName } from "../lib/stores";
   import ApplySvg from "../svg/zap.svelte";
   import Button from "../lib/ButtonTooltip.svelte";
   import Header from "../lib/Header.svelte";
@@ -8,7 +8,6 @@
   import ExportSvg from "../svg/log-out.svelte";
   import ImportSvg from "../svg/log-in.svelte";
   import TrashSvg from "../svg/trash-2.svelte";
-  import type { ConfigProfile, Currency } from "../@types/pockets";
 
   let preset = "";
 
@@ -26,16 +25,16 @@
         <Select name="presets" tip="Choose configuration preset" left>
           <select id="presets" bind:value={preset}>
             <option value="" />
-            {#each Object.entries(presets) as [key, preset]}
+            {#each Object.entries($fetchedPresets) as [key, preset]}
               <option value={key}>{preset.name}</option>
             {/each}
           </select>
         </Select>
         <Button name="profile-apply" tip="Apply selected preset" left
-          clickfn={() => applyPreset(preset, $activeProfileData.name)}><ApplySvg /></Button>
+          clickfn={() => applyPreset($fetchedPresets, preset, $activeProfileData.name)}><ApplySvg /></Button>
       </span>
       {:else}
-      <span class="subtext">({presets[$activeProfileData.preset].name})</span>
+      <span class="subtext">({$activePresetName})</span>
       {/if}
       <span class="buttons">
         <Button name="profile-import" tip="Import profile" left><ImportSvg /></Button>
