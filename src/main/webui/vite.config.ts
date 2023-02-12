@@ -13,12 +13,13 @@ export default defineConfig({
   plugins: [svelte()],
   server: {
     port: 5173,
+    host: '127.0.0.1',
     hmr: {
       // for proxying from quarkus dev
       port: 5173,
       // for testing standalone
       // protocol: 'ws',
-      // host: 'localhost',
+      host: '127.0.0.1',
     }
   }
 })

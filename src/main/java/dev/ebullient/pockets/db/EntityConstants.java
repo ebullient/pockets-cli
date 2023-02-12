@@ -1,6 +1,9 @@
 package dev.ebullient.pockets.db;
 
 public class EntityConstants {
+    public static final String PROFILE_CONFIG_ENTITY = "Profile";
+    public static final String PROFILE_CONFIG_TABLE = "profile";
+
     public static final String POCKET_ENTITY = "Pocket";
     public static final String POCKET_TABLE = "pocket";
 

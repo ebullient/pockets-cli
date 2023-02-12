@@ -11,39 +11,42 @@
   import type { Compartment, Pocket } from "../@types/pockets";
 
   function pocketDescription(pocket: Pocket): string {
+    console.log("Describe pocket", pocket);
     let result = pocket.name;
     if (pocket.extradimensional) {
       result += "*";
     }
     if ($activeProfileData.capacityType == "weight" && pocket.weight) {
-      result += `, ${pocket.weight} lbs`;
+      const unit = pocket.weight == 1 ? "lb" : "lbs";
+      result += `, ${pocket.weight} ${unit}`;
     } else if (pocket.bulk) {
       result += `, ${pocket.bulk}`;
     }
-    if (pocket.rarity && pocket.rarity != "none") {
-      result += `<br /><i>${pocket.rarity}</i>`;
-    }
-    if (pocket.value || pocket.category) {
+    if (pocket.value || pocket.category || pocket.rarity) {
       result += "<br />";
       const addendum = [];
       if (pocket.category) {
-        addendum.push(pocket.category);
+        if (pocket.rarity && pocket.rarity != "none") {
+          result += `${pocket.category} <em>(${pocket.rarity})</em>`;
+        } else {
+          addendum.push(pocket.category);
+        }
       }
       if (pocket.value) {
         addendum.push(pocket.value);
       }
       result += addendum.join(", ");
+
     }
     if (pocket.compartments) {
       if (
         pocket.compartments.length == 1 &&
         pocket.compartments[0].constraint
       ) {
-        result += `<br />This may contain ${pocket.compartments[0].constraint}`;
+        result += `<br />${pocket.compartments[0].constraint}`;
       } else if (pocket.compartments.length > 1) {
         result += `<br />This pocket has ${pocket.compartments.length} compartments`;
         if (pocket.compartments.find((c) => c.constraint)) {
-          result += ` which may contain:`;
           let i = 1;
           pocket.compartments
             .filter((c) => c.constraint)
@@ -71,14 +74,15 @@
   function pocketCompartmentCapacity(compartment: Compartment) {
     let parts = [];
     if (compartment.max_weight) {
-        parts.push(`${compartment.max_weight} lbs`);
+        const unit = compartment.max_weight == 1 ? "lb" : "lbs";
+        parts.push(`${compartment.max_weight} ${unit}`);
     }
     if (compartment.max_volume) {
       const unit = compartment.max_volume == 1 ? "foot" : "feet";
       parts.push(`${compartment.max_volume} cubic ${unit}`);
     }
     if (compartment.max_bulk) {
-      parts.push(`${compartment.max_bulk} bulk`);
+      parts.push(`${compartment.max_bulk} Bulk`);
     }
     return parts.join(" or ");
   }

@@ -1,109 +1,7 @@
 import { writable, derived, get } from 'svelte/store';
 import type { Writable } from "svelte/store";
 import type { Config, Currency, Pocket, Preset } from '../@types/pockets';
-
-const defaultPresets: Record<string, Preset> = {
-  config5e: {
-    name: "D&D 5e",
-    capacityType: "weight",
-    currency: [
-      {
-        "notation": "pp",
-        "name": "Platinum (pp)",
-        "unitConversion": 1000
-      },
-      {
-        "notation": "gp",
-        "name": "Gold (gp)",
-        "unitConversion": 100
-      },
-      {
-        "notation": "ep",
-        "name": "Electrum (ep)",
-        "unitConversion": 50
-      },
-      {
-        "notation": "sp",
-        "name": "Silver (sp)",
-        "unitConversion": 10
-      },
-      {
-        "notation": "cp",
-        "name": "Copper (cp)",
-        "unitConversion": 1
-      }
-    ],
-    pockets: [
-      {
-        "name": "Backpack",
-        "weight": 5.0,
-        "value": "200cp",
-        "category": "Adventuring Gear",
-        "emoji": "🎒",
-        "compartments": [
-          {
-            "max_weight": 30.0,
-            "max_volume": 1.0
-          }
-        ]
-      }
-    ]
-  },
-  configPf2e: {
-    name: "Pathfinder 2e",
-    capacityType: "bulk",
-    currency: [
-      {
-        "name": "Platinum (pp)",
-        "notation": "pp",
-        "unitConversion": 1000
-      },
-      {
-        "name": "Gold (gp)",
-        "notation": "gp",
-        "unitConversion": 100
-      },
-      {
-        "name": "Silver (sp)",
-        "notation": "sp",
-        "unitConversion": 10
-      },
-      {
-        "name": "Copper (cp)",
-        "notation": "cp",
-        "unitConversion": 1
-      }
-    ],
-    pockets: [
-      {
-        "name": "Backpack",
-        "bulk": "1",
-        "value": "1sp",
-        "category": "Adventuring Gear",
-        "emoji": "🎒",
-        "compartments": [
-          {
-            "max_bulk": "4",
-            "constraint": "The first 2 Bulk of items don't count against your Bulk limits. If you're carrying or stowing the pack rather than wearing it, its Bulk is light instead of negligible."
-          }
-        ]
-      }
-    ]
-  }
-};
-
-const defaultData: Config = {
-  profiles: {
-    default: {
-      name: "default",
-      preset: "",
-      capacityType: "",
-      currency: [],
-      pockets: []
-    }
-  }
-};
-
+import { defaultData, defaultPresets } from './const';
 
 const previousStr: Writable<string> = writable(JSON.stringify(defaultData));
 const configStore: Writable<Config> = writable(JSON.parse(JSON.stringify(defaultData)));
@@ -122,8 +20,8 @@ export const activeProfileData = derived([configStore, activeProfileName],
 
 export const activePresetName = derived([fetchedPresets, activeProfileData],
   ([$presets, $p]) => $presets[$p.preset]
-      ?  $presets[$p.preset].name
-      : undefined );
+    ? $presets[$p.preset].name
+    : undefined);
 
 export const resetToPrevious = () => {
   configStore.set(JSON.parse(get(previousStr)));
@@ -163,7 +61,7 @@ export const addCurrency = (currency: Currency, profile: string) => {
         console.error("Conflict or duplicate. Currency with notation already exists", currency, currencies);
       } else {
         currencies.push(JSON.parse(JSON.stringify(currency)));
-        currencies.sort((a, b) => b.unitConversion - a.unitConversion );
+        currencies.sort((a, b) => b.unitConversion - a.unitConversion);
       }
       return cfg;
     });
@@ -172,8 +70,7 @@ export const addCurrency = (currency: Currency, profile: string) => {
 
 export const additionalCurrencies = derived([fetchedPresets, activeProfileData], ([$presets, $p]) => {
   const preset = $presets[$p.preset];
-  if (! preset || !preset.additionalCurrency) {
-    console.log("Preset or additional currency does not exist", $p.preset);
+  if (!preset || !preset.additionalCurrency) {
     return undefined;
   }
   const result: Record<string, Currency[]> = {};
@@ -207,3 +104,5 @@ export const presetPockets = derived([fetchedPresets, activeProfileData], ([$pre
   }
   return undefined;
 });
+
+

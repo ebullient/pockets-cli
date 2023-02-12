@@ -35,31 +35,26 @@
       {
         "notation": "pp",
         "name": "Platinum (pp)",
-        "items": "platinum-pp",
         "unitConversion": 1000
       },
       {
         "notation": "gp",
         "name": "Gold (gp)",
-        "items": "gold-gp",
         "unitConversion": 100
       },
       {
         "notation": "ep",
         "name": "Electrum (ep)",
-        "items": "gold-gp",
         "unitConversion": 50
       },
       {
         "notation": "sp",
         "name": "Silver (sp)",
-        "items": "silver-sp",
         "unitConversion": 10
       },
       {
         "notation": "cp",
         "name": "Copper (cp)",
-        "items": "copper-cp",
         "unitConversion": 1
       }
     ],
@@ -78,7 +73,7 @@
         "name": "Backpack",
         "weight": 5.0,
         "value": "200cp",
-        "type": "adventuring-gear",
+        "category": "Adventuring gear",
         "emoji": "🎒",
         "compartments": [
           {
@@ -91,7 +86,7 @@
         "name": "Bag of Holding",
         "weight": 15.0,
         "rarity": "minor uncommon",
-        "type": "wondrous",
+        "category": "Wondrous",
         "extradimensional": true,
         "emoji": "🧳",
         "compartments": [
@@ -105,7 +100,7 @@
         "name": "Basket",
         "weight": 2.0,
         "value": "40cp",
-        "type": "adventuring-gear",
+        "category": "Adventuring gear",
         "emoji": "🧺",
         "compartments": [
           {
@@ -118,7 +113,7 @@
         "name": "Chest",
         "weight": 25.0,
         "value": "500cp",
-        "type": "adventuring-gear",
+        "category": "Adventuring gear",
         "emoji": "🧰",
         "compartments": [
           {
@@ -131,12 +126,12 @@
         "name": "Crossbow Bolt Case",
         "weight": 1.0,
         "value": "100cp",
-        "type": "adventuring-gear",
+        "category": "Adventuring gear",
         "emoji": "🏹",
         "compartments": [
           {
             "max_weight": 2.5,
-            "constraint": "20 crossbow bolts"
+            "constraint": "Holds 20 crossbow bolts"
           }
         ]
       },
@@ -144,21 +139,21 @@
         "name": "Efficient Quiver",
         "weight": 2.0,
         "rarity": "major uncommon",
-        "type": "wondrous",
+        "category": "Wondrous",
         "extradimensional": true,
-        "emoij": "🏹",
+        "emoji": "🏹",
         "compartments": [
           {
             "max_weight": 4.5,
-            "constraint": "60 crossbow bolts, arrows, or similar"
+            "constraint": "Holds 60 crossbow bolts, arrows, or similar"
           },
           {
             "max_weight": 36,
-            "constraint": "18 javelins or similar"
+            "constraint": "Holds 18 javelins or similar"
           },
           {
             "max_weight": 24,
-            "constraint": "6 long objects like bows, quarterstaffs, or spears"
+            "constraint": "Holds 6 long objects like bows, quarterstaffs, or spears"
           }
         ]
       },
@@ -166,7 +161,7 @@
         "name": "Handy Haversack",
         "weight": 5.0,
         "rarity": "minor rare",
-        "type": "wondrous",
+        "category": "Wondrous",
         "extradimensional": true,
         "emoji": "👝",
         "compartments": [
@@ -188,12 +183,12 @@
         "name": "Map Case",
         "weight": 1.0,
         "value": "100cp",
-        "type": "adventuring-gear",
+        "category": "Adventuring gear",
         "emoji": "🗞",
         "compartments": [
           {
             "max_weight": 1.0,
-            "constraint": "5 sheets of parchment, or 10 sheets of paper"
+            "constraint": "Holds 5 sheets of parchment or 10 sheets of paper"
           }
         ]
       },
@@ -201,13 +196,13 @@
         "name": "Portable Hole",
         "weight": 0,
         "rarity": "minor rare",
-        "type": "wondrous",
+        "category": "Wondrous",
         "extradimensional": true,
         "emoji": "⚫️",
         "compartments": [
           {
             "max_volume": 282.7,
-            "constraint": "items that fit in the hole (6 feet in diameter, 10 feet deep)."
+            "constraint": "Holds any/all items that fit in the hole (6 feet in diameter, 10 feet deep)."
           }
         ]
       },
@@ -215,13 +210,13 @@
         "name": "Pouch",
         "weight": 1.0,
         "value": "50cp",
-        "type": "adventuring-gear",
+        "category": "Adventuring gear",
         "emoji": "👛",
         "compartments": [
           {
             "max_weight": 6.0,
             "max_volume": 0.2,
-            "constraint": "20 sling bullets, 50 blowgun needles, and other things..."
+            "constraint": "Holds 20 sling bullets, 50 blowgun needles, or other small things."
           }
         ]
       },
@@ -229,12 +224,12 @@
         "name": "Quiver",
         "weight": 1.0,
         "value": "100cp",
-        "type": "adventuring-gear",
-        "emoij": "🏹",
+        "category": "Adventuring gear",
+        "emoji": "🏹",
         "compartments": [
           {
             "max_weight": 2.0,
-            "constraint": "20 arrows"
+            "constraint": "Holds 20 arrows"
           }
         ]
       },
@@ -242,8 +237,8 @@
         "name": "Sack",
         "weight": 0.5,
         "value": "1cp",
-        "type": "adventuring-gear",
-        "emoij": "🧸",
+        "category": "Adventuring gear",
+        "emoji": "🧸",
         "compartments": [
           {
             "max_weight": 30.0,
@@ -255,12 +250,12 @@
         "name": "Scroll Case",
         "weight": 1.0,
         "value": "100cp",
-        "type": "adventuring-gear",
+        "category": "Adventuring gear",
         "emoji": "🗞",
         "compartments": [
           {
             "max_weight": 1.0,
-            "constraint": "5 sheets of parchment, or 10 sheets of paper"
+            "constraint": "Holds 5 sheets of parchment, or 10 sheets of paper"
           }
         ]
       }
@@ -369,24 +364,6 @@
           {
             "max_bulk": "150",
             "constraint": "The Bulk held inside the bag doesn't change the Bulk of the bag of holding itself."
-          }
-        ]
-      },
-      {
-        "name": "Belt Pouch",
-        "bulk": "L",
-        "value": "200gp",
-        "category": "Consumable",
-        "extradimensional": true,
-        "emoji": "👛",
-        "compartments": [
-          {
-            "max_bulk": "1",
-            "constraint": "Ordinary belt pouch."
-          },
-          {
-            "max_bulk": "1",
-            "constraint": "Extradimensional space"
           }
         ]
       },
