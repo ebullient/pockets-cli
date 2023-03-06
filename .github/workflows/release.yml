@@ -98,7 +98,7 @@ jobs:
               exit 1
             fi
           fi
-          
+
           git status
           git diff
           if git diff --quiet; then
@@ -250,7 +250,7 @@ jobs:
   update-snapshot:
     if: github.ref == 'refs/heads/main'
     needs: prep-next-release
-    uses: ./.github/workflows/antifreeze.yml
+    uses: ebullient/pockets-cli/.github/workflows/antifreeze.yml@main
     with:
       update-snapshot-tag: true
     secrets: inherit

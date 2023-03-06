@@ -64,7 +64,7 @@ jobs:
   update-snapshot:
     if: github.ref == 'refs/heads/main'
     needs: build
-    uses: ./.github/workflows/antifreeze.yml
+    uses: ebullient/pockets-cli/.github/workflows/antifreeze.yml@main
     with:
       update-snapshot-tag: true
     secrets: inherit
