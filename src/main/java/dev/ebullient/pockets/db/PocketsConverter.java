@@ -4,13 +4,12 @@ import static dev.ebullient.pockets.io.PocketTui.Tui;
 
 import java.util.List;
 
-import javax.persistence.AttributeConverter;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import dev.ebullient.pockets.Transform;
 import dev.ebullient.pockets.config.ProfileConfigData;
+import jakarta.persistence.AttributeConverter;
 
 public class PocketsConverter {
 

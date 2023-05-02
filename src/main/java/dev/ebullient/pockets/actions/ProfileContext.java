@@ -4,13 +4,12 @@ import static dev.ebullient.pockets.io.PocketTui.Tui;
 
 import java.util.List;
 
-import javax.transaction.TransactionScoped;
-
 import dev.ebullient.pockets.db.Profile;
 import dev.ebullient.pockets.db.Profile.ProfileLookupKeys;
 import dev.ebullient.pockets.io.InvalidPocketState;
 import dev.ebullient.pockets.io.PocketTui;
 import dev.ebullient.pockets.io.PocketsFormat;
+import jakarta.transaction.TransactionScoped;
 
 @TransactionScoped
 public class ProfileContext {

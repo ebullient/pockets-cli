@@ -2,9 +2,6 @@ package dev.ebullient.pockets.routes;
 
 import static dev.ebullient.pockets.io.PocketTui.Tui;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
@@ -13,6 +10,8 @@ import org.apache.camel.component.file.FileConstants;
 import dev.ebullient.pockets.Transform;
 import dev.ebullient.pockets.actions.ModifyPockets;
 import dev.ebullient.pockets.io.InvalidPocketState;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 @ApplicationScoped
 public class EmitterRoutes extends RouteBuilder {

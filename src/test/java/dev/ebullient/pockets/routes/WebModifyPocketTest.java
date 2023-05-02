@@ -3,8 +3,6 @@ package dev.ebullient.pockets.routes;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import javax.inject.Inject;
-
 import org.junit.jupiter.api.Test;
 
 import dev.ebullient.pockets.Transform;
@@ -17,6 +15,7 @@ import dev.ebullient.pockets.db.Posting.ItemType;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.TestProfile;
 import io.restassured.http.ContentType;
+import jakarta.inject.Inject;
 
 @QuarkusTest
 @TestProfile(CamelQuarkusTestSupport.WebModifyPocketTest.class)

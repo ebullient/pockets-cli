@@ -3,18 +3,17 @@ package dev.ebullient.pockets.db;
 import java.util.List;
 import java.util.UUID;
 
-import javax.persistence.Basic;
-import javax.persistence.Convert;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import jakarta.persistence.Basic;
+import jakarta.persistence.Convert;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
 
 @Entity(name = "Journal")
 @JsonIgnoreProperties({ "id", "profile" })

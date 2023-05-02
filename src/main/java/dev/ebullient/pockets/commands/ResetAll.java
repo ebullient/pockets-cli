@@ -7,12 +7,11 @@ import static dev.ebullient.pockets.io.PocketsFormat.NBSP;
 import java.util.HashMap;
 import java.util.concurrent.Callable;
 
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-
 import dev.ebullient.pockets.actions.ProfileContext;
 import dev.ebullient.pockets.db.Profile;
 import dev.ebullient.pockets.io.PocketsFormat;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;
 

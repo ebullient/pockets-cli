@@ -11,16 +11,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Convert;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Lob;
-import javax.persistence.MapKeyColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.PostLoad;
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.Session;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.NaturalIdCache;
@@ -34,6 +24,15 @@ import dev.ebullient.pockets.io.InvalidPocketState;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import io.quarkus.runtime.annotations.RegisterForReflection;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Convert;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Lob;
+import jakarta.persistence.MapKeyColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.PostLoad;
+import jakarta.validation.constraints.NotNull;
 import picocli.CommandLine.ExitCode;
 
 @Entity(name = "Profile")

@@ -8,14 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-import javax.inject.Inject;
-
 import dev.ebullient.pockets.actions.ProfileContext;
 import dev.ebullient.pockets.commands.mixin.ActiveProfileMixinParameter;
 import dev.ebullient.pockets.config.ProfileConfigData;
 import dev.ebullient.pockets.config.Types.PresetFlavor;
 import dev.ebullient.pockets.io.PocketTui;
 import dev.ebullient.pockets.io.PocketsFormat;
+import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;
 import picocli.CommandLine.Mixin;

@@ -3,9 +3,6 @@ package dev.ebullient.pockets.db;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.NaturalId;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -18,6 +15,8 @@ import dev.ebullient.pockets.config.Types.CurrencyRef;
 import dev.ebullient.pockets.config.Types.PresetFlavor;
 import dev.ebullient.pockets.io.InvalidPocketState;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 
 @Entity(name = "PocketCurrency")
 @JsonIgnoreProperties({ "id" })

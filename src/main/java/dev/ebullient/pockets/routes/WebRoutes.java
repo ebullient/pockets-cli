@@ -1,8 +1,5 @@
 package dev.ebullient.pockets.routes;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-
 import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.Message;
@@ -13,6 +10,8 @@ import org.apache.camel.model.rest.RestBindingMode;
 import dev.ebullient.pockets.config.Types.PocketConfigData;
 import dev.ebullient.pockets.io.InvalidPocketState;
 import dev.ebullient.pockets.io.PocketTui;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import picocli.CommandLine;
 
 @ApplicationScoped

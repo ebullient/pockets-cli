@@ -2,9 +2,6 @@ package dev.ebullient.pockets.db;
 
 import java.util.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
@@ -13,6 +10,8 @@ import dev.ebullient.pockets.config.ProfileConfigData;
 import dev.ebullient.pockets.config.Types.PresetFlavor;
 import dev.ebullient.pockets.io.InvalidPocketState;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 
 @Entity(name = "PocketItem")
 @JsonIdentityInfo(scope = PocketItem.class, generator = PropertyGenerator.class, property = "id")

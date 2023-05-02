@@ -2,13 +2,12 @@ package dev.ebullient.pockets.config;
 
 import java.nio.file.Path;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Produces;
-
 import dev.ebullient.pockets.config.EmitterConfig.EmitterType;
 import dev.ebullient.pockets.config.EmitterConfig.EventLogConfiguration;
 import dev.ebullient.pockets.config.EmitterConfig.MarkdownConfiguration;
 import io.quarkus.test.Mock;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Produces;
 
 @Mock
 @ApplicationScoped

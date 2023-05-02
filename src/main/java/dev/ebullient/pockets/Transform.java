@@ -7,10 +7,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Optional;
 
-import javax.enterprise.inject.Instance;
-import javax.enterprise.inject.Produces;
-import javax.inject.Singleton;
-
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.FlowStyle;
 import org.yaml.snakeyaml.DumperOptions.ScalarStyle;
@@ -30,6 +26,9 @@ import com.github.slugify.Slugify;
 
 import dev.ebullient.pockets.io.PocketTui;
 import io.quarkus.jackson.ObjectMapperCustomizer;
+import jakarta.enterprise.inject.Instance;
+import jakarta.enterprise.inject.Produces;
+import jakarta.inject.Singleton;
 
 @Singleton
 public class Transform {

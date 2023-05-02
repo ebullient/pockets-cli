@@ -55,10 +55,10 @@ public class Util {
             .filter(x -> !x.startsWith("[INFO]"))
             .filter(s -> !s.startsWith("🔧"))
             .filter(s -> !s.startsWith("&allowNullBody")) // debug from a camel route..
-            // replace many whitespaces with a single whitespace
-            .map(s -> s.replaceAll(" +", "✦"))
             // replace id strings with placeholders
             .map(s -> s.replaceAll("\\[[\\d ]+]", "[id]"))
+            // replace many whitespaces with a single whitespace
+            .map(s -> s.replaceAll(" +", "✦"))
             .collect(Collectors.joining("\n"));
 
     public static void assertConciseContentContains(List<String> actual, CharSequence... values) {

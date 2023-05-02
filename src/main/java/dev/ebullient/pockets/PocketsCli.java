@@ -7,10 +7,6 @@ import static dev.ebullient.pockets.io.PocketsFormat.NBSP;
 import java.io.PrintWriter;
 import java.util.concurrent.Callable;
 
-import javax.enterprise.context.control.ActivateRequestContext;
-import javax.enterprise.event.Observes;
-import javax.inject.Inject;
-
 import org.apache.camel.quarkus.main.CamelMain;
 
 import dev.ebullient.pockets.commands.AddItem;
@@ -27,6 +23,9 @@ import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.ShutdownEvent;
 import io.quarkus.runtime.annotations.QuarkusMain;
+import jakarta.enterprise.context.control.ActivateRequestContext;
+import jakarta.enterprise.event.Observes;
+import jakarta.inject.Inject;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;

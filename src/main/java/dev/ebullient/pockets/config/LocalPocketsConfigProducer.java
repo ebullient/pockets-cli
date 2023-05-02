@@ -3,9 +3,6 @@ package dev.ebullient.pockets.config;
 import java.io.IOException;
 import java.nio.file.Path;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Produces;
-
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,6 +10,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.ebullient.pockets.Transform;
 import dev.ebullient.pockets.io.InvalidPocketState;
 import dev.ebullient.pockets.io.PocketTui;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Produces;
 
 @ApplicationScoped
 public class LocalPocketsConfigProducer {
