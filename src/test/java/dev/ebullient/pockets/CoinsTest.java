@@ -24,7 +24,7 @@ public class CoinsTest {
     @Test
     @Launch(value = { "$", "1", "-", "10pp" }, exitCode = PocketTui.INSUFFICIENT_FUNDS)
     public void testInsufficientFunds(LaunchResult result) {
-        assertThat(result.getOutput()).contains(
+        Util.assertConciseContentContains(result.getOutputStream(),
                 "You are trying to remove more coins",
                 "No changes have been saved.");
     }
@@ -32,18 +32,17 @@ public class CoinsTest {
     @Test
     @Launch({ "$", "1", "+", "1sp" })
     public void testCoinsAdd(LaunchResult result) {
-        assertThat(Util.noWhitespace(result.getOutput()))
-                .contains(
-                        Util.noWhitespace("Coins [1] contains:"),
-                        Util.noWhitespace("] (  0)  Platinum (pp)  0.02    10.0   "),
-                        Util.noWhitespace("] ( 50)  Gold (gp)      0.02     1.0   "),
-                        Util.noWhitespace("] (  2)  Silver (sp)    0.02     0.1   "));
+        Util.assertConciseContentContains(result.getOutputStream(),
+                "Coins [1] contains:",
+                "] (  0)  Platinum (pp)  0.02    10.0   ",
+                "] ( 50)  Gold (gp)      0.02     1.0   ",
+                "] (  2)  Silver (sp)    0.02     0.1   ");
     }
 
     @Test
     @Launch({ "$", "--help" })
     public void testCoinsHelp(LaunchResult result) {
-        assertThat(result.getOutput()).contains(
+        Util.assertConciseContentContains(result.getOutputStream(),
                 "Do you have change in your pocket?",
                 "Usage: pockets $ ");
     }

@@ -14,7 +14,7 @@ public class PocketsCliTest {
     @Test
     @Launch({ "--debug" })
     public void testBasicCommand(LaunchResult result) {
-        assertThat(result.getOutput()).contains(
+        Util.assertConciseContentContains(result.getOutputStream(),
                 "What have you got in your pockets?",
                 "Usage: pockets");
     }
@@ -27,7 +27,7 @@ public class PocketsCliTest {
         LaunchResult r2 = launcher.launch("-h");
         assertThat(r2.exitCode()).isEqualTo(0);
 
-        assertThat(Util.outputWithoutLogs(r1)).isEqualTo(Util.outputWithoutLogs(r2));
+        assertThat(Util.conciseOutput(r1)).isEqualTo(Util.conciseOutput(r2));
         assertThat(r1.getOutput()).contains("Usage: pockets");
     }
 }

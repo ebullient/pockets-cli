@@ -1,7 +1,5 @@
 package dev.ebullient.pockets;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import org.junit.jupiter.api.Test;
 
 import dev.ebullient.pockets.io.PocketTui;
@@ -14,7 +12,7 @@ public class PocketEditTest {
     @Test
     @Launch(value = { "edit", "backpack" }, exitCode = PocketTui.NOT_FOUND)
     public void testPocketEditBackpack(LaunchResult result) {
-        assertThat(result.getOutput()).contains(
+        Util.assertConciseContentContains(result.getOutputStream(),
                 "[   2] 🎒  Backpack",
                 "[   4] 🎒  Backpack",
                 "The specified value [backpack] matches more than one pocket.");
@@ -23,14 +21,14 @@ public class PocketEditTest {
     @Test
     @Launch({ "edit", "2", "--magic" })
     public void testPocketEditSpecificBackpack(LaunchResult result) {
-        assertThat(result.getOutput()).contains(
+        Util.assertConciseContentContains(result.getOutputStream(),
                 "This Backpack is magical.");
     }
 
     @Test
     @Launch({ "e", "--help" })
     public void testPocketEditHelp(LaunchResult result) {
-        assertThat(result.getOutput()).contains(
+        Util.assertConciseContentContains(result.getOutputStream(),
                 "Edit a pocket",
                 "Usage: pockets e ");
     }
