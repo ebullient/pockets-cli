@@ -2,10 +2,9 @@ package dev.ebullient.pockets;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import dev.ebullient.pockets.db.Pocket;
 import dev.ebullient.pockets.io.PocketTui;
+import jakarta.transaction.Transactional;
 import picocli.CommandLine.ArgGroup;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;

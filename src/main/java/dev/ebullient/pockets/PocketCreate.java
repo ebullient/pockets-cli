@@ -3,12 +3,11 @@ package dev.ebullient.pockets;
 import java.util.List;
 import java.util.Optional;
 
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-
 import dev.ebullient.pockets.db.Pocket;
 import dev.ebullient.pockets.index.Index;
 import dev.ebullient.pockets.index.PocketReference;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import picocli.CommandLine.ArgGroup;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;

@@ -21,10 +21,10 @@ public class ItemRemoveTest {
     }
 
     @Test
-    @Launch({ "r", "2", "5", "--debug" })
+    @Launch({ "r", "2", "1", "--debug" })
     public void testRemoveById(LaunchResult result) {
         Util.assertConciseContentContains(result.getOutputStream(),
-                "(10) Rations [5] have been removed from Backpack [2]",
+                "(10) Rations [1] have been removed from Backpack [2]",
                 "Backpack [2] is empty.", // verbose
                 "This Backpack weighs 5.0 pounds when empty."); // verbose
     }

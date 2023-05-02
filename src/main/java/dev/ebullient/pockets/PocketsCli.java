@@ -2,14 +2,13 @@ package dev.ebullient.pockets;
 
 import java.util.concurrent.Callable;
 
-import javax.enterprise.context.control.ActivateRequestContext;
-import javax.enterprise.inject.Produces;
-import javax.inject.Inject;
-
 import dev.ebullient.pockets.index.Index;
 import dev.ebullient.pockets.io.PocketTui;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
+import jakarta.enterprise.context.control.ActivateRequestContext;
+import jakarta.enterprise.inject.Produces;
+import jakarta.inject.Inject;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;

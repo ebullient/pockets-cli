@@ -8,8 +8,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-import javax.inject.Inject;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -20,6 +18,7 @@ import dev.ebullient.pockets.db.Mapper;
 import dev.ebullient.pockets.index.Index.IndexData;
 import dev.ebullient.pockets.index.PocketReference.Compartment;
 import dev.ebullient.pockets.io.PocketTui;
+import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;
 import picocli.CommandLine.Model.CommandSpec;

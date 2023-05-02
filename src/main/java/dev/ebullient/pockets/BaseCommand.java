@@ -4,12 +4,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.Callable;
 
-import javax.inject.Inject;
-
 import dev.ebullient.pockets.db.Item;
 import dev.ebullient.pockets.db.Mapper;
 import dev.ebullient.pockets.db.Pocket;
 import dev.ebullient.pockets.io.PocketTui;
+import jakarta.inject.Inject;
 import picocli.CommandLine.ExitCode;
 import picocli.CommandLine.Model.CommandSpec;
 import picocli.CommandLine.Spec;
