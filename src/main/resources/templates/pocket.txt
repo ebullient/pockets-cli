@@ -1,0 +1,73 @@
+{@dev.ebullient.pockets.db.Pocket pocket}
+{#let details=pocket.pocketDetails}
+---
+obsidianUIMode: preview
+cssclass: pockets,pocket
+aliases: ["{pocket.name}"]
+---
+# {pocket.name}
+
+{#if details.notes }
+{details.notes}
+
+{/if}
+> [!note]- Details
+{#if details.refId }
+> - **Reference item** {details.refId}
+{/if}{#if details.bulk || details.weight }
+> - **{#if useBulk }Bulk{#else }Weight{/if}** {pocket.bulkWeight}
+{/if}{#if pocket.unitValue }
+> - **Pocket value (not contents)** {pocket.unitValue}
+{/if}{#if details.tradable }
+> - **Tradable** {details.tradable} {#if details.fullValueTrade }(full value){#else}(partial value){/if}
+{/if}{#if details.maxBulk || details.maxWeight }
+> - **Max {#if useBulk }Bulk{#else }Weight{/if}** {pocket.maxBulkWeight}
+{/if}{#if details.bottomless }
+
+This is a bottomless pocket. It will always accept and provide items. Cumulative value and capacity will not be checked.
+{/if}{#if details.magical }
+
+This pocket is magical. It will always {#if useBulk }have {#else }weigh {/if}{pocket.bulkWeight}, regardless of its contents.
+{/if}
+
+{#if !details.bottomless }
+- 💰 **Current value**: {pocket.cumulativeValue}
+- 💸 Additional tradable value: {pocket.approximateTradableValue}
+- ⚖️ **Currently carrying**: {pocket.cumulativeBulkWeight}
+{/if}
+
+{#if pocket.parentPocket }
+This pocket is held by {pocket.parentPocket.markdownLink}.
+{/if}{#if pocket.nestedPockets }
+
+{pocket.emoji} {pocket.name} contains pockets:
+{#for pn in pocket.nestedPockets}
+- {pn.flags} {pn.markdownLink}{#if pn.pocketDetails.notes } {pn.pocketDetails.notes}{/if}
+{/for}{/if}
+
+## Currency
+
+{#if pocket.pocketCurrency }
+| Qty | Name          | {#if useBulk }Bulk{#else }Weight{/if} | Value |
+|-----|---------------|-{#if useBulk }----{#else }------{/if}-|-------|
+{#for pc in pocket.pocketCurrency.values}
+| {pc.quantity} | {pc.name} | {pc.bulkWeight} | {pc.currentValue} |
+{/for}{#else}
+None
+{/if}
+
+## Items
+
+{#if pocket.pocketItems }
+| Qty | Item                                | Flags | {#if useBulk }Bulk{#else }Weight{/if} | Value |
+|-----|-------------------------------------|-------|-{#if useBulk }----{#else }------{/if}-|-------|
+{#for pi in pocket.pocketItems.values}{#let item=pi.item}
+| {pi.quantity} |  {item.name}{#if item.itemDetails.notes }. {item.itemDetails.notes}{/if} | {item.flags} | {pi.bulkWeight} | {pi.currentValue} |
+{/let}{/for}
+
+- 💸 Will trade for approximately half of its original value (depending on condition)
+- 💰 Will trade for full value (perhaps more or less depending on the other party)
+{#else}
+None
+{/if}
+{/let}

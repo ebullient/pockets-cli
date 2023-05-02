@@ -1,0 +1,4973 @@
+{
+  "name": "D&D 5e",
+  "capacityType": "weight",
+  "additionalCurrency": {
+    "waterdeep": [
+      {
+        "notation": "dragon",
+        "name": "Dragon",
+        "unitConversion": 100
+      },
+      {
+        "notation": "shard",
+        "name": "Shard",
+        "unitConversion": 10
+      },
+      {
+        "notation": "nib",
+        "name": "Nib",
+        "unitConversion": 1
+      },
+      {
+        "notation": "hm",
+        "name": "Harbor Moon",
+        "unitConversion": 5000
+      },
+      {
+        "notation": "taol",
+        "name": "Taol",
+        "unitConversion": 200
+      }
+    ]
+  },
+  "currency": [
+    {
+      "notation": "pp",
+      "name": "Platinum (pp)",
+      "unitConversion": 1000
+    },
+    {
+      "notation": "gp",
+      "name": "Gold (gp)",
+      "unitConversion": 100
+    },
+    {
+      "notation": "ep",
+      "name": "Electrum (ep)",
+      "unitConversion": 50
+    },
+    {
+      "notation": "sp",
+      "name": "Silver (sp)",
+      "unitConversion": 10
+    },
+    {
+      "notation": "cp",
+      "name": "Copper (cp)",
+      "unitConversion": 1
+    }
+  ],
+  "pocketRef": [
+    {
+      "name": "Loot",
+      "emoji": "💰",
+      "bottomless": true,
+      "compartments": [
+        {
+          "constraint": "Finders keepers, hopefully. Things you find may come from this pocket. (bottomless)"
+        }
+      ]
+    },
+    {
+      "id": "start",
+      "name": "Starting Equipment",
+      "emoji": "📋",
+      "bottomless": true,
+      "compartments": [
+        {
+          "constraint": "Starting equipment. (bottomless)"
+        }
+      ]
+    },
+    {
+      "id": "given",
+      "name": "Given items",
+      "emoji": "🎁",
+      "bottomless": true,
+      "compartments": [
+        {
+          "constraint": "Gifts or borrowed items (bottomless)"
+        }
+      ]
+    },
+    {
+      "id": "consumed",
+      "name": "Consumed items (bottomless)",
+      "emoji": "🧨",
+      "bottomless": true,
+      "compartments": [
+        {
+          "constraint": "Consumed or destroyed items (bottomless)"
+        }
+      ]
+    },
+    {
+      "name": "Shop",
+      "emoji": "🏪",
+      "bottomless": true,
+      "compartments": [
+        {
+          "constraint": "A shop? A tavern? An Inn? Coins and items go to and fro at such places. (bottomless)"
+        }
+      ]
+    },
+    {
+      "name": "NPC",
+      "emoji": "👤",
+      "bottomless": true,
+      "compartments": [
+        {
+          "constraint": "Friend or foe? Trade partner or thief? Why choose? (bottomless)"
+        }
+      ]
+    },
+    {
+      "name": "PC",
+      "emoji": "😇",
+      "compartments": [
+        {
+          "constraint": "A character's Strength score multiplied by 15 is the weight (in pounds) that they can carry. For each size category above Medium, double their carrying capacity. If they are tiny, halve these weights."
+        }
+      ]
+    },
+    {
+      "name": "Backpack",
+      "weight": 5.0,
+      "value": "200cp",
+      "emoji": "🎒",
+      "compartments": [
+        {
+          "max_weight": 30.0,
+          "max_volume": 1.0
+        }
+      ]
+    },
+    {
+      "name": "Bag of Holding",
+      "weight": 15.0,
+      "magical": true,
+      "emoji": "🧳",
+      "compartments": [
+        {
+          "max_weight": 500.0,
+          "max_volume": 64.0,
+          "constraint": "The weight of the haversack's contents do not change the weight of the haversack itself."
+        }
+      ]
+    },
+    {
+      "name": "Basket",
+      "weight": 2.0,
+      "value": "40cp",
+      "emoji": "🧺",
+      "compartments": [
+        {
+          "max_weight": 40.0,
+          "max_volume": 2.0
+        }
+      ]
+    },
+    {
+      "name": "Chest",
+      "weight": 25.0,
+      "value": "500cp",
+      "emoji": "🧰",
+      "compartments": [
+        {
+          "max_weight": 300.0,
+          "max_volume": 12.0
+        }
+      ]
+    },
+    {
+      "name": "Crossbow Bolt Case",
+      "weight": 1.0,
+      "value": "100cp",
+      "emoji": "🏹",
+      "compartments": [
+        {
+          "max_weight": 2.5,
+          "constraint": "Holds 20 crossbow bolts."
+        }
+      ]
+    },
+    {
+      "name": "Efficient Quiver",
+      "weight": 2.0,
+      "magical": true,
+      "emoji": "🏹",
+      "compartments": [
+        {
+          "max_weight": 4.5,
+          "constraint": "Holds 60 crossbow bolts, arrows, or similar."
+        },
+        {
+          "max_weight": 36,
+          "constraint": "Holds 18 javelins or similar."
+        },
+        {
+          "max_weight": 24,
+          "constraint": "Holds 6 long objects like bows, quarterstaffs, or spears."
+        }
+      ]
+    },
+    {
+      "name": "Handy Haversack",
+      "weight": 5.0,
+      "magical": true,
+      "emoji": "👝",
+      "compartments": [
+        {
+          "max_weight": 20.0,
+          "max_volume": 2.0
+        },
+        {
+          "max_weight": 20.0,
+          "max_volume": 2.0,
+          "constraint": "The weight of the haversack's contents do not change the weight of the haversack itself."
+        },
+        {
+          "max_weight": 80.0,
+          "max_volume": 8.0
+        }
+      ]
+    },
+    {
+      "name": "Map Case",
+      "weight": 1.0,
+      "value": "100cp",
+      "emoji": "🗞",
+      "compartments": [
+        {
+          "max_weight": 1.0,
+          "constraint": "Holds 5 sheets of parchment or 10 sheets of paper."
+        }
+      ]
+    },
+    {
+      "name": "Portable Hole",
+      "weight": 0,
+      "magical": true,
+      "emoji": "⚫️",
+      "compartments": [
+        {
+          "max_volume": 282.7,
+          "constraint": "Holds any/all items that fit in the hole (6 feet in diameter, 10 feet deep)."
+        }
+      ]
+    },
+    {
+      "name": "Pouch",
+      "weight": 1.0,
+      "value": "50cp",
+      "emoji": "👛",
+      "compartments": [
+        {
+          "max_weight": 6.0,
+          "max_volume": 0.2,
+          "constraint": "Holds 20 sling bullets, 50 blowgun needles, or other small things."
+        }
+      ]
+    },
+    {
+      "name": "Quiver",
+      "weight": 1.0,
+      "value": "100cp",
+      "emoji": "🏹",
+      "compartments": [
+        {
+          "max_weight": 2.0,
+          "constraint": "Holds 20 arrows"
+        }
+      ]
+    },
+    {
+      "name": "Sack",
+      "weight": 0.5,
+      "value": "1cp",
+      "emoji": "🧸",
+      "compartments": [
+        {
+          "max_weight": 30.0,
+          "max_volume": 1.0
+        }
+      ]
+    },
+    {
+      "name": "Scroll Case",
+      "weight": 1.0,
+      "value": "100cp",
+      "emoji": "🗞",
+      "compartments": [
+        {
+          "max_weight": 1.0,
+          "constraint": "Holds 5 sheets of parchment, or 10 sheets of paper."
+        }
+      ]
+    }
+  ],
+  "itemRef": [
+    {
+      "id": "1-rod-of-the-pact-keeper",
+      "name": "+1 Rod of the Pact Keeper",
+      "weight": 2.0,
+      "type": "rod",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "1-wand-of-the-war-mage",
+      "name": "+1 Wand of the War Mage",
+      "weight": 1.0,
+      "type": "wand",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "2-rod-of-the-pact-keeper",
+      "name": "+2 Rod of the Pact Keeper",
+      "weight": 2.0,
+      "type": "rod",
+      "rarity": "major rare"
+    },
+    {
+      "id": "2-wand-of-the-war-mage",
+      "name": "+2 Wand of the War Mage",
+      "weight": 1.0,
+      "type": "wand",
+      "rarity": "major rare"
+    },
+    {
+      "id": "3-rod-of-the-pact-keeper",
+      "name": "+3 Rod of the Pact Keeper",
+      "weight": 2.0,
+      "type": "rod",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "3-wand-of-the-war-mage",
+      "name": "+3 Wand of the War Mage",
+      "weight": 1.0,
+      "type": "wand",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "abacus",
+      "name": "Abacus",
+      "value": "200cp",
+      "weight": 2.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "acid-vial",
+      "name": "Acid (vial)",
+      "value": "2500cp",
+      "weight": 1.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "airship",
+      "name": "Airship",
+      "value": "2000000cp",
+      "type": "vehicle"
+    },
+    {
+      "id": "alchemists-fire-flask",
+      "name": "Alchemist's Fire (flask)",
+      "value": "5000cp",
+      "weight": 1.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "alchemists-supplies",
+      "name": "Alchemist's Supplies",
+      "value": "5000cp",
+      "weight": 8.0,
+      "type": "artisans-tools"
+    },
+    {
+      "id": "alchemy-jug",
+      "name": "Alchemy Jug",
+      "weight": 12.0,
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "ale-gallon",
+      "name": "Ale (Gallon)",
+      "value": "20cp",
+      "type": "food"
+    },
+    {
+      "id": "ale-mug",
+      "name": "Ale (Mug)",
+      "value": "4cp",
+      "type": "food"
+    },
+    {
+      "id": "alexandrite",
+      "name": "Alexandrite",
+      "value": "50000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "amber",
+      "name": "Amber",
+      "value": "10000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "amethyst",
+      "name": "Amethyst",
+      "value": "10000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "amulet",
+      "name": "Amulet",
+      "value": "500cp",
+      "weight": 1.0,
+      "type": "spellcaster-focus"
+    },
+    {
+      "id": "amulet-of-health",
+      "name": "Amulet of Health",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "amulet-of-proof-against-detection-and-location",
+      "name": "Amulet of Proof against Detection and Location",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "amulet-of-the-planes",
+      "name": "Amulet of the Planes",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "animated-shield",
+      "name": "Animated Shield",
+      "weight": 6.0,
+      "type": "shield",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "antimatter-rifle",
+      "name": "Antimatter Rifle",
+      "weight": 10.0,
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "antitoxin-vial",
+      "name": "Antitoxin (vial)",
+      "value": "5000cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "apparatus-of-the-crab",
+      "name": "Apparatus of the Crab",
+      "weight": 500.0,
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "aquamarine",
+      "name": "Aquamarine",
+      "value": "50000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "armor-of-invulnerability",
+      "name": "Armor of Invulnerability",
+      "weight": 65.0,
+      "type": "heavy-armor",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "armor-of-vulnerability-bludgeoning",
+      "name": "Armor of Vulnerability (Bludgeoning)",
+      "weight": 65.0,
+      "type": "heavy-armor",
+      "rarity": "major rare"
+    },
+    {
+      "id": "armor-of-vulnerability-piercing",
+      "name": "Armor of Vulnerability (Piercing)",
+      "weight": 65.0,
+      "type": "heavy-armor",
+      "rarity": "major rare"
+    },
+    {
+      "id": "armor-of-vulnerability-slashing",
+      "name": "Armor of Vulnerability (Slashing)",
+      "weight": 65.0,
+      "type": "heavy-armor",
+      "rarity": "major rare"
+    },
+    {
+      "id": "arrow",
+      "name": "Arrow",
+      "value": "5cp",
+      "weight": 0.05,
+      "type": "ammunition"
+    },
+    {
+      "id": "arrow-catching-shield",
+      "name": "Arrow-Catching Shield",
+      "weight": 6.0,
+      "type": "shield",
+      "rarity": "major rare"
+    },
+    {
+      "id": "arrows-20",
+      "name": "Arrows (20)",
+      "value": "100cp",
+      "weight": 1.0,
+      "type": "ammunition"
+    },
+    {
+      "id": "assassins-blood",
+      "name": "Assassin's Blood",
+      "value": "15000cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "automatic-pistol",
+      "name": "Automatic Pistol",
+      "weight": 3.0,
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "automatic-rifle",
+      "name": "Automatic Rifle",
+      "weight": 8.0,
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "axe-of-the-dwarvish-lords",
+      "name": "Axe of the Dwarvish Lords",
+      "weight": 4.0,
+      "type": "melee-weapon",
+      "rarity": "artifact"
+    },
+    {
+      "id": "azurite",
+      "name": "Azurite",
+      "value": "1000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "bag-of-beans",
+      "name": "Bag of Beans",
+      "weight": 0.5,
+      "type": "wondrous",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "bag-of-devouring",
+      "name": "Bag of Devouring",
+      "weight": 15.0,
+      "type": "wondrous",
+      "rarity": "minor very rare"
+    },
+    {
+      "id": "bag-of-tricks-gray",
+      "name": "Bag of Tricks, Gray",
+      "weight": 0.5,
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "bag-of-tricks-rust",
+      "name": "Bag of Tricks, Rust",
+      "weight": 0.5,
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "bag-of-tricks-tan",
+      "name": "Bag of Tricks, Tan",
+      "weight": 0.5,
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "bagpipes",
+      "name": "Bagpipes",
+      "value": "3000cp",
+      "weight": 6.0,
+      "type": "instrument"
+    },
+    {
+      "id": "ball-bearing",
+      "name": "Ball Bearing",
+      "value": "0.1cp",
+      "weight": 0.002,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "ball-bearings-bag-of-1-000",
+      "name": "Ball Bearings (bag of 1,000)",
+      "value": "100cp",
+      "weight": 2.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "banded-agate",
+      "name": "Banded Agate",
+      "value": "1000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "barrel",
+      "name": "Barrel",
+      "value": "200cp",
+      "weight": 70.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "basic-poison-vial",
+      "name": "Basic Poison (vial)",
+      "value": "10000cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "battleaxe",
+      "name": "Battleaxe",
+      "value": "1000cp",
+      "weight": 4.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "bead-of-force",
+      "name": "Bead of Force",
+      "weight": 0.0625,
+      "type": "wondrous",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "bedroll",
+      "name": "Bedroll",
+      "value": "100cp",
+      "weight": 7.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "bell",
+      "name": "Bell",
+      "value": "100cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "belt-of-cloud-giant-strength",
+      "name": "Belt of Cloud Giant Strength",
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "belt-of-dwarvenkind",
+      "name": "Belt of Dwarvenkind",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "belt-of-fire-giant-strength",
+      "name": "Belt of Fire Giant Strength",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "belt-of-frost-giant-strength",
+      "name": "Belt of Frost Giant Strength",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "belt-of-hill-giant-strength",
+      "name": "Belt of Hill Giant Strength",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "belt-of-stone-giant-strength",
+      "name": "Belt of Stone Giant Strength",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "belt-of-storm-giant-strength",
+      "name": "Belt of Storm Giant Strength",
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "bit-and-bridle",
+      "name": "Bit and bridle",
+      "value": "200cp",
+      "weight": 1.0,
+      "type": "tack-harness"
+    },
+    {
+      "id": "black-dragon-scale-mail",
+      "name": "Black Dragon Scale Mail",
+      "weight": 45.0,
+      "type": "medium-armor",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "black-opal",
+      "name": "Black Opal",
+      "value": "100000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "black-pearl",
+      "name": "Black Pearl",
+      "value": "50000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "black-sapphire",
+      "name": "Black Sapphire",
+      "value": "500000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "blackrazor",
+      "name": "Blackrazor",
+      "weight": 6.0,
+      "type": "melee-weapon",
+      "rarity": "legendary"
+    },
+    {
+      "id": "blanket",
+      "name": "Blanket",
+      "value": "50cp",
+      "weight": 3.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "block-and-tackle",
+      "name": "Block and Tackle",
+      "value": "100cp",
+      "weight": 5.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "bloodstone",
+      "name": "Bloodstone",
+      "value": "5000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "blowgun",
+      "name": "Blowgun",
+      "value": "1000cp",
+      "weight": 1.0,
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "blowgun-needle",
+      "name": "Blowgun Needle",
+      "value": "2cp",
+      "weight": 0.02,
+      "type": "ammunition"
+    },
+    {
+      "id": "blowgun-needles-50",
+      "name": "Blowgun Needles (50)",
+      "value": "100cp",
+      "weight": 1.0,
+      "type": "ammunition"
+    },
+    {
+      "id": "blue-dragon-scale-mail",
+      "name": "Blue Dragon Scale Mail",
+      "weight": 45.0,
+      "type": "medium-armor",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "blue-quartz",
+      "name": "Blue Quartz",
+      "value": "1000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "blue-sapphire",
+      "name": "Blue Sapphire",
+      "value": "100000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "blue-spinel",
+      "name": "Blue Spinel",
+      "value": "50000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "bomb",
+      "name": "Bomb",
+      "value": "15000cp",
+      "weight": 1.0,
+      "type": "explosive"
+    },
+    {
+      "id": "book",
+      "name": "Book",
+      "value": "2500cp",
+      "weight": 5.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "book-of-exalted-deeds",
+      "name": "Book of Exalted Deeds",
+      "weight": 5.0,
+      "type": "wondrous",
+      "rarity": "artifact"
+    },
+    {
+      "id": "book-of-vile-darkness",
+      "name": "Book of Vile Darkness",
+      "weight": 5.0,
+      "type": "wondrous",
+      "rarity": "artifact"
+    },
+    {
+      "id": "boots-of-elvenkind",
+      "name": "Boots of Elvenkind",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "boots-of-levitation",
+      "name": "Boots of Levitation",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "boots-of-speed",
+      "name": "Boots of Speed",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "boots-of-striding-and-springing",
+      "name": "Boots of Striding and Springing",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "boots-of-the-winterlands",
+      "name": "Boots of the Winterlands",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "bowl-of-commanding-water-elementals",
+      "name": "Bowl of Commanding Water Elementals",
+      "weight": 3.0,
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "bracers-of-archery",
+      "name": "Bracers of Archery",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "bracers-of-defense",
+      "name": "Bracers of Defense",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "brass-dragon-scale-mail",
+      "name": "Brass Dragon Scale Mail",
+      "weight": 45.0,
+      "type": "medium-armor",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "brazier-of-commanding-fire-elementals",
+      "name": "Brazier of Commanding Fire Elementals",
+      "weight": 5.0,
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "breastplate",
+      "name": "Breastplate",
+      "value": "40000cp",
+      "weight": 20.0,
+      "type": "medium-armor"
+    },
+    {
+      "id": "brewers-supplies",
+      "name": "Brewer's Supplies",
+      "value": "2000cp",
+      "weight": 9.0,
+      "type": "artisans-tools"
+    },
+    {
+      "id": "bronze-dragon-scale-mail",
+      "name": "Bronze Dragon Scale Mail",
+      "weight": 45.0,
+      "type": "medium-armor",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "brooch-of-shielding",
+      "name": "Brooch of Shielding",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "broom-of-flying",
+      "name": "Broom of Flying",
+      "weight": 3.0,
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "bucket",
+      "name": "Bucket",
+      "value": "5cp",
+      "weight": 2.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "bullseye-lantern",
+      "name": "Bullseye Lantern",
+      "value": "1000cp",
+      "weight": 2.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "burglars-pack",
+      "name": "Burglar's Pack",
+      "value": "1600cp",
+      "weight": 44.5,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "burnt-othur-fumes",
+      "name": "Burnt Othur Fumes",
+      "value": "50000cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "calligraphers-supplies",
+      "name": "Calligrapher's Supplies",
+      "value": "1000cp",
+      "weight": 5.0,
+      "type": "artisans-tools"
+    },
+    {
+      "id": "caltrop",
+      "name": "Caltrop",
+      "value": "5cp",
+      "weight": 0.1,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "caltrops-bag-of-20",
+      "name": "Caltrops (bag of 20)",
+      "value": "100cp",
+      "weight": 2.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "camel",
+      "name": "Camel",
+      "value": "5000cp",
+      "type": "mounts"
+    },
+    {
+      "id": "candle",
+      "name": "Candle",
+      "value": "1cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "candle-of-invocation",
+      "name": "Candle of Invocation",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "canvas-1-sq-yd",
+      "name": "Canvas (1 sq. yd.)",
+      "value": "10cp",
+      "type": "trade-good"
+    },
+    {
+      "id": "cap-of-water-breathing",
+      "name": "Cap of Water Breathing",
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "cape-of-the-mountebank",
+      "name": "Cape of the Mountebank",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "carnelian",
+      "name": "Carnelian",
+      "value": "5000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "carpenters-tools",
+      "name": "Carpenter's Tools",
+      "value": "800cp",
+      "weight": 6.0,
+      "type": "artisans-tools"
+    },
+    {
+      "id": "carpet-of-flying-3-ft-5-ft",
+      "name": "Carpet of Flying, 3 ft. × 5 ft.",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "carpet-of-flying-4-ft-6-ft",
+      "name": "Carpet of Flying, 4 ft. × 6 ft.",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "carpet-of-flying-5-ft-7-ft",
+      "name": "Carpet of Flying, 5 ft. × 7 ft.",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "carpet-of-flying-6-ft-9-ft",
+      "name": "Carpet of Flying, 6 ft. × 9 ft.",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "carriage",
+      "name": "Carriage",
+      "value": "10000cp",
+      "weight": 600.0,
+      "type": "vehicle"
+    },
+    {
+      "id": "cart",
+      "name": "Cart",
+      "value": "1500cp",
+      "weight": 200.0,
+      "type": "vehicle"
+    },
+    {
+      "id": "cartographers-tools",
+      "name": "Cartographer's Tools",
+      "value": "1500cp",
+      "weight": 6.0,
+      "type": "artisans-tools"
+    },
+    {
+      "id": "censer-of-controlling-air-elementals",
+      "name": "Censer of Controlling Air Elementals",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "chain-10-feet",
+      "name": "Chain (10 feet)",
+      "value": "500cp",
+      "weight": 10.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "chain-mail",
+      "name": "Chain Mail",
+      "value": "7500cp",
+      "weight": 55.0,
+      "type": "heavy-armor"
+    },
+    {
+      "id": "chain-shirt",
+      "name": "Chain Shirt",
+      "value": "5000cp",
+      "weight": 20.0,
+      "type": "medium-armor"
+    },
+    {
+      "id": "chalcedony",
+      "name": "Chalcedony",
+      "value": "5000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "chalk-1-piece",
+      "name": "Chalk (1 piece)",
+      "value": "1cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "chariot",
+      "name": "Chariot",
+      "value": "25000cp",
+      "weight": 100.0,
+      "type": "vehicle"
+    },
+    {
+      "id": "chicken",
+      "name": "Chicken",
+      "value": "2cp",
+      "type": "trade-good"
+    },
+    {
+      "id": "chime-of-opening",
+      "name": "Chime of Opening",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "chrysoberyl",
+      "name": "Chrysoberyl",
+      "value": "10000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "chrysoprase",
+      "name": "Chrysoprase",
+      "value": "5000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "chunk-of-meat",
+      "name": "Chunk of Meat",
+      "value": "30cp",
+      "type": "food"
+    },
+    {
+      "id": "cinnamon",
+      "name": "Cinnamon",
+      "value": "200cp",
+      "weight": 1.0,
+      "type": "trade-good"
+    },
+    {
+      "id": "circlet-of-blasting",
+      "name": "Circlet of Blasting",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "citrine",
+      "name": "Citrine",
+      "value": "5000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "climbers-kit",
+      "name": "Climber's Kit",
+      "value": "2500cp",
+      "weight": 12.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "cloak-of-arachnida",
+      "name": "Cloak of Arachnida",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "cloak-of-displacement",
+      "name": "Cloak of Displacement",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "cloak-of-elvenkind",
+      "name": "Cloak of Elvenkind",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "cloak-of-invisibility",
+      "name": "Cloak of Invisibility",
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "cloak-of-protection",
+      "name": "Cloak of Protection",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "cloak-of-the-bat",
+      "name": "Cloak of the Bat",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "cloak-of-the-manta-ray",
+      "name": "Cloak of the Manta Ray",
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "cloth-of-gold-vestments",
+      "name": "Cloth-of-gold vestments",
+      "value": "2500cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "cloves",
+      "name": "Cloves",
+      "value": "300cp",
+      "weight": 1.0,
+      "type": "trade-good"
+    },
+    {
+      "id": "club",
+      "name": "Club",
+      "value": "10cp",
+      "weight": 2.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "cobblers-tools",
+      "name": "Cobbler's Tools",
+      "value": "500cp",
+      "weight": 5.0,
+      "type": "artisans-tools"
+    },
+    {
+      "id": "common-clothes",
+      "name": "Common Clothes",
+      "value": "50cp",
+      "weight": 3.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "common-wine-pitcher",
+      "name": "Common Wine (Pitcher)",
+      "value": "20cp",
+      "type": "food"
+    },
+    {
+      "id": "component-pouch",
+      "name": "Component Pouch",
+      "value": "2500cp",
+      "weight": 2.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "cooks-utensils",
+      "name": "Cook's Utensils",
+      "value": "100cp",
+      "weight": 8.0,
+      "type": "artisans-tools"
+    },
+    {
+      "id": "copper",
+      "name": "Copper",
+      "value": "50cp",
+      "weight": 1.0,
+      "type": "trade-good"
+    },
+    {
+      "id": "copper-cp",
+      "name": "Copper (cp)",
+      "value": "1cp",
+      "weight": 0.02,
+      "type": "coins-gems"
+    },
+    {
+      "id": "copper-dragon-scale-mail",
+      "name": "Copper Dragon Scale Mail",
+      "weight": 45.0,
+      "type": "medium-armor",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "coral",
+      "name": "Coral",
+      "value": "10000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "costume-clothes",
+      "name": "Costume Clothes",
+      "value": "500cp",
+      "weight": 4.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "cotton-cloth-1-sq-yd",
+      "name": "Cotton Cloth (1 sq. yd.)",
+      "value": "50cp",
+      "type": "trade-good"
+    },
+    {
+      "id": "cow",
+      "name": "Cow",
+      "value": "1000cp",
+      "type": "trade-good"
+    },
+    {
+      "id": "crawler-mucus-contact",
+      "name": "Crawler Mucus (Contact)",
+      "value": "20000cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "crossbow-bolt",
+      "name": "Crossbow Bolt",
+      "value": "5cp",
+      "weight": 0.075,
+      "type": "ammunition"
+    },
+    {
+      "id": "crossbow-bolts-20",
+      "name": "Crossbow Bolts (20)",
+      "value": "100cp",
+      "weight": 1.5,
+      "type": "ammunition"
+    },
+    {
+      "id": "crowbar",
+      "name": "Crowbar",
+      "value": "200cp",
+      "weight": 5.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "crystal",
+      "name": "Crystal",
+      "value": "1000cp",
+      "weight": 1.0,
+      "type": "spellcaster-focus"
+    },
+    {
+      "id": "crystal-ball",
+      "name": "Crystal Ball",
+      "weight": 3.0,
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "crystal-ball-of-mind-reading",
+      "name": "Crystal Ball of Mind Reading",
+      "weight": 3.0,
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "crystal-ball-of-telepathy",
+      "name": "Crystal Ball of Telepathy",
+      "weight": 3.0,
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "crystal-ball-of-true-seeing",
+      "name": "Crystal Ball of True Seeing",
+      "weight": 3.0,
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "cube-of-force",
+      "name": "Cube of Force",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "cubic-gate",
+      "name": "Cubic Gate",
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "dagger",
+      "name": "Dagger",
+      "value": "200cp",
+      "weight": 1.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "dagger-of-venom",
+      "name": "Dagger of Venom",
+      "weight": 1.0,
+      "type": "melee-weapon",
+      "rarity": "major rare"
+    },
+    {
+      "id": "dart",
+      "name": "Dart",
+      "value": "5cp",
+      "weight": 0.25,
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "decanter-of-endless-water",
+      "name": "Decanter of Endless Water",
+      "weight": 2.0,
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "deck-of-illusions",
+      "name": "Deck of Illusions",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "deck-of-many-things",
+      "name": "Deck of Many Things",
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "demon-armor",
+      "name": "Demon Armor",
+      "weight": 65.0,
+      "type": "heavy-armor",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "diamond",
+      "name": "Diamond",
+      "value": "500000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "dice-set",
+      "name": "Dice Set",
+      "value": "10cp",
+      "type": "gaming-set"
+    },
+    {
+      "id": "dimensional-shackles",
+      "name": "Dimensional Shackles",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "diplomats-pack",
+      "name": "Diplomat's Pack",
+      "value": "3900cp",
+      "weight": 36.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "disguise-kit",
+      "name": "Disguise Kit",
+      "value": "2500cp",
+      "weight": 3.0,
+      "type": "tools"
+    },
+    {
+      "id": "donkey",
+      "name": "Donkey",
+      "value": "800cp",
+      "type": "mounts"
+    },
+    {
+      "id": "draft-horse",
+      "name": "Draft Horse",
+      "value": "5000cp",
+      "type": "mounts"
+    },
+    {
+      "id": "dragonchess-set",
+      "name": "Dragonchess Set",
+      "value": "100cp",
+      "weight": 0.5,
+      "type": "gaming-set"
+    },
+    {
+      "id": "driftglobe",
+      "name": "Driftglobe",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "drow-poison",
+      "name": "Drow Poison",
+      "value": "20000cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "drum",
+      "name": "Drum",
+      "value": "600cp",
+      "weight": 3.0,
+      "type": "instrument"
+    },
+    {
+      "id": "dulcimer",
+      "name": "Dulcimer",
+      "value": "2500cp",
+      "weight": 10.0,
+      "type": "instrument"
+    },
+    {
+      "id": "dungeoneers-pack",
+      "name": "Dungeoneer's Pack",
+      "value": "1200cp",
+      "weight": 61.5,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "dust-of-disappearance",
+      "name": "Dust of Disappearance",
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "dust-of-dryness",
+      "name": "Dust of Dryness",
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "dust-of-sneezing-and-choking",
+      "name": "Dust of Sneezing and Choking",
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "dwarven-plate",
+      "name": "Dwarven Plate",
+      "weight": 65.0,
+      "type": "heavy-armor",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "dwarven-thrower",
+      "name": "Dwarven Thrower",
+      "weight": 2.0,
+      "type": "melee-weapon",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "dynamite-stick",
+      "name": "Dynamite (stick)",
+      "weight": 1.0,
+      "type": "explosive"
+    },
+    {
+      "id": "efreeti-bottle",
+      "name": "Efreeti Bottle",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "efreeti-chain",
+      "name": "Efreeti Chain",
+      "weight": 55.0,
+      "type": "heavy-armor",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "electrum-ep",
+      "name": "Electrum (ep)",
+      "value": "50cp",
+      "weight": 0.02,
+      "type": "coins-gems"
+    },
+    {
+      "id": "elemental-gem-blue-sapphire",
+      "name": "Elemental Gem, Blue Sapphire",
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "elemental-gem-emerald",
+      "name": "Elemental Gem, Emerald",
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "elemental-gem-red-corundum",
+      "name": "Elemental Gem, Red Corundum",
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "elemental-gem-yellow-diamond",
+      "name": "Elemental Gem, Yellow Diamond",
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "elephant",
+      "name": "Elephant",
+      "value": "20000cp",
+      "type": "mounts"
+    },
+    {
+      "id": "elixir-of-health",
+      "name": "Elixir of Health",
+      "type": "potion",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "elven-chain",
+      "name": "Elven Chain",
+      "weight": 20.0,
+      "type": "medium-armor",
+      "rarity": "major rare"
+    },
+    {
+      "id": "emblem",
+      "name": "Emblem",
+      "value": "500cp",
+      "type": "spellcaster-focus"
+    },
+    {
+      "id": "emerald",
+      "name": "Emerald",
+      "value": "100000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "energy-cell",
+      "name": "Energy Cell",
+      "weight": 0.3125,
+      "type": "ammunition-firearm"
+    },
+    {
+      "id": "entertainers-pack",
+      "name": "Entertainer's Pack",
+      "value": "4000cp",
+      "weight": 38.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "essence-of-ether",
+      "name": "Essence of Ether",
+      "value": "30000cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "eversmoking-bottle",
+      "name": "Eversmoking Bottle",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "exotic-saddle",
+      "name": "Exotic Saddle",
+      "value": "6000cp",
+      "weight": 40.0,
+      "type": "tack-harness"
+    },
+    {
+      "id": "explorers-pack",
+      "name": "Explorer's Pack",
+      "value": "1000cp",
+      "weight": 59.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "eye-agate",
+      "name": "Eye Agate",
+      "value": "1000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "eye-of-vecna",
+      "name": "Eye of Vecna",
+      "type": "wondrous",
+      "rarity": "artifact"
+    },
+    {
+      "id": "eyes-of-charming",
+      "name": "Eyes of Charming",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "eyes-of-minute-seeing",
+      "name": "Eyes of Minute Seeing",
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "eyes-of-the-eagle",
+      "name": "Eyes of the Eagle",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "feather-token-anchor",
+      "name": "Feather Token, Anchor",
+      "type": "wondrous",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "feather-token-bird",
+      "name": "Feather Token, Bird",
+      "type": "wondrous",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "feather-token-fan",
+      "name": "Feather Token, Fan",
+      "type": "wondrous",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "feather-token-swan-boat",
+      "name": "Feather Token, Swan Boat",
+      "type": "wondrous",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "feather-token-tree",
+      "name": "Feather Token, Tree",
+      "type": "wondrous",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "feather-token-whip",
+      "name": "Feather Token, Whip",
+      "type": "wondrous",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "feed-per-day",
+      "name": "Feed (per day)",
+      "value": "5cp",
+      "weight": 10.0,
+      "type": "tack-harness"
+    },
+    {
+      "id": "figurine-of-wondrous-power-bronze-griffon",
+      "name": "Figurine of Wondrous Power, Bronze Griffon",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "figurine-of-wondrous-power-ebony-fly",
+      "name": "Figurine of Wondrous Power, Ebony Fly",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "figurine-of-wondrous-power-golden-lions",
+      "name": "Figurine of Wondrous Power, Golden Lions",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "figurine-of-wondrous-power-ivory-goats",
+      "name": "Figurine of Wondrous Power, Ivory Goats",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "figurine-of-wondrous-power-marble-elephant",
+      "name": "Figurine of Wondrous Power, Marble Elephant",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "figurine-of-wondrous-power-obsidian-steed",
+      "name": "Figurine of Wondrous Power, Obsidian Steed",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "figurine-of-wondrous-power-onyx-dog",
+      "name": "Figurine of Wondrous Power, Onyx Dog",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "figurine-of-wondrous-power-serpentine-owl",
+      "name": "Figurine of Wondrous Power, Serpentine Owl",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "figurine-of-wondrous-power-silver-raven",
+      "name": "Figurine of Wondrous Power, Silver Raven",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "fine-clothes",
+      "name": "Fine Clothes",
+      "value": "1500cp",
+      "weight": 6.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "fine-wine-bottle",
+      "name": "Fine Wine (Bottle)",
+      "value": "1000cp",
+      "type": "food"
+    },
+    {
+      "id": "fire-opal",
+      "name": "Fire Opal",
+      "value": "100000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "fishing-tackle",
+      "name": "Fishing Tackle",
+      "value": "100cp",
+      "weight": 4.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "flail",
+      "name": "Flail",
+      "value": "1000cp",
+      "weight": 2.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "flask",
+      "name": "Flask",
+      "value": "2cp",
+      "weight": 1.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "flour",
+      "name": "Flour",
+      "value": "2cp",
+      "weight": 1.0,
+      "type": "trade-good"
+    },
+    {
+      "id": "flute",
+      "name": "Flute",
+      "value": "200cp",
+      "weight": 1.0,
+      "type": "instrument"
+    },
+    {
+      "id": "folding-boat",
+      "name": "Folding Boat",
+      "weight": 4.0,
+      "type": "wondrous",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "forgery-kit",
+      "name": "Forgery Kit",
+      "value": "1500cp",
+      "weight": 5.0,
+      "type": "tools"
+    },
+    {
+      "id": "fragmentation-grenade",
+      "name": "Fragmentation Grenade",
+      "weight": 1.0,
+      "type": "explosive"
+    },
+    {
+      "id": "galley",
+      "name": "Galley",
+      "value": "3000000cp",
+      "type": "vehicle"
+    },
+    {
+      "id": "garnet",
+      "name": "Garnet",
+      "value": "10000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "gauntlets-of-ogre-power",
+      "name": "Gauntlets of Ogre Power",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "gem-of-brightness",
+      "name": "Gem of Brightness",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "gem-of-seeing",
+      "name": "Gem of Seeing",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ginger",
+      "name": "Ginger",
+      "value": "100cp",
+      "weight": 1.0,
+      "type": "trade-good"
+    },
+    {
+      "id": "glaive",
+      "name": "Glaive",
+      "value": "2000cp",
+      "weight": 6.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "glamoured-studded-leather",
+      "name": "Glamoured Studded Leather",
+      "weight": 13.0,
+      "type": "light-armor",
+      "rarity": "major rare"
+    },
+    {
+      "id": "glass-bottle",
+      "name": "Glass Bottle",
+      "value": "200cp",
+      "weight": 2.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "glassblowers-tools",
+      "name": "Glassblower's Tools",
+      "value": "3000cp",
+      "weight": 5.0,
+      "type": "artisans-tools"
+    },
+    {
+      "id": "gloves-of-missile-snaring",
+      "name": "Gloves of Missile Snaring",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "gloves-of-swimming-and-climbing",
+      "name": "Gloves of Swimming and Climbing",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "gloves-of-thievery",
+      "name": "Gloves of Thievery",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "goat",
+      "name": "Goat",
+      "value": "100cp",
+      "type": "trade-good"
+    },
+    {
+      "id": "goggles-of-night",
+      "name": "Goggles of Night",
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "gold",
+      "name": "Gold",
+      "value": "5000cp",
+      "weight": 1.0,
+      "type": "trade-good"
+    },
+    {
+      "id": "gold-dragon-scale-mail",
+      "name": "Gold Dragon Scale Mail",
+      "weight": 45.0,
+      "type": "medium-armor",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "gold-gp",
+      "name": "Gold (gp)",
+      "value": "100cp",
+      "weight": 0.02,
+      "type": "coins-gems"
+    },
+    {
+      "id": "grappling-hook",
+      "name": "Grappling Hook",
+      "value": "200cp",
+      "weight": 4.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "greataxe",
+      "name": "Greataxe",
+      "value": "3000cp",
+      "weight": 7.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "greatclub",
+      "name": "Greatclub",
+      "value": "20cp",
+      "weight": 10.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "greatsword",
+      "name": "Greatsword",
+      "value": "5000cp",
+      "weight": 6.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "green-dragon-scale-mail",
+      "name": "Green Dragon Scale Mail",
+      "weight": 45.0,
+      "type": "medium-armor",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "grenade-launcher",
+      "name": "Grenade Launcher",
+      "weight": 7.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "gunpowder-horn",
+      "name": "Gunpowder Horn",
+      "value": "3500cp",
+      "weight": 2.0,
+      "type": "explosive"
+    },
+    {
+      "id": "gunpowder-keg",
+      "name": "Gunpowder Keg",
+      "value": "25000cp",
+      "weight": 20.0,
+      "type": "explosive"
+    },
+    {
+      "id": "halberd",
+      "name": "Halberd",
+      "value": "2000cp",
+      "weight": 6.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "half-plate-armor",
+      "name": "Half Plate Armor",
+      "value": "75000cp",
+      "weight": 40.0,
+      "type": "medium-armor"
+    },
+    {
+      "id": "hammer",
+      "name": "Hammer",
+      "value": "100cp",
+      "weight": 3.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "hammer-of-thunderbolts",
+      "name": "Hammer of Thunderbolts",
+      "weight": 10.0,
+      "type": "melee-weapon",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "hand-crossbow",
+      "name": "Hand Crossbow",
+      "value": "7500cp",
+      "weight": 3.0,
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "hand-of-vecna",
+      "name": "Hand of Vecna",
+      "type": "wondrous",
+      "rarity": "artifact"
+    },
+    {
+      "id": "handaxe",
+      "name": "Handaxe",
+      "value": "500cp",
+      "weight": 2.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "hat-of-disguise",
+      "name": "Hat of Disguise",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "headband-of-intellect",
+      "name": "Headband of Intellect",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "healers-kit",
+      "name": "Healer's Kit",
+      "value": "500cp",
+      "weight": 3.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "heavy-crossbow",
+      "name": "Heavy Crossbow",
+      "value": "5000cp",
+      "weight": 18.0,
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "helm-of-brilliance",
+      "name": "Helm of Brilliance",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "helm-of-comprehending-languages",
+      "name": "Helm of Comprehending Languages",
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "helm-of-telepathy",
+      "name": "Helm of Telepathy",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "helm-of-teleportation",
+      "name": "Helm of Teleportation",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "hematite",
+      "name": "Hematite",
+      "value": "1000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "hempen-rope-50-feet",
+      "name": "Hempen Rope (50 feet)",
+      "value": "100cp",
+      "weight": 10.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "herbalism-kit",
+      "name": "Herbalism Kit",
+      "value": "500cp",
+      "weight": 3.0,
+      "type": "tools"
+    },
+    {
+      "id": "hide-armor",
+      "name": "Hide Armor",
+      "value": "1000cp",
+      "weight": 12.0,
+      "type": "medium-armor"
+    },
+    {
+      "id": "holy-water-flask",
+      "name": "Holy Water (flask)",
+      "value": "2500cp",
+      "weight": 1.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "hooded-lantern",
+      "name": "Hooded Lantern",
+      "value": "500cp",
+      "weight": 2.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "horn",
+      "name": "Horn",
+      "value": "300cp",
+      "weight": 2.0,
+      "type": "instrument"
+    },
+    {
+      "id": "horn-of-blasting",
+      "name": "Horn of Blasting",
+      "weight": 2.0,
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "horn-of-valhalla-brass",
+      "name": "Horn of Valhalla, Brass",
+      "weight": 2.0,
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "horn-of-valhalla-bronze",
+      "name": "Horn of Valhalla, Bronze",
+      "weight": 2.0,
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "horn-of-valhalla-iron",
+      "name": "Horn of Valhalla, Iron",
+      "weight": 2.0,
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "horn-of-valhalla-silver",
+      "name": "Horn of Valhalla, Silver",
+      "weight": 2.0,
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "horseshoes-of-a-zephyr",
+      "name": "Horseshoes of a Zephyr",
+      "type": "wondrous",
+      "rarity": "minor very rare"
+    },
+    {
+      "id": "horseshoes-of-speed",
+      "name": "Horseshoes of Speed",
+      "type": "wondrous",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "hourglass",
+      "name": "Hourglass",
+      "value": "2500cp",
+      "weight": 1.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "hunk-of-cheese",
+      "name": "Hunk of Cheese",
+      "value": "10cp",
+      "type": "food"
+    },
+    {
+      "id": "hunting-rifle",
+      "name": "Hunting Rifle",
+      "weight": 8.0,
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "hunting-trap",
+      "name": "Hunting Trap",
+      "value": "500cp",
+      "weight": 25.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "immovable-rod",
+      "name": "Immovable Rod",
+      "weight": 2.0,
+      "type": "rod",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "ink-1-ounce-bottle",
+      "name": "Ink (1-ounce bottle)",
+      "value": "1000cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "ink-pen",
+      "name": "Ink Pen",
+      "value": "2cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "instant-fortress",
+      "name": "Instant Fortress",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "instrument-of-the-bards-anstruth-harp",
+      "name": "Instrument of the Bards, Anstruth Harp",
+      "weight": 2.0,
+      "type": "instrument",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "instrument-of-the-bards-canaith-mandolin",
+      "name": "Instrument of the Bards, Canaith Mandolin",
+      "weight": 2.0,
+      "type": "instrument",
+      "rarity": "major rare"
+    },
+    {
+      "id": "instrument-of-the-bards-cli-lyre",
+      "name": "Instrument of the Bards, Cli Lyre",
+      "weight": 2.0,
+      "type": "instrument",
+      "rarity": "major rare"
+    },
+    {
+      "id": "instrument-of-the-bards-doss-lute",
+      "name": "Instrument of the Bards, Doss Lute",
+      "weight": 2.0,
+      "type": "instrument",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "instrument-of-the-bards-fochlucan-bandore",
+      "name": "Instrument of the Bards, Fochlucan Bandore",
+      "weight": 2.0,
+      "type": "instrument",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "instrument-of-the-bards-mac-fuirmidh-cittern",
+      "name": "Instrument of the Bards, Mac-Fuirmidh Cittern",
+      "weight": 2.0,
+      "type": "instrument",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "instrument-of-the-bards-ollamh-harp",
+      "name": "Instrument of the Bards, Ollamh Harp",
+      "weight": 2.0,
+      "type": "instrument",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "ioun-stone-absorption",
+      "name": "Ioun Stone, Absorption",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "ioun-stone-agility",
+      "name": "Ioun Stone, Agility",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "ioun-stone-awareness",
+      "name": "Ioun Stone, Awareness",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ioun-stone-fortitude",
+      "name": "Ioun Stone, Fortitude",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "ioun-stone-greater-absorption",
+      "name": "Ioun Stone, Greater Absorption",
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "ioun-stone-insight",
+      "name": "Ioun Stone, Insight",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "ioun-stone-intellect",
+      "name": "Ioun Stone, Intellect",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "ioun-stone-leadership",
+      "name": "Ioun Stone, Leadership",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "ioun-stone-mastery",
+      "name": "Ioun Stone, Mastery",
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "ioun-stone-protection",
+      "name": "Ioun Stone, Protection",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ioun-stone-regeneration",
+      "name": "Ioun Stone, Regeneration",
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "ioun-stone-reserve",
+      "name": "Ioun Stone, Reserve",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ioun-stone-strength",
+      "name": "Ioun Stone, Strength",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "ioun-stone-sustenance",
+      "name": "Ioun Stone, Sustenance",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "iron",
+      "name": "Iron",
+      "value": "10cp",
+      "weight": 1.0,
+      "type": "trade-good"
+    },
+    {
+      "id": "iron-bands-of-binding",
+      "name": "Iron Bands of Binding",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "iron-flask",
+      "name": "Iron Flask",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "iron-pot",
+      "name": "Iron Pot",
+      "value": "200cp",
+      "weight": 10.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "iron-spike",
+      "name": "Iron Spike",
+      "value": "10cp",
+      "weight": 0.5,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "iron-spikes-10",
+      "name": "Iron Spikes (10)",
+      "value": "100cp",
+      "weight": 5.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "jacinth",
+      "name": "Jacinth",
+      "value": "500000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "jade",
+      "name": "Jade",
+      "value": "10000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "jasper",
+      "name": "Jasper",
+      "value": "5000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "javelin",
+      "name": "Javelin",
+      "value": "50cp",
+      "weight": 2.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "javelin-of-lightning",
+      "name": "Javelin of Lightning",
+      "weight": 2.0,
+      "type": "melee-weapon",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "jet",
+      "name": "Jet",
+      "value": "10000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "jewelers-tools",
+      "name": "Jeweler's Tools",
+      "value": "2500cp",
+      "weight": 2.0,
+      "type": "artisans-tools"
+    },
+    {
+      "id": "jug",
+      "name": "Jug",
+      "value": "2cp",
+      "weight": 4.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "keelboat",
+      "name": "Keelboat",
+      "value": "300000cp",
+      "type": "vehicle"
+    },
+    {
+      "id": "ladder-10-foot",
+      "name": "Ladder (10-foot)",
+      "value": "10cp",
+      "weight": 25.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "lamp",
+      "name": "Lamp",
+      "value": "50cp",
+      "weight": 1.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "lance",
+      "name": "Lance",
+      "value": "1000cp",
+      "weight": 6.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "lantern-of-revealing",
+      "name": "Lantern of Revealing",
+      "weight": 2.0,
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "lapis-lazuli",
+      "name": "Lapis Lazuli",
+      "value": "1000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "laser-pistol",
+      "name": "Laser Pistol",
+      "weight": 2.0,
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "laser-rifle",
+      "name": "Laser Rifle",
+      "weight": 7.0,
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "leather-armor",
+      "name": "Leather Armor",
+      "value": "1000cp",
+      "weight": 10.0,
+      "type": "light-armor"
+    },
+    {
+      "id": "leatherworkers-tools",
+      "name": "Leatherworker's Tools",
+      "value": "500cp",
+      "weight": 5.0,
+      "type": "artisans-tools"
+    },
+    {
+      "id": "light-crossbow",
+      "name": "Light Crossbow",
+      "value": "2500cp",
+      "weight": 5.0,
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "light-hammer",
+      "name": "Light Hammer",
+      "value": "200cp",
+      "weight": 2.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "linen-1-sq-yd",
+      "name": "Linen (1 sq. yd.)",
+      "value": "500cp",
+      "type": "trade-good"
+    },
+    {
+      "id": "loaf-of-bread",
+      "name": "Loaf of Bread",
+      "value": "2cp",
+      "type": "food"
+    },
+    {
+      "id": "lock",
+      "name": "Lock",
+      "value": "1000cp",
+      "weight": 1.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "longbow",
+      "name": "Longbow",
+      "value": "5000cp",
+      "weight": 2.0,
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "longship",
+      "name": "Longship",
+      "value": "1000000cp",
+      "type": "vehicle"
+    },
+    {
+      "id": "longsword",
+      "name": "Longsword",
+      "value": "1500cp",
+      "weight": 3.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "lute",
+      "name": "Lute",
+      "value": "3500cp",
+      "weight": 2.0,
+      "type": "instrument"
+    },
+    {
+      "id": "lyre",
+      "name": "Lyre",
+      "value": "3000cp",
+      "weight": 2.0,
+      "type": "instrument"
+    },
+    {
+      "id": "mace",
+      "name": "Mace",
+      "value": "500cp",
+      "weight": 4.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "mace-of-disruption",
+      "name": "Mace of Disruption",
+      "weight": 4.0,
+      "type": "melee-weapon",
+      "rarity": "major rare"
+    },
+    {
+      "id": "mace-of-smiting",
+      "name": "Mace of Smiting",
+      "weight": 4.0,
+      "type": "melee-weapon",
+      "rarity": "major rare"
+    },
+    {
+      "id": "mace-of-terror",
+      "name": "Mace of Terror",
+      "weight": 4.0,
+      "type": "melee-weapon",
+      "rarity": "major rare"
+    },
+    {
+      "id": "magnifying-glass",
+      "name": "Magnifying Glass",
+      "value": "10000cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "malachite",
+      "name": "Malachite",
+      "value": "1000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "malice",
+      "name": "Malice",
+      "value": "25000cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "manacles",
+      "name": "Manacles",
+      "value": "200cp",
+      "weight": 6.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "mantle-of-spell-resistance",
+      "name": "Mantle of Spell Resistance",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "manual-of-bodily-health",
+      "name": "Manual of Bodily Health",
+      "weight": 5.0,
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "manual-of-clay-golems",
+      "name": "Manual of Clay Golems",
+      "weight": 5.0,
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "manual-of-flesh-golems",
+      "name": "Manual of Flesh Golems",
+      "weight": 5.0,
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "manual-of-gainful-exercise",
+      "name": "Manual of Gainful Exercise",
+      "weight": 5.0,
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "manual-of-iron-golems",
+      "name": "Manual of Iron Golems",
+      "weight": 5.0,
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "manual-of-quickness-of-action",
+      "name": "Manual of Quickness of Action",
+      "weight": 5.0,
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "manual-of-stone-golems",
+      "name": "Manual of Stone Golems",
+      "weight": 5.0,
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "marvelous-pigments",
+      "name": "Marvelous Pigments",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "minor very rare"
+    },
+    {
+      "id": "masons-tools",
+      "name": "Mason's Tools",
+      "value": "1000cp",
+      "weight": 8.0,
+      "type": "artisans-tools"
+    },
+    {
+      "id": "mastiff",
+      "name": "Mastiff",
+      "value": "2500cp",
+      "type": "mounts"
+    },
+    {
+      "id": "maul",
+      "name": "Maul",
+      "value": "1000cp",
+      "weight": 10.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "medallion-of-thoughts",
+      "name": "Medallion of Thoughts",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "merchants-scale",
+      "name": "Merchant's Scale",
+      "value": "500cp",
+      "weight": 3.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "mess-kit",
+      "name": "Mess Kit",
+      "value": "20cp",
+      "weight": 1.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "midnight-tears",
+      "name": "Midnight Tears",
+      "value": "150000cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "military-saddle",
+      "name": "Military Saddle",
+      "value": "2000cp",
+      "weight": 30.0,
+      "type": "tack-harness"
+    },
+    {
+      "id": "miners-pick",
+      "name": "Miner's Pick",
+      "value": "200cp",
+      "weight": 10.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "mirror-of-life-trapping",
+      "name": "Mirror of Life Trapping",
+      "weight": 50.0,
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "modern-bullet",
+      "name": "Modern Bullet",
+      "weight": 0.1,
+      "type": "ammunition-firearm"
+    },
+    {
+      "id": "modern-bullets-10",
+      "name": "Modern Bullets (10)",
+      "weight": 1.0,
+      "type": "ammunition-firearm"
+    },
+    {
+      "id": "moonblade",
+      "name": "Moonblade",
+      "weight": 3.0,
+      "type": "melee-weapon",
+      "rarity": "legendary"
+    },
+    {
+      "id": "moonstone",
+      "name": "Moonstone",
+      "value": "5000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "morningstar",
+      "name": "Morningstar",
+      "value": "1500cp",
+      "weight": 4.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "moss-agate",
+      "name": "Moss Agate",
+      "value": "1000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "mule",
+      "name": "Mule",
+      "value": "800cp",
+      "type": "mounts"
+    },
+    {
+      "id": "musket",
+      "name": "Musket",
+      "value": "50000cp",
+      "weight": 10.0,
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "navigators-tools",
+      "name": "Navigator's Tools",
+      "value": "2500cp",
+      "weight": 2.0,
+      "type": "tools"
+    },
+    {
+      "id": "necklace-of-adaptation",
+      "name": "Necklace of Adaptation",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "necklace-of-fireballs",
+      "name": "Necklace of Fireballs",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "necklace-of-prayer-beads",
+      "name": "Necklace of Prayer Beads",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "net",
+      "name": "Net",
+      "value": "100cp",
+      "weight": 3.0,
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "oathbow",
+      "name": "Oathbow",
+      "weight": 2.0,
+      "type": "ranged-weapon",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "obsidian",
+      "name": "Obsidian",
+      "value": "1000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "oil-flask",
+      "name": "Oil (flask)",
+      "value": "10cp",
+      "weight": 1.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "oil-of-etherealness",
+      "name": "Oil of Etherealness",
+      "type": "potion",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "oil-of-sharpness",
+      "name": "Oil of Sharpness",
+      "type": "potion",
+      "rarity": "minor very rare"
+    },
+    {
+      "id": "oil-of-slipperiness",
+      "name": "Oil of Slipperiness",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "oil-of-taggit",
+      "name": "Oil of Taggit",
+      "value": "40000cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "onyx",
+      "name": "Onyx",
+      "value": "5000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "opal",
+      "name": "Opal",
+      "value": "100000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "orb",
+      "name": "Orb",
+      "value": "2000cp",
+      "weight": 3.0,
+      "type": "spellcaster-focus"
+    },
+    {
+      "id": "orb-of-dragonkind",
+      "name": "Orb of Dragonkind",
+      "weight": 3.0,
+      "type": "wondrous",
+      "rarity": "artifact"
+    },
+    {
+      "id": "ox",
+      "name": "Ox",
+      "value": "1500cp",
+      "type": "trade-good"
+    },
+    {
+      "id": "pack-saddle",
+      "name": "Pack Saddle",
+      "value": "500cp",
+      "weight": 15.0,
+      "type": "tack-harness"
+    },
+    {
+      "id": "padded-armor",
+      "name": "Padded Armor",
+      "value": "500cp",
+      "weight": 8.0,
+      "type": "light-armor"
+    },
+    {
+      "id": "painters-supplies",
+      "name": "Painter's Supplies",
+      "value": "1000cp",
+      "weight": 5.0,
+      "type": "artisans-tools"
+    },
+    {
+      "id": "pale-tincture",
+      "name": "Pale Tincture",
+      "value": "25000cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "pan-flute",
+      "name": "Pan Flute",
+      "value": "1200cp",
+      "weight": 2.0,
+      "type": "instrument"
+    },
+    {
+      "id": "paper-one-sheet",
+      "name": "Paper (one sheet)",
+      "value": "20cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "parchment-one-sheet",
+      "name": "Parchment (one sheet)",
+      "value": "10cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "pearl",
+      "name": "Pearl",
+      "value": "10000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "pearl-of-power",
+      "name": "Pearl of Power",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "pepper",
+      "name": "Pepper",
+      "value": "200cp",
+      "weight": 1.0,
+      "type": "trade-good"
+    },
+    {
+      "id": "perfume-vial",
+      "name": "Perfume (vial)",
+      "value": "500cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "periapt-of-health",
+      "name": "Periapt of Health",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "periapt-of-proof-against-poison",
+      "name": "Periapt of Proof against Poison",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "periapt-of-wound-closure",
+      "name": "Periapt of Wound Closure",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "peridot",
+      "name": "Peridot",
+      "value": "50000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "philter-of-love",
+      "name": "Philter of Love",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "pig",
+      "name": "Pig",
+      "value": "300cp",
+      "type": "trade-good"
+    },
+    {
+      "id": "pike",
+      "name": "Pike",
+      "value": "500cp",
+      "weight": 18.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "pipes-of-haunting",
+      "name": "Pipes of Haunting",
+      "weight": 2.0,
+      "type": "instrument",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "pipes-of-the-sewers",
+      "name": "Pipes of the Sewers",
+      "weight": 2.0,
+      "type": "instrument",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "pistol",
+      "name": "Pistol",
+      "value": "25000cp",
+      "weight": 3.0,
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "pitcher",
+      "name": "Pitcher",
+      "value": "2cp",
+      "weight": 4.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "piton",
+      "name": "Piton",
+      "value": "5cp",
+      "weight": 0.25,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "plate-armor",
+      "name": "Plate Armor",
+      "value": "150000cp",
+      "weight": 65.0,
+      "type": "heavy-armor"
+    },
+    {
+      "id": "plate-armor-of-etherealness",
+      "name": "Plate Armor of Etherealness",
+      "weight": 65.0,
+      "type": "heavy-armor",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "platinum",
+      "name": "Platinum",
+      "value": "50000cp",
+      "weight": 1.0,
+      "type": "trade-good"
+    },
+    {
+      "id": "platinum-pp",
+      "name": "Platinum (pp)",
+      "value": "1000cp",
+      "weight": 0.02,
+      "type": "coins-gems"
+    },
+    {
+      "id": "playing-card-set",
+      "name": "Playing Card Set",
+      "value": "50cp",
+      "type": "gaming-set"
+    },
+    {
+      "id": "poisoners-kit",
+      "name": "Poisoner's Kit",
+      "value": "5000cp",
+      "weight": 2.0,
+      "type": "tools"
+    },
+    {
+      "id": "pole-10-foot",
+      "name": "Pole (10-foot)",
+      "value": "5cp",
+      "weight": 7.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "pony",
+      "name": "Pony",
+      "value": "3000cp",
+      "type": "mounts"
+    },
+    {
+      "id": "portable-hole",
+      "name": "Portable Hole",
+      "type": "wondrous",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "portable-ram",
+      "name": "Portable Ram",
+      "value": "400cp",
+      "weight": 35.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "potion-of-acid-resistance",
+      "name": "Potion of Acid Resistance",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "potion-of-animal-friendship",
+      "name": "Potion of Animal Friendship",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "potion-of-clairvoyance",
+      "name": "Potion of Clairvoyance",
+      "type": "potion",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "potion-of-climbing",
+      "name": "Potion of Climbing",
+      "type": "potion",
+      "rarity": "minor common"
+    },
+    {
+      "id": "potion-of-cloud-giant-strength",
+      "name": "Potion of Cloud Giant Strength",
+      "type": "potion",
+      "rarity": "minor very rare"
+    },
+    {
+      "id": "potion-of-cold-resistance",
+      "name": "Potion of Cold Resistance",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "potion-of-diminution",
+      "name": "Potion of Diminution",
+      "type": "potion",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "potion-of-fire-breath",
+      "name": "Potion of Fire Breath",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "potion-of-fire-giant-strength",
+      "name": "Potion of Fire Giant Strength",
+      "type": "potion",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "potion-of-fire-resistance",
+      "name": "Potion of Fire Resistance",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "potion-of-flying",
+      "name": "Potion of Flying",
+      "type": "potion",
+      "rarity": "minor very rare"
+    },
+    {
+      "id": "potion-of-force-resistance",
+      "name": "Potion of Force Resistance",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "potion-of-frost-giant-strength",
+      "name": "Potion of Frost Giant Strength",
+      "type": "potion",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "potion-of-gaseous-form",
+      "name": "Potion of Gaseous Form",
+      "type": "potion",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "potion-of-greater-healing",
+      "name": "Potion of Greater Healing",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "potion-of-growth",
+      "name": "Potion of Growth",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "potion-of-healing",
+      "name": "Potion of Healing",
+      "value": "5000cp",
+      "weight": 0.5,
+      "type": "potion",
+      "rarity": "minor common"
+    },
+    {
+      "id": "potion-of-heroism",
+      "name": "Potion of Heroism",
+      "type": "potion",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "potion-of-hill-giant-strength",
+      "name": "Potion of Hill Giant Strength",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "potion-of-invisibility",
+      "name": "Potion of Invisibility",
+      "type": "potion",
+      "rarity": "minor very rare"
+    },
+    {
+      "id": "potion-of-invulnerability",
+      "name": "Potion of Invulnerability",
+      "type": "potion",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "potion-of-lightning-resistance",
+      "name": "Potion of Lightning Resistance",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "potion-of-longevity",
+      "name": "Potion of Longevity",
+      "type": "potion",
+      "rarity": "minor very rare"
+    },
+    {
+      "id": "potion-of-mind-reading",
+      "name": "Potion of Mind Reading",
+      "type": "potion",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "potion-of-necrotic-resistance",
+      "name": "Potion of Necrotic Resistance",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "potion-of-poison",
+      "name": "Potion of Poison",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "potion-of-poison-resistance",
+      "name": "Potion of Poison Resistance",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "potion-of-psychic-resistance",
+      "name": "Potion of Psychic Resistance",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "potion-of-radiant-resistance",
+      "name": "Potion of Radiant Resistance",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "potion-of-speed",
+      "name": "Potion of Speed",
+      "type": "potion",
+      "rarity": "minor very rare"
+    },
+    {
+      "id": "potion-of-stone-giant-strength",
+      "name": "Potion of Stone Giant Strength",
+      "type": "potion",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "potion-of-storm-giant-strength",
+      "name": "Potion of Storm Giant Strength",
+      "type": "potion",
+      "rarity": "minor legendary"
+    },
+    {
+      "id": "potion-of-superior-healing",
+      "name": "Potion of Superior Healing",
+      "type": "potion",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "potion-of-supreme-healing",
+      "name": "Potion of Supreme Healing",
+      "type": "potion",
+      "rarity": "minor very rare"
+    },
+    {
+      "id": "potion-of-thunder-resistance",
+      "name": "Potion of Thunder Resistance",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "potion-of-vitality",
+      "name": "Potion of Vitality",
+      "type": "potion",
+      "rarity": "minor very rare"
+    },
+    {
+      "id": "potion-of-water-breathing",
+      "name": "Potion of Water Breathing",
+      "type": "potion",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "potters-tools",
+      "name": "Potter's Tools",
+      "value": "1000cp",
+      "weight": 3.0,
+      "type": "artisans-tools"
+    },
+    {
+      "id": "priests-pack",
+      "name": "Priest's Pack",
+      "value": "1900cp",
+      "weight": 24.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "purple-worm-poison",
+      "name": "Purple Worm Poison",
+      "value": "200000cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "quarterstaff",
+      "name": "Quarterstaff",
+      "value": "20cp",
+      "weight": 4.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "quartz",
+      "name": "Quartz",
+      "value": "5000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "rapier",
+      "name": "Rapier",
+      "value": "2500cp",
+      "weight": 2.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "rations-1-day",
+      "name": "Rations (1 day)",
+      "value": "50cp",
+      "weight": 2.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "red-dragon-scale-mail",
+      "name": "Red Dragon Scale Mail",
+      "weight": 45.0,
+      "type": "medium-armor",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "reliquary",
+      "name": "Reliquary",
+      "value": "500cp",
+      "weight": 2.0,
+      "type": "spellcaster-focus"
+    },
+    {
+      "id": "renaissance-bullet",
+      "name": "Renaissance Bullet",
+      "value": "30cp",
+      "weight": 0.2,
+      "type": "ammunition-firearm"
+    },
+    {
+      "id": "renaissance-bullets-10",
+      "name": "Renaissance Bullets (10)",
+      "value": "300cp",
+      "weight": 2.0,
+      "type": "ammunition-firearm"
+    },
+    {
+      "id": "restorative-ointment",
+      "name": "Restorative Ointment",
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "revolver",
+      "name": "Revolver",
+      "weight": 3.0,
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "rhodochrosite",
+      "name": "Rhodochrosite",
+      "value": "1000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "riding-horse",
+      "name": "Riding Horse",
+      "value": "7500cp",
+      "type": "mounts"
+    },
+    {
+      "id": "riding-saddle",
+      "name": "Riding Saddle",
+      "value": "1000cp",
+      "weight": 25.0,
+      "type": "tack-harness"
+    },
+    {
+      "id": "ring-mail",
+      "name": "Ring Mail",
+      "value": "3000cp",
+      "weight": 40.0,
+      "type": "heavy-armor"
+    },
+    {
+      "id": "ring-of-acid-resistance",
+      "name": "Ring of Acid Resistance",
+      "type": "ring",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ring-of-air-elemental-command",
+      "name": "Ring of Air Elemental Command",
+      "type": "ring",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "ring-of-animal-influence",
+      "name": "Ring of Animal Influence",
+      "type": "ring",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ring-of-cold-resistance",
+      "name": "Ring of Cold Resistance",
+      "type": "ring",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ring-of-djinni-summoning",
+      "name": "Ring of Djinni Summoning",
+      "type": "ring",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "ring-of-earth-elemental-command",
+      "name": "Ring of Earth Elemental Command",
+      "type": "ring",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "ring-of-evasion",
+      "name": "Ring of Evasion",
+      "type": "ring",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ring-of-feather-falling",
+      "name": "Ring of Feather Falling",
+      "type": "ring",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ring-of-fire-elemental-command",
+      "name": "Ring of Fire Elemental Command",
+      "type": "ring",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "ring-of-fire-resistance",
+      "name": "Ring of Fire Resistance",
+      "type": "ring",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ring-of-force-resistance",
+      "name": "Ring of Force Resistance",
+      "type": "ring",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ring-of-free-action",
+      "name": "Ring of Free Action",
+      "type": "ring",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ring-of-invisibility",
+      "name": "Ring of Invisibility",
+      "type": "ring",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "ring-of-jumping",
+      "name": "Ring of Jumping",
+      "type": "ring",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "ring-of-lightning-resistance",
+      "name": "Ring of Lightning Resistance",
+      "type": "ring",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ring-of-mind-shielding",
+      "name": "Ring of Mind Shielding",
+      "type": "ring",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "ring-of-necrotic-resistance",
+      "name": "Ring of Necrotic Resistance",
+      "type": "ring",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ring-of-poison-resistance",
+      "name": "Ring of Poison Resistance",
+      "type": "ring",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ring-of-protection",
+      "name": "Ring of Protection",
+      "type": "ring",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ring-of-psychic-resistance",
+      "name": "Ring of Psychic Resistance",
+      "type": "ring",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ring-of-radiant-resistance",
+      "name": "Ring of Radiant Resistance",
+      "type": "ring",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ring-of-regeneration",
+      "name": "Ring of Regeneration",
+      "type": "ring",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "ring-of-shooting-stars",
+      "name": "Ring of Shooting Stars",
+      "type": "ring",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "ring-of-spell-storing",
+      "name": "Ring of Spell Storing",
+      "type": "ring",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ring-of-spell-turning",
+      "name": "Ring of Spell Turning",
+      "type": "ring",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "ring-of-swimming",
+      "name": "Ring of Swimming",
+      "type": "ring",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "ring-of-telekinesis",
+      "name": "Ring of Telekinesis",
+      "type": "ring",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "ring-of-the-ram",
+      "name": "Ring of the Ram",
+      "type": "ring",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ring-of-three-wishes",
+      "name": "Ring of Three Wishes",
+      "type": "ring",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "ring-of-thunder-resistance",
+      "name": "Ring of Thunder Resistance",
+      "type": "ring",
+      "rarity": "major rare"
+    },
+    {
+      "id": "ring-of-warmth",
+      "name": "Ring of Warmth",
+      "type": "ring",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "ring-of-water-elemental-command",
+      "name": "Ring of Water Elemental Command",
+      "type": "ring",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "ring-of-water-walking",
+      "name": "Ring of Water Walking",
+      "type": "ring",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "ring-of-x-ray-vision",
+      "name": "Ring of X-ray Vision",
+      "type": "ring",
+      "rarity": "major rare"
+    },
+    {
+      "id": "robe-of-eyes",
+      "name": "Robe of Eyes",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "robe-of-scintillating-colors",
+      "name": "Robe of Scintillating Colors",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "robe-of-stars",
+      "name": "Robe of Stars",
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "robe-of-the-archmagi",
+      "name": "Robe of the Archmagi",
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "robe-of-useful-items",
+      "name": "Robe of Useful Items",
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "robes",
+      "name": "Robes",
+      "value": "100cp",
+      "weight": 4.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "rod",
+      "name": "Rod",
+      "value": "1000cp",
+      "weight": 2.0,
+      "type": "spellcaster-focus"
+    },
+    {
+      "id": "rod-of-absorption",
+      "name": "Rod of Absorption",
+      "weight": 2.0,
+      "type": "rod",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "rod-of-alertness",
+      "name": "Rod of Alertness",
+      "weight": 2.0,
+      "type": "rod",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "rod-of-lordly-might",
+      "name": "Rod of Lordly Might",
+      "weight": 2.0,
+      "type": "rod",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "rod-of-resurrection",
+      "name": "Rod of Resurrection",
+      "weight": 2.0,
+      "type": "rod",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "rod-of-rulership",
+      "name": "Rod of Rulership",
+      "weight": 2.0,
+      "type": "rod",
+      "rarity": "major rare"
+    },
+    {
+      "id": "rod-of-security",
+      "name": "Rod of Security",
+      "weight": 2.0,
+      "type": "rod",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "rope-of-climbing",
+      "name": "Rope of Climbing",
+      "weight": 3.0,
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "rope-of-entanglement",
+      "name": "Rope of Entanglement",
+      "weight": 3.0,
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "rowboat",
+      "name": "Rowboat",
+      "value": "5000cp",
+      "weight": 100.0,
+      "type": "vehicle"
+    },
+    {
+      "id": "ruby",
+      "name": "Ruby",
+      "value": "500000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "saddle-of-the-cavalier",
+      "name": "Saddle of the Cavalier",
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "saddlebags",
+      "name": "Saddlebags",
+      "value": "400cp",
+      "weight": 8.0,
+      "type": "tack-harness"
+    },
+    {
+      "id": "saffron",
+      "name": "Saffron",
+      "value": "1500cp",
+      "weight": 1.0,
+      "type": "trade-good"
+    },
+    {
+      "id": "sailing-ship",
+      "name": "Sailing Ship",
+      "value": "1000000cp",
+      "type": "vehicle"
+    },
+    {
+      "id": "salt",
+      "name": "Salt",
+      "value": "5cp",
+      "weight": 1.0,
+      "type": "trade-good"
+    },
+    {
+      "id": "sardonyx",
+      "name": "Sardonyx",
+      "value": "5000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "scale-mail",
+      "name": "Scale Mail",
+      "value": "5000cp",
+      "weight": 45.0,
+      "type": "medium-armor"
+    },
+    {
+      "id": "scarab-of-protection",
+      "name": "Scarab of Protection",
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "scholars-pack",
+      "name": "Scholar's Pack",
+      "value": "4000cp",
+      "weight": 10.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "scimitar",
+      "name": "Scimitar",
+      "value": "2500cp",
+      "weight": 3.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "scimitar-of-speed",
+      "name": "Scimitar of Speed",
+      "weight": 3.0,
+      "type": "melee-weapon",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "scroll-of-protection-from-aberrations",
+      "name": "Scroll of Protection from Aberrations",
+      "type": "scroll",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "scroll-of-protection-from-beasts",
+      "name": "Scroll of Protection from Beasts",
+      "type": "scroll",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "scroll-of-protection-from-celestials",
+      "name": "Scroll of Protection from Celestials",
+      "type": "scroll",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "scroll-of-protection-from-elementals",
+      "name": "Scroll of Protection from Elementals",
+      "type": "scroll",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "scroll-of-protection-from-fey",
+      "name": "Scroll of Protection from Fey",
+      "type": "scroll",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "scroll-of-protection-from-fiends",
+      "name": "Scroll of Protection from Fiends",
+      "type": "scroll",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "scroll-of-protection-from-plants",
+      "name": "Scroll of Protection from Plants",
+      "type": "scroll",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "scroll-of-protection-from-undead",
+      "name": "Scroll of Protection from Undead",
+      "type": "scroll",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "sealing-wax",
+      "name": "Sealing Wax",
+      "value": "50cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "sending-stones",
+      "name": "Sending Stones",
+      "type": "wondrous",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "sentinel-shield",
+      "name": "Sentinel Shield",
+      "weight": 6.0,
+      "type": "shield",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "serpent-venom",
+      "name": "Serpent Venom",
+      "value": "20000cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "shawm",
+      "name": "Shawm",
+      "value": "200cp",
+      "weight": 1.0,
+      "type": "instrument"
+    },
+    {
+      "id": "sheep",
+      "name": "Sheep",
+      "value": "200cp",
+      "type": "trade-good"
+    },
+    {
+      "id": "shield",
+      "name": "Shield",
+      "value": "1000cp",
+      "weight": 6.0,
+      "type": "shield"
+    },
+    {
+      "id": "shield-of-missile-attraction",
+      "name": "Shield of Missile Attraction",
+      "weight": 6.0,
+      "type": "shield",
+      "rarity": "major rare"
+    },
+    {
+      "id": "shortbow",
+      "name": "Shortbow",
+      "value": "2500cp",
+      "weight": 2.0,
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "shortsword",
+      "name": "Shortsword",
+      "value": "1000cp",
+      "weight": 2.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "shotgun",
+      "name": "Shotgun",
+      "weight": 7.0,
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "shovel",
+      "name": "Shovel",
+      "value": "200cp",
+      "weight": 5.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "sickle",
+      "name": "Sickle",
+      "value": "100cp",
+      "weight": 2.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "signal-whistle",
+      "name": "Signal Whistle",
+      "value": "5cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "signet-ring",
+      "name": "Signet Ring",
+      "value": "500cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "silk-1-sq-yd",
+      "name": "Silk (1 sq. yd.)",
+      "value": "1000cp",
+      "type": "trade-good"
+    },
+    {
+      "id": "silk-rope-50-feet",
+      "name": "Silk Rope (50 feet)",
+      "value": "1000cp",
+      "weight": 5.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "silver",
+      "name": "Silver",
+      "value": "500cp",
+      "weight": 1.0,
+      "type": "trade-good"
+    },
+    {
+      "id": "silver-dragon-scale-mail",
+      "name": "Silver Dragon Scale Mail",
+      "weight": 45.0,
+      "type": "medium-armor",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "silver-ewer",
+      "name": "Silver ewer",
+      "value": "2500cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "silver-sp",
+      "name": "Silver (sp)",
+      "value": "10cp",
+      "weight": 0.02,
+      "type": "coins-gems"
+    },
+    {
+      "id": "sled",
+      "name": "Sled",
+      "value": "2000cp",
+      "weight": 300.0,
+      "type": "vehicle"
+    },
+    {
+      "id": "sledgehammer",
+      "name": "Sledgehammer",
+      "value": "200cp",
+      "weight": 10.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "sling",
+      "name": "Sling",
+      "value": "10cp",
+      "type": "ranged-weapon"
+    },
+    {
+      "id": "sling-bullet",
+      "name": "Sling Bullet",
+      "value": "0.2cp",
+      "weight": 0.075,
+      "type": "ammunition"
+    },
+    {
+      "id": "sling-bullets-20",
+      "name": "Sling Bullets (20)",
+      "value": "4cp",
+      "weight": 1.5,
+      "type": "ammunition"
+    },
+    {
+      "id": "slippers-of-spider-climbing",
+      "name": "Slippers of Spider Climbing",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "smiths-tools",
+      "name": "Smith's Tools",
+      "value": "2000cp",
+      "weight": 8.0,
+      "type": "artisans-tools"
+    },
+    {
+      "id": "smoke-grenade",
+      "name": "Smoke Grenade",
+      "weight": 2.0,
+      "type": "explosive"
+    },
+    {
+      "id": "soap",
+      "name": "Soap",
+      "value": "2cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "sovereign-glue",
+      "name": "Sovereign Glue",
+      "type": "wondrous",
+      "rarity": "minor legendary"
+    },
+    {
+      "id": "spear",
+      "name": "Spear",
+      "value": "100cp",
+      "weight": 3.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "spell-scroll-1st-level",
+      "name": "Spell Scroll (1st Level)",
+      "type": "scroll",
+      "rarity": "minor common"
+    },
+    {
+      "id": "spell-scroll-2nd-level",
+      "name": "Spell Scroll (2nd Level)",
+      "type": "scroll",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "spell-scroll-3rd-level",
+      "name": "Spell Scroll (3rd Level)",
+      "type": "scroll",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "spell-scroll-4th-level",
+      "name": "Spell Scroll (4th Level)",
+      "type": "scroll",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "spell-scroll-5th-level",
+      "name": "Spell Scroll (5th Level)",
+      "type": "scroll",
+      "rarity": "minor rare"
+    },
+    {
+      "id": "spell-scroll-6th-level",
+      "name": "Spell Scroll (6th Level)",
+      "type": "scroll",
+      "rarity": "minor very rare"
+    },
+    {
+      "id": "spell-scroll-7th-level",
+      "name": "Spell Scroll (7th Level)",
+      "type": "scroll",
+      "rarity": "minor very rare"
+    },
+    {
+      "id": "spell-scroll-8th-level",
+      "name": "Spell Scroll (8th Level)",
+      "type": "scroll",
+      "rarity": "minor very rare"
+    },
+    {
+      "id": "spell-scroll-9th-level",
+      "name": "Spell Scroll (9th Level)",
+      "type": "scroll",
+      "rarity": "minor legendary"
+    },
+    {
+      "id": "spell-scroll-cantrip",
+      "name": "Spell Scroll (Cantrip)",
+      "type": "scroll",
+      "rarity": "minor common"
+    },
+    {
+      "id": "spellbook",
+      "name": "Spellbook",
+      "value": "5000cp",
+      "weight": 3.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "spellguard-shield",
+      "name": "Spellguard Shield",
+      "weight": 6.0,
+      "type": "shield",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "sphere-of-annihilation",
+      "name": "Sphere of Annihilation",
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "spinel",
+      "name": "Spinel",
+      "value": "10000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "splint-armor",
+      "name": "Splint Armor",
+      "value": "20000cp",
+      "weight": 60.0,
+      "type": "heavy-armor"
+    },
+    {
+      "id": "sprig-of-mistletoe",
+      "name": "Sprig of Mistletoe",
+      "value": "100cp",
+      "type": "spellcaster-focus"
+    },
+    {
+      "id": "spyglass",
+      "name": "Spyglass",
+      "value": "100000cp",
+      "weight": 1.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "stabling-per-day",
+      "name": "Stabling (per day)",
+      "value": "50cp",
+      "type": "tack-harness"
+    },
+    {
+      "id": "staff",
+      "name": "Staff",
+      "value": "500cp",
+      "weight": 4.0,
+      "type": "spellcaster-focus"
+    },
+    {
+      "id": "staff-of-charming",
+      "name": "Staff of Charming",
+      "weight": 4.0,
+      "rarity": "major rare"
+    },
+    {
+      "id": "staff-of-fire",
+      "name": "Staff of Fire",
+      "weight": 4.0,
+      "rarity": "major very rare"
+    },
+    {
+      "id": "staff-of-frost",
+      "name": "Staff of Frost",
+      "weight": 4.0,
+      "rarity": "major very rare"
+    },
+    {
+      "id": "staff-of-healing",
+      "name": "Staff of Healing",
+      "weight": 4.0,
+      "rarity": "major rare"
+    },
+    {
+      "id": "staff-of-power",
+      "name": "Staff of Power",
+      "weight": 4.0,
+      "rarity": "major very rare"
+    },
+    {
+      "id": "staff-of-striking",
+      "name": "Staff of Striking",
+      "weight": 4.0,
+      "rarity": "major very rare"
+    },
+    {
+      "id": "staff-of-swarming-insects",
+      "name": "Staff of Swarming Insects",
+      "weight": 4.0,
+      "rarity": "major rare"
+    },
+    {
+      "id": "staff-of-the-adder",
+      "name": "Staff of the Adder",
+      "weight": 4.0,
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "staff-of-the-magi",
+      "name": "Staff of the Magi",
+      "weight": 4.0,
+      "rarity": "major legendary"
+    },
+    {
+      "id": "staff-of-the-python",
+      "name": "Staff of the Python",
+      "weight": 4.0,
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "staff-of-the-woodlands",
+      "name": "Staff of the Woodlands",
+      "weight": 4.0,
+      "rarity": "major rare"
+    },
+    {
+      "id": "staff-of-thunder-and-lightning",
+      "name": "Staff of Thunder and Lightning",
+      "weight": 4.0,
+      "rarity": "major very rare"
+    },
+    {
+      "id": "staff-of-withering",
+      "name": "Staff of Withering",
+      "weight": 4.0,
+      "rarity": "major rare"
+    },
+    {
+      "id": "star-rose-quartz",
+      "name": "Star rose quartz",
+      "value": "5000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "star-ruby",
+      "name": "Star Ruby",
+      "value": "100000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "star-sapphire",
+      "name": "Star Sapphire",
+      "value": "100000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "steel-mirror",
+      "name": "Steel Mirror",
+      "value": "500cp",
+      "weight": 0.5,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "stone-of-controlling-earth-elementals",
+      "name": "Stone of Controlling Earth Elementals",
+      "weight": 5.0,
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "stone-of-good-luck",
+      "name": "Stone of Good Luck",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "studded-leather-armor",
+      "name": "Studded Leather Armor",
+      "value": "4500cp",
+      "weight": 13.0,
+      "type": "light-armor"
+    },
+    {
+      "id": "sun-blade",
+      "name": "Sun Blade",
+      "weight": 3.0,
+      "type": "melee-weapon",
+      "rarity": "major rare"
+    },
+    {
+      "id": "sword-of-answering-answerer",
+      "name": "Sword of Answering (Answerer)",
+      "weight": 3.0,
+      "type": "melee-weapon",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "sword-of-answering-back-talker",
+      "name": "Sword of Answering (Back Talker)",
+      "weight": 3.0,
+      "type": "melee-weapon",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "sword-of-answering-concluder",
+      "name": "Sword of Answering (Concluder)",
+      "weight": 3.0,
+      "type": "melee-weapon",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "sword-of-answering-last-quip",
+      "name": "Sword of Answering (Last Quip)",
+      "weight": 3.0,
+      "type": "melee-weapon",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "sword-of-answering-rebutter",
+      "name": "Sword of Answering (Rebutter)",
+      "weight": 3.0,
+      "type": "melee-weapon",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "sword-of-answering-replier",
+      "name": "Sword of Answering (Replier)",
+      "weight": 3.0,
+      "type": "melee-weapon",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "sword-of-answering-retorter",
+      "name": "Sword of Answering (Retorter)",
+      "weight": 3.0,
+      "type": "melee-weapon",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "sword-of-answering-scather",
+      "name": "Sword of Answering (Scather)",
+      "weight": 3.0,
+      "type": "melee-weapon",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "sword-of-answering-squelcher",
+      "name": "Sword of Answering (Squelcher)",
+      "weight": 3.0,
+      "type": "melee-weapon",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "sword-of-kas",
+      "name": "Sword of Kas",
+      "weight": 3.0,
+      "type": "melee-weapon",
+      "rarity": "artifact"
+    },
+    {
+      "id": "talisman-of-pure-good",
+      "name": "Talisman of Pure Good",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "talisman-of-the-sphere",
+      "name": "Talisman of the Sphere",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "talisman-of-ultimate-evil",
+      "name": "Talisman of Ultimate Evil",
+      "weight": 1.0,
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "tankard",
+      "name": "Tankard",
+      "value": "2cp",
+      "weight": 1.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "tentacle-rod",
+      "name": "Tentacle Rod",
+      "weight": 2.0,
+      "type": "rod",
+      "rarity": "major rare"
+    },
+    {
+      "id": "thieves-tools",
+      "name": "Thieves' Tools",
+      "value": "2500cp",
+      "weight": 1.0,
+      "type": "tools"
+    },
+    {
+      "id": "three-dragon-ante-set",
+      "name": "Three-Dragon Ante Set",
+      "value": "100cp",
+      "type": "gaming-set"
+    },
+    {
+      "id": "tiger-eye",
+      "name": "Tiger Eye",
+      "value": "1000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "tinderbox",
+      "name": "Tinderbox",
+      "value": "50cp",
+      "weight": 1.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "tinkers-tools",
+      "name": "Tinker's Tools",
+      "value": "5000cp",
+      "weight": 10.0,
+      "type": "artisans-tools"
+    },
+    {
+      "id": "tome-of-clear-thought",
+      "name": "Tome of Clear Thought",
+      "weight": 5.0,
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "tome-of-leadership-and-influence",
+      "name": "Tome of Leadership and Influence",
+      "weight": 5.0,
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "tome-of-the-stilled-tongue",
+      "name": "Tome of the Stilled Tongue",
+      "weight": 5.0,
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "tome-of-understanding",
+      "name": "Tome of Understanding",
+      "weight": 5.0,
+      "type": "wondrous",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "topaz",
+      "name": "Topaz",
+      "value": "50000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "torch",
+      "name": "Torch",
+      "value": "1cp",
+      "weight": 1.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "torpor",
+      "name": "Torpor",
+      "value": "60000cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "totem",
+      "name": "Totem",
+      "value": "100cp",
+      "type": "spellcaster-focus"
+    },
+    {
+      "id": "tourmaline",
+      "name": "Tourmaline",
+      "value": "10000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "travelers-clothes",
+      "name": "Traveler's Clothes",
+      "value": "200cp",
+      "weight": 4.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "trident",
+      "name": "Trident",
+      "value": "500cp",
+      "weight": 4.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "trident-of-fish-command",
+      "name": "Trident of Fish Command",
+      "weight": 4.0,
+      "type": "melee-weapon",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "trinket",
+      "name": "Trinket",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "truth-serum",
+      "name": "Truth Serum",
+      "value": "15000cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "turquoise",
+      "name": "Turquoise",
+      "value": "1000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "two-person-tent",
+      "name": "Two-Person Tent",
+      "value": "200cp",
+      "weight": 20.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "universal-solvent",
+      "name": "Universal Solvent",
+      "type": "wondrous",
+      "rarity": "minor legendary"
+    },
+    {
+      "id": "vial",
+      "name": "Vial",
+      "value": "100cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "viol",
+      "name": "Viol",
+      "value": "3000cp",
+      "weight": 1.0,
+      "type": "instrument"
+    },
+    {
+      "id": "wagon",
+      "name": "Wagon",
+      "value": "3500cp",
+      "weight": 400.0,
+      "type": "vehicle"
+    },
+    {
+      "id": "wand",
+      "name": "Wand",
+      "value": "1000cp",
+      "weight": 1.0,
+      "type": "spellcaster-focus"
+    },
+    {
+      "id": "wand-of-binding",
+      "name": "Wand of Binding",
+      "weight": 1.0,
+      "type": "wand",
+      "rarity": "major rare"
+    },
+    {
+      "id": "wand-of-enemy-detection",
+      "name": "Wand of Enemy Detection",
+      "weight": 1.0,
+      "type": "wand",
+      "rarity": "major rare"
+    },
+    {
+      "id": "wand-of-fear",
+      "name": "Wand of Fear",
+      "weight": 1.0,
+      "type": "wand",
+      "rarity": "major rare"
+    },
+    {
+      "id": "wand-of-fireballs",
+      "name": "Wand of Fireballs",
+      "weight": 1.0,
+      "type": "wand",
+      "rarity": "major rare"
+    },
+    {
+      "id": "wand-of-lightning-bolts",
+      "name": "Wand of Lightning Bolts",
+      "weight": 1.0,
+      "type": "wand",
+      "rarity": "major rare"
+    },
+    {
+      "id": "wand-of-magic-detection",
+      "name": "Wand of Magic Detection",
+      "weight": 1.0,
+      "type": "wand",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "wand-of-magic-missiles",
+      "name": "Wand of Magic Missiles",
+      "weight": 1.0,
+      "type": "wand",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "wand-of-orcus",
+      "name": "Wand of Orcus",
+      "weight": 4.0,
+      "type": "wand",
+      "rarity": "artifact"
+    },
+    {
+      "id": "wand-of-paralysis",
+      "name": "Wand of Paralysis",
+      "weight": 1.0,
+      "type": "wand",
+      "rarity": "major rare"
+    },
+    {
+      "id": "wand-of-polymorph",
+      "name": "Wand of Polymorph",
+      "weight": 1.0,
+      "type": "wand",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "wand-of-secrets",
+      "name": "Wand of Secrets",
+      "weight": 1.0,
+      "type": "wand",
+      "rarity": "minor uncommon"
+    },
+    {
+      "id": "wand-of-web",
+      "name": "Wand of Web",
+      "weight": 1.0,
+      "type": "wand",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "wand-of-wonder",
+      "name": "Wand of Wonder",
+      "weight": 1.0,
+      "type": "wand",
+      "rarity": "major rare"
+    },
+    {
+      "id": "war-pick",
+      "name": "War Pick",
+      "value": "500cp",
+      "weight": 2.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "warhammer",
+      "name": "Warhammer",
+      "value": "1500cp",
+      "weight": 2.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "warhorse",
+      "name": "Warhorse",
+      "value": "40000cp",
+      "type": "mounts"
+    },
+    {
+      "id": "warship",
+      "name": "Warship",
+      "value": "2500000cp",
+      "type": "vehicle"
+    },
+    {
+      "id": "waterskin",
+      "name": "Waterskin",
+      "value": "20cp",
+      "weight": 5.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "wave",
+      "name": "Wave",
+      "weight": 4.0,
+      "type": "melee-weapon",
+      "rarity": "legendary"
+    },
+    {
+      "id": "weavers-tools",
+      "name": "Weaver's Tools",
+      "value": "100cp",
+      "weight": 5.0,
+      "type": "artisans-tools"
+    },
+    {
+      "id": "well-of-many-worlds",
+      "name": "Well of Many Worlds",
+      "type": "wondrous",
+      "rarity": "major legendary"
+    },
+    {
+      "id": "wheat",
+      "name": "Wheat",
+      "value": "1cp",
+      "weight": 1.0,
+      "type": "trade-good"
+    },
+    {
+      "id": "whelm",
+      "name": "Whelm",
+      "weight": 2.0,
+      "type": "melee-weapon",
+      "rarity": "legendary"
+    },
+    {
+      "id": "whetstone",
+      "name": "Whetstone",
+      "value": "1cp",
+      "weight": 1.0,
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "whip",
+      "name": "Whip",
+      "value": "200cp",
+      "weight": 3.0,
+      "type": "melee-weapon"
+    },
+    {
+      "id": "white-dragon-scale-mail",
+      "name": "White Dragon Scale Mail",
+      "weight": 45.0,
+      "type": "medium-armor",
+      "rarity": "major very rare"
+    },
+    {
+      "id": "wind-fan",
+      "name": "Wind Fan",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "winged-boots",
+      "name": "Winged Boots",
+      "type": "wondrous",
+      "rarity": "major uncommon"
+    },
+    {
+      "id": "wings-of-flying",
+      "name": "Wings of Flying",
+      "type": "wondrous",
+      "rarity": "major rare"
+    },
+    {
+      "id": "woodcarvers-tools",
+      "name": "Woodcarver's Tools",
+      "value": "100cp",
+      "weight": 5.0,
+      "type": "artisans-tools"
+    },
+    {
+      "id": "wooden-staff",
+      "name": "Wooden Staff",
+      "value": "500cp",
+      "weight": 4.0,
+      "type": "spellcaster-focus"
+    },
+    {
+      "id": "wyvern-poison",
+      "name": "Wyvern Poison",
+      "value": "120000cp",
+      "type": "adventuring-gear"
+    },
+    {
+      "id": "yellow-sapphire",
+      "name": "Yellow Sapphire",
+      "value": "100000cp",
+      "type": "coins-gems"
+    },
+    {
+      "id": "yew-wand",
+      "name": "Yew Wand",
+      "value": "1000cp",
+      "weight": 1.0,
+      "type": "spellcaster-focus"
+    },
+    {
+      "id": "zircon",
+      "name": "Zircon",
+      "value": "5000cp",
+      "type": "coins-gems"
+    }
+  ]
+}

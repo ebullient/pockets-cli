@@ -1,0 +1,27 @@
+{@dev.ebullient.pockets.db.Item i}
+{#let d=i.itemDetails}
+{#if d.notes }
+
+{d.notes}
+
+{/if}{#if d.bulk || d.weight }
+{#if useBulk }  Bulk         : {#else }  Weight       : {/if} {i.bulkWeight}
+{/if}{#if i.unitValue }
+  Value        : {i.unitValue}
+{/if}{#if d.magical }
+  Magical      : {d.magical}
+{/if}{#if d.tradable }
+  Tradable     : {d.tradable} {#if d.fullValueTrade }(full value){#else}(partial value){/if}
+{/if}{#if i.pocketItems }
+
+{i.nameNumberId} is in the following pockets:
+
+{i.itemPocketHeader}
+{#for pi in i.pocketItems}
+{pi.itemPocketRow}
+{/for}
+{#else}
+
+This item is not contained in any known (not bottomless) pockets.
+{/if}
+{/let}

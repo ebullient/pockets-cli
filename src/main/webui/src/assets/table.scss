@@ -1,0 +1,32 @@
+table {
+  margin-top: .5em;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  width: 100%;
+
+  td, th {
+    vertical-align: top;
+    border: 1px solid var(--bg-color-alt);
+    padding: 2px 4px;
+  }
+  th.text, td.text {
+    width: 50%;
+  }
+  th.action, td.action {
+    width: 50px;
+  }
+  th {
+    color: var(--accent-fg);
+    background-color: var(--accent);
+    font-weight: bold;
+  }
+  tr:nth-child(odd) {
+    background-color: var(--bg-color-alt);
+  }
+  tr:nth-child(odd) td.action button {
+    background-color: var(--bg-color-alt);
+  }
+  tr:nth-child(even) td.action button {
+    background-color: var(--bg-color);
+  }
+}

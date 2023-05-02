@@ -1,0 +1,243 @@
+form {
+  text-align: left;
+  padding: 0px 1em;
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 1em 0 0 0;
+    padding: 0 0 .5em 0;
+  }
+  > div > p:first-child {
+    margin-top: 0;
+  }
+  > *:not(table):not(p) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+  }
+  #add-currency-modal,
+  #edit-currency-modal,
+  #add-pocket-modal,
+  #edit-pocket-modal,
+  #profile-import-modal {
+    &.bg {
+      position: fixed;
+      z-index: 1;
+      background: unset;
+      opacity: unset;
+    }
+    &.bg::before {
+      content: '';
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--bg-overlay);
+      opacity: 0.2;
+    }
+    .window {
+      color: var(--fg-color);
+      background: var(--bg-color);
+      z-index: 3;
+    }
+    button.close {
+      color: var(--fg-color);
+      background: var(--bg-color-alt);
+      box-shadow: 0 0 0 1px var(--fg-color);
+
+      &::before,
+      &::after {
+        background: var(--fg-color);
+      }
+    }
+  }
+  #add-currency-modal,
+  #edit-currency-modal,
+  #add-pocket-modal,
+  #edit-pocket-modal {
+    .wrap {
+      margin: 1em;
+    }
+    .window {
+      max-width: 800px;
+      width: 95%;
+      margin: 1em auto;
+
+      table {
+        input[type="text"] {
+          width: 98%;
+        }
+        input[type="number"] {
+          width: 45%;
+        }
+        th.constraint {
+          width: 46%;
+        }
+        textarea[name="constraint"] {
+          width: 96%;
+          padding: 1px;
+        }
+      }
+    }
+  }
+  @media (max-width: 550px) {
+    #add-currency-modal,
+    #edit-currency-modal,
+    #add-pocket-modal,
+    #edit-pocket-modal {
+      .wrap {
+        margin: 0;
+      }
+      .window {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        border-radius: 0;
+      }
+    }
+  }
+
+}
+td.action > div {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+}
+.buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+
+  &.end {
+    justify-content: flex-end;
+  }
+  th,
+  td,
+  p {
+    white-space: normal;
+  }
+  p.button-row {
+    margin-bottom: 0;
+  }
+  label {
+    font-weight: 600;
+  }
+  label:not(.combined) {
+    padding-right: .5em;
+    display: block;
+  }
+  > select {
+    min-width: 10em;
+    padding: 0 .5em;
+  }
+  > a.button {
+    // display: block;
+    height: 23px;
+  }
+  > a.button,
+  > button {
+    margin: 0;
+    padding: 0;
+    svg {
+      padding-top: 1px;
+      height: 20px;
+      stroke: var(--fg-color);
+      stroke-width: 1.5px;
+    }
+    svg:hover {
+      height: 20px;
+      stroke: var(--hover);
+      background-color: var(--bg-color);
+    }
+    &.dirty svg {
+      stroke: var(--warning);
+    }
+  }
+  input[type="checkbox"] {
+    border: 1px solid var(--fg-color)
+  }
+  input[type="checkbox"],
+  input[type="number"],
+  input[type="text"] {
+    height: 21px;
+  }
+  .input-file {
+    height: 23px;
+  }
+  select,
+  button {
+    height: 25px;
+  }
+  textarea,
+  input[type="text"],
+  input[type="number"],
+  select,
+  .input-file,
+  > a.button,
+  > button {
+    background-color: var(--bg-color-alt);
+    border-radius: 0;
+    border: 1px solid var(--faint);
+    border-left-width: 0;
+    &.only,
+    &:first-child,
+    &:first-child:hover {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      border-left-width: 1px;
+    }
+    &.only,
+    &:last-child,
+    &:last-child:hover {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+  textarea,
+  input[type="text"] {
+    width: 30%;
+    margin: 0;
+  }
+  textarea {
+    margin-left: .5em;
+  }
+  input[type=file]::file-selector-button {
+    font-weight: 500;
+    padding: 0 15px;
+    transition: .5s;
+    border: none;
+    border-right: 1px solid var(--fg-color);
+    background-color: var(--bg-color);
+  }
+  input[type=file]::file-selector-button:hover {
+    color: var(--hover);
+    font-weight: 500;
+    border: none;
+    border-right: 1px solid var(--fg-color);
+    background-color: var(--bg-color-alt);
+  }
+  button.required,
+  select.required,
+  input.required {
+    border-color: var(--error);
+  }
+}
+td.action > div > button.buttons {
+  border: 0;
+  svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 1px;
+  }
+}
+.buttons.row {
+  margin: 15px 0;
+}
