@@ -16,3 +16,7 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/src/main/webui" # Location of package manifests
+    schedule:
+      interval: "weekly"

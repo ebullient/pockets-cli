@@ -20,6 +20,7 @@ env:
   JAVA_VERSION: 17
   GRAALVM_VERSION: 22.3.0
   JAVA_DISTRO: temurin
+  CI: true
 
 jobs:
   build:
@@ -27,6 +28,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.4'
+          cache: 'npm'
+          cache-dependency-path: src/main/webui/package-lock.json
 
       - name: Set up JDK ${{ env.JAVA_VERSION }}
         uses: actions/setup-java@v3
@@ -45,6 +53,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.4'
+          cache: 'npm'
+          cache-dependency-path: src/main/webui/package-lock.json
 
       - uses: graalvm/setup-graalvm@v1
         with:
