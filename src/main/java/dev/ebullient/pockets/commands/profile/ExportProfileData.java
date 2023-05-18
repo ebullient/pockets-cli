@@ -7,13 +7,14 @@ import static dev.ebullient.pockets.io.PocketsFormat.SAVE;
 
 import java.util.concurrent.Callable;
 
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
+
 import dev.ebullient.pockets.actions.ProfileContext;
 import dev.ebullient.pockets.commands.mixin.ActiveProfileMixinParameter;
 import dev.ebullient.pockets.commands.mixin.TargetFilePathMixin;
 import dev.ebullient.pockets.config.ProfileConfigData;
 import dev.ebullient.pockets.io.PocketTui;
-import jakarta.inject.Inject;
-import jakarta.transaction.Transactional;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.ExitCode;
 import picocli.CommandLine.Mixin;

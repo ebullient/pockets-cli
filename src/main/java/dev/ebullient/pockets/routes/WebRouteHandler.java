@@ -2,6 +2,10 @@ package dev.ebullient.pockets.routes;
 
 import java.util.List;
 
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
+
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
 
@@ -16,9 +20,6 @@ import dev.ebullient.pockets.config.Presets;
 import dev.ebullient.pockets.config.Types.PocketConfigData;
 import dev.ebullient.pockets.config.Types.PresetFlavor;
 import dev.ebullient.pockets.db.Profile;
-import jakarta.enterprise.context.Dependent;
-import jakarta.inject.Inject;
-import jakarta.transaction.Transactional;
 
 @Dependent
 public class WebRouteHandler {

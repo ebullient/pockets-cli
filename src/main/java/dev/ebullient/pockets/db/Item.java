@@ -7,6 +7,14 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import jakarta.persistence.Convert;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.PostLoad;
+
 import org.hibernate.annotations.NaturalId;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -20,13 +28,6 @@ import dev.ebullient.pockets.config.ProfileConfigData;
 import dev.ebullient.pockets.config.Types.ItemRef;
 import dev.ebullient.pockets.db.PocketsConverter.ItemDetailsConverter;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import jakarta.persistence.Convert;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.PostLoad;
 
 @Entity(name = "Item")
 @JsonIgnoreProperties({ "profile", "id", "pocketItems" })

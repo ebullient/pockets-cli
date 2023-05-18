@@ -7,6 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
+import jakarta.inject.Inject;
+
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,7 +28,6 @@ import dev.ebullient.pockets.db.Posting.PostingType;
 import io.quarkus.test.TestTransaction;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.TestProfile;
-import jakarta.inject.Inject;
 
 @QuarkusTest
 @TestProfile(CamelQuarkusTestSupport.EmitterRouteTest.class)

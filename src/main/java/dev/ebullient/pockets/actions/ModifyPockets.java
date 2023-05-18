@@ -5,6 +5,11 @@ import static dev.ebullient.pockets.io.PocketTui.Tui;
 
 import java.util.Map;
 
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityExistsException;
+import jakarta.transaction.Transactional;
+
 import dev.ebullient.pockets.config.ProfileConfigData;
 import dev.ebullient.pockets.db.Item;
 import dev.ebullient.pockets.db.ItemDetails;
@@ -15,10 +20,6 @@ import dev.ebullient.pockets.db.Posting.PostingType;
 import dev.ebullient.pockets.db.Profile;
 import dev.ebullient.pockets.io.InvalidPocketState;
 import dev.ebullient.pockets.io.PocketTui;
-import jakarta.enterprise.context.Dependent;
-import jakarta.inject.Inject;
-import jakarta.persistence.EntityExistsException;
-import jakarta.transaction.Transactional;
 import picocli.CommandLine.ExitCode;
 
 @Dependent

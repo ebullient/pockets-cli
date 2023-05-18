@@ -3,9 +3,6 @@ package dev.ebullient.pockets.db;
 import java.util.List;
 import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
@@ -14,6 +11,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity(name = "Journal")
 @JsonIgnoreProperties({ "id", "profile" })

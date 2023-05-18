@@ -8,6 +8,17 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapKeyColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.PostLoad;
+
 import org.hibernate.annotations.NaturalId;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -24,16 +35,6 @@ import dev.ebullient.pockets.config.Types.PresetFlavor;
 import dev.ebullient.pockets.db.PocketsConverter.PocketDetailsConverter;
 import dev.ebullient.pockets.io.InvalidPocketState;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapKeyColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.PostLoad;
 
 /**
  * A pocket (or backpack, or haversack, or purse, or ... )
