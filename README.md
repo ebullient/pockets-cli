@@ -63,8 +63,6 @@ Notes:
     pockets --help
     ```
 
-Continue to notes about [Conventions](#conventions).
-
 ### Build and run
 
 1. Clone this repository
@@ -77,11 +75,10 @@ To run commands listed below, either:
 - Use JBang to create an alias that points to the built jar: 
 
     ```shell
-    jbang app install --name 5e-convert --force --fresh ~/.m2/repository/dev/ebullient/pockets-cli/199-SNAPSHOT/pockets-cli-199-SNAPSHOT-runner.jar
+    jbang app install --name pockets --force --fresh ~/.m2/repository/dev/ebullient/pockets-cli/199-SNAPSHOT/pockets-cli-199-SNAPSHOT-runner.jar
     ```
 
     > 🔹 Feel free to use an alternate alias by replacing the value specified as the name: `--name pockets`, and adjust the commands shown below accordingly.
-
 
 ## Use it
 
@@ -89,40 +86,8 @@ To run commands listed below, either:
 $ pockets --help
 
 What have you got in your pockets?
-
-pockets [-bdhV] [--config=<config>] [COMMAND]
-
-Options:
-  -d, --debug             Enable debug output
-  -b, --brief             Brief output
-      --config=<config>   Config directory. Default is ~/.pockets
-  -h, --help              Show this help message and exit.
-  -V, --version           Print version information and exit.
-
-Commands:
-  c, create  Create a new pocket
-  e, edit    Edit the attributes of a pocket
-  o, open    Open a pocket (interactive)
-  d, delete  Delete a pocket (and all contained items and history)
-  l, list    List all pockets, or the contents of one pocket
-  a, add     Add an item to a pocket
-  u, update  Update an item in a pocket
-  r, remove  Remove an item from a pocket
-  import     Import reference items and pockets
+...
 ```
 
 Use `--help` with any of the subcommands for more details about what they do, etc.
-
-## Build it (optional)
-
-Prerequisites: Java 11 and Maven
-
-1. Clone this repository
-2. Build this project: `quarkus build` or `./mvnw install`
-3. `java -jar target/pockets-cli-1.0.1-runner.jar --help`
-
-If you want to use the snazzy alias with your freshly built local snapshot, JBang can help with that, too:
-```
-jbang app install --name pockets --force ~/.m2/repository/dev/ebullient/pockets-cli/1.0.1/pockets-cli-1.0.1-runner.jar
-```
 
