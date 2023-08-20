@@ -11,7 +11,7 @@
     "start": "npx vite"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^2.0.2",
+    "@sveltejs/vite-plugin-svelte": "^2.4.5",
     "@tsconfig/svelte": "^3.0.0",
     "sass": "^1.53.0",
     "svelte": "^3.55.1",
