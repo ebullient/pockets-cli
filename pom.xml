@@ -31,7 +31,7 @@
     </issueManagement>
 
     <properties>
-        <revision>1.0.2</revision>
+        <revision>199-SNAPSHOT</revision>
         <!-- Build -->
         <compiler-plugin.version>3.11.0</compiler-plugin.version>
         <maven.compiler.release>17</maven.compiler.release>
