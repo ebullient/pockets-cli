@@ -1,16 +1,14 @@
-name: Java CI with Maven
+name: PR Maven Build
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
     paths:
-      - .github/workflows/maven.yml
-      - .github/project.yml
       - "**.xml"
       - "*.yml"
       - "src/**"
       - "ide-config"
+
+permissions: read-all
 
 env:
   JAVA_VERSION: 17
@@ -20,13 +18,6 @@ env:
   GH_BOT_NAME: "GitHub Action"
 
 jobs:
-  main-root:
-    runs-on: ubuntu-latest
-    if: "github.ref == 'refs/heads/main' && github.repository == 'ebullient/pockets-cli'"
-    steps:
-      - name: Echo a message
-        id: is-main-root
-        run: echo "This is the main branch of 'ebullient/pockets-cli'"
 
   metadata:
     uses: ebullient/workflows/.github/workflows/java-snap-metadata.yml@main
@@ -42,12 +33,4 @@ jobs:
   native-build:
     needs: [build]
     uses: ebullient/workflows/.github/workflows/java-snap-native.yml@main
-    secrets: inherit
-
-  snap-release:
-    needs: [main-root, metadata, build, native-build]
-    uses: ebullient/workflows/.github/workflows/java-snapshot.yml@main
-    with:
-      artifact: ${{ needs.metadata.outputs.artifact }}
-      snapshot: ${{ needs.metadata.outputs.snapshot }}
     secrets: inherit

@@ -5,7 +5,7 @@ name: antifreeze
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   schedule:
-    - cron: "5 3 */3 * *"
+    - cron: "5 3 */2 * *"
 
   workflow_dispatch:
     inputs:
@@ -25,6 +25,7 @@ on:
 env:
   GH_BOT_EMAIL: "41898282+github-actions[bot]@users.noreply.github.com"
   GH_BOT_NAME: "GitHub Action"
+  GH_REPO: "ebullient/pockets-cli"
 
 jobs:
   clear:
@@ -54,7 +55,10 @@ jobs:
           git tag -f $SNAPSHOT
           git push --tags
 
+          gh release edit "${SNAPSHOT}"  -t "${SNAPSHOT}" --prerelease --draft=false
+
       - name: Delete Jitpack resource
+        if: "github.ref == 'refs/heads/main' && github.repository == ${{ env.GH_REPO }}"
         id: jitpack-antifreeze
         env:
           JITPACK_TOKEN: ${{ secrets.JITPACK_TOKEN }}
