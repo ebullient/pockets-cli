@@ -76,7 +76,7 @@ jobs:
           . ./shared-workflows/version-build-tag.sh
 
       - name: Upload ${{ steps.git-commit-tag.outputs.artifact }}-${{ steps.git-commit-tag.outputs.next }}-runner.jar
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         id: upload-jar
         with:
           name: artifacts
