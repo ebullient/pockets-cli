@@ -47,7 +47,7 @@
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
         <quarkus.platform.version>3.6.6</quarkus.platform.version>
         <!-- Libraries -->
-        <assertj.version>3.24.2</assertj.version>
+        <assertj.version>3.25.1</assertj.version>
         <github-slugify.version>3.0.6</github-slugify.version>
         <jline.version>3.24.1</jline.version>
         <picocli.version>4.6.2</picocli.version>
