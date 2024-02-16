@@ -41,7 +41,7 @@ jobs:
 
   native-build:
     needs: [build]
-    uses: ebullient/workflows/.github/workflows/java-snap-native.yml@main
+    uses: ebullient/workflows/.github/workflows/java-snap-quarkus-native.yml@main
     secrets: inherit
 
   snap-release:

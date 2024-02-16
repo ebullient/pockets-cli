@@ -25,6 +25,7 @@ nb-configuration.xml
 # Visual Studio Code
 .vscode
 .factorypath
+.apt_generated_tests
 
 # OSX
 .DS_Store
