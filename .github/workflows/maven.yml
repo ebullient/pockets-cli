@@ -14,7 +14,7 @@ on:
       - "ide-config"
 
 env:
-  JAVA_VERSION: 17
+  JAVA_VERSION: 21
   GRAALVM_DIST: graalvm-community
   JAVA_DISTRO: temurin
   GH_BOT_EMAIL: "41898282+github-actions[bot]@users.noreply.github.com"
@@ -23,7 +23,7 @@ env:
 jobs:
   main-root:
     runs-on: ubuntu-latest
-    if: "github.ref == 'refs/heads/main' && github.repository == 'ebullient/pockets-cli'"
+    if: github.ref == 'refs/heads/main' && github.repository == 'ebullient/pockets-cli'
     steps:
       - name: Echo a message
         id: is-main-root
