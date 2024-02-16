@@ -18,7 +18,7 @@ import io.quarkus.test.junit.main.QuarkusMainTest;
 
 @QuarkusMainTest
 public class ProfileExportImportTest {
-    public static final Path TARGET_DIR = Util.PROJECT_PATH.resolve("target/pockets/test");
+    public static final Path TARGET_DIR = Util.PROJECT_PATH.resolve("target/test/pockets");
 
     @Test
     @Launch({ "profile", "export", "--help" })

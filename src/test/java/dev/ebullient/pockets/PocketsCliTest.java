@@ -48,7 +48,7 @@ public class PocketsCliTest {
         final Path SOURCES = PROJECT_PATH.resolve("sources");
         final Path TOOLS_5e = SOURCES.resolve("5etools-mirror-1.github.io/data/");
         final Path TOOLS_pf2e = SOURCES.resolve("Pf2eTools/data/");
-        final Path TARGET = PROJECT_PATH.resolve("target/pockets/gen");
+        final Path TARGET = PROJECT_PATH.resolve("target/test/pockets/gen");
 
         if (TOOLS_5e.toFile().exists()) {
             LaunchResult result = launcher.launch("profile", "presets", "-s DMG,PHB",

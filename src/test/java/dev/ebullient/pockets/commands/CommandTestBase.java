@@ -16,7 +16,7 @@ import dev.ebullient.pockets.Util;
 import dev.ebullient.pockets.config.MockLocalPocketsConfigProducer.MockLocalPocketsConfig;
 
 public class CommandTestBase {
-    static final Path TARGET = PROJECT_PATH.resolve("target/pockets/test");
+    static final Path TARGET = PROJECT_PATH.resolve("target/test/pockets");
     static final Path configYaml = TARGET.resolve("config.yaml");
 
     @BeforeAll
