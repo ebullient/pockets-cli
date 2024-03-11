@@ -8,7 +8,8 @@ on:
       - "src/**"
       - "ide-config"
 
-permissions: read-all
+permissions:
+  contents: read
 
 env:
   JAVA_VERSION: 21
@@ -23,8 +24,11 @@ jobs:
     uses: ebullient/workflows/.github/workflows/java-snap-metadata.yml@main
 
   build:
-    uses: ebullient/workflows/.github/workflows/java-snap-build.yml@main
+    uses: ebullient/workflows/.github/workflows/java-pr-build.yml@main
     needs: [metadata]
+    permissions:
+      contents: read
+      actions: read
     with:
       artifact: ${{ needs.metadata.outputs.artifact }}
       snapshot: ${{ needs.metadata.outputs.snapshot }}
@@ -34,3 +38,4 @@ jobs:
     needs: [build]
     uses: ebullient/workflows/.github/workflows/java-snap-native.yml@main
     secrets: inherit
+
