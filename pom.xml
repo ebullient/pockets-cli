@@ -52,7 +52,7 @@
         <jline.version>3.25.1</jline.version>
         <picocli.version>4.6.2</picocli.version>
         <icu4j.version>74.2</icu4j.version><!-- Optional dependency of Slugify -->
-        <quarkus-quinoa.version>2.3.5</quarkus-quinoa.version>
+        <quarkus-quinoa.version>2.3.6</quarkus-quinoa.version>
         <!-- Packaging -->
         <quarkus.package.type>uber-jar</quarkus.package.type>
         <native.executable.name>pockets</native.executable.name>
