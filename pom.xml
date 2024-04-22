@@ -51,7 +51,7 @@
         <github-slugify.version>3.0.6</github-slugify.version>
         <jline.version>3.25.1</jline.version>
         <picocli.version>4.6.2</picocli.version>
-        <icu4j.version>74.2</icu4j.version><!-- Optional dependency of Slugify -->
+        <icu4j.version>75.1</icu4j.version><!-- Optional dependency of Slugify -->
         <quarkus-quinoa.version>2.3.6</quarkus-quinoa.version>
         <!-- Packaging -->
         <quarkus.package.type>uber-jar</quarkus.package.type>
