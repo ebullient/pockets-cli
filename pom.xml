@@ -39,7 +39,7 @@
         <impsort-plugin.version>1.12.0</impsort-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <surefire-plugin.version>3.5.1</surefire-plugin.version>
+        <surefire-plugin.version>3.5.2</surefire-plugin.version>
         <skipTests>false</skipTests>
         <skipITs>true</skipITs>
         <!-- Quarkus -->
